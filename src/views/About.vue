@@ -29,7 +29,7 @@
 }
 
 .photo {
-  margin-top: 20px;
+  margin-top: 0px;
   text-align: center;
 }
 
