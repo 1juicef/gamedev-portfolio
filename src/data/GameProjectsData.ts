@@ -150,4 +150,20 @@ export default [
         <img class="pc-screenshot" src="https://fakeimg.pl/534x300/" alt="Cloud Drew Land Screenshot" />
         <img class="pc-screenshot" src="https://fakeimg.pl/534x300/" alt="Cloud Drew Land Screenshot" />
     </div>`, "#e48246")
+    ,
+    new ProjectData("dispater", "Dispater", "img/projects/project-6-icon.png", `
+    <div class="paragraph">
+        <strong>Dispater</strong> — Placeholder description. Replace with your game summary, platforms, links and screenshots.
+    </div>
+    `, "#6C3BAA"),
+    new ProjectData("floor-0", "Floor 0", "img/projects/project-7-icon.png", `
+    <div class="paragraph">
+        <strong>Floor 0</strong> — Placeholder description. Replace with your game summary, platforms, links and screenshots.
+    </div>
+    `, "#6C3BAA"),
+    new ProjectData("drag-rush", "Drag Rush", "img/projects/project-8-icon.png", `
+    <div class="paragraph">
+        <strong>Drag Rush</strong> — Placeholder description. Replace with your game summary, platforms, links and screenshots.
+    </div>
+    `, "#6C3BAA")
 ];
