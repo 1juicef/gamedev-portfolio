@@ -1,169 +1,51 @@
 import ProjectData from '@/data/ProjectData.ts'
 
 export default [
-    new ProjectData("project-1", "Optimistic Chubby", "img/projects/project-1-icon.png", 
-    `
-    <div class="paragraph">
-     <strong>Optimistic Chubby</strong> is a thing of beauty that I am so proud of. It's available on Android because why not.
-     <br/>Image by <a href="https://www.pexels.com/fr-fr/@knownasovan" target="_blank">OVAN</a>.
-    </div>
-    <div class="paragraph center">
-        <iframe class="youtube" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
-    </div>
-    <div class="paragraph center">
-        <a href="https://play.google.com/store/apps/details?id=some.playstore.thing" target="_blank"><img src="img/projects/play-store-logo.png" alt="Play Store badge" /></a>
-    </div>
-
-    <div class="paragraph">
-        Main features :
-        <ul>
-        <li>Some stuff</li>
-        <li>Some great stuff</li>
-        <li>More awesome stuff</li>
-        <li>And then some</li>
-        </ul>
-    </div>
-
-    <div class="paragraph center">
-        <img class="phone-screenshot" src="https://fakeimg.pl/300x534/" alt="Optimistic Chubby Screenshot" />
-        <img class="phone-screenshot" src="https://fakeimg.pl/300x534/" alt="Optimistic Chubby Screenshot" />
-    </div>
-    `, "#23bd69", true),
-    new ProjectData("project-2", "Singing Addict", "img/projects/project-2-icon.png", `
-    <div class="paragraph">
-        <strong>Optimistic Chubby Blog</strong> is a thing of beauty that I am so proud of. I could write about it for hours.
-        <br/>Image by <a target="_blank" href="https://www.pexels.com/fr-fr/@adonyi-gabor-604571">Adonyi Gábor</a>.
-    </div>
-    <div class="paragraph center">
-        <iframe class="youtube" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
-    </div>
-
-    <div class="paragraph">
-        Main features :
-        <ul>
-        <li>Some stuff</li>
-        <li>Some great stuff</li>
-        <li>More awesome stuff</li>
-        <li>And then some</li>
-        </ul>
-    </div>
-
-    <div class="paragraph">
-    <div class="notice">
-        Windows build available on <a href="https://some.where/nice" target="_blank">itch.io</a>.
-        Source code is available on <a href="https://github.com/yourself" target="_blank">GitHub</a>.
-    </div>
-    </div>
-
-    <div class="paragraph center">
-    <img class="pc-screenshot" src="https://fakeimg.pl/534x300/" alt="Singing Addict Screenshot" />
-    <img class="pc-screenshot" src="https://fakeimg.pl/534x300/" alt="Singing Addict Screenshot" />
-    <img class="pc-screenshot" src="https://fakeimg.pl/534x300/" alt="Singing Addict Screenshot" />
-    <img class="pc-screenshot" src="https://fakeimg.pl/534x300/" alt="Singing Addict Screenshot" />
-    </div>
-    `, "#5a78af"),
-    new ProjectData("project-3", "Drawing Overload", "img/projects/project-3-icon.png", `
-    <div class="paragraph">
-        <strong>Drawing Overload</strong> is a thing of beauty that I am so proud of. I could write about it for hours.
-        <br/>Image by <a target="_blank" href="https://www.pexels.com/fr-fr/@miphotography">Miesha Maiden</a>.
-    </div>
-    <div class="paragraph center">
-        <iframe class="youtube" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
-    </div>
-
-    <div class="paragraph">
-        Main features :
-        <ul>
-        <li>Some stuff</li>
-        <li>Some great stuff</li>
-        <li>More awesome stuff</li>
-        <li>And then some</li>
-        </ul>
-    </div>
-
-    <div class="paragraph">
-        <div class="notice">
-        Playable in the browser (WebGL) on <a href="https://some.where/nice" target="_blank">itch.io</a>.
-        Source code is available on <a href="https://github.com/yourself" target="_blank">GitHub</a>.
-        </div>
-    </div>
-
-    <div class="paragraph center">
-        <img class="pc-screenshot" src="https://fakeimg.pl/534x300/" alt="Drawing Overload Screenshot" />
-        <img class="pc-screenshot" src="https://fakeimg.pl/534x300/" alt="Drawing Overload Screenshot" />
-        <img class="pc-screenshot" src="https://fakeimg.pl/534x300/" alt="Drawing Overload Screenshot" />
-        <img class="pc-screenshot" src="https://fakeimg.pl/534x300/" alt="Drawing Overload Screenshot" />
-    </div>
-    `, "#383838"),
-    new ProjectData("project-4", "Eugeneable", "img/projects/project-4-icon.png", `
-    <div class="paragraph">
-    <strong>Eugeneable</strong> is a thing of beauty that I am so proud of. I could write about it for hours.
-    <br/>Image by <a target="_blank" href="https://www.pexels.com/fr-fr/@neo8iam">NEOSiAM 2020</a>.
-    </div>
-    
-    <div class="paragraph">
-        Main features :
-        <ul>
-        <li>Some stuff</li>
-        <li>Some great stuff</li>
-        <li>More awesome stuff</li>
-        <li>And then some</li>
-        </ul>
-    </div>
-
-    <div class="paragraph">
-        <div class="notice">
-        Windows build available on <a href="https://some.where/nice" target="_blank">itch.io</a>.
-        </div>
-    </div>
-
-    <div class="paragraph center">
-        <img class="pc-screenshot" src="https://fakeimg.pl/534x300/" alt="Eugeneable Screenshot" />
-        <img class="pc-screenshot" src="https://fakeimg.pl/534x300/" alt="Eugeneable Screenshot" />
-    </div>
-    `, "#e80fb7"),
-    new ProjectData("project-5", "Cloud Drew Land", "img/projects/project-5-icon.png", `
-    <div class="paragraph">
-        <strong>Cloud Drew Land</strong> is a thing of beauty that I am so proud of. I could write about it for hours.
-        <br/>Image by <a target="_blank" href="https://www.pexels.com/fr-fr/@cottonbro">cottonbro</a>.
-    </div>
-    
-    <div class="paragraph">
-        Main features :
-        <ul>
-        <li>Some stuff</li>
-        <li>Some great stuff</li>
-        <li>More awesome stuff</li>
-        <li>And then some</li>
-        </ul>
-    </div>
-
-    <div class="paragraph">
-        <div class="notice">
-        Windows build available on <a href="https://some.where/nice" target="_blank">itch.io</a>.
-        Source code available on <a href="https://github.com/yourself" target="_blank">GitHub</a>.
-        </div>
-    </div>
-
-    <div class="paragraph center">
-        <img class="pc-screenshot" src="https://fakeimg.pl/534x300/" alt="Cloud Drew Land Screenshot" />
-        <img class="pc-screenshot" src="https://fakeimg.pl/534x300/" alt="Cloud Drew Land Screenshot" />
-        <img class="pc-screenshot" src="https://fakeimg.pl/534x300/" alt="Cloud Drew Land Screenshot" />
-    </div>`, "#e48246")
-    ,
-    new ProjectData("dispater", "Dispater", "img/projects/project-6-icon.png", `
-    <div class="paragraph">
-        <strong>Dispater</strong> — Placeholder description. Replace with your game summary, platforms, links and screenshots.
-    </div>
-    `, "#6C3BAA"),
-    new ProjectData("floor-0", "Floor 0", "img/projects/project-7-icon.png", `
-    <div class="paragraph">
-        <strong>Floor 0</strong> — Placeholder description. Replace with your game summary, platforms, links and screenshots.
-    </div>
-    `, "#6C3BAA"),
     new ProjectData("drag-rush", "Drag Rush", "img/projects/project-8-icon.png", `
     <div class="paragraph">
-        <strong>Drag Rush</strong> — Placeholder description. Replace with your game summary, platforms, links and screenshots.
+        <strong>Drag Rush</strong> is a rhythm-action racing game set in a sci-fi universe of cosmic bloodsports.
     </div>
-    `, "#6C3BAA")
+    <div class="paragraph">
+        Get behind the wheel,<br/>
+        Dodge incoming projectiles and obstacles,<br/>
+        Go for gold and blow the competition offroad!<br/>
+        <br/>
+        The only rule?<br/>
+        You gotta stick to the beat!
+    </div>
+    <div class="paragraph center">
+        <iframe class="youtube" src="https://www.youtube.com/embed/L5YWz2i434E" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <div class="paragraph center">
+        <img class="pc-screenshot" src="img/projects/drag-rush-1.png" alt="Drag Rush Screenshot" />
+        <img class="pc-screenshot" src="img/projects/drag-rush-2.png" alt="Drag Rush Screenshot" />
+        <img class="pc-screenshot" src="img/projects/drag-rush-3.png" alt="Drag Rush Screenshot" />
+    </div>
+    <div class="paragraph center">
+        <a href="https://yrgo.itch.io/drag-rush" target="_blank">Play on itch.io</a>
+    </div>
+    `, "#6C3BAA", false, false),
+    new ProjectData("dispater", "Dispater", "img/projects/dispater-1.png", `
+    <div class="paragraph">
+        <strong>Dispater</strong> is a sci-fi narrative game. Explore a mysterious facility and uncover the secrets within.
+    </div>
+    <div class="paragraph center">
+        <img class="pc-screenshot" src="img/projects/dispater-1.png" alt="Dispater Screenshot" />
+        <img class="pc-screenshot" src="img/projects/dispater-2.png" alt="Dispater Screenshot" />
+    </div>
+    <div class="paragraph center">
+        <a href="https://yrgo.itch.io/dispater" target="_blank">Play on itch.io</a>
+    </div>
+    `, "#6C3BAA", false, false),
+    new ProjectData("floor-0", "Floor 0", "img/projects/project-7-icon.png", `
+    <div class="paragraph">
+        <strong>Floor 0</strong> is an atmospheric exploration game set in a derelict underground facility. Navigate through abandoned corridors and discover the mysteries of what happened here.
+    </div>
+    <div class="paragraph center">
+        <img class="pc-screenshot" src="img/projects/floor-0-1.png" alt="Floor 0 Screenshot" />
+        <img class="pc-screenshot" src="img/projects/floor-0-2.png" alt="Floor 0 Screenshot" />
+        <img class="pc-screenshot" src="img/projects/floor-0-3.png" alt="Floor 0 Screenshot" />
+        <img class="pc-screenshot" src="img/projects/floor-0-4.png" alt="Floor 0 Screenshot" />
+    </div>
+    `, "#6C3BAA", false, false)
 ];

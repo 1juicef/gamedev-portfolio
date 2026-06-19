@@ -112,13 +112,9 @@
 
 <script lang="ts">
 import Vue from "vue";
-import SkillRate from "@/components/SkillRate.vue";
 
 export default Vue.extend({
   name: "Resume",
-  components: {
-    SkillRate,
-  },
 });
 </script>
 
