@@ -160,3 +160,7 @@ None — plan executed exactly as written. The ffmpeg PATH timing issue encounte
 ---
 *Phase: 01-media-performance-optimization*
 *Completed: 2026-07-21*
+
+## Self-Check: PASSED
+
+All 18 sampled created files found on disk (scripts/convert-media.js, package.json, all 4 mp4/poster pairs, 8 sampled screenshot webps). All 4 commit hashes (792d2a0, a6dcb20, 452bc34, 020703a) found in git log.

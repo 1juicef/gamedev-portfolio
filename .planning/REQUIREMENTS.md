@@ -9,8 +9,8 @@ Requirements for this redesign pass. Each maps to roadmap phases.
 
 ### Media & Performance
 
-- [ ] **MEDIA-01**: SwingSpace and Floor 0 timeline thumbnails are delivered as compressed/optimized assets (converted from oversized GIFs to muted, looping video) instead of shipping multi-MB GIFs as always-visible thumbnails
-- [ ] **MEDIA-02**: All project screenshots (Drag Rush, Dispater, Floor 0, SwingSpace) are compressed/re-encoded (e.g. to WebP) for faster overlay loading
+- [x] **MEDIA-01**: SwingSpace and Floor 0 timeline thumbnails are delivered as compressed/optimized assets (converted from oversized GIFs to muted, looping video) instead of shipping multi-MB GIFs as always-visible thumbnails
+- [x] **MEDIA-02**: All project screenshots (Drag Rush, Dispater, Floor 0, SwingSpace) are compressed/re-encoded (e.g. to WebP) for faster overlay loading
 - [ ] **MEDIA-03**: `loading="lazy"` is applied to every project image, including images hand-authored inside `v-html` description strings and below-fold timeline thumbnails
 
 ### Project Content
@@ -66,8 +66,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| MEDIA-01 | Phase 1 | Pending |
-| MEDIA-02 | Phase 1 | Pending |
+| MEDIA-01 | Phase 1 | Complete |
+| MEDIA-02 | Phase 1 | Complete |
 | MEDIA-03 | Phase 1 | Pending |
 | CONT-01 | Phase 2 | Pending |
 | CONT-02 | Phase 2 | Pending |
@@ -81,6 +81,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | META-01 | Phase 3 | Pending |
 
 **Coverage:**
+
 - v1 requirements: 13 total
 - Mapped to phases: 13 (roadmap created)
 - Unmapped: 0 ✓
