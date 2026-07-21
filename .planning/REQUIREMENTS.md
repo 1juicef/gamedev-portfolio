@@ -66,25 +66,25 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| MEDIA-01 | TBD | Pending |
-| MEDIA-02 | TBD | Pending |
-| MEDIA-03 | TBD | Pending |
-| CONT-01 | TBD | Pending |
-| CONT-02 | TBD | Pending |
-| CONT-03 | TBD | Pending |
-| CONT-04 | TBD | Pending |
-| CONT-05 | TBD | Pending |
-| CONT-07 | TBD | Pending |
-| POLISH-01 | TBD | Pending |
-| POLISH-02 | TBD | Pending |
-| RESUME-01 | TBD | Pending |
-| META-01 | TBD | Pending |
+| MEDIA-01 | Phase 1 | Pending |
+| MEDIA-02 | Phase 1 | Pending |
+| MEDIA-03 | Phase 1 | Pending |
+| CONT-01 | Phase 2 | Pending |
+| CONT-02 | Phase 2 | Pending |
+| CONT-03 | Phase 2 | Pending |
+| CONT-04 | Phase 2 | Pending |
+| CONT-05 | Phase 2 | Pending |
+| CONT-07 | Phase 2 | Pending |
+| POLISH-01 | Phase 3 | Pending |
+| POLISH-02 | Phase 2 | Pending |
+| RESUME-01 | Phase 3 | Pending |
+| META-01 | Phase 3 | Pending |
 
 **Coverage:**
 - v1 requirements: 13 total
-- Mapped to phases: 0 (roadmap not yet created)
-- Unmapped: 13 ⚠️
+- Mapped to phases: 13 (roadmap created)
+- Unmapped: 0 ✓
 
 ---
 *Requirements defined: 2026-07-21*
-*Last updated: 2026-07-21 after initial definition*
+*Last updated: 2026-07-21 after roadmap creation*
