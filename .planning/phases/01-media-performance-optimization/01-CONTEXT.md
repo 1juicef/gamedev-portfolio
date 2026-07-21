@@ -25,7 +25,7 @@ The site loads fast and lean — all four project timeline thumbnails (Drag Rush
 ### Asset folder reorganization (done during this discussion)
 - **D-06:** `public/img/projects/` is reorganized into per-project subfolders: `drag-rush/`, `dispater/`, `floor-0/`, `swing-space/` (folder names match `ProjectData.id`). Each project's own screenshots/gifs/video now live in its folder. Already executed — `git mv` used for tracked files (`DragrushSC*.png`, `DispaterSC*.png`), plain `mv` for untracked files (`Floor0*`, `SwingSpace*`, `DragRushGif*.gif`, `DispaterGif*.gif`). All path references in `GameProjectsData.ts` were updated to match.
 - **D-07:** Shared/placeholder assets stay at `public/img/projects/` root — they are NOT project-exclusive: `project-1-icon.png` through `project-9-icon.png` (used by `OtherProjectsData.ts` template placeholders, and coincidentally reused as stale icons for `drag-rush`/`floor-0` in `GameProjectsData.ts` today), the mascot `Guy.gif`/`Guy1-4.gif` (used by `Header.vue`/`Footer.vue`), and `ms-store-logo.png`/`play-store-logo.png`.
-- **Note for planner/executor:** the old `img/projects/floor-0-1.png` .. `floor-0-4.png` paths referenced in Floor 0's current `htmlDescription` do not exist on disk (already missing/broken) — this is expected to be fixed by CONT-01 in Phase 2 (screenshot swap to `Floor0SC1-4.png`, now living in `img/projects/floor-0/`), not by this phase.
+- **Note for planner/executor:** the old `img/projects/floor-0-1.png` .. `floor-0-4.png` paths referenced in Floor 0's current `htmlDescription` do not exist on disk (already missing/broken) — per D-14, this phase (not Phase 2/CONT-01) fixes it by swapping to `Floor0SC1-4.png` (now living in `img/projects/floor-0/`).
 
 ### Drag Rush & Dispater thumbnail scope (folded into Phase 1)
 - **D-08:** Converting Drag Rush's and Dispater's new GIFs to video-thumbnails (same pipeline as SwingSpace/Floor 0) IS in scope for Phase 1. This replaces `GameProjects.vue`'s special-cased always-loaded YouTube iframe branch for these two projects (the `v-if="project.id !== 'drag-rush' && project.id !== 'dispater'"` / `v-else` split, ~lines 31-42) — removing an always-loaded iframe from the timeline is itself a performance win in this phase's spirit (MEDIA-03 territory). After this change, all four projects use the identical thumbnail treatment (video with poster, lazy-mounted per D-04/D-05) and identical click behavior (opens `ProjectDetailsOverlay`, same as every other project — no special-cased click behavior remains).
@@ -33,11 +33,13 @@ The site loads fast and lean — all four project timeline thumbnails (Drag Rush
 - **D-10:** Source GIF for each project's converted timeline video: **Drag Rush** → `img/projects/drag-rush/DragRushGif.gif` (not `DragRushGif2.gif`). **Dispater** → `img/projects/dispater/DispaterGif2.gif` (not `DispaterGif.gif`).
 
 ### Floor 0 thumbnail — phase boundary
-- **D-11:** Phase 1 **fully wires in** Floor 0's new video thumbnail — converts `img/projects/floor-0/Floor0gif1.gif` to video and updates `GameProjectsData.ts` so Floor 0's timeline thumbnail plays it by the end of Phase 1 (matching Phase 1's literal success criteria). This means **Phase 2's CONT-07 requirement is already satisfied by Phase 1** — Phase 2 only needs to cover Floor 0's screenshots (CONT-01) and itch.io link (CONT-05), not the thumbnail. Flag this for the roadmap/requirements traceability update at Phase 1 completion.
+- **D-11:** Phase 1 **fully wires in** Floor 0's new video thumbnail — converts `img/projects/floor-0/Floor0gif1.gif` to video and updates `GameProjectsData.ts` so Floor 0's timeline thumbnail plays it by the end of Phase 1 (matching Phase 1's literal success criteria). This means **Phase 2's CONT-07 requirement is already satisfied by Phase 1** — Phase 2 only needs to cover Floor 0's itch.io link (CONT-05), not the thumbnail. Flag this for the roadmap/requirements traceability update at Phase 1 completion.
+- **D-14 (added after research):** Phase 1 **also fixes Floor 0's broken screenshot references** — its `htmlDescription` currently points at `floor-0-1..4.png`, which don't exist on disk (confirmed by research). Success Criterion #2 requires all 4 projects' overlay screenshots to load as WebP, which is impossible for Floor 0 without this fix. Swap to `img/projects/floor-0/Floor0SC1-4.png` (converted to WebP per D-12) as part of this phase. **This means Phase 2's CONT-01 requirement is also already satisfied by Phase 1** — Phase 2 only needs Floor 0's itch.io link (CONT-05). Flag this too for the roadmap/requirements traceability update.
 
 ### Compression target & fallback
 - **D-12:** WebP compression target is **high quality, moderate savings (~80-85% quality)** — prioritize screenshots still looking crisp/professional (recruiters/leads are judging visual polish) over maximal file-size reduction.
 - **D-13:** **No `<picture>`/PNG fallback** — plain WebP only. WebP has near-universal support in current browsers (Chrome, Firefox, Safari 14+, Edge); simpler markup, just swap the file extension.
+- **D-15 (added after research):** SwingSpace's source GIF for the converted timeline video is **`img/projects/swing-space/SwingSpaceGIF3.gif`**, not `SwingSpaceGIF.gif` (the current, un-converted thumbnail) — per the existing decision already logged in `PROJECT.md` Key Decisions ("SwingSpace timeline thumbnail swapped from SwingSpaceGIF.gif to SwingSpaceGIF3.gif"). The research agent flagged this as ambiguous and defaulted to `SwingSpaceGIF.gif`; that default is overridden by this decision.
 
 ### Claude's Discretion
 - Exact IntersectionObserver / lazy-mount implementation approach for video autoplay-in-viewport (D-04).
@@ -53,7 +55,7 @@ The site loads fast and lean — all four project timeline thumbnails (Drag Rush
 
 ### Roadmap & Requirements
 - `.planning/ROADMAP.md` — Phase 1 goal, success criteria, and how it relates to Phase 2/3
-- `.planning/REQUIREMENTS.md` — MEDIA-01, MEDIA-02, MEDIA-03 (this phase); CONT-01, CONT-05, CONT-07 (Phase 2, note D-11 changes CONT-07 status)
+- `.planning/REQUIREMENTS.md` — MEDIA-01, MEDIA-02, MEDIA-03 (this phase); CONT-05 remains Phase 2; CONT-01 and CONT-07 are satisfied early by this phase per D-11/D-14 — reflect in traceability at Phase 1 completion
 - `.planning/PROJECT.md` — Core value, constraints (tech stack fixed, assets already produced by user), key decisions log
 
 ### Codebase maps
