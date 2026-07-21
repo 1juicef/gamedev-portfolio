@@ -27,10 +27,12 @@ Decimal phases appear between their surrounding integers in numeric order.
   1. SwingSpace and Floor 0 timeline thumbnails play as muted, looping video clips instead of shipping as multi-MB GIFs
   2. Project screenshots across all 4 projects (Drag Rush, Dispater, Floor 0, SwingSpace) load as compressed WebP images in the overlay
   3. Every project image — including images inside hand-authored description HTML and below-fold timeline thumbnails — loads lazily, keeping initial site weight low
-**Plans**: TBD
+**Plans:** 3 plans
 
 Plans:
-- [ ] 01-01: TBD (defined during /gsd-plan-phase)
+- [ ] 01-01-PLAN.md — Media conversion pipeline: install ffmpeg + sharp, write convert-media.js, produce 4 MP4s + 4 posters + 16 WebP screenshots (Wave 1)
+- [ ] 01-02-PLAN.md — Fast timeline: LazyVideoThumbnail.vue + rewire GameProjects.vue to viewport-gated video thumbnails for all 4 projects (Wave 2)
+- [ ] 01-03-PLAN.md — Fast overlays: lazy WebP screenshots, Floor 0 reference fix, Dispater trailer embed, App.vue preload cleanup (Wave 2)
 
 ### Phase 2: Project Content & Personality
 **Goal**: Visitors get accurate, warm, technically substantive project information — team attribution, engine/tech blurbs, hero tone — without ever seeing code, and personality stays inside a deliberate boundary.
@@ -70,6 +72,6 @@ Phases execute in numeric order: 1 → 2 → 3
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Media & Performance Optimization | 0/TBD | Not started | - |
+| 1. Media & Performance Optimization | 0/3 | Not started | - |
 | 2. Project Content & Personality | 0/TBD | Not started | - |
 | 3. Visual Polish, Resume & Site Metadata | 0/TBD | Not started | - |
