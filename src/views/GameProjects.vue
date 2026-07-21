@@ -2,7 +2,7 @@
   <div class="journey-page">
     <div class="hero">
       <div class="hero-copy">
-        <h1>Projects</h1>
+        <h1>Hello there!</h1>
         <div class="intro">
           Welcome to my slice of the internet!
         </div>
@@ -29,18 +29,20 @@
         :class="{ 'project-row--reverse': projectRows[project.id] === 'reverse' }"
       >
         <div class="project-image-wrap">
-          <button class="project-image-button" @click="showDetails(project)" v-if="project.id !== 'drag-rush'">
-            <img class="project-image" :src="project.iconUrl" :alt="project.name + ' image'" />
+          <button
+            class="project-image-button"
+            :class="{ 'project-image--swing-space': project.id === 'swing-space' }"
+            @click="showDetails(project)"
+          >
+            <LazyVideoThumbnail :src="thumbVideos[project.id]" :poster="thumbPosters[project.id]" />
           </button>
-          <div class="project-image-wrap-video" v-else>
-            <iframe class="youtube" src="https://www.youtube.com/embed/L5YWz2i434E" frameborder="0" allowfullscreen></iframe>
-          </div>
         </div>
 
         <div class="project-copy">
           <div class="project-entry-header">
-            <h2>{{ project.name }}</h2>
-            <button class="details-button" @click="showDetails(project)">Read more</button>
+            <button class="project-title-link" @click="showDetails(project)">
+              {{ project.name }}
+            </button>
           </div>
           <p class="project-summary">{{ summaries[project.id] }}</p>
         </div>
@@ -60,6 +62,7 @@
 <script lang="ts">
 import Vue from "vue";
 import ProjectDetailsOverlay from "@/components/ProjectDetailsOverlay.vue";
+import LazyVideoThumbnail from "@/components/LazyVideoThumbnail.vue";
 import gameProjectsData from "@/data/GameProjectsData.ts";
 import ProjectData from "@/data/ProjectData.ts";
 
@@ -67,6 +70,7 @@ export default Vue.extend({
   name: "GameProjects",
   components: {
     ProjectDetailsOverlay,
+    LazyVideoThumbnail,
   },
   data: function () {
     return {
@@ -75,6 +79,19 @@ export default Vue.extend({
         "drag-rush": "normal",
         dispater: "reverse",
         "floor-0": "normal",
+        "swing-space": "reverse",
+      },
+      thumbVideos: {
+        "drag-rush": "img/projects/drag-rush/DragRushGif.mp4",
+        dispater: "img/projects/dispater/DispaterGif2.mp4",
+        "floor-0": "img/projects/floor-0/Floor0gif1.mp4",
+        "swing-space": "img/projects/swing-space/SwingSpaceGIF3.mp4",
+      },
+      thumbPosters: {
+        "drag-rush": "img/projects/drag-rush/DragRushGif-poster.webp",
+        dispater: "img/projects/dispater/DispaterGif2-poster.webp",
+        "floor-0": "img/projects/floor-0/Floor0gif1-poster.webp",
+        "swing-space": "img/projects/swing-space/SwingSpaceGIF3-poster.webp",
       },
       showPopup: false,
       popupTitle: "",
@@ -84,6 +101,7 @@ export default Vue.extend({
         "drag-rush": "A rhythm-action racing game where you dodge obstacles and stay on beat. Available on itch.io.",
         dispater: "A sci-fi narrative game exploring a mysterious facility. Uncover secrets within its walls.",
         "floor-0": "An atmospheric exploration game set in an abandoned underground facility. Discover what happened here.",
+        "swing-space": "Swing yourself up through space by grappling planets, push your run farther, and chase the highscore.",
       },
     };
   },
@@ -101,14 +119,14 @@ export default Vue.extend({
 
 <style scoped>
 .journey-page {
-  margin-bottom: 40px;
+  margin-bottom: 56px;
 }
 
 .hero {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  margin-bottom: 40px;
+  margin-bottom: 56px;
 }
 
 .hero-copy {
@@ -136,15 +154,15 @@ export default Vue.extend({
 
 .project-timeline {
   display: grid;
-  gap: 28px;
+  gap: 40px;
 }
 
 .project-row {
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 24px;
   align-items: stretch;
-  padding: 18px 0;
+  padding: 28px 0;
   border-top: 1px solid rgba(255, 255, 255, 0.14);
 }
 
@@ -161,29 +179,9 @@ export default Vue.extend({
   cursor: pointer;
 }
 
-.project-image-wrap-video {
-  width: 100%;
-  position: relative;
-  padding-bottom: 56.25%;
-  height: 0;
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-}
-
-.project-image-wrap-video iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.project-image {
-  width: 100%;
-  max-width: 100%;
-  height: auto;
-  display: block;
-  border: 1px solid rgba(255, 255, 255, 0.14);
+.project-image--swing-space {
+  max-width: 46%;
+  margin: 0 auto;
 }
 
 .project-copy {
@@ -197,48 +195,49 @@ export default Vue.extend({
   gap: 12px;
 }
 
-.project-entry h2 {
+.project-title-link {
   margin: 0;
   padding: 0;
-  font-size: 1.8em;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font-size: 2.35em;
   font-weight: 100;
+  cursor: pointer;
+  text-align: left;
+  line-height: 1.05;
+  transition: color 0.18s ease, opacity 0.18s ease;
+}
+
+.project-title-link:hover {
+  color: #f4cde6;
+  opacity: 1;
 }
 
 .project-summary {
-  margin: 10px 0 0;
+  margin: 14px 0 0;
   max-width: 760px;
-}
-
-.details-button {
-  border: 1px solid currentColor;
-  background: transparent;
-  color: inherit;
-  padding: 8px 14px;
-  cursor: pointer;
-  opacity: 0.8;
-  white-space: nowrap;
-}
-
-.details-button:hover {
-  opacity: 1;
+  font-size: 1.08em;
+  line-height: 1.95em;
 }
 
 @media only screen and (min-width: 620px) {
   .hero {
     flex-direction: row;
-    align-items: flex-start;
+    align-items: center;
     justify-content: space-between;
   }
 
   .hero-photo {
     flex: 0 0 240px;
+    margin-top: 48px;
   }
 
   .project-row {
     flex-direction: row;
     align-items: center;
-    gap: 36px;
-    padding: 28px 0;
+    gap: 48px;
+    padding: 40px 0;
   }
 
   .project-row--reverse {
@@ -248,6 +247,18 @@ export default Vue.extend({
   .project-image-wrap,
   .project-copy {
     flex: 1 1 0;
+  }
+
+  .project-image-wrap {
+    flex-basis: 58%;
+  }
+
+  .project-copy {
+    flex-basis: 42%;
+  }
+
+  .project-image--swing-space {
+    max-width: 40%;
   }
 }
 </style>
