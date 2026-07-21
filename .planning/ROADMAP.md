@@ -31,7 +31,7 @@ Decimal phases appear between their surrounding integers in numeric order.
   2. Project screenshots across all 4 projects (Drag Rush, Dispater, Floor 0, SwingSpace) load as compressed WebP images in the overlay
   3. Every project image — including images inside hand-authored description HTML and below-fold timeline thumbnails — loads lazily, keeping initial site weight low
 
-**Plans:** 1/3 plans executed
+**Plans:** 2/3 plans executed
 
 Plans:
 **Wave 1**
@@ -40,7 +40,7 @@ Plans:
 
 **Wave 2** *(blocked on Wave 1 completion)*
 
-- [ ] 01-02-PLAN.md — Fast timeline: LazyVideoThumbnail.vue + rewire GameProjects.vue to viewport-gated video thumbnails for all 4 projects (Wave 2)
+- [x] 01-02-PLAN.md — Fast timeline: LazyVideoThumbnail.vue + rewire GameProjects.vue to viewport-gated video thumbnails for all 4 projects (Wave 2)
 - [ ] 01-03-PLAN.md — Fast overlays: lazy WebP screenshots, Floor 0 reference fix, Dispater trailer embed, App.vue preload cleanup (Wave 2)
 
 ### Phase 2: Project Content & Personality
@@ -89,6 +89,6 @@ Phases execute in numeric order: 1 → 2 → 3
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Media & Performance Optimization | 1/3 | In Progress|  |
+| 1. Media & Performance Optimization | 2/3 | In Progress|  |
 | 2. Project Content & Personality | 0/TBD | Not started | - |
 | 3. Visual Polish, Resume & Site Metadata | 0/TBD | Not started | - |

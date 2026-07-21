@@ -11,7 +11,7 @@ Requirements for this redesign pass. Each maps to roadmap phases.
 
 - [x] **MEDIA-01**: SwingSpace and Floor 0 timeline thumbnails are delivered as compressed/optimized assets (converted from oversized GIFs to muted, looping video) instead of shipping multi-MB GIFs as always-visible thumbnails
 - [x] **MEDIA-02**: All project screenshots (Drag Rush, Dispater, Floor 0, SwingSpace) are compressed/re-encoded (e.g. to WebP) for faster overlay loading
-- [ ] **MEDIA-03**: `loading="lazy"` is applied to every project image, including images hand-authored inside `v-html` description strings and below-fold timeline thumbnails
+- [x] **MEDIA-03**: `loading="lazy"` is applied to every project image, including images hand-authored inside `v-html` description strings and below-fold timeline thumbnails
 
 ### Project Content
 
@@ -68,7 +68,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 |-------------|-------|--------|
 | MEDIA-01 | Phase 1 | Complete |
 | MEDIA-02 | Phase 1 | Complete |
-| MEDIA-03 | Phase 1 | Pending |
+| MEDIA-03 | Phase 1 | Complete |
 | CONT-01 | Phase 2 | Pending |
 | CONT-02 | Phase 2 | Pending |
 | CONT-03 | Phase 2 | Pending |
