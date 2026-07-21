@@ -94,8 +94,27 @@ async function convertVideos() {
     }
 }
 
+// Screenshot manifest: [projectFolder, [pngBasenames...]]
+const screenshotAssets = [
+    ["drag-rush", ["DragrushSC1", "DragrushSC2", "DragrushSC3", "DragrushSC4", "DragrushSC5"]],
+    ["dispater", ["DispaterSC1", "DispaterSC2", "DispaterSC3", "DispaterSC4", "DispaterSC5"]],
+    ["floor-0", ["Floor0SC1", "Floor0SC2", "Floor0SC3", "Floor0SC4"]],
+    ["swing-space", ["SwingSpaceSC1", "SwingSpaceSC2"]],
+];
+
+async function convertScreenshots() {
+    for (const [folder, basenames] of screenshotAssets) {
+        for (const basename of basenames) {
+            const inputPng = path.join(PROJECTS_ROOT, folder, `${basename}.png`);
+            const outputWebp = path.join(PROJECTS_ROOT, folder, `${basename}.webp`);
+            await toWebp(inputPng, outputWebp);
+        }
+    }
+}
+
 async function main() {
     await convertVideos();
+    await convertScreenshots();
     console.log("Done.");
 }
 
