@@ -93,7 +93,9 @@ Plans:
 - [x] 03-01-PLAN.md
 - [x] 03-02-PLAN.md
 
-- [x] 03-01: TBD (defined during /gsd-plan-phase)
+**Gap Closure** *(from 03-UAT.md G-03-4, G-03-5)*
+
+- [ ] 03-03-PLAN.md — Resume top spacing (G-03-4) + widen sitewide content column 1280px→1600px (G-03-5), two scoped CSS fixes
 
 ## Progress
 
