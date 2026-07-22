@@ -18,6 +18,7 @@ export default Vue.extend({
   justify-content: center;
   align-items: flex-start;
   width: 100%;
+  padding-top: 48px;
 }
 
 .resume-image {
