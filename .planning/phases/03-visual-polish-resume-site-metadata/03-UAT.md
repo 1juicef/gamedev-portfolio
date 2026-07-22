@@ -1,18 +1,14 @@
 ---
-status: testing
+status: partial
 phase: 03-visual-polish-resume-site-metadata
 source: [03-VERIFICATION.md]
 started: 2026-07-22T22:10:00.000Z
-updated: 2026-07-22T23:20:00.000Z
+updated: 2026-07-22T23:32:00.000Z
 ---
 
 ## Current Test
 
-number: 6
-name: Resume top spacing re-check
-expected: |
-  Run `npm run serve`, visit /resume: confirm the added top padding reads as a natural gap, not too much or too little. The resume image should sit with clear vertical breathing room below the header — the 48px padding-top value should read as intentional spacing, not excessive.
-awaiting: user response
+[testing complete]
 
 ## Tests
 
@@ -47,18 +43,30 @@ note: "Fixed by gap-closure plan 03-03 (App.vue max-width 1280px -> 1600px). Re-
 
 ### 6. Resume top spacing re-check
 expected: Run `npm run serve`, visit /resume: confirm the added top padding reads as a natural gap, not too much or too little. The resume image should sit with clear vertical breathing room below the header — the 48px padding-top value should read as intentional spacing, not excessive.
-result: [pending]
+result: pass
 
 ### 7. Site-wide column width re-check
 expected: Run `npm run serve` on a >=1440px viewport, check every route (/game-projects, /other-projects, /resume, /contact). Content column reads balanced (1600px cap), not narrow-and-centered with heavy dead space. Header and footer stay aligned with the main column width.
-result: [pending]
+result: pass
+
+### 8. Project overlay gradient background
+expected: The project details overlay's background gradient (black to purple) runs smoothly through to the bottom edge, ending in purple.
+result: issue
+reported: "The overlay popup for a project has a gradient color, from black to purple, but at the bottom of the overlay there is a tiny black bar. The gradient should follow all the way through and be purple at the very bottom."
+severity: cosmetic
+
+### 9. Dispater overlay video removal request
+expected: N/A — change request, not a regression of prior expected behavior.
+result: issue
+reported: "You can skip the video at the bottom on Dispater overlay, the YouTube trailer is enough." (Requests removing the DispaterGif2.mp4 <video> block added to the Dispater overlay by plan 03-01/Task 3 per D-04 — the YouTube trailer already covers that content.)
+severity: cosmetic
 
 ## Summary
 
-total: 7
-passed: 2
-issues: 0
-pending: 2
+total: 9
+passed: 4
+issues: 4
+pending: 0
 skipped: 0
 blocked: 1
 
@@ -94,3 +102,19 @@ blocked: 1
   missing:
     - "Increase max-width (e.g. 1440-1600px range) and/or reconsider the fixed 48px side padding at the desktop breakpoint so the column reads balanced, not narrow-and-centered"
   debug_session: .planning/debug/g-03-5-sitewide-horizontal-spacing.md
+- gap_id: G-03-8
+  truth: "The project details overlay's background gradient (black to purple) runs smoothly through to the bottom edge, ending in purple."
+  status: failed
+  reason: "User reported: the overlay popup for a project has a gradient color, from black to purple, but at the bottom of the overlay there is a tiny black bar. The gradient should follow all the way through and be purple at the very bottom."
+  severity: cosmetic
+  test: 8
+  artifacts: []
+  missing: []
+- gap_id: G-03-9
+  truth: "N/A — change request: remove the DispaterGif2.mp4 video block from the Dispater overlay (added by 03-01), since the YouTube trailer already covers that content."
+  status: failed
+  reason: "User reported: you can skip the video at the bottom on Dispater overlay, the YouTube trailer is enough."
+  severity: cosmetic
+  test: 9
+  artifacts: []
+  missing: []
