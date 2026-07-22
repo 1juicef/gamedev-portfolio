@@ -1,6 +1,7 @@
 <template>
   <div class="header">
     <div class="nav-bar">
+      <img class="header-guy" :src="mascotSrc" alt="Running character" />
       <router-link to="/game-projects">Projects</router-link>
       <router-link to="/resume">Resume</router-link>
       <router-link to="/contact">Contact</router-link>
@@ -16,6 +17,20 @@ export default Vue.extend({
   //   props: {
   //     msg: String,
   //   },
+  computed: {
+    mascotSrc(): string {
+      switch (this.$route.path) {
+        case "/game-projects":
+          return "img/projects/Guy.gif";
+        case "/resume":
+          return "img/projects/Guy1.gif";
+        case "/contact":
+          return "img/projects/Guy4.gif";
+        default:
+          return "img/projects/Guy.gif";
+      }
+    }
+  }
 });
 </script>
 
@@ -31,6 +46,15 @@ export default Vue.extend({
   text-align: right;
   padding: 20px;
   line-height: 3em;
+}
+
+.header-guy {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  vertical-align: middle;
+  margin-right: 4px;
+  transform: translateY(-5px);
 }
 
 a {
@@ -56,6 +80,13 @@ a {
     margin-left: 9px;
     margin-right: 9px;
     padding-bottom: 0px;
+  }
+
+  .header-guy {
+    width: 20px;
+    height: 20px;
+    margin-right: 3px;
+    transform: translateY(-4px);
   }
 }
 
