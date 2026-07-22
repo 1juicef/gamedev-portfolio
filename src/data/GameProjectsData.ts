@@ -26,7 +26,9 @@ export default [
     <div class="paragraph center">
         <h3>About this game</h3>
         Built in Unity (8 weeks).<br/>
-        Unique twist between a racing- and rythmgame.<br/>
+        A team of 6 — 3 programmers, 3 artists.<br/>
+        I mainly built the vehicle animation trees and helped finalize the Beat Conductor.<br/>
+        Unique twist between a racing- and rhythm game.<br/>
         Custom made "Beat Conductor".<br/>
         Fast-paced, satisfying and a "ok, one more try!" hook.
     </div>
@@ -54,9 +56,11 @@ export default [
     <div class="paragraph center">
         <h3>About this game</h3>
         Made in Unreal Engine (8 weeks).<br/>
+        A team of 7 — 3 programmers, 4 artists.<br/>
+        I built the dialogue, task and interaction systems, and did the audio engineering.<br/>
         Heavy narrative.<br/>
         Custom made hexagonal gridbase movement.<br/>
-        Atmospheric and creepy enviroment.<br/>
+        Atmospheric and creepy environment.<br/>
         Ending will leave you in SHOCK.
     </div>
     <div class="paragraph center">
