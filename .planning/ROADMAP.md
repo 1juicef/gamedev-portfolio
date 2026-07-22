@@ -49,13 +49,13 @@ Plans:
 
 ### Phase 2: Project Content & Personality
 
-**Goal**: Visitors get accurate, warm, technically substantive project information — team attribution, engine/tech blurbs, hero tone — without ever seeing code, and personality stays inside a deliberate boundary.
+**Goal**: As a recruiter or technical lead browsing the portfolio, I want to see accurate, warm, technically substantive project information without ever seeing code, so that personality comes through within a deliberate, professional boundary.
 **Mode:** mvp
 **Depends on**: Phase 1
-**Requirements**: CONT-01, CONT-02, CONT-03, CONT-04, CONT-05, CONT-07, POLISH-02
+**Requirements**: CONT-02, CONT-03, CONT-04, CONT-05, POLISH-02 (CONT-01 and CONT-07 satisfied early by Phase 1 — see REQUIREMENTS.md traceability)
 **Success Criteria** (what must be TRUE):
 
-  1. Floor 0's overlay shows the updated Floor0SC1-4.png screenshots, its timeline thumbnail plays the converted Floor0gif1.gif clip, and a "Play on itch.io" link opens the correct itch.io page
+  1. Floor 0 gets a "Play on itch.io" link that opens the correct itch.io page (its screenshots and timeline thumbnail were already fixed in Phase 1 — CONT-01/CONT-07)
   2. Drag Rush and Dispater blurbs each state team size and what Josef personally built
   3. The hero section reads warm and personal ("Hello there!" tone) while staying short and professional
   4. Each of the 4 projects shows a finalized "About this game" blurb naming the engine, dev timeframe, and one technical challenge
