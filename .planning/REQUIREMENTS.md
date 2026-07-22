@@ -15,12 +15,12 @@ Requirements for this redesign pass. Each maps to roadmap phases.
 
 ### Project Content
 
-- [ ] **CONT-01**: Floor 0 screenshots are swapped to the new `Floor0SC1-4.png` files, replacing the old `floor-0-1..4.png` references
+- [x] **CONT-01**: Floor 0 screenshots are swapped to the new `Floor0SC1-4.png` files, replacing the old `floor-0-1..4.png` references (satisfied early by Phase 1 per D-14 — screenshots repointed to `Floor0SC1-4.webp` as part of the WebP conversion)
 - [ ] **CONT-02**: Drag Rush and Dispater project blurbs include an explicit team/role-attribution line (team size + what was personally built)
 - [ ] **CONT-03**: Hero section copy is rewritten to be warmer/more personal while staying short and professional
 - [ ] **CONT-04**: "About this game" blurb (engine, dev timeframe, one technical challenge) is finalized/confirmed on all 4 projects
 - [ ] **CONT-05**: Floor 0 gets a "Play on itch.io" link to `https://juice-f.itch.io/floorzero`, matching the pattern already used by Drag Rush/Dispater
-- [ ] **CONT-07**: Floor 0 timeline thumbnail switched from the old placeholder icon to `Floor0gif1.gif` (delivered per MEDIA-01 as a converted video, not the raw GIF)
+- [x] **CONT-07**: Floor 0 timeline thumbnail switched from the old placeholder icon to `Floor0gif1.gif` (delivered per MEDIA-01 as a converted video, not the raw GIF) (satisfied early by Phase 1 per D-11 — Floor0gif1.mp4 wired into the timeline, since trimmed to ~12.5s by 01-04 gap closure)
 
 ### Visual Polish
 
@@ -69,12 +69,12 @@ Which phases cover which requirements. Updated during roadmap creation.
 | MEDIA-01 | Phase 1 | Complete |
 | MEDIA-02 | Phase 1 | Complete |
 | MEDIA-03 | Phase 1 | Complete |
-| CONT-01 | Phase 2 | Pending |
+| CONT-01 | Phase 1 (early) | Complete |
 | CONT-02 | Phase 2 | Pending |
 | CONT-03 | Phase 2 | Pending |
 | CONT-04 | Phase 2 | Pending |
 | CONT-05 | Phase 2 | Pending |
-| CONT-07 | Phase 2 | Pending |
+| CONT-07 | Phase 1 (early) | Complete |
 | POLISH-01 | Phase 3 | Pending |
 | POLISH-02 | Phase 2 | Pending |
 | RESUME-01 | Phase 3 | Pending |
