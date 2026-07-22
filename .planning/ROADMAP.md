@@ -97,6 +97,10 @@ Plans:
 
 - [x] 03-03-PLAN.md — Resume top spacing (G-03-4) + widen sitewide content column 1280px→1600px (G-03-5), two scoped CSS fixes
 
+**Gap Closure** *(from 03-UAT.md G-03-8, G-03-9)*
+
+- [ ] 03-04-PLAN.md — Overlay gradient reaches bottom edge (G-03-8) + remove Dispater standalone gameplay video block (G-03-9), two single-file deletions
+
 ## Progress
 
 **Execution Order:**
