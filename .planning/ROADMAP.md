@@ -85,7 +85,7 @@ Plans:
   2. The resume page displays actualResume.png as the resume
   3. Sharing the site link shows the correct site title, description, and a real preview image instead of placeholder mywebsite.com/avatar-og.png values
 
-**Plans**: 2/2 plans executed
+**Plans**: 3/3 plans executed
 **UI hint**: yes
 
 Plans:
@@ -95,7 +95,7 @@ Plans:
 
 **Gap Closure** *(from 03-UAT.md G-03-4, G-03-5)*
 
-- [ ] 03-03-PLAN.md — Resume top spacing (G-03-4) + widen sitewide content column 1280px→1600px (G-03-5), two scoped CSS fixes
+- [x] 03-03-PLAN.md — Resume top spacing (G-03-4) + widen sitewide content column 1280px→1600px (G-03-5), two scoped CSS fixes
 
 ## Progress
 
@@ -106,4 +106,4 @@ Phases execute in numeric order: 1 → 2 → 3
 |-------|----------------|--------|-----------|
 | 1. Media & Performance Optimization | 4/4 | Complete | 2026-07-22 |
 | 2. Project Content & Personality | 2/2 | In Progress|  |
-| 3. Visual Polish, Resume & Site Metadata | 2/2 | In Progress|  |
+| 3. Visual Polish, Resume & Site Metadata | 3/3 | In Progress|  |
