@@ -4,16 +4,16 @@ milestone: v1.0
 milestone_name: milestone
 current_phase: 1
 current_phase_name: Media & Performance Optimization
-status: executing
-stopped_at: Completed 01-02-PLAN.md
-last_updated: "2026-07-21T19:44:46.077Z"
+status: verifying
+stopped_at: Completed 01-04-PLAN.md (gap closure G-01-5)
+last_updated: "2026-07-22T10:17:13.949Z"
 last_activity: 2026-07-21
 last_activity_desc: Phase 1 execution started
 progress:
   total_phases: 1
   completed_phases: 0
-  total_plans: 3
-  completed_plans: 2
+  total_plans: 4
+  completed_plans: 3
 ---
 
 # Project State
@@ -29,10 +29,10 @@ See: .planning/PROJECT.md (updated 2026-07-21)
 
 Phase: 1 (Media & Performance Optimization) — EXECUTING
 Plan: 3 of 3
-Status: Ready to execute
+Status: Phase complete — ready for verification
 Last activity: 2026-07-21 — Phase 1 execution started
 
-Progress: [███████░░░] 67%
+Progress: [████████░░] 75%
 
 ## Performance Metrics
 
@@ -60,6 +60,7 @@ Progress: [███████░░░] 67%
 |------|----------|-------|-------|
 | Phase 01 P01 | 20min | 3 tasks | 26 files |
 | Phase 01 P02 | 20min | 2 tasks | 2 files |
+| Phase 01 P04 | 12min | 2 tasks | 2 files |
 
 ## Accumulated Context
 
@@ -73,10 +74,13 @@ Recent decisions affecting current work:
 - [Phase ?]: Media pipeline: sharp pinned ^0.34.0 (Node 18 compat), ffmpeg via winget Gyan.FFmpeg, SwingSpaceGIF3.gif used per D-15, screenshots resized to max-width 1000 in same WebP pass
 - [Phase ?]: Applied project-image--swing-space modifier class to the wrapping button rather than LazyVideoThumbnail's component root (avoids relying on Vue 2 scoped-CSS root-element class merging)
 - [Phase ?]: Removed now-unused .project-image-wrap-video/iframe and .project-image scoped CSS from GameProjects.vue after relocating the aspect/border technique into LazyVideoThumbnail.vue
+- [Phase ?]: Fast-forwarded stale worktree branch to add-game-projects tip (zero-divergence ancestor) to access Phase 1 content
+- [Phase ?]: Regenerated Floor0gif1.mp4 via direct gifToMp4() call scoped to 12.5s trim, not full pipeline, closing UAT gap G-01-5
 
 ### Pending Todos
 
 4 pending (2026-07-22), deferred to a future phase after current redesign (Phases 1-3) completes:
+
 - Add two Game Jam games as a separate "Game Jams" section (single clickable screenshot per game, links to itch.io) — needs game titles/itch.io URLs/screenshots from Josef
 - Swap Dispater's timeline gif and project-page gif
 - Make timeline title click affordance more visible
@@ -96,6 +100,6 @@ Items acknowledged and carried forward from previous milestone close:
 
 ## Session Continuity
 
-Last session: 2026-07-21T19:44:46.066Z
-Stopped at: Completed 01-02-PLAN.md
+Last session: 2026-07-22T10:17:13.939Z
+Stopped at: Completed 01-04-PLAN.md (gap closure G-01-5)
 Resume file: None
