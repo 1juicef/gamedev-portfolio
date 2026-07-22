@@ -106,7 +106,9 @@ skipped: 0
 
 - gap_id: G-01-5
   truth: "Floor 0's timeline video thumbnail (Floor0gif1.mp4) plays a tight, well-trimmed loop"
-  status: failed
+  status: resolved
+  resolved_by: 01-04-PLAN.md
+  resolved_at: 2026-07-22
   reason: "User reported: The floor 0 thumbnail is a little bit to long, 1.5 seconds should be cut of at the end. Otherwise, all good."
   severity: minor
   test: 5
