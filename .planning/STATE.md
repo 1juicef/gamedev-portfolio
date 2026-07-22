@@ -88,9 +88,10 @@ Recent decisions affecting current work:
 
 ### Pending Todos
 
-1 pending (2026-07-22), deferred to a future phase (e.g. Phase 4) after current redesign completes:
+2 pending (2026-07-22), deferred to a future phase (e.g. Phase 4) after current redesign completes:
 
 - Add two Game Jam games as a separate "Game Jams" section (single clickable screenshot per game, links to itch.io) — needs game titles/itch.io URLs/screenshots from Josef
+- Deploy portfolio to custom domain www.josefubaka.com (purchased); update public/index.html og:url/og:image (currently locked to GitHub Pages URL per D-08/D-09) once live, and re-verify Phase 3 UAT test 3 (social-preview card rendering, currently blocked — no live URL yet)
 
 (3 others resolved/folded: footer spacing — fixed via quick tasks; Dispater gif swap and timeline title affordance — folded into Phase 3, see 03-CONTEXT.md D-03/D-04)
 
