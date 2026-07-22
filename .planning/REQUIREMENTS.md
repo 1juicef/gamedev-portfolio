@@ -29,11 +29,11 @@ Requirements for this redesign pass. Each maps to roadmap phases.
 
 ### Resume
 
-- [ ] **RESUME-01**: Resume page shows the single resume image (`actualResume.png`) — no additional accessibility/PDF mitigation this pass (explicit tradeoff, accepted as-is)
+- [x] **RESUME-01**: Resume page shows the single resume image (`actualResume.png`) — no additional accessibility/PDF mitigation this pass (explicit tradeoff, accepted as-is)
 
 ### Metadata
 
-- [ ] **META-01**: Placeholder OG tags in `public/index.html` (`mywebsite.com`, nonexistent `avatar-og.png`) are replaced with real site info and a real image, so links shared to recruiters render a correct social preview
+- [x] **META-01**: Placeholder OG tags in `public/index.html` (`mywebsite.com`, nonexistent `avatar-og.png`) are replaced with real site info and a real image, so links shared to recruiters render a correct social preview
 
 ## v2 Requirements
 
@@ -77,8 +77,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 | CONT-07 | Phase 1 (early) | Complete |
 | POLISH-01 | Phase 3 | Complete |
 | POLISH-02 | Phase 2 | Complete |
-| RESUME-01 | Phase 3 | Pending |
-| META-01 | Phase 3 | Pending |
+| RESUME-01 | Phase 3 | Complete |
+| META-01 | Phase 3 | Complete |
 
 **Coverage:**
 
