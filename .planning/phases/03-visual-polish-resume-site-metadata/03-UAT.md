@@ -1,14 +1,18 @@
 ---
-status: diagnosed
+status: testing
 phase: 03-visual-polish-resume-site-metadata
 source: [03-VERIFICATION.md]
 started: 2026-07-22T22:10:00.000Z
-updated: 2026-07-22T22:32:32.000Z
+updated: 2026-07-22T23:20:00.000Z
 ---
 
 ## Current Test
 
-[testing complete]
+number: 6
+name: Resume top spacing re-check
+expected: |
+  Run `npm run serve`, visit /resume: confirm the added top padding reads as a natural gap, not too much or too little. The resume image should sit with clear vertical breathing room below the header — the 48px padding-top value should read as intentional spacing, not excessive.
+awaiting: user response
 
 ## Tests
 
@@ -27,28 +31,34 @@ result: blocked
 blocked_by: other
 reason: "Site not deployed yet — no live URL to test the social preview against. User also reported they purchased the custom domain www.josefubaka.com and wants to deploy there instead of the GitHub Pages project URL (D-08's og:url/og:image target); captured as a follow-up todo, not a Phase 3 gap."
 
-### 3. Social-preview card rendering
-expected: Once deployed, paste https://1juicef.github.io/gamedev-portfolio/ into a link-preview debugger (or share it in Discord/Slack). The card shows title "Josef — Game Developer Portfolio", the locked description, and the avatar image — not a broken/blank image or the old mywebsite.com placeholder.
-result: [pending]
-
 ### 4. Resume page centered layout
 expected: Run `npm run serve`, visit /resume. A single centered resume image (actualResume.png) fills the column up to its width cap, with no download button, no click-to-enlarge, and no extra chrome.
 result: issue
 reported: "The resume png should move down a little bit — it's currently too far up on the page."
 severity: cosmetic
+note: "Fixed by gap-closure plan 03-03 (padding-top: 48px on Resume.vue .resume-page). Re-verification tracked as Test 6."
 
 ### 5. Site-wide horizontal spacing
 expected: Page content reads with intentional, balanced horizontal margins — not excessive dead space on the left/right on any page.
 result: issue
 reported: "A bit too much dead space to the left and right of all pages."
 severity: cosmetic
+note: "Fixed by gap-closure plan 03-03 (App.vue max-width 1280px -> 1600px). Re-verification tracked as Test 7."
+
+### 6. Resume top spacing re-check
+expected: Run `npm run serve`, visit /resume: confirm the added top padding reads as a natural gap, not too much or too little. The resume image should sit with clear vertical breathing room below the header — the 48px padding-top value should read as intentional spacing, not excessive.
+result: [pending]
+
+### 7. Site-wide column width re-check
+expected: Run `npm run serve` on a >=1440px viewport, check every route (/game-projects, /other-projects, /resume, /contact). Content column reads balanced (1600px cap), not narrow-and-centered with heavy dead space. Header and footer stay aligned with the main column width.
+result: [pending]
 
 ## Summary
 
-total: 5
+total: 7
 passed: 2
-issues: 2
-pending: 0
+issues: 0
+pending: 2
 skipped: 0
 blocked: 1
 
@@ -56,7 +66,9 @@ blocked: 1
 
 - gap_id: G-03-4
   truth: "A single centered resume image (actualResume.png) fills the column up to its width cap, with no download button, no click-to-enlarge, and no extra chrome."
-  status: failed
+  status: resolved
+  resolved_by: 03-03-PLAN.md
+  resolved_at: 2026-07-22
   reason: "User reported: the resume png should move down a little bit — it's currently too far up on the page."
   severity: cosmetic
   test: 4
@@ -69,7 +81,9 @@ blocked: 1
   debug_session: .planning/debug/g-03-4-resume-image-position.md
 - gap_id: G-03-5
   truth: "Page content reads with intentional, balanced horizontal margins — not excessive dead space on the left/right on any page."
-  status: failed
+  status: resolved
+  resolved_by: 03-03-PLAN.md
+  resolved_at: 2026-07-22
   reason: "User reported: a bit too much dead space to the left and right of all pages."
   severity: cosmetic
   test: 5
