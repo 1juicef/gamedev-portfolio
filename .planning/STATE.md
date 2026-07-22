@@ -8,7 +8,7 @@ status: verifying
 stopped_at: Completed 02-02-PLAN.md (Phase 2 complete, provisional sign-off from Josef pending full visual review)
 last_updated: "2026-07-22T14:53:25.104Z"
 last_activity: 2026-07-22
-last_activity_desc: Phase 02-01 complete, ready for 02-02 (personality boundary checkpoint)
+last_activity_desc: Completed quick task 260722-ot7 (Floor Zero blurb, footer spacing/mascot, route-aware mascots)
 progress:
   total_phases: 2
   completed_phases: 1
@@ -30,7 +30,7 @@ See: .planning/PROJECT.md (updated 2026-07-22)
 Phase: 2 (Project Content & Personality) — EXECUTING
 Plan: 2 of 2
 Status: Phase complete — ready for verification
-Last activity: 2026-07-22 — Phase 02-01 complete, ready for 02-02 (personality boundary checkpoint)
+Last activity: 2026-07-22 — Completed quick task 260722-ot7 (Floor Zero blurb, footer spacing/mascot, route-aware mascots)
 
 Progress: [████████░░] 83%
 
@@ -93,6 +93,12 @@ Recent decisions affecting current work:
 ### Blockers/Concerns
 
 - Open loop: Josef has not yet done the visual read-through of the personality boundary himself (was on phone during 02-02 checkpoint). If he later reports issues, handle as follow-up edits to GameProjectsData.ts/GameProjects.vue or gap closure.
+
+### Quick Tasks Completed
+
+| # | Description | Date | Commit | Directory |
+|---|-------------|------|--------|-----------|
+| 260722-ot7 | Floor Zero blurb swap, Footer.vue spacing rollback + mascot reposition, route-based mascot swap (Header/Footer) | 2026-07-22 | 8a53b4d | [260722-ot7-floor-zero-blurb-swap-footer-vue-spacing](./quick/260722-ot7-floor-zero-blurb-swap-footer-vue-spacing/) |
 
 ## Deferred Items
 
