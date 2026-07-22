@@ -85,7 +85,21 @@ status: complete
 - See `key-decisions` in frontmatter.
 
 ## Deviations from Plan
-None — applied directly per Josef's dictated copy and the two clarifying answers, with minor grammar corrections called out above.
+
+### Auto-fixed Issues
+
+**1. [Rule 3 - Blocking] Text applied to the wrong location — project overlay instead of timeline summary**
+- **Found during:** Josef's review, immediately after this task's first commit
+- **Issue:** Josef's dictated copy was meant for the one-line `project-summary` text shown on the `/game-projects` timeline page (the `summaries` object in `src/views/GameProjects.vue`), not the multi-paragraph overlay content in `src/data/GameProjectsData.ts` that opens when a project card is clicked. The original plan misread the intent and split the copy into two hook+description `<div class="paragraph">` blocks inside the overlay data, including inventing a new Floor Zero hook line ("You're not alone.") that Josef never asked for in this context.
+- **Fix:** Reverted all three overlay entries in `GameProjectsData.ts` back to their original pre-task text (verified via `git diff` against the last commit — clean revert, no residual changes). Applied Josef's dictated copy instead to the `summaries` object in `GameProjects.vue`, as a single flowing sentence per project (matching the existing one-line format of the other summaries) — Drag Rush's quoted hook kept inline as the opening phrase, Dispater and Floor Zero as plain description text with no invented hook line (since none was asked for in this location).
+- **Files modified:** `src/data/GameProjectsData.ts` (reverted), `src/views/GameProjects.vue` (new correct location)
+- **Verification:** `git diff` confirms `GameProjectsData.ts` matches its pre-task state exactly; `npm run lint` and `npm run build` both pass clean on the corrected files.
+- **Committed in:** follow-up commit (see Task Commits)
+
+---
+
+**Total deviations:** 1 auto-fixed (Rule 3 — misread the target location; corrected same-session before Josef needed to ask twice)
+**Impact on plan:** Net result matches Josef's actual intent. The overlay content is untouched from its original state; the timeline summaries now carry the new copy.
 
 ## Issues Encountered
 None.

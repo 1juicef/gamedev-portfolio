@@ -3,10 +3,15 @@ import ProjectData from '@/data/ProjectData.ts'
 export default [
     new ProjectData("drag-rush", "Drag Rush", "img/projects/project-8-icon.png", `
     <div class="paragraph">
-        <strong>"Are you dragging or are you rushing!?"</strong>
+        <strong>Drag Rush</strong> is a rhythm-action racing game set in a sci-fi universe of cosmic bloodsports.
     </div>
     <div class="paragraph">
-        Drag Rush is a racing game where you need to stick to the beat. Swerve and shoot your way through the race-track and beat the first-place holder.
+        Get behind the wheel,<br/>
+        Dodge incoming projectiles and obstacles,<br/>
+        Go for gold and blow the competition offroad!<br/>
+        <br/>
+        The only rule?<br/>
+        You gotta stick to the beat!
     </div>
     <div class="paragraph center">
         <iframe class="youtube" loading="lazy" src="https://www.youtube.com/embed/L5YWz2i434E" frameborder="0" allowfullscreen></iframe>
@@ -36,7 +41,7 @@ export default [
         <strong>"Good morning rookie!"</strong>
     </div>
     <div class="paragraph">
-        Dig for your salvation in this narrative heavy experience. Lead the crew down an unexplored path and discover the truth behind its walls.
+        Are you ready for your first day as the elevator operator at the D.I mining station. The station can be a bit cramped but you should have all you need to guide the rest of your crew through the mines. The Disparator Corporation welcomes you as the newest member of the Disparator family.
     </div>
     <div class="paragraph center">
         <iframe class="youtube" loading="lazy" src="https://www.youtube.com/embed/ihPEcIQ_PwI" frameborder="0" allowfullscreen></iframe>
@@ -64,10 +69,7 @@ export default [
     `, "#6C3BAA", false, false),
     new ProjectData("floor-0", "Floor Zero", "img/projects/project-7-icon.png", `
     <div class="paragraph">
-        <strong>"You're not alone."</strong>
-    </div>
-    <div class="paragraph">
-        You wake up in a house you don't remember setting your foot in. Can you find a way out before the horrors haunting this place find you?
+        <strong>Floor Zero</strong> is an atmospheric exploration game set in a derelict underground facility. Navigate through abandoned corridors and discover the mysteries of what happened here.
     </div>
     <div class="paragraph center">
         <img class="pc-screenshot" loading="lazy" src="img/projects/floor-0/Floor0SC1.webp" alt="Floor Zero Screenshot" />

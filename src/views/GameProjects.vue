@@ -98,9 +98,9 @@ export default Vue.extend({
       popupColor: "#000000",
       popupContent: "",
       summaries: {
-        "drag-rush": "A rhythm-action racing game where you dodge obstacles and stay on beat. Available on itch.io.",
-        dispater: "A sci-fi narrative game exploring a mysterious facility. Uncover secrets within its walls.",
-        "floor-0": "An atmospheric exploration game set in an abandoned underground facility. Discover what happened here.",
+        "drag-rush": "\"Are you dragging or are you rushing!?\" Drag Rush is a racing game where you need to stick to the beat. Swerve and shoot your way through the race-track and beat the first-place holder.",
+        dispater: "Dig for your salvation in this narrative heavy experience. Lead the crew down an unexplored path and discover the truth behind its walls.",
+        "floor-0": "You wake up in a house you don't remember setting your foot in. Can you find a way out before the horrors haunting this place find you?",
         "swing-space": "Swing yourself up through space by grappling planets, push your run farther, and chase the highscore.",
       },
     };
