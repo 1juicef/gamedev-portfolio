@@ -154,7 +154,7 @@ export default Vue.extend({
 
 .project-timeline {
   display: grid;
-  gap: 40px;
+  gap: 48px;
 }
 
 .project-row {
@@ -162,7 +162,7 @@ export default Vue.extend({
   flex-direction: column;
   gap: 24px;
   align-items: stretch;
-  padding: 28px 0;
+  padding: 32px 0;
   border-top: 1px solid rgba(255, 255, 255, 0.14);
 }
 
@@ -199,26 +199,29 @@ export default Vue.extend({
   margin: 0;
   padding: 0;
   border: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.35);
   background: transparent;
   color: inherit;
-  font-size: 2.35em;
+  font-size: 2.1em;
   font-weight: 100;
   cursor: pointer;
   text-align: left;
-  line-height: 1.05;
-  transition: color 0.18s ease, opacity 0.18s ease;
+  line-height: 1.1;
+  transition: color 0.18s ease, opacity 0.18s ease, border-bottom-color 0.18s ease;
 }
 
-.project-title-link:hover {
+.project-title-link:hover,
+.project-title-link:focus-visible {
   color: #f4cde6;
   opacity: 1;
+  border-bottom-color: #f4cde6;
 }
 
 .project-summary {
-  margin: 14px 0 0;
+  margin: 16px 0 0;
   max-width: 760px;
   font-size: 1.08em;
-  line-height: 1.95em;
+  line-height: 1.7;
 }
 
 @media only screen and (min-width: 620px) {
@@ -237,7 +240,7 @@ export default Vue.extend({
     flex-direction: row;
     align-items: center;
     gap: 48px;
-    padding: 40px 0;
+    padding: 48px 0;
   }
 
   .project-row--reverse {
