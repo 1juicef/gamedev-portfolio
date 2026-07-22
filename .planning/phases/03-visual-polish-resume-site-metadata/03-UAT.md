@@ -1,5 +1,5 @@
 ---
-status: partial
+status: diagnosed
 phase: 03-visual-polish-resume-site-metadata
 source: [03-VERIFICATION.md]
 started: 2026-07-22T22:10:00.000Z
@@ -108,13 +108,22 @@ blocked: 1
   reason: "User reported: the overlay popup for a project has a gradient color, from black to purple, but at the bottom of the overlay there is a tiny black bar. The gradient should follow all the way through and be purple at the very bottom."
   severity: cosmetic
   test: 8
-  artifacts: []
-  missing: []
+  root_cause: "src/components/ProjectDetailsOverlay.vue's .dialog rule independently declares background-color: #000000 AND padding-bottom: 10px, while the gradient (linear-gradient 180deg, #000 0% -> #120818 45% -> #2b123f 100%) lives only on the child .dialog-content. .dialog-content's painted box stops at its own border edge, so it never covers .dialog's trailing 10px padding — that strip is filled by .dialog's own solid black background, appearing as a black bar below the gradient's purple endpoint."
+  artifacts:
+    - path: "src/components/ProjectDetailsOverlay.vue"
+      issue: ".dialog has background-color:#000000 + padding-bottom:10px that the child .dialog-content's gradient never paints into"
+  missing:
+    - "Move padding-bottom:10px off .dialog onto .dialog-content (so the gradient's box covers the full painted region), OR drop .dialog's background-color:#000000 since .dialog-content already visually owns the background below the title bar"
+  debug_session: .planning/debug/g-03-8-overlay-gradient-black-bar.md
 - gap_id: G-03-9
   truth: "N/A — change request: remove the DispaterGif2.mp4 video block from the Dispater overlay (added by 03-01), since the YouTube trailer already covers that content."
   status: failed
   reason: "User reported: you can skip the video at the bottom on Dispater overlay, the YouTube trailer is enough."
   severity: cosmetic
   test: 9
-  artifacts: []
-  missing: []
+  root_cause: "Not a defect — a scope-reversal request. Plan 03-01/Task 3 added a <video class=\"pc-video\"><source src=\"img/projects/dispater/DispaterGif2.mp4\" ...></video> block to the Dispater htmlDescription in src/data/GameProjectsData.ts (after the screenshots block, before 'About this game'), per CONTEXT.md D-04. User now wants that block removed — the existing YouTube trailer already covers gameplay footage."
+  artifacts:
+    - path: "src/data/GameProjectsData.ts"
+      issue: "Dispater htmlDescription's <video class=\"pc-video\"> block (DispaterGif2.mp4) should be removed"
+  missing:
+    - "Remove the <div class=\"paragraph center\"><video class=\"pc-video\">...</video></div> block added by 03-01/Task 3 from the Dispater htmlDescription; leave screenshots and YouTube trailer untouched"
