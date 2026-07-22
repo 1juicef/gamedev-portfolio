@@ -82,7 +82,7 @@ export default [
         First solo project in Unreal Engine (5 weeks).<br/>
         Multi-state AI built with behaviour tree.<br/>
         Custom built Key/Lock and item system.<br/>
-        Unsettling enough to keep you up at night.
+        Guaranteed no sleep for a week minimum
     </div>
     <div class="paragraph center">
         <a href="https://juice-f.itch.io/floorzero" target="_blank">Play on itch.io</a>
