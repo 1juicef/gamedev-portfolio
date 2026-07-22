@@ -110,5 +110,13 @@ skipped: 0
   reason: "User reported: The floor 0 thumbnail is a little bit to long, 1.5 seconds should be cut of at the end. Otherwise, all good."
   severity: minor
   test: 5
-  artifacts: []
-  missing: []
+  root_cause: "Floor0gif1.mp4 (and its source Floor0gif1.gif) both run 14.0s per ffprobe — the source GIF's final ~1.5s is dead/trailing content the user wants trimmed. gifToMp4() in scripts/convert-media.js has no trim/duration flag, so the full source length is always encoded 1:1."
+  artifacts:
+    - path: "scripts/convert-media.js"
+      issue: "gifToMp4() encodes full source duration; needs a per-asset trim (output ~12.5s for Floor 0) via an ffmpeg -t/-to flag"
+    - path: "public/img/projects/floor-0/Floor0gif1.mp4"
+      issue: "Committed output needs to be re-generated at ~12.5s instead of 14.0s"
+  missing:
+    - "Add a trim duration (or -ss/-t window) for the floor-0 entry in convert-media.js's videoAssets pipeline, targeting ~12.5s output"
+    - "Re-run conversion for Floor0gif1 only and re-commit the shorter Floor0gif1.mp4 (source Floor0gif1.gif untouched per D-03)"
+  debug_session: ""
