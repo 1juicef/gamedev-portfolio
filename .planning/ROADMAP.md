@@ -61,7 +61,7 @@ Plans:
   4. Each of the 4 projects shows a finalized "About this game" blurb naming the engine, dev timeframe, and one technical challenge
   5. A full top-to-bottom read-through confirms personality (mascot, tone) stays within its intended boundary without tipping into a "quirky hobby project" impression
 
-**Plans:** 1/2 plans executed
+**Plans:** 2/2 plans executed
 
 Plans:
 
@@ -71,7 +71,7 @@ Plans:
 
 **Wave 2** *(blocked on Wave 1 completion)*
 
-- [ ] 02-02-PLAN.md — Personality boundary: full top-to-bottom read-through checkpoint with Josef (POLISH-02)
+- [x] 02-02-PLAN.md — Personality boundary: full top-to-bottom read-through checkpoint with Josef (POLISH-02)
 
 ### Phase 3: Visual Polish, Resume & Site Metadata
 
@@ -100,5 +100,5 @@ Phases execute in numeric order: 1 → 2 → 3
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Media & Performance Optimization | 4/4 | Complete | 2026-07-22 |
-| 2. Project Content & Personality | 1/2 | In Progress|  |
+| 2. Project Content & Personality | 2/2 | In Progress|  |
 | 3. Visual Polish, Resume & Site Metadata | 0/TBD | Not started | - |
