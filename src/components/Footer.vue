@@ -50,6 +50,10 @@ export default Vue.extend({
   align-items: center;
 }
 
+.left a {
+  margin-right: 4px;
+}
+
 .footer-guy {
   width: 20px;
   height: 20px;
