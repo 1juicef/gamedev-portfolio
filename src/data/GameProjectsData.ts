@@ -82,7 +82,10 @@ export default [
         First solo project in Unreal Engine (5 weeks).<br/>
         Multi-state AI built with behaviour tree.<br/>
         Custom built Key/Lock and item system.<br/>
-        Will leave you sleep less for days.
+        Unsettling enough to keep you up at night.
+    </div>
+    <div class="paragraph center">
+        <a href="https://juice-f.itch.io/floorzero" target="_blank">Play on itch.io</a>
     </div>
     `, "#6C3BAA", false, false),
     new ProjectData("swing-space", "SwingSpace", "img/projects/swing-space/SwingSpaceGIF.gif", `
@@ -103,7 +106,7 @@ export default [
         <h3>About this game</h3>
         Built in Unity (5 weeks).<br/>
         My first solo project.<br/>
-        Firebase intergration for global highscore chart.<br/>
+        Firebase integration for global highscore chart.<br/>
         Ported for mobile.<br/>
         Awesome, but also extremely fun.
     </div>
