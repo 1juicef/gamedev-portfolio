@@ -76,7 +76,11 @@ Recent decisions affecting current work:
 
 ### Pending Todos
 
-None yet.
+4 pending (2026-07-22), deferred to a future phase after current redesign (Phases 1-3) completes:
+- Add two Game Jam games as a separate "Game Jams" section (single clickable screenshot per game, links to itch.io) — needs game titles/itch.io URLs/screenshots from Josef
+- Swap Dispater's timeline gif and project-page gif
+- Make timeline title click affordance more visible
+- Fix footer text spacing ("PortfolioByJuicef")
 
 ### Blockers/Concerns
 
