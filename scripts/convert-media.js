@@ -89,6 +89,7 @@ async function toWebp(inputPath, outputPath) {
 const videoAssets = [
     ["drag-rush", "DragRushGif"],
     ["dispater", "DispaterGif2"],
+    ["dispater", "DispaterGif"],
     ["floor-0", "Floor0gif1", { durationSeconds: 12.5 }],
     ["swing-space", "SwingSpaceGIF3"],
 ];
