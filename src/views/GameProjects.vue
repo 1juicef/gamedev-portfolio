@@ -8,7 +8,7 @@
         </div>
 
         <div class="intro">
-          My name is Josef and I am a Game Developer student residing in Gothenburg, Sweden. I have a background in fashion, retail and have previously ran a clothing brand for five years. I love Resident Evil, dogs and working out (almost equally).
+          My name is Josef and I am a Game Developer student residing in Gothenburg, Sweden. I have a background in fashion, retail and have previously run a clothing brand for five years. I love Resident Evil, dogs and working out (almost equally).
         </div>
 
         <div class="intro secondary">
