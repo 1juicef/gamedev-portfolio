@@ -67,15 +67,15 @@ export default [
         <a href="https://yrgo.itch.io/dispater" target="_blank">Play on itch.io</a>
     </div>
     `, "#6C3BAA", false, false),
-    new ProjectData("floor-0", "Floor 0", "img/projects/project-7-icon.png", `
+    new ProjectData("floor-0", "Floor Zero", "img/projects/project-7-icon.png", `
     <div class="paragraph">
-        <strong>Floor 0</strong> is an atmospheric exploration game set in a derelict underground facility. Navigate through abandoned corridors and discover the mysteries of what happened here.
+        <strong>Floor Zero</strong> is an atmospheric exploration game set in a derelict underground facility. Navigate through abandoned corridors and discover the mysteries of what happened here.
     </div>
     <div class="paragraph center">
-        <img class="pc-screenshot" loading="lazy" src="img/projects/floor-0/Floor0SC1.webp" alt="Floor 0 Screenshot" />
-        <img class="pc-screenshot" loading="lazy" src="img/projects/floor-0/Floor0SC2.webp" alt="Floor 0 Screenshot" />
-        <img class="pc-screenshot" loading="lazy" src="img/projects/floor-0/Floor0SC3.webp" alt="Floor 0 Screenshot" />
-        <img class="pc-screenshot" loading="lazy" src="img/projects/floor-0/Floor0SC4.webp" alt="Floor 0 Screenshot" />
+        <img class="pc-screenshot" loading="lazy" src="img/projects/floor-0/Floor0SC1.webp" alt="Floor Zero Screenshot" />
+        <img class="pc-screenshot" loading="lazy" src="img/projects/floor-0/Floor0SC2.webp" alt="Floor Zero Screenshot" />
+        <img class="pc-screenshot" loading="lazy" src="img/projects/floor-0/Floor0SC3.webp" alt="Floor Zero Screenshot" />
+        <img class="pc-screenshot" loading="lazy" src="img/projects/floor-0/Floor0SC4.webp" alt="Floor Zero Screenshot" />
     </div>
     <div class="paragraph center">
         <h3>About this game</h3>
