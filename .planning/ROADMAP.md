@@ -21,7 +21,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 
 ### Phase 1: Media & Performance Optimization
 
-**Goal**: The site loads fast and lean — video-converted thumbnails and compressed, lazy-loaded images replace today's multi-megabyte GIFs and PNGs.
+**Goal**: As a recruiter or technical lead browsing the portfolio, I want to see project media load fast and lean, so that multi-megabyte GIFs and PNGs no longer slow down my first impression.
 **Mode:** mvp
 **Depends on**: Nothing (first phase)
 **Requirements**: MEDIA-01, MEDIA-02, MEDIA-03
@@ -31,7 +31,7 @@ Decimal phases appear between their surrounding integers in numeric order.
   2. Project screenshots across all 4 projects (Drag Rush, Dispater, Floor 0, SwingSpace) load as compressed WebP images in the overlay
   3. Every project image — including images inside hand-authored description HTML and below-fold timeline thumbnails — loads lazily, keeping initial site weight low
 
-**Plans:** 2/3 plans executed
+**Plans:** 3/3 plans executed, 1 gap closure plan pending
 
 Plans:
 **Wave 1**
@@ -41,7 +41,11 @@ Plans:
 **Wave 2** *(blocked on Wave 1 completion)*
 
 - [x] 01-02-PLAN.md — Fast timeline: LazyVideoThumbnail.vue + rewire GameProjects.vue to viewport-gated video thumbnails for all 4 projects (Wave 2)
-- [ ] 01-03-PLAN.md — Fast overlays: lazy WebP screenshots, Floor 0 reference fix, Dispater trailer embed, App.vue preload cleanup (Wave 2)
+- [x] 01-03-PLAN.md — Fast overlays: lazy WebP screenshots, Floor 0 reference fix, Dispater trailer embed, App.vue preload cleanup (Wave 2)
+
+**Gap Closure** *(from 01-UAT.md G-01-5)*
+
+- [ ] 01-04-PLAN.md — Trim Floor 0 timeline video thumbnail to ~12.5s (gap closure, addresses G-01-5)
 
 ### Phase 2: Project Content & Personality
 
