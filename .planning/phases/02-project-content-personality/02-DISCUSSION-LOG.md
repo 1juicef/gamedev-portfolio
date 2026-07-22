@@ -31,7 +31,9 @@ Not a multiple-choice gray area — this was missing factual information only Jo
 
 **User's answer (verbatim):** "DragRush we were 6 and Dispater we were 7. On DragRush i touched a little bit of everything, but mainly programmed the animations trees for all vehicles. I also helped with the final version of the beat conductor. On dispater i made the Dialogue, task and interaction systems, as well the audio engineering."
 
-**Notes:** Captured as D-01/D-02 in CONTEXT.md. Attribution lines should read naturally inside each project's existing "About this game" block (D-03), matching the terse bullet style already established.
+**Follow-up (verbatim):** "Dragrush was 3 programmers and 3 artists and on Dispater we were 3 programmers and 4 artists"
+
+**Notes:** Captured as D-01/D-02 in CONTEXT.md, including the programmer/artist role split. Attribution lines should read naturally inside each project's existing "About this game" block (D-03), matching the terse bullet style already established.
 
 ---
 

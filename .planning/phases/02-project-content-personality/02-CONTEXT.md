@@ -14,8 +14,8 @@ Visitors get accurate, warm, technically substantive project information — tea
 ## Implementation Decisions
 
 ### Team attribution (CONT-02)
-- **D-01:** Drag Rush was built by a team of **6**. Josef touched a bit of everything, but mainly programmed the vehicle animation trees for all vehicles, and helped finalize the beat conductor.
-- **D-02:** Dispater was built by a team of **7**. Josef built the dialogue, task, and interaction systems, plus did the audio engineering.
+- **D-01:** Drag Rush was built by a team of **6** — 3 programmers, 3 artists. Josef touched a bit of everything, but mainly programmed the vehicle animation trees for all vehicles, and helped finalize the beat conductor.
+- **D-02:** Dispater was built by a team of **7** — 3 programmers, 4 artists. Josef built the dialogue, task, and interaction systems, plus did the audio engineering.
 - **D-03:** Attribution lines should read naturally inside each project's existing "About this game" block (`src/data/GameProjectsData.ts`) — matching the terse, punchy bullet style already used there (see `<code_context>`), not a separate formal credits section.
 
 ### Already satisfied — do not redo (traceability)
@@ -77,8 +77,8 @@ No other external specs/ADRs — requirements fully captured in decisions above.
 <specifics>
 ## Specific Ideas
 
-- Drag Rush attribution: team of 6, Josef mainly on vehicle animation trees + helped finalize the beat conductor, touched "a little bit of everything" otherwise.
-- Dispater attribution: team of 7, Josef built dialogue/task/interaction systems + audio engineering.
+- Drag Rush attribution: team of 6 (3 programmers, 3 artists), Josef mainly on vehicle animation trees + helped finalize the beat conductor, touched "a little bit of everything" otherwise.
+- Dispater attribution: team of 7 (3 programmers, 4 artists), Josef built dialogue/task/interaction systems + audio engineering.
 
 </specifics>
 
