@@ -1,5 +1,5 @@
 ---
-status: partial
+status: diagnosed
 phase: 03-visual-polish-resume-site-metadata
 source: [03-VERIFICATION.md]
 started: 2026-07-22T22:10:00.000Z
@@ -60,13 +60,23 @@ blocked: 1
   reason: "User reported: the resume png should move down a little bit — it's currently too far up on the page."
   severity: cosmetic
   test: 4
-  artifacts: []
-  missing: []
+  root_cause: "src/views/Resume.vue's .resume-page uses align-items: flex-start with no top margin/padding on .resume-page or .resume-image at any breakpoint; combined with .main's zero top padding on desktop (src/App.vue), the image renders flush against the header with no vertical breathing room."
+  artifacts:
+    - path: "src/views/Resume.vue"
+      issue: ".resume-page/.resume-image lack top spacing (align-items: flex-start, no margin-top/padding-top)"
+  missing:
+    - "Add top spacing scoped to the resume page only (e.g. margin-top on .resume-image, or padding-top/align-items: center on .resume-page) — do not touch global .main padding, which is shared by all routes"
+  debug_session: .planning/debug/g-03-4-resume-image-position.md
 - gap_id: G-03-5
   truth: "Page content reads with intentional, balanced horizontal margins — not excessive dead space on the left/right on any page."
   status: failed
   reason: "User reported: a bit too much dead space to the left and right of all pages."
   severity: cosmetic
   test: 5
-  artifacts: []
-  missing: []
+  root_cause: "src/App.vue's desktop media query (min-width: 620px) applies '.main, .header, .footer { max-width: 1280px; margin: 0 auto; }' — one global rule capping every route's content at a fixed 1280px centered column, leaving large symmetric empty space on wider desktop viewports (~320px/side at 1920px). No decision log entry indicates 1280px was a deliberate choice for this milestone — reads as an inherited template default."
+  artifacts:
+    - path: "src/App.vue"
+      issue: ".main, .header, .footer max-width: 1280px is too narrow for common desktop viewports, reads as excessive side margins"
+  missing:
+    - "Increase max-width (e.g. 1440-1600px range) and/or reconsider the fixed 48px side padding at the desktop breakpoint so the column reads balanced, not narrow-and-centered"
+  debug_session: .planning/debug/g-03-5-sitewide-horizontal-spacing.md
