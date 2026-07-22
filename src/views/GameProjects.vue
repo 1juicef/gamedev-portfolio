@@ -83,13 +83,13 @@ export default Vue.extend({
       },
       thumbVideos: {
         "drag-rush": "img/projects/drag-rush/DragRushGif.mp4",
-        dispater: "img/projects/dispater/DispaterGif2.mp4",
+        dispater: "img/projects/dispater/DispaterGif.mp4",
         "floor-0": "img/projects/floor-0/Floor0gif1.mp4",
         "swing-space": "img/projects/swing-space/SwingSpaceGIF3.mp4",
       },
       thumbPosters: {
         "drag-rush": "img/projects/drag-rush/DragRushGif-poster.webp",
-        dispater: "img/projects/dispater/DispaterGif2-poster.webp",
+        dispater: "img/projects/dispater/DispaterGif-poster.webp",
         "floor-0": "img/projects/floor-0/Floor0gif1-poster.webp",
         "swing-space": "img/projects/swing-space/SwingSpaceGIF3-poster.webp",
       },

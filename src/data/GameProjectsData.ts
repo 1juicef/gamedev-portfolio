@@ -54,6 +54,12 @@ export default [
         <img class="pc-screenshot" loading="lazy" src="img/projects/dispater/DispaterSC5.webp" alt="Dispater Screenshot" />
     </div>
     <div class="paragraph center">
+        <video class="pc-video" controls preload="metadata">
+            <source src="img/projects/dispater/DispaterGif2.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <div class="paragraph center">
         <h3>About this game</h3>
         Made in Unreal Engine (8 weeks).<br/>
         A team of 7 — 3 programmers, 4 artists.<br/>
