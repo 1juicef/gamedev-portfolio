@@ -99,6 +99,7 @@ Recent decisions affecting current work:
 | # | Description | Date | Commit | Directory |
 |---|-------------|------|--------|-----------|
 | 260722-ot7 | Floor Zero blurb swap, Footer.vue spacing rollback + mascot reposition, route-based mascot swap (Header/Footer) | 2026-07-22 | 8a53b4d | [260722-ot7-floor-zero-blurb-swap-footer-vue-spacing](./quick/260722-ot7-floor-zero-blurb-swap-footer-vue-spacing/) |
+| 260722-q9k | Rewrite Drag Rush/Dispater/Floor Zero intro hook+description text | 2026-07-22 | (pending) | [260722-q9k-rewrite-drag-rush-dispater-floor-zero-in](./quick/260722-q9k-rewrite-drag-rush-dispater-floor-zero-in/) |
 
 ## Deferred Items
 
