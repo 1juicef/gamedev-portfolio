@@ -2,9 +2,9 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-current_phase: 2
-current_phase_name: Project Content & Personality
-status: verifying
+current_phase: 3
+current_phase_name: Visual Polish, Resume & Site Metadata
+status: planning
 stopped_at: Phase 3 context gathered
 last_updated: "2026-07-22T17:57:24.777Z"
 last_activity: 2026-07-22
@@ -83,12 +83,11 @@ Recent decisions affecting current work:
 
 ### Pending Todos
 
-4 pending (2026-07-22), deferred to a future phase after current redesign (Phases 1-3) completes:
+1 pending (2026-07-22), deferred to a future phase (e.g. Phase 4) after current redesign completes:
 
 - Add two Game Jam games as a separate "Game Jams" section (single clickable screenshot per game, links to itch.io) — needs game titles/itch.io URLs/screenshots from Josef
-- Swap Dispater's timeline gif and project-page gif
-- Make timeline title click affordance more visible
-- Fix footer text spacing ("PortfolioByJuicef")
+
+(3 others resolved/folded: footer spacing — fixed via quick tasks; Dispater gif swap and timeline title affordance — folded into Phase 3, see 03-CONTEXT.md D-03/D-04)
 
 ### Blockers/Concerns
 
