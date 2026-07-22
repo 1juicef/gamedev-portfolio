@@ -61,6 +61,8 @@ The portfolio must read as aesthetically polished and professional within a 10-s
 | Keep code fully off the page; add a short tech blurb + optional link per project instead | Recruiters don't read code; technical reviewers want stack + challenge, not raw snippets | — Pending |
 | Resume page shows a single resume image rather than hand-coded HTML resume | Simpler, matches "short and to the point" | — Pending |
 | Running-character mascot (`Guy.gif` / `Guy2.gif`) in header/footer for personality | Adds personality while keeping the site otherwise clean and professional | — Pending |
+| Media pipeline (ffmpeg + sharp, `scripts/convert-media.js`) converts oversized GIF/PNG masters to muted MP4 thumbnails + WebP screenshots, never bundled into the browser build | Multi-MB GIFs/PNGs were the single biggest thing undermining a "loads fast and lean" first impression — fixing this first unblocks every later content/visual pass | ✓ Shipped — Phase 1 |
+| Floor 0's broken screenshot references and its timeline thumbnail length (UAT-flagged, trimmed to ~12.5s) fixed as part of Phase 1 rather than deferred to Phase 2's CONT-01 | Both were direct consequences of the media-conversion work already in flight; fixing them in the same pass avoided touching the same files twice | ✓ Shipped — Phase 1 (flag for Phase 2 REQUIREMENTS.md traceability: CONT-01 satisfied early) |
 
 ## Evolution
 
@@ -80,4 +82,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-07-21 after initialization*
+*Last updated: 2026-07-22 after Phase 1*
