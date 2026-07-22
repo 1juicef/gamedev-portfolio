@@ -1,94 +1,56 @@
 ---
 phase: 03-visual-polish-resume-site-metadata
-reviewed: 2026-07-22T19:49:33Z
-depth: standard
-files_reviewed: 5
+reviewed: 2026-07-22T00:00:00Z
+depth: quick
+files_reviewed: 2
 files_reviewed_list:
-  - public/index.html
-  - scripts/convert-media.js
-  - src/data/GameProjectsData.ts
-  - src/views/GameProjects.vue
+  - src/App.vue
   - src/views/Resume.vue
 findings:
   critical: 0
-  warning: 2
-  info: 3
-  total: 5
+  warning: 1
+  info: 1
+  total: 2
 status: issues_found
 ---
 
 # Phase 3: Code Review Report
 
-**Reviewed:** 2026-07-22T19:49:33Z
-**Depth:** standard
-**Files Reviewed:** 5
+**Reviewed:** 2026-07-22T00:00:00Z
+**Depth:** quick
+**Files Reviewed:** 2
 **Status:** issues_found
 
 ## Summary
 
-Reviewed the CSS/spacing + title-click affordance changes in `GameProjects.vue`, the video-conversion manifest/asset-map swap across `scripts/convert-media.js` and `GameProjectsData.ts`, the OG/meta tag replacement in `public/index.html`, and confirmed `Resume.vue` is unchanged and free of issues.
+This is a gap-closure pass consisting of exactly two CSS value edits: `src/views/Resume.vue` gained `padding-top: 48px` on `.resume-page` (unconditional, no media query), and `src/App.vue`'s shared `.main, .header, .footer { max-width: ... }` rule (inside the `min-width: 620px` breakpoint) changed from `1280px` to `1600px`.
 
-No critical/security-severity defects were found. `scripts/convert-media.js` correctly uses `execFile` with an argument array (not a shell string), so it isn't vulnerable to command injection even though it shells out to `ffmpeg`. The `v-html` usage in `ProjectDetailsOverlay.vue` (consumer of `GameProjectsData.ts` strings) only ever renders developer-authored, hardcoded HTML — there is no untrusted input flowing into it today, so it's not an active XSS vector; flagged as informational only in case that ever changes.
-
-I traced every asset path referenced from `GameProjectsData.ts` and `GameProjects.vue`'s `thumbVideos`/`thumbPosters` maps against the actual files on disk (including case) to check for the classic "webp reference vs. png-cased-differently 404 on a case-sensitive host" bug — all paths resolve correctly. I also checked the `og:image` value against the project's locked decision doc (`03-PATTERNS.md` D-09) rather than assuming it was a mistake — it is a deliberate, documented choice, not a bug.
-
-Two real gaps found: a generated poster asset that the pipeline builds but the data file never wires up (leaves the Dispater in-overlay video with no `poster`, so it can show a blank frame before playback), and a missing `try/finally` around temp-file cleanup in the conversion script's poster extraction path.
+Checked every consumer of `.main`'s width cascade (`GameProjects.vue`, `ProjectsList.vue`, `Header.vue`, `Footer.vue`, `ProjectDetailsOverlay.vue`) for hardcoded assumptions about the old 1280px ceiling. No other file in the codebase references the literal `1280` value, and the modal overlay (`ProjectDetailsOverlay.vue`) uses `position: fixed`, so it's unaffected by `.main`'s width entirely. `ProjectsList.vue`'s grid has its own internal `max-width: 900px` cap, and `Resume.vue`'s image has its own `max-width: 1200px` cap — both are independently bounded and unaffected by the container widening. The one area with real exposure is `GameProjects.vue`'s bespoke timeline layout, which has no internal max-width cap of its own and will scale directly with the new 1600px ceiling.
 
 ## Warnings
 
-### WR-01: Dispater overlay video is missing the `poster` attribute the pipeline already generates for it
+### WR-01: GameProjects timeline has no independent width cap, so it now scales ~27% wider on large viewports
 
-**File:** `src/data/GameProjectsData.ts:57-61`
-**Issue:** `scripts/convert-media.js`'s `videoAssets` manifest has an explicit `["dispater", "DispaterGif2"]` entry (`scripts/convert-media.js:92`) whose sole purpose is to produce `DispaterGif2.mp4` *and* `DispaterGif2-poster.webp` via `extractPoster`. The `.mp4` is used in the Dispater overlay's `<video>` tag, but the `<video>` element has no `poster` attribute, so `DispaterGif2-poster.webp` is generated on disk and never referenced anywhere in `src/`. With `preload="metadata"` and no `poster`, some browsers render a blank/black frame until the user presses play, instead of the intended optimized poster frame — the exact problem the pipeline was built to solve for the timeline thumbnails.
-**Fix:**
-```html
-<video class="pc-video" controls preload="metadata" poster="img/projects/dispater/DispaterGif2-poster.webp">
-    <source src="img/projects/dispater/DispaterGif2.mp4" type="video/mp4" />
-    Your browser does not support the video tag.
-</video>
-```
-
-### WR-02: Temp PNG leaks on failure in `extractPoster`
-
-**File:** `scripts/convert-media.js:56-68`
-**Issue:** `extractPoster` writes `tempPng`, then calls `await toWebp(tempPng, outputPosterWebp)`, and only calls `fs.unlinkSync(tempPng)` on the next line. If `toWebp` throws (e.g. `sharp` fails on a malformed frame, output path unwritable, disk full), the `.tmp.png` file is left behind permanently and the script exits via `main().catch()` without ever cleaning it up. Since this is a manifest loop over multiple assets, a partial failure mid-run litters `public/img/projects/**` with orphaned `*.tmp.png` files that could get accidentally committed.
-**Fix:**
-```javascript
-async function extractPoster(inputGif, outputPosterWebp) {
-    assertSourceExists(inputGif);
-    const tempPng = outputPosterWebp.replace(/\.webp$/, ".tmp.png");
-    await execFileAsync("ffmpeg", ["-y", "-i", inputGif, "-vframes", "1", tempPng]);
-    try {
-        await toWebp(tempPng, outputPosterWebp);
-    } finally {
-        fs.unlinkSync(tempPng);
-    }
-    console.log(`extractPoster: ${outputPosterWebp}`);
+**File:** `src/App.vue:135-138` (interacts with `src/views/GameProjects.vue:250-265`)
+**Issue:** `.project-image-wrap` / `.project-copy` in `GameProjects.vue` use `flex: 1 1 0` with `flex-basis: 58%` / `42%` and no `max-width` of their own — they simply fill whatever width `.main` gives them. Raising `.main`'s cap from 1280px to 1600px means on viewports ≥ ~1696px (1600px content + 96px horizontal padding), the project thumbnail column grows from ~687px (58% of the old 1184px effective content width) to ~872px (58% of 1504px) — a ~27% increase. The thumbnail sources are pre-rendered GIFs/MP4s at fixed resolution; displaying them ~27% larger than before risks visible upscale blur/pixelation on ultra-wide monitors that wasn't present at the old cap. `ProjectsList.vue` and `Resume.vue` are safe because they each have their own internal max-width, but the timeline row has none.
+**Fix:** Either confirm the source thumbnail assets are high enough resolution to look sharp at ~872px display width, or add an explicit cap to the timeline itself so it doesn't silently ride the shared container width all the way to 1600px, e.g.:
+```css
+/* src/views/GameProjects.vue */
+.project-timeline {
+  max-width: 1280px; /* keep timeline row width independent of the shared .main cap */
 }
 ```
 
 ## Info
 
-### IN-01: `iconUrl` values in `GameProjectsData.ts` are dead for this view
+### IN-01: New Resume padding-top stacks inconsistently with `.main`'s own padding across breakpoints
 
-**File:** `src/data/GameProjectsData.ts:4,39,76,97`
-**Issue:** `ProjectData.iconUrl` (3rd constructor arg) is only consumed by `ProjectsList.vue:10` (`:style="{ 'background-image': 'url(' + project.iconUrl + ')' }"`), which is used by `OtherProjects.vue`. `GameProjects.vue` renders its timeline thumbnails from the separate `thumbVideos`/`thumbPosters` maps and never reads `project.iconUrl`. This means the `iconUrl` values passed into every `GameProjectsData.ts` entry are unused dead data — most notably `swing-space`'s `iconUrl` still points at the raw, un-converted `img/projects/swing-space/SwingSpaceGIF.gif` (the exact kind of heavy asset the conversion pipeline exists to avoid shipping), which reads as a leftover from before the video-thumbnail pipeline existed. Pre-existing (not introduced by this phase's diff), but worth cleaning up since it's confusing to a future editor of this file.
-**Fix:** Either remove/no-op the unused `iconUrl` argument for game-project entries (e.g. point it at the poster webp for consistency) or add a code comment noting it's vestigial for this data file.
-
-### IN-02: `durationSeconds: 0` would silently be ignored
-
-**File:** `scripts/convert-media.js:37-39`
-**Issue:** `if (options.durationSeconds) { args.push("-t", String(options.durationSeconds)); }` treats `0` as falsy, so a manifest entry with `durationSeconds: 0` would silently skip trimming rather than trim to zero length. Not currently triggered (only `12.5` is used), but it's a latent footgun for the next person editing the manifest.
-**Fix:** `if (options.durationSeconds !== undefined) { ... }`
-
-### IN-03: `v-html` renders developer-authored content only — flag if that ever changes
-
-**File:** `src/data/GameProjectsData.ts` (rendered via `v-html` in `ProjectDetailsOverlay.vue:10`)
-**Issue:** All `htmlDescription` strings are hardcoded literals authored by the developer, so there's no live XSS vector today. Noting this so the assumption gets re-checked if project descriptions are ever sourced from a CMS, form, or other non-static input — at that point `v-html` on unsanitized input would become a real stored-XSS risk.
-**Fix:** No action needed now; revisit if `htmlDescription` ever stops being a compile-time constant.
+**File:** `src/views/Resume.vue:16-22` (interacts with `src/App.vue:114-133`)
+**Issue:** `.resume-page`'s new `padding-top: 48px` is unconditional (not inside a media query), while `.main`'s own top padding differs by breakpoint: `16px` below 620px, `0px` at/above 620px. That means the total top gap above the resume image is `64px` on mobile (`16 + 48`) but `48px` on desktop (`0 + 48`) — a real, possibly-unintended difference in visual spacing between the two breakpoints, even though the same `48px` value was added in both cases.
+**Fix:** If a consistent visual gap across breakpoints was the goal, scope the mobile value down (e.g. `padding-top: 32px` below 620px, `48px` at/above) to normalize the combined total; if the current asymmetry is intentional, no action needed — flagging for confirmation only.
 
 ---
 
-_Reviewed: 2026-07-22T19:49:33Z_
+_Reviewed: 2026-07-22T00:00:00Z_
 _Reviewer: Claude (gsd-code-reviewer)_
-_Depth: standard_
+_Depth: quick_
