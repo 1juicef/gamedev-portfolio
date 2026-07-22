@@ -61,11 +61,17 @@ Plans:
   4. Each of the 4 projects shows a finalized "About this game" blurb naming the engine, dev timeframe, and one technical challenge
   5. A full top-to-bottom read-through confirms personality (mascot, tone) stays within its intended boundary without tipping into a "quirky hobby project" impression
 
-**Plans**: TBD
+**Plans:** 2 plans
 
 Plans:
 
-- [ ] 02-01: TBD (defined during /gsd-plan-phase)
+**Wave 1**
+
+- [ ] 02-01-PLAN.md — Finalize project copy: Drag Rush/Dispater team attribution, all 4 "About this game" blurb typo/wording fixes, Floor 0 itch.io link, warm hero confirm (CONT-02/03/04/05)
+
+**Wave 2** *(blocked on Wave 1 completion)*
+
+- [ ] 02-02-PLAN.md — Personality boundary: full top-to-bottom read-through checkpoint with Josef (POLISH-02)
 
 ### Phase 3: Visual Polish, Resume & Site Metadata
 
@@ -94,5 +100,5 @@ Phases execute in numeric order: 1 → 2 → 3
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Media & Performance Optimization | 3/4 | In Progress|  |
-| 2. Project Content & Personality | 0/TBD | Not started | - |
+| 2. Project Content & Personality | 0/2 | Not started | - |
 | 3. Visual Polish, Resume & Site Metadata | 0/TBD | Not started | - |
