@@ -24,7 +24,7 @@ Requirements for this redesign pass. Each maps to roadmap phases.
 
 ### Visual Polish
 
-- [ ] **POLISH-01**: Timeline layout (spacing, title styling, image sizing) gets a polish pass favoring restraint over added decoration
+- [x] **POLISH-01**: Timeline layout (spacing, title styling, image sizing) gets a polish pass favoring restraint over added decoration
 - [x] **POLISH-02**: Personality stays within an explicit boundary: mascot confined to header/footer, hero copy warm but short — verified via a full-page read-through before shipping
 
 ### Resume
@@ -75,7 +75,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | CONT-04 | Phase 2 | Complete |
 | CONT-05 | Phase 2 | Complete |
 | CONT-07 | Phase 1 (early) | Complete |
-| POLISH-01 | Phase 3 | Pending |
+| POLISH-01 | Phase 3 | Complete |
 | POLISH-02 | Phase 2 | Complete |
 | RESUME-01 | Phase 3 | Pending |
 | META-01 | Phase 3 | Pending |

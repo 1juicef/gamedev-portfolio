@@ -2,18 +2,18 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-current_phase: 2
-current_phase_name: Visual Polish, Resume & Site Metadata
+current_phase: 03
+current_phase_name: visual-polish-resume-site-metadata
 status: executing
-stopped_at: Phase 3 UI-SPEC approved
-last_updated: "2026-07-22T19:14:25.298Z"
+stopped_at: Completed 03-01-PLAN.md
+last_updated: "2026-07-22T19:26:18.846Z"
 last_activity: 2026-07-22
-last_activity_desc: Completed quick task 260722-ot7 (Floor Zero blurb, footer spacing/mascot, route-aware mascots)
+last_activity_desc: Phase 03 execution started
 progress:
   total_phases: 3
   completed_phases: 2
-  total_plans: 6
-  completed_plans: 6
+  total_plans: 8
+  completed_plans: 7
 ---
 
 # Project State
@@ -23,16 +23,16 @@ progress:
 See: .planning/PROJECT.md (updated 2026-07-22)
 
 **Core value:** The portfolio must read as aesthetically polished and professional within a 10-second scan, while still carrying a distinct sense of personality — without ever needing to show a line of code to prove the work is real.
-**Current focus:** Phase 02 — project-content-personality
+**Current focus:** Phase 03 — visual-polish-resume-site-metadata
 
 ## Current Position
 
-Phase: 2 (Project Content & Personality) — EXECUTING
+Phase: 03 (visual-polish-resume-site-metadata) — EXECUTING
 Plan: 2 of 2
 Status: Ready to execute
-Last activity: 2026-07-22 — Completed quick task 260722-ot7 (Floor Zero blurb, footer spacing/mascot, route-aware mascots)
+Last activity: 2026-07-22 — Phase 03 execution started
 
-Progress: [████████░░] 83%
+Progress: [█████████░] 88%
 
 ## Performance Metrics
 
@@ -63,6 +63,7 @@ Progress: [████████░░] 83%
 | Phase 01 P04 | 12min | 2 tasks | 2 files |
 | Phase 02 P01 | 10min | 3 tasks | 2 files |
 | Phase 02 P02 | 5min | 1 tasks | 0 files |
+| Phase 03 P01 | 15min | 3 tasks | 5 files |
 
 ## Accumulated Context
 
@@ -80,6 +81,7 @@ Recent decisions affecting current work:
 - [Phase ?]: Regenerated Floor0gif1.mp4 via direct gifToMp4() call scoped to 12.5s trim, not full pipeline, closing UAT gap G-01-5
 - [Phase ?]: Attribution lines for Drag Rush/Dispater added as new bullet lines inside existing About block (no new heading/wrapper); Floor 0 closing line tightened to 'Unsettling enough to keep you up at night.'; hero copy kept structurally unchanged with one grammar fix
 - [Phase ?]: Josef gave provisional/conditional approval (phone-based, could not view localhost) for POLISH-02 personality boundary checkpoint; full visual read-through by Josef still pending and may surface follow-up issues
+- [Phase ?]: Ran gifToMp4/extractPoster directly on the new DispaterGif asset rather than the full convert-media.js pipeline, avoiding unnecessary re-conversion of the other 3 video assets and all screenshots (mirrors Phase 1 Floor0gif1 precedent)
 
 ### Pending Todos
 
@@ -110,6 +112,6 @@ Items acknowledged and carried forward from previous milestone close:
 
 ## Session Continuity
 
-Last session: 2026-07-22T18:22:46.544Z
-Stopped at: Phase 3 UI-SPEC approved
-Resume file: .planning/phases/03-visual-polish-resume-site-metadata/03-UI-SPEC.md
+Last session: 2026-07-22T19:26:18.835Z
+Stopped at: Completed 03-01-PLAN.md
+Resume file: None
