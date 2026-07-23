@@ -48,7 +48,8 @@ Full phase details archived in [milestones/v1.1-ROADMAP.md](./milestones/v1.1-RO
   3. Resume, Contact, and 404 pages remain legible and correctly laid out under the new theme
   4. Deep-linking directly to a route (e.g. loading `/game-projects` fresh) still resolves — router mode untouched — and a production build (`npm run build`) reflects the dark theme, i.e. the redesign is committed rather than a local-only working-tree change
 
-**Plans**: TBD
+**Plans**: 1 plan
+- [ ] 05-01-PLAN.md — Commit the dark-theme redesign as baseline: formalize palette as Less variables (D-02), fix overlay link color (D-01), verify production build
 **UI hint**: yes
 
 ### Phase 6: Technical Overview Fold-Out
