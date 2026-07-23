@@ -2,6 +2,7 @@
 created: 2026-07-22T09:01:07.468Z
 title: Add two Game Jam games to timeline
 area: content
+resolves_phase: 4
 files:
   - src/data/GameProjectsData.ts
   - src/views/GameProjects.vue
