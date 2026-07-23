@@ -61,7 +61,7 @@ Plans:
   4. Each of the 4 projects shows a finalized "About this game" blurb naming the engine, dev timeframe, and one technical challenge
   5. A full top-to-bottom read-through confirms personality (mascot, tone) stays within its intended boundary without tipping into a "quirky hobby project" impression
 
-**Plans:** 2/2 plans executed
+**Plans:** 3/3 plans executed
 
 Plans:
 
@@ -75,7 +75,7 @@ Plans:
 
 **Gap Closure** *(from 02-UAT.md G-02-1 through G-02-5)*
 
-- [ ] 02-03-PLAN.md — 3 copy one-liners (hero Arkham Horror swap, remove redundant Drag Rush Beat Conductor bullet, Floor 0 trailing period) + 2 scoped overlay-CSS fixes (center "About this game" h3, white Close link)
+- [x] 02-03-PLAN.md — 3 copy one-liners (hero Arkham Horror swap, remove redundant Drag Rush Beat Conductor bullet, Floor 0 trailing period) + 2 scoped overlay-CSS fixes (center "About this game" h3, white Close link)
 
 ### Phase 3: Visual Polish, Resume & Site Metadata
 
@@ -113,5 +113,5 @@ Phases execute in numeric order: 1 → 2 → 3
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Media & Performance Optimization | 4/4 | Complete | 2026-07-22 |
-| 2. Project Content & Personality | 2/2 | In Progress|  |
+| 2. Project Content & Personality | 3/3 | In Progress|  |
 | 3. Visual Polish, Resume & Site Metadata | 4/4 | Complete    | 2026-07-23 |
