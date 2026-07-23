@@ -56,14 +56,17 @@ async function gifToMp4(inputGif, outputMp4, options = {}) {
 async function extractPoster(inputGif, outputPosterWebp) {
     assertSourceExists(inputGif);
     const tempPng = outputPosterWebp.replace(/\.webp$/, ".tmp.png");
-    await execFileAsync("ffmpeg", [
-        "-y",
-        "-i", inputGif,
-        "-vframes", "1",
-        tempPng,
-    ]);
-    await toWebp(tempPng, outputPosterWebp);
-    fs.unlinkSync(tempPng);
+    try {
+        await execFileAsync("ffmpeg", [
+            "-y",
+            "-i", inputGif,
+            "-vframes", "1",
+            tempPng,
+        ]);
+        await toWebp(tempPng, outputPosterWebp);
+    } finally {
+        if (fs.existsSync(tempPng)) fs.unlinkSync(tempPng);
+    }
     console.log(`extractPoster: ${outputPosterWebp}`);
 }
 
