@@ -10,6 +10,8 @@ updated: 2026-07-23T10:20:00.000Z
 
 [testing complete]
 
+Quick task 260723-lho confirmed g-03-4/g-03-5/g-03-8 fixes present on disk (g-03-4/5 committed via 03-03; g-03-8 committed via 03-04's 4801288, independent of the uncommitted overlay redesign) and closed the three debug sessions.
+
 ## Tests
 
 ### 1. Timeline restraint + click-affordance read
