@@ -2,11 +2,11 @@
 gsd_state_version: 1.0
 milestone: v1.1
 milestone_name: Game Jams Section
-status: planning
+status: roadmap-complete
 last_updated: "2026-07-23T15:09:51.304Z"
 last_activity: 2026-07-23
 progress:
-  total_phases: 0
+  total_phases: 1
   completed_phases: 0
   total_plans: 0
   completed_plans: 0
@@ -20,14 +20,14 @@ progress:
 See: .planning/PROJECT.md (updated 2026-07-23)
 
 **Core value:** The portfolio must read as aesthetically polished and professional within a 10-second scan, while still carrying a distinct sense of personality — without ever needing to show a line of code to prove the work is real.
-**Current focus:** Planning next milestone (v1.1) — see PROJECT.md Active requirements
+**Current focus:** v1.1 Game Jams Section — roadmap created (1 phase, Phase 4), ready to plan
 
 ## Current Position
 
-Phase: Not started (defining requirements)
+Phase: Phase 4 — Game Jams Section (not started)
 Plan: —
-Status: Defining requirements
-Last activity: 2026-07-23 — Milestone v1.1 started
+Status: Roadmap created, ready to plan Phase 4
+Last activity: 2026-07-23 — v1.1 roadmap created, GAMEJAMS-01/02/03 mapped to Phase 4
 
 ## Performance Metrics
 
@@ -72,6 +72,8 @@ Last activity: 2026-07-23 — Milestone v1.1 started
 
 v1.0 is shipped — the full decision log now lives in PROJECT.md's Key Decisions table (with outcomes). Cleared here per milestone-close convention.
 
+v1.1 roadmap decision: the Game Jams addition is a single phase (Phase 4). It is a plain-text subheading + two itch.io hyperlinks with no screenshots/overlay — too small to split, so it is not given the full ProjectData/overlay treatment.
+
 ### Pending Todos
 
 1 pending, deferred again (see PROJECT.md Active requirements):
@@ -100,15 +102,15 @@ Items acknowledged and deferred at milestone close on 2026-07-23:
 
 | Category | Item | Status | Deferred At |
 |----------|------|--------|-------------|
-| todo | add-two-game-jam-games-to-timeline | unblocked — now in scope for v1.1 (see Current Milestone in PROJECT.md) | 2026-07-23 |
+| todo | add-two-game-jam-games-to-timeline | in scope for v1.1 — Phase 4 (GAMEJAMS-01/02/03) | 2026-07-23 |
 | todo | deploy-portfolio-to-custom-domain-www-josefubaka-com | blocked — needs domain live before og:url/og:image update and Phase 3 UAT Test 3 re-verification | 2026-07-23 |
 
 ## Session Continuity
 
 Last session: 2026-07-23T12:41:14.612Z
-Stopped at: Completed 02-03-PLAN.md
+Stopped at: v1.1 roadmap created (Phase 4)
 Resume file: None
 
 ## Operator Next Steps
 
-- Start the next milestone with /gsd-new-milestone
+- Plan the phase with /gsd-plan-phase 4

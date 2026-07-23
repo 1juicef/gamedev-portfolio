@@ -35,16 +35,16 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| GAMEJAMS-01 | TBD | Not started |
-| GAMEJAMS-02 | TBD | Not started |
-| GAMEJAMS-03 | TBD | Not started |
+| GAMEJAMS-01 | Phase 4 | Pending |
+| GAMEJAMS-02 | Phase 4 | Pending |
+| GAMEJAMS-03 | Phase 4 | Pending |
 
 **Coverage:**
 
 - v1.1 requirements: 3 total
-- Mapped to phases: 0 (roadmap not yet created)
-- Unmapped: 3
+- Mapped to phases: 3 (all → Phase 4)
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-07-23*
-*Last updated: 2026-07-23*
+*Last updated: 2026-07-23 — roadmap created, all requirements mapped to Phase 4*
