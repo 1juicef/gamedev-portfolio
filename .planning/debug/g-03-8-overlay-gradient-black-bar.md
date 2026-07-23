@@ -1,5 +1,5 @@
 ---
-status: diagnosed
+status: resolved
 trigger: "Investigate issue: G-03-8-overlay-gradient-black-bar — The project details overlay's background gradient (black to purple) has a tiny black bar at the bottom instead of running smoothly through to purple."
 created: 2026-07-22T23:40:00.000Z
 updated: 2026-07-22T23:55:00.000Z
@@ -61,6 +61,6 @@ started: Discovered during Phase 3 UAT round 2 (2026-07-22)
 
 root_cause: |
   In src/components/ProjectDetailsOverlay.vue's `<style scoped>` block, the black-to-purple gradient is applied only to `.dialog-content` (`background: linear-gradient(180deg, #000000 0%, #120818 45%, #2b123f 100%)`), which is a child of `.dialog`. `.dialog` itself has its own solid `background-color: #000000` AND `padding-bottom: 10px` (line 45-55). Because `.dialog-content` is a normal-flow child, its box ends at its own bottom border — it does not extend into `.dialog`'s trailing 10px of padding. That leftover 10px strip of `.dialog` is painted with `.dialog`'s solid black background-color, appearing as a thin black bar below the gradient's purple (`#2b123f`) endpoint at the very bottom of the overlay.
-fix: (not applied — goal: find_root_cause_only)
-verification: (not applicable — diagnosis only)
-files_changed: []
+fix: "Resolved via commit 4801288 fix(03-04): remove overlay bottom padding causing black bar — already committed in HEAD, no redesign dependency. That commit removed .dialog's padding-bottom: 10px directly from committed HEAD (git show HEAD:src/components/ProjectDetailsOverlay.vue confirms no padding-bottom remains on .dialog), so .dialog-content's gradient (…#2b123f 100%) now reaches .dialog's bottom edge with no trailing black strip. Josef's separate uncommitted redesign only layers a background-color: #000000 addition on top of this already-fixed committed base — it did not perform the fix itself. .dialog's background-color is now fully covered by its children (harmless) and left as-is (redesign-owned, not touched by this task)."
+verification: "grep -c 'padding-bottom' src/components/ProjectDetailsOverlay.vue == 0; grep -c '#2b123f 100%' src/components/ProjectDetailsOverlay.vue == 1; Phase 03 UAT Test 10 (gradient re-check) = pass"
+files_changed: [src/components/ProjectDetailsOverlay.vue (fix committed via 4801288, prior to this task)]
