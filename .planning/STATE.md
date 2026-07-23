@@ -114,6 +114,7 @@ Recent decisions affecting current work:
 
 | # | Description | Date | Commit | Directory |
 |---|-------------|------|--------|-----------|
+| 260723-lho | Reconcile g-03-4/g-03-5/g-03-8 diagnosed debug sessions to resolved (fixes already committed on disk, zero source edits) | 2026-07-23 | 73a8a40 | [260723-lho-fix-diagnosed-root-causes-for-debug-sess](./quick/260723-lho-fix-diagnosed-root-causes-for-debug-sess/) |
 | 260723-glj | Replace itch.io text links with clickable itch.io badge image (Drag Rush, Dispater, Floor Zero; SwingSpace untouched) | 2026-07-23 | 23bbd16 | [260723-glj-replace-the-itch-io-badge-image-with-a-s](./quick/260723-glj-replace-the-itch-io-badge-image-with-a-s/) |
 | 260722-ot7 | Floor Zero blurb swap, Footer.vue spacing rollback + mascot reposition, route-based mascot swap (Header/Footer) | 2026-07-22 | 8a53b4d | [260722-ot7-floor-zero-blurb-swap-footer-vue-spacing](./quick/260722-ot7-floor-zero-blurb-swap-footer-vue-spacing/) |
 | 260722-q9k | Rewrite Drag Rush/Dispater/Floor Zero intro hook+description text | 2026-07-22 | 992bb6e | [260722-q9k-rewrite-drag-rush-dispater-floor-zero-in](./quick/260722-q9k-rewrite-drag-rush-dispater-floor-zero-in/) |
