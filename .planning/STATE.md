@@ -114,6 +114,7 @@ Recent decisions affecting current work:
 
 | # | Description | Date | Commit | Directory |
 |---|-------------|------|--------|-----------|
+| 260723-mis | Regenerate SwingSpace video/poster/screenshots from new sources, fix missing Phase-1 .pc-video/.swing-space-* CSS, add compressed Floor Zero gameplay video above screenshots | 2026-07-23 | 92ca428 | [260723-mis-regenerate-swingspace-media-from-new-sou](./quick/260723-mis-regenerate-swingspace-media-from-new-sou/) |
 | 260723-lho | Reconcile g-03-4/g-03-5/g-03-8 diagnosed debug sessions to resolved (fixes already committed on disk, zero source edits) | 2026-07-23 | 73a8a40 | [260723-lho-fix-diagnosed-root-causes-for-debug-sess](./quick/260723-lho-fix-diagnosed-root-causes-for-debug-sess/) |
 | 260723-glj | Replace itch.io text links with clickable itch.io badge image (Drag Rush, Dispater, Floor Zero; SwingSpace untouched) | 2026-07-23 | 23bbd16 | [260723-glj-replace-the-itch-io-badge-image-with-a-s](./quick/260723-glj-replace-the-itch-io-badge-image-with-a-s/) |
 | 260722-ot7 | Floor Zero blurb swap, Footer.vue spacing rollback + mascot reposition, route-based mascot swap (Header/Footer) | 2026-07-22 | 8a53b4d | [260722-ot7-floor-zero-blurb-swap-footer-vue-spacing](./quick/260722-ot7-floor-zero-blurb-swap-footer-vue-spacing/) |
@@ -121,11 +122,12 @@ Recent decisions affecting current work:
 
 ## Deferred Items
 
-Items acknowledged and carried forward from previous milestone close:
+Items acknowledged and deferred at milestone close on 2026-07-23:
 
 | Category | Item | Status | Deferred At |
 |----------|------|--------|-------------|
-| *(none)* | | | |
+| todo | add-two-game-jam-games-to-timeline | blocked — needs game titles/itch.io URLs/screenshots from Josef | 2026-07-23 |
+| todo | deploy-portfolio-to-custom-domain-www-josefubaka-com | blocked — needs domain live before og:url/og:image update and Phase 3 UAT Test 3 re-verification | 2026-07-23 |
 
 ## Session Continuity
 
