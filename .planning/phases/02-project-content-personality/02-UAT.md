@@ -1,5 +1,5 @@
 ---
-status: complete
+status: diagnosed
 phase: 02-project-content-personality
 source: [02-01-SUMMARY.md, 02-02-SUMMARY.md]
 started: 2026-07-23T11:35:00.000Z
