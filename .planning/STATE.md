@@ -108,12 +108,12 @@ None open. (The Phase 2 personality-boundary read-through concern is resolved �
 
 ## Deferred Items
 
-Items acknowledged and deferred at milestone close on 2026-07-23:
+Items acknowledged and deferred at v1.1 milestone close on 2026-07-23:
 
 | Category | Item | Status | Deferred At |
 |----------|------|--------|-------------|
-| todo | add-two-game-jam-games-to-timeline | in scope for v1.1 — Phase 4 (GAMEJAMS-01/02/03) | 2026-07-23 |
-| todo | deploy-portfolio-to-custom-domain-www-josefubaka-com | blocked — needs domain live before og:url/og:image update and Phase 3 UAT Test 3 re-verification | 2026-07-23 |
+| todo | add-two-game-jam-games-to-timeline | ✓ resolved — Phase 4 (GAMEJAMS-01/02/03), moved to todos/completed | 2026-07-23 |
+| todo | deploy-portfolio-to-custom-domain-www-josefubaka-com | still blocked — needs domain live before og:url/og:image update and Phase 3 UAT Test 3 re-verification; carried forward past v1.1 close | 2026-07-23 |
 
 ## Session Continuity
 
