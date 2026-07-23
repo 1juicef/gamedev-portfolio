@@ -1,118 +1,156 @@
 # Stack Research
 
-**Domain:** Game-dev job-search portfolio — static Vue 2 site, supporting technical additions only (no re-platform)
-**Researched:** 2026-07-21
-**Confidence:** MEDIUM (web-search-derived, cross-checked against this repo's actual files/asset sizes where possible; no HIGH-confidence curated-doc source was available for these niche/ecosystem questions)
+**Domain:** Static Vue 2 portfolio — custom-domain GitHub Pages deploy + in-page code/screenshot snippets
+**Researched:** 2026-07-23
+**Confidence:** HIGH
 
-## Scope note
-
-The stack is fixed: **Vue 2.6 (Options API) + vue-router 3 + TypeScript + Less + vue-cli-service 4 (webpack 4)**. This document does not propose changing any of that. It only recommends lightweight additions/techniques layered on top, evaluated against what actually already exists in this repo (checked directly: `public/img/projects/`, `helpers.ts`, `public/index.html`).
-
-**Grounding fact that shapes every recommendation below:** the actual media files in this repo are large — `SwingSpaceGIF.gif` is 18.1MB, `SwingSpaceGIF3.gif` (the one the active requirements say to wire in next) is 17.5MB, and each project screenshot PNG is 0.7–2.2MB uncompressed. This is the single biggest performance risk on the site today, and it drives the top two recommendations below.
+> Supersedes the stack research section of this file from the 2026-07-21 pass (v1.0/v1.1 scope: GIF conversion, resume PDF, contact form, analytics). Those topics are out of scope for this milestone (v1.2) and already resolved/shipped; this file is scoped only to the two new v1.2 stack questions: (a) custom-domain GitHub Pages deploy, (b) code/Blueprint snippets in a new "Technical Overview" overlay section.
 
 ## Recommended Stack
 
-### Core Technologies (unchanged — for reference only)
+### Core Technologies
 
 | Technology | Version | Purpose | Why Recommended |
 |------------|---------|---------|-----------------|
-| Vue | 2.6.11 | UI framework | Fixed by project constraint — not re-evaluated |
-| vue-router | 3.4.3 | Routing | Fixed by project constraint — not re-evaluated |
-| vue-cli-service | 4.5.x (webpack 4) | Build | Fixed by project constraint — not re-evaluated |
+| `gh-pages` (npm) | 6.3.0 | Pushes `dist/` to a `gh-pages` branch on demand | One dependency, one `npm run deploy` script, zero YAML. For a personal portfolio that changes rarely, an on-demand push beats standing up a CI pipeline for something that will run a handful of times a year. |
+| Native `<details>`/`<summary>` (HTML5) | n/a (browser built-in) | Collapsible "Technical Overview" section | Already accessible (keyboard + screen reader), needs zero JS and zero new dependency. It's literally what a "click a heading, content folds out" spec describes — no reason to write a custom toggle component for this. |
+| Plain `<pre><code>` + Less rules in `projects.less` | n/a | Rendering 2-3 code/blueprint snippets per project | Fits the existing `v-html` raw-HTML-string pattern exactly (same pattern already used for `.pc-video`, `.itch-badge`, etc.). No JS execution needed at all — it's just marked-up text. |
 
-### Supporting Techniques/Libraries (the actual recommendations)
+### Supporting Libraries
 
-| Addition | Version/Approach | Purpose | When to Use |
-|----------|---------|---------|-------------|
-| GIF → MP4/WebM conversion | ffmpeg (one-time, offline; no npm dep) | Cut `SwingSpaceGIF*.gif` and any future gif-based screenshots from 17–18MB to realistically 0.5–1.5MB | Any looping gameplay-preview clip currently stored as `.gif`. This is the single highest-leverage change available — confirmed 80–96% size reduction converting GIF→MP4/WebM for equivalent looping content (web.dev/Lighthouse guidance). Replace `<img src="....gif">` with `<video autoplay loop muted playsinline><source src="x.webm" type="video/webm"><source src="x.mp4" type="video/mp4"></video>`. `SwingSpaceVid.mp4`/`SwingSpaceVid2.mp4` already exist in the repo at ~3.5–4.1MB each, proving this conversion path is already partially done for this project — just needs the same treatment applied to the GIF-only assets and wired into the data layer instead of raw `.gif` references. |
-| Native `loading="lazy"` on `<img>` | Browser built-in, zero dependency | Defer offscreen screenshot loading in `GameProjects.vue` timeline and `ProjectDetailsOverlay.vue` | Default choice for this project's scale (4 project cards, ~20 screenshots total). No IntersectionObserver polyfill needed for target audience (recruiters/devs on modern browsers) |
-| Manual pre-compression of PNG screenshots | Squoosh.app or TinyPNG (no npm dep, done once per asset before commit) | Bring 0.7–2.2MB PNGs down to typically 150–400KB (WebP or optimized PNG) without visible quality loss | Every screenshot added to `public/img/projects/`. Matches the existing project workflow where "assets are already produced by the user" (per CLAUDE.md) — a build-time webpack image plugin would be solving a problem this project doesn't have (few, hand-placed images, not a CMS pipeline) |
-| Downloadable text-based PDF resume alongside `actualResume.png` | No dependency — just add a static `.pdf` file + a `<a download>` link | The in-page resume-as-image (already an Active requirement) is good for fast visual scanning, but image-only resumes are **not ATS-parseable** and give technical/recruiter reviewers no copyable text | Ship both: `actualResume.png` for in-page display (matches the "short and to the point" design decision already made) + a plain-text-layer PDF export of the same resume for the download/print action, so anyone who forwards it into an ATS or copy-pastes contact info isn't blocked |
-| Per-view `document.title` set in `mounted()` | Zero dependency | Give each of the 5 routes (`/resume`, `/game-projects`, `/other-projects`, `/contact`, `/404`) a distinct browser tab title instead of the single hardcoded `<title>Portfolio</title>` in `public/index.html` | Cheap SEO/UX win; do NOT add `vue-meta` for this (see below) |
-| Fix placeholder OG tags in `public/index.html` | Zero dependency, manual edit | `og:url` is currently `https://mywebsite.com` and `og:image` points to a non-existent `avatar-og.png` — this means any link shared to a recruiter (Slack, email, LinkedIn) currently renders a broken/wrong social preview | Update to the real deployed domain + a real preview image before the site is shared externally. This is a correctness fix, not a new tool |
-| Web3Forms (or Formspree) for the Contact page form | Free tier, `<form>` + `fetch()` POST, no backend | Turns the static Contact page's form into a working mailer without spinning up any server | Only if `Contact.vue` doesn't already have a working form backend — verify current implementation before adding. Web3Forms' free tier (250 submissions/mo) comfortably covers a personal portfolio's volume |
-| Plausible or GoatCounter (optional) | Single `<script>` tag in `public/index.html` | Lightweight (1–3.5KB), cookieless traffic counting to see if recruiters are actually visiting/how they found the site | Optional — only add if the user wants visit data; not required for the core "look good to a recruiter" goal. Skip Google Analytics (45KB+ script, cookie-banner obligations, overkill for a 5-page personal site) |
-| Cloudflare Pages for hosting (if not already decided) | Free tier | Unlimited bandwidth on free tier vs Netlify/Vercel's 100GB/month cap — relevant specifically because this site's media (gifs/mp4/screenshots) is heavy | Only relevant if hosting is still undecided; if the site is already deployed somewhere working, this is not worth a migration for a portfolio's traffic level |
-| itch.io iframe embed / YouTube iframe embed | Plain `<iframe>` inside `htmlDescription` strings | Let a project's overlay show a playable itch.io build or a YouTube trailer instead of only static screenshots/gifs | Optional differentiator, not required. Works today with zero new dependency since `ProjectDetailsOverlay.vue` already renders `htmlDescription` via `v-html` — an `<iframe>` string just needs its target class styled in `projects.less` if custom-sized |
+None required for either feature. See "What NOT to Use" below — this is the point where the ladder says stop.
+
+### Development Tools
+
+| Tool | Purpose | Notes |
+|------|---------|-------|
+| GitHub Pages (Settings → Pages) | Hosting config | Source: "Deploy from a branch", branch `gh-pages`, folder `/ (root)`. Enter the custom domain in the "Custom domain" field once DNS is live, then enable "Enforce HTTPS" after the padlock/DNS check goes green (can take up to ~24h for cert issuance). |
+| `public/CNAME` (plain text file, no extension) | Tells GitHub Pages which custom domain to serve | Content is exactly `www.josefubaka.com` (one line, no protocol, no trailing slash). Vue CLI copies everything in `public/` verbatim to the root of `dist/` on every build — so committing this file once means every future `gh-pages -d dist` deploy carries it automatically. **Do not** rely on typing the domain into the Settings UI alone: that writes the CNAME straight onto the `gh-pages` branch, and the next `gh-pages -d dist` push (which replaces the whole branch content) will silently wipe it if it isn't also in `public/`. |
 
 ## Installation
 
-No new npm dependencies are required for the core recommendations (GIF→video conversion, image pre-compression, native lazy-loading, manual OG/meta fixes, PDF resume) — they are either build-free static-asset changes or already-available browser features.
-
 ```bash
-# Only if adding a contact form and it isn't already wired:
-# (no install needed — Web3Forms/Formspree work via a plain <form action="https://api.web3forms.com/submit" method="POST">)
+# Core
+npm install -D gh-pages
 
-# Only if adding analytics:
-# (no install needed — single <script> tag from Plausible/GoatCounter dashboard)
+# No other packages needed for either (a) or (b) — see "What NOT to Use"
 ```
 
-If a build-time image pipeline is ever wanted later (not recommended now):
-```bash
-npm install -D image-minimizer-webpack-plugin
+Add to `package.json` scripts:
+```json
+"deploy": "npm run build && gh-pages -d dist"
 ```
+
+## Integration Details
+
+### (a) GitHub Pages custom domain deploy
+
+**Why no `vue.config.js` change is needed:** the site currently has no `vue.config.js`, so `publicPath` defaults to `/`. That default is correct for a custom domain — GitHub Pages serves a custom-domained project page as if it were at the domain root, not under `/gamedev-portfolio/`. (If the custom domain is ever dropped and the site reverts to the un-domained `1juicef.github.io/gamedev-portfolio/` URL, `publicPath: '/gamedev-portfolio/'` would be needed — but don't add that now, it's the wrong setting for this milestone.)
+
+**Steps:**
+1. `public/CNAME` → single line `www.josefubaka.com`, commit it.
+2. `npm install -D gh-pages`, add the `deploy` script above.
+3. Namecheap → domain → Advanced DNS → add a **CNAME Record**: Host `www`, Value `1juicef.github.io.` (trailing dot as Namecheap expects), TTL Automatic. Leave existing records (MX, etc.) untouched — this only adds/edits the `www` host entry.
+   - Apex (`josefubaka.com` without `www`) is out of scope for this milestone since the target is specifically `www.josefubaka.com`, but if apex should also resolve later, add four **A Records** on `@` pointing to GitHub's Pages IPs: `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`, plus a Namecheap **URL Redirect Record** forwarding apex → `www`.
+4. `npm run deploy` once to create/populate the `gh-pages` branch.
+5. GitHub repo → Settings → Pages: confirm Source is `gh-pages` branch, `/ (root)`; enter `www.josefubaka.com` in "Custom domain" and Save (this validates DNS and, once propagated, unlocks "Enforce HTTPS").
+6. Update `og:url` / `og:image` in `public/index.html` (currently hardcoded to `https://1juicef.github.io/gamedev-portfolio/...`) to the new domain, and re-check the social preview card — PROJECT.md explicitly calls this out as closing a long-deferred Phase 3 UAT gap.
+
+**GitHub Actions — deliberately not recommended for this milestone.** `actions/upload-pages-artifact` + `actions/deploy-pages` would auto-deploy on every push to `main`, but that solves a problem this project doesn't have (infrequent manual updates, no existing CI in the repo today). Revisit only if updates become frequent enough that "forgetting to run `npm run deploy`" becomes an actual recurring problem.
+
+### (b) Technical Overview: code/Blueprint snippets in the overlay
+
+**Markup pattern** (goes straight into a project's `htmlDescription` string in `GameProjectsData.ts`, same file/pattern every other overlay section already uses):
+
+```html
+<details class="tech-overview">
+  <summary>Technical Overview</summary>
+  <p class="paragraph">One or two sentences of rationale...</p>
+  <pre class="code-snippet"><code>private void OnCollisionEnter(Collision col) {
+    if (col.gameObject.CompareTag("Hazard"))
+        TriggerRespawn();
+}</code></pre>
+  <img class="blueprint-shot" src="/img/projects/drag-rush/blueprint-1.png" alt="Blueprint graph for respawn logic" />
+</details>
+```
+
+Add matching rules to `src/css/projects.less` (globally loaded, unscoped — same reason the other project-content classes live there and not in `ProjectDetailsOverlay.vue`'s `<style scoped>`):
+
+```less
+.tech-overview {
+    margin: 20px 0;
+
+    summary {
+        cursor: pointer;
+        font-weight: bold;
+    }
+}
+
+.code-snippet {
+    background: #1a0e22;
+    border: 1px solid #4a2a5c;
+    border-radius: 4px;
+    padding: 12px;
+    overflow-x: auto;
+    font-family: monospace;
+    font-size: 0.85em;
+    white-space: pre;
+}
+
+.blueprint-shot {
+    width: 100%;
+    max-width: 500px;
+}
+```
+
+**HTML-escaping the C# snippets is the one real gotcha.** Because these are raw HTML strings, any `<`, `>`, or `&` in the actual C# source (generics, comparisons, `&&`) must be written as `&lt;`, `&gt;`, `&amp;` in the TypeScript string literal, or the browser will try to parse them as tags. With only ~2-3 snippets × 2 Unity/C# projects (Drag Rush, SwingSpace — Floor Zero and Dispater are Blueprint screenshots, no text to escape), hand-escaping when pasting each snippet in is the lazy-correct move — don't add an HTML-escaping library for this. If it gets tedious, a 3-line helper in `helpers.ts` (`Helpers.escapeHtml(str)` using `.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')`) covers it without a dependency.
 
 ## Alternatives Considered
 
 | Recommended | Alternative | When to Use Alternative |
 |-------------|-------------|--------------------------|
-| ffmpeg manual GIF→MP4/WebM conversion | `vue-lazyload` / `v-lazy-image` npm packages for video | These solve *lazy-loading* delivery, not *file-size*. The 17-18MB GIF problem is a compression problem, not a loading-order problem — converting format matters far more than adding a lazy-load library here |
-| Native `loading="lazy"` | `v-lazy-image` (npm, 2.1.1) or `vue-lazyload` (npm, 3.0.0) | Use a library only if fine-grained control is needed (fade-in transitions, placeholder blur-up) — for this project's small, fixed set of images, the added dependency isn't justified |
-| Manual pre-compression (Squoosh/TinyPNG) | `image-minimizer-webpack-plugin` in the webpack build | Use the build-time plugin only if the project moves to a CMS-driven or frequently-changing asset pipeline where manual compression before each commit becomes a burden |
-| Per-view `document.title` in `mounted()` | `vue-meta` (npm, 2.4.0) | `vue-meta` was the Vue 2 standard, but has had no stable release in ~4 years and never shipped Vue 3 support — not worth the dependency for a 5-route site whose OG tags don't vary by route anyway |
-| Web3Forms | Formspree | Formspree if a polished dashboard, team accounts, or Slack/Sheets integrations are wanted — Formspree's free tier is smaller and paid tiers start ~$10/mo, more than this project needs |
-| Cloudflare Pages | Netlify / Vercel | Netlify or Vercel if the project ever needs serverless functions, preview-deploy-per-PR workflows, or a team is collaborating — both are fine for this project's actual traffic, and either is a lateral move if hosting is already working today |
+| `gh-pages` npm package (manual `npm run deploy`) | GitHub Actions (`actions/configure-pages` + `actions/deploy-pages`) | If deploys become frequent/automatic-on-merge is actually wanted, or multiple contributors need deploys without local build access. |
+| Native `<details>`/`<summary>` | Vue-driven toggle (`v-if`/`v-show` + click handler in a component) | Only if the fold-out needs to be driven by more complex state than "open/closed" (e.g. syncing scroll position, analytics on open) — not the case here. |
+| Plain `<pre><code>` + Less | Prism.js (core ~2KB gzip + 1 language grammar + 1 theme, loaded via CDN `<script>`, call `Prism.highlightAll()` after the overlay mounts) | If syntax coloring (keywords/strings in different colors) is specifically wanted and a bit more visual complexity per snippet is acceptable. Reasonable and still lightweight — but adds a script tag, a `nextTick()`/`updated()` re-highlight call after `v-html` renders, and one more thing that can silently stop working. Given this is ~6-8 short static Unity/C# snippets that never change, monospace + background/border reads clean without it. |
+| Plain `<pre><code>` + Less | `highlight.js` | Same tradeoff as Prism, heavier default bundle (auto-detects language, pulls in more of its language grammar set unless manually trimmed) — no reason to reach for this over Prism if syntax coloring is wanted, and no reason to want either given the low snippet count here. |
 
 ## What NOT to Use
 
 | Avoid | Why | Use Instead |
-|-------|-----|-------------|
-| Shipping resume as image-only (no PDF) | Image-only resumes cannot be parsed by ATS software and can't be copy-pasted by a recruiter — actively harmful for the job-search goal this site exists for | Keep `actualResume.png` for in-page display, add a real text-layer PDF as the downloadable artifact |
-| `vue-meta` | Unmaintained relative to current needs (no stable release in years, no Vue 3 path), adds a dependency to solve a problem 5 static routes don't really have | Set `document.title` per view manually; keep OG tags static in `index.html` |
-| `image-minimizer-webpack-plugin` / any imagemin webpack plugin right now | Solves a "many images changing often" problem this project doesn't have (per CLAUDE.md, assets are hand-produced and placed once); adds webpack build complexity and build-time cost for no real benefit at this asset count | Pre-compress the handful of screenshots manually with Squoosh/TinyPNG before committing |
-| Google Analytics / GA4 | ~45KB+ script payload, requires a cookie-consent banner under GDPR, wildly overkill telemetry for a personal 5-page site | Plausible or GoatCounter if visit data is wanted at all, otherwise skip analytics entirely |
-| Leaving `SwingSpaceGIF*.gif` as raw animated GIFs in production | Confirmed 17–18MB file sizes in this repo today — this alone can dominate the page's total load weight and directly hurts the "10-second scan" success metric from PROJECT.md | Convert to muted/looping MP4+WebM `<video>`, following the pattern already used for `SwingSpaceVid.mp4` |
-| Leaving OG tags as `mywebsite.com` placeholders | Any link shared to a recruiter today produces a broken/generic social preview card | Update `og:url` and `og:image` in `public/index.html` to the real domain and a real preview image before sharing the link externally |
+|-------|-----|--------------|
+| Full syntax-highlighter bundle (Prism/highlight.js) for ~2-3 snippets/project | Adds a script dependency, a post-`v-html`-render re-highlight step, and visual complexity for content that's read once per project click — the "heavy dependency for a personal portfolio" anti-pattern this milestone explicitly wants to avoid | Plain `<pre><code>` + monospace font + subtle background/border via `projects.less` |
+| Custom JS accordion/collapse library or hand-rolled Vue toggle component | Reinvents what `<details>`/`<summary>` gives for free, including keyboard and screen-reader support | Native `<details>`/`<summary>` |
+| GitHub Actions CI/CD workflow for deploy | More moving parts (YAML, permissions, artifact upload/download steps) than a personal portfolio with infrequent, manual updates needs right now | `gh-pages` npm package + `npm run deploy` |
+| Static-site-generator swap (Nuxt/VitePress/etc.) or SSR | Explicitly out of scope per CLAUDE.md — "this is a content/design polish pass, not a re-platform" | Keep vue-cli-service as-is |
+| `vue.config.js` `publicPath` change to `/gamedev-portfolio/` | Wrong for a custom domain — that path prefix is only correct for the un-domained `username.github.io/repo/` URL | Leave `publicPath` at its default `/` |
+| Relying on GitHub's Settings UI alone to set the CNAME | The `gh-pages` package overwrites the entire branch content on every deploy; a CNAME added only through Settings (not committed to `public/`) gets wiped on the next `npm run deploy` | Commit `public/CNAME` to the repo |
+| An HTML-escaping npm package (e.g. `he`, `lodash.escape`) for the code snippets | Overkill for ~6-8 static, hand-authored snippets that are pasted once and never regenerated | Hand-escape `<`/`>`/`&` when pasting, or a 3-line helper function if it gets tedious |
 
 ## Stack Patterns by Variant
 
-**If the Contact page form does not yet post anywhere (verify current `Contact.vue` implementation before assuming):**
-- Wire it to Web3Forms via a plain `<form action="https://api.web3forms.com/submit" method="POST">` with a hidden access-key input
-- Because it requires no backend, no new npm dependency, and fits directly into the existing static-page pattern (`Contact.vue` edited directly, no data layer)
+**If Josef later wants syntax coloring after seeing the plain version:**
+- Add Prism.js via a CDN `<script>` tag in `public/index.html` (core + a C# language component + a generic theme), call `Prism.highlightAll()` in the overlay's `updated()` hook after `v-html` content changes.
+- Because it's opt-in progressive enhancement — the plain version already works and looks acceptable, so this becomes a "nice to have" polish task, not a blocking dependency choice now.
 
-**If the user wants visit/traffic data:**
-- Add a single Plausible or GoatCounter `<script>` tag to `public/index.html`
-- Because both are cookieless (no GDPR banner needed) and add negligible page weight (1–3.5KB) compared to Google Analytics
-
-**If a project's overlay content would benefit from a playable build or trailer, not just static media:**
-- Drop an `<iframe>` (itch.io widget or YouTube embed) directly into that project's `htmlDescription` string in `GameProjectsData.ts`, styling its wrapper class in `projects.less`
-- Because `ProjectDetailsOverlay.vue` already renders arbitrary HTML via `v-html` — no new rendering path needed
+**If the apex domain (`josefubaka.com` without `www`) needs to resolve too:**
+- Add four A records on `@` to GitHub's Pages IPs, plus a Namecheap URL Redirect Record forwarding apex → `www`.
+- Because GitHub Pages custom-domain config only lists one primary domain in the `CNAME` file/Settings field; the apex needs to either redirect to it or be configured as a second target, and a redirect is simpler than dual DNS+CNAME juggling.
 
 ## Version Compatibility
 
-| Package/Approach | Compatible With | Notes |
+| Package A | Compatible With | Notes |
 |-----------|-----------------|-------|
-| Native `loading="lazy"` | All evergreen browsers (Chrome, Firefox, Edge, Safari 16+) | No polyfill needed for a job-search portfolio's realistic browser mix |
-| `<video autoplay loop muted playsinline>` | All evergreen browsers | `muted` + `playsinline` are required for autoplay to work on mobile Safari/Chrome |
-| `v-lazy-image@2.1.1` (if chosen instead of native lazy) | Vue 2.6 and Vue 3 | Confirmed via npm registry; no peer-dependency conflicts with this project's `vue@^2.6.11` |
-| `vue-lazyload@3.0.0` (if chosen instead of native lazy) | Vue 2 | Confirmed via npm registry; more actively used historically for Vue 2 apps but less actively maintained than `v-lazy-image` |
-| `vue-meta@2.4.0` (not recommended, listed for completeness) | Vue 2 only | Confirmed via npm registry: latest stable is 4 years old; the 3.0.0-alpha series (not recommended) targets Vue 3/Unhead-era patterns and is not stable |
-| `image-minimizer-webpack-plugin` (only if ever needed later) | webpack 4 (what vue-cli-service 4.5.x uses) via `chainWebpack` in `vue.config.js` | Would require adding a `vue.config.js` build hook — not currently present in this repo |
+| `gh-pages@6.3.0` | Node.js >=10 | No conflict with the project's existing Node/webpack setup; it's a standalone CLI that just runs `git` commands against a `dist/` folder, doesn't touch webpack config or `vue.config.js` at all. |
+| `public/CNAME` | Vue CLI 4.5.0 public-folder copy behavior | Vue CLI copies everything under `public/` to the root of the build output unmodified (except `index.html`, which is templated) — existing, unconfigured default behavior, nothing new to set up. |
+| `<details>`/`<summary>` | All evergreen browsers (Chrome, Firefox, Edge, Safari) | No polyfill needed for a job-search portfolio's realistic browser mix. |
 
 ## Sources
 
-- [Video performance | web.dev](https://web.dev/learn/performance/video-performance) — GIF-to-video guidance, MEDIUM confidence (web search, cross-checked against multiple independent results)
-- [Use video formats for animated content | Lighthouse | Chrome for Developers](https://developer.chrome.com/docs/lighthouse/performance/efficient-animated-content) — 80-96% size reduction figures, MEDIUM confidence
-- [Lazy Loading Images with Vue.js Directives and Intersection Observer | CSS-Tricks](https://css-tricks.com/lazy-loading-images-with-vue-js-directives-and-intersection-observer/) — MEDIUM confidence
-- npm registry direct queries (`npm view v-lazy-image`, `npm view vue-lazyload`, `npm view vue-meta`) — direct registry data for version numbers, treated as MEDIUM confidence per verification protocol
-- [Vue Meta official site / GitHub](https://github.com/nuxt/vue-meta) — maintenance status, MEDIUM confidence
-- [Formspree vs. Web3Forms Usage and Pricing Comparison](https://www.wmtips.com/technologies/compare/formspree-vs-web3forms/) — MEDIUM confidence
-- [GoatCounter – open source web analytics](https://www.goatcounter.com/) / [Plausible Analytics](https://plausible.io/) — MEDIUM confidence
-- [Embed Itch.io Games – Documentation – Portfoliobox](https://www.portfoliobox.com/learn/embed-itch-games) — LOW confidence (single third-party source, not itch.io's own docs directly fetched)
-- [6 best free static website hosting services compared - Appwrite](https://appwrite.io/blog/post/best-free-static-website-hosting) — MEDIUM confidence
-- [Can ATS Read PDF Resumes? 2026 Format Guide - Smallpdf](https://smallpdf.com/blog/do-applicant-tracking-systems-prefer-resumes-in-pdf-format) — MEDIUM confidence
-- Direct repo inspection (`public/img/projects/` file sizes via `ls -la`, `public/index.html`, `src/helpers.ts`) — HIGH confidence, ground truth from this codebase
+- GitHub Docs — "Managing a custom domain for your GitHub Pages site" (official, HIGH confidence) — verified A-record IPs, CNAME record pattern for `www` subdomain, Settings → Pages custom-domain flow
+- GitHub Docs — "Troubleshooting custom domains and GitHub Pages" (official, HIGH confidence) — verified HTTPS enforcement timing/requirements
+- npm registry (`npm view gh-pages version` / `engines`) — confirmed current version 6.3.0, `engines.node >=10` (direct registry check, HIGH confidence)
+- Existing codebase inspection (`src/css/projects.less`, `src/data/ProjectData.ts`, `ProjectDetailsOverlay.vue`, `package.json`, absence of `vue.config.js`) — confirmed the `v-html` raw-string + globally-loaded `projects.less` pattern that (b) needs to slot into, and confirmed no `vue.config.js`/`gh-pages`/CI config exists today (HIGH confidence, direct file read)
 
 ---
-*Stack research for: game-dev job-search portfolio (Vue 2 static site, supporting technical additions)*
-*Researched: 2026-07-21*
+*Stack research for: static Vue 2 portfolio — custom-domain deploy + code/screenshot snippet display (v1.2 milestone)*
+*Researched: 2026-07-23*

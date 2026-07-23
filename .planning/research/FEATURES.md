@@ -1,152 +1,129 @@
 # Feature Research
 
-**Domain:** Game developer portfolio website (job-search / recruiter-facing), redesign of an existing 4-project site
-**Researched:** 2026-07-21
-**Confidence:** MEDIUM (web-search sourced, cross-checked across multiple independent articles; no single canonical/official source exists for "portfolio best practices" — this is community consensus, not a spec)
+**Domain:** Developer/game-dev portfolio — "Technical Overview" collapsible deep-dive section
+**Researched:** 2026-07-23
+**Confidence:** MEDIUM (cross-referenced across multiple independent web searches converging on consistent UX conclusions; no single authoritative spec exists for "portfolio technical fold-outs" as a named pattern — this is synthesized from case-study UX writing, accordion/disclosure accessibility guidance, and game-dev portfolio hiring advice)
 
 ## Feature Landscape
 
 ### Table Stakes (Users Expect These)
 
-Features a recruiter or technical lead assumes exist. Missing these makes the portfolio feel amateurish or gets it closed within seconds.
+Features a "Technical Overview" fold-out needs, or it reads as broken/half-built.
 
 | Feature | Why Expected | Complexity | Notes |
 |---------|--------------|------------|-------|
-| Strongest project shown first / immediately visible | Recruiters give a portfolio well under 30 seconds before deciding to keep scrolling or close the tab; the first thing seen sets the whole impression | LOW | Timeline already exists — verify ordering puts the most impressive/polished game (visually + technically) first, not chronological-only order |
-| Clean, uncluttered, fast-scanning layout | Minimalist layout with clear navigation keeps focus on the work itself; clutter reads as unprofessional | MEDIUM | This IS the current "visual polish pass" active requirement — spacing/title styling/image sizing |
-| Explicit "my role" per project (especially team projects) | The single most-cited recruiter complaint is "I can't tell what this person personally did" — this is the #1 fix cited across sources | LOW | Drag Rush and Dispater (Yrgo school projects) read as likely team projects but current blurbs don't state role/team size/what was individually built vs. teammates. Floor 0 and SwingSpace already say "first solo project" / "my first solo project" — good, keep that pattern explicit everywhere |
-| Per-project "about this game" technical substance (engine, dev time, one technical challenge) | Technical leads want evidence of problem-solving and technical decision-making, not just gameplay footage, but explicitly do NOT want to read raw code | LOW–MEDIUM | Already implemented per project and already in Active requirements — this maps directly onto documented best practice ("Problem → Decision → Outcome" style beats a feature list) |
-| Fast, low-friction media (no giant downloads, quick-loading visuals) | Recruiters won't download 2GB .exe files or wait on unoptimized media; friction = closed tab | MEDIUM | Out of scope for this researcher's file but flagged here because it interacts with "About this game" section placement — don't let heavy hero media push the blurb below the fold |
-| No unmuted autoplay audio/video | Recurring, strongly-cited anti-pattern; unexpected sound causes immediate tab closes | LOW | Verify embedded YouTube iframes (Drag Rush) and `<video>` tags (SwingSpace) don't autoplay with sound — current markup uses `controls` without `autoplay`, which is correct; keep it that way |
-| Scannable text (short blocks, no walls of text) | Long unbroken paragraphs cause fatigue and get skipped; bullet-like short lines with breaks are the norm | LOW | Current `<br/>`-separated short-line style in "About this game" blocks already follows this pattern — preserve it in the new hero copy rewrite too |
-| Working link to play/experience the game where possible | Lets recruiters "experience the work firsthand" rather than take gifs on faith, reduces skepticism | LOW | Already present for Drag Rush and Dispater (itch.io links); Floor 0 and SwingSpace currently lack a play link — worth flagging as a gap even though out of scope for this milestone |
-| Resume that is fast to scan and easy to skim | Same 10-second-scan logic applies to the resume page as to the project timeline | LOW | Active requirement already covers replacing hand-coded resume with a single image — see Anti-Features below for the tradeoff this introduces |
+| Collapsed by default | Core value is a 10-second scan; recruiters must never see code unless they opt in | LOW | Native `<details>` element defaults to closed with no JS — matches existing `v-html` pipeline exactly |
+| Click-to-expand heading with clear affordance (chevron/"+" icon, hover state) | Standard disclosure-widget convention; users won't find a fold-out they can't recognize as interactive | LOW | Style the native `<summary>` marker or a custom triangle via CSS `::marker`/`list-style` |
+| 2-3 curated snippets max, not a full file | Case-study research: skim-friendly summary + optional deeper detail, not an exhaustive dump. Recruiters/leads want proof-of-competence, not a code review | LOW–MEDIUM | Matches Josef's own plan (2-3 snippets/screenshots per project) — validated by research, not just assumption |
+| Short caption/rationale per snippet (1-3 sentences: what it does + why it mattered) | "Annotated" pattern consistently favored over long prose — captions next to visuals convey decision-making fast | LOW | Reuses existing "About this game" blurb tone/length already established per project |
+| Syntax legibility for code (monospace font, adequate contrast, no wrapping issues) | Baseline expectation once code is shown at all — illegible code reads worse than no code | LOW | Can be plain `<pre><code>` + CSS in `projects.less`; no syntax-highlighter dependency needed for 2-3 short static snippets |
+| Independent, not mutually exclusive, expand/collapse per project | Overlay only shows one project at a time already; within that, if screenshots + rationale are separate items, letting more than one be open avoids extra clicking | LOW | Only relevant if the "Technical Overview" is broken into multiple sub-toggles; for a single heading/single fold-out this doesn't apply |
 
 ### Differentiators (Competitive Advantage)
 
-Not required, but this is exactly where a polished redesign can pull ahead of the median student/solo-dev portfolio, and it aligns directly with this project's stated Core Value (credible + memorable + personality without code).
+Not required, but this is exactly where Josef's stated goal ("real code/blueprint snippets with rationale, without cluttering the scan") wins credibility with technical leads.
 
 | Feature | Value Proposition | Complexity | Notes |
 |---------|-------------------|------------|-------|
-| Consistent "Problem → Decision/Approach → Outcome" phrasing in each technical blurb | This specific structure is called out repeatedly as what separates a generic feature-list blurb from one that reads as genuine technical credibility, without needing code | LOW | Current blurbs are close (e.g. "Custom made 'Beat Conductor'") but read as a feature list, not problem→solution framing. Light copy tightening (not restructuring) could lift this from "good" to "differentiated" |
-| Distinct personality carried consistently (mascot + warm copy tone) | Mixed audience (recruiter scan + technical closer look) rewards a portfolio that's memorable, not just competent — this is explicitly the project's stated differentiation angle | LOW–MEDIUM | Already the plan (Guy/Guy2 mascot, "Hello there!" hero rewrite) — research supports this is a genuine differentiator *as long as* professionalism is held (see Anti-Features: overdesign) |
-| Visual/timeline presentation instead of generic grid | A bespoke alternating-row timeline (already built) is inherently more memorable than a plain project grid — most competing student portfolios use a grid | LOW (already built) | No new work needed; just don't regress this into something more generic during the polish pass |
-| Optional external link/repo per project as a secondary, low-emphasis affordance | Gives technical reviewers who *do* want to dig deeper a path to do so, without putting code on the page itself — satisfies both audiences without compromising the "no code" design decision | LOW | Matches the Key Decision already logged ("short tech blurb + optional link per project") — only add this where a genuine public repo/build exists; do not force it for projects that don't have one |
+| Engine-appropriate presentation (real C# snippets for Unity games Drag Rush/SwingSpace; Blueprint graph screenshots, not pasted pseudo-code, for Unreal games Dispater/Floor 0) | Matches how technical reviewers actually expect each engine's work to look; pasting "translated" Blueprint-as-text reads as fake or confused | LOW–MEDIUM | Confirmed pattern: Unity portfolios show clean C# script snippets; Unreal/AAA-facing portfolios show Blueprint screenshots, C++ where relevant. Already the plan per PROJECT.md — validates rather than changes it |
+| Rationale text framed as a decision/tradeoff ("chose X approach because Y constraint"), not just a code caption | This is what separates "I can paste code" from "I can explain engineering judgement" — the single highest-leverage differentiator for a technical-lead audience | LOW (writing effort, not code effort) | No component work — this is a content-authoring quality bar for the htmlDescription text, not a UI feature |
+| Reused visual language between snippet callouts and the existing "About this game" blurb | Keeps the fold-out feeling like a natural extension of the overlay rather than a bolted-on widget | LOW | Style via `projects.less` classes, consistent with how all other project-specific HTML is already styled |
 
 ### Anti-Features (Commonly Requested, Often Problematic)
 
-Things that look like good ideas for this kind of portfolio but create more problems than they solve — flagged specifically against this project's current direction.
-
 | Feature | Why Requested | Why Problematic | Alternative |
 |---------|---------------|------------------|-------------|
-| Pasting real code snippets into the project overlay | Feels like "proof" of technical skill | Recruiters don't read code and will skip it; for the few technical reviewers who would read it, an out-of-context snippet without the surrounding architecture is unconvincing rather than impressive — and it's explicitly called out as a common portfolio mistake | Keep the current decision: prose "about this game" blurb (engine, timeframe, one named technical system/challenge) plus an optional link to a repo/build for anyone who wants to go deeper |
-| Autoplaying background video/audio on load ("cinematic" hero) | Feels premium, used on some agency/design portfolios | Strongly and repeatedly cited as a trust-destroying anti-pattern in this exact context — causes immediate tab closes when sound is unexpected | Keep video/audio user-triggered (`controls`, no `autoplay`) as the current SwingSpace video already does |
-| Long narrative game-story text on the project cards (heavy lore/world-building copy) | Feels natural for a game with strong narrative (e.g. Dispater) to want to "sell" the story | Recruiters scan, they don't read fiction; walls of text are explicitly cited as fatigue-inducing and get skipped, working against the 10-second-scan goal | Keep story to 1–2 short evocative lines (current pattern is close to right — e.g. Dispater's "Good morning rookie!" hook) and let screenshots/video carry the atmosphere |
-| Resume-as-image with no text fallback at all | Feels simpler and guarantees pixel-perfect resume formatting matches the "actual" resume file | An image-only resume is not selectable/copyable text and is invisible to any ATS/keyword scanning or basic accessibility tooling (screen readers) — a real risk this project is walking into with the "single resume image" decision | If feasible without expanding scope: keep the image as the primary visual and add a plain-text/PDF download link alongside it, or at minimum make sure the underlying PDF/image has extractable text layer, rather than a flat raster-only image |
-| Overdesigned/highly stylized timeline (heavy animation, decorative flourishes competing with the game media) | Wanting the "personality" and "premium feel" goals to show up as more visual flourish | Explicitly cited pattern: an overdesigned/"kaleidoscopic" portfolio is worse received than a plain one — visual noise competes with and undermines the actual work being showcased | Keep the personality budget concentrated in a few deliberate touches (mascot, copy tone, accent color) and spend the "polish pass" on spacing/sizing/typography restraint, not added decoration |
-| Vague/omitted team-project attribution ("we made a game about...") | Easier to write, avoids awkwardness about what teammates did | This is the single most commonly cited portfolio complaint from recruiters — cannot tell what the applicant personally did, which actively damages credibility for exactly the team-built projects (Drag Rush, Dispater) that most need it | Add an explicit line to team projects following the pattern already used for the solo ones ("first solo project" style) — e.g. state team size/roles and which specific system(s) were built individually vs. by teammates |
+| Full file dumps / pasting entire scripts | Feels "more honest" or "more impressive" | Nobody reads it; undermines the whole point of curation; for Blueprint work there's no clean textual equivalent anyway | 2-3 short, purposeful excerpts (10-30 lines each) with a caption |
+| More than ~3 snippets per project | "Why not show everything I built" | Turns a fold-out into a second full page; dilutes which pieces actually matter; increases maintenance burden (4 projects × N snippets to keep in sync with source repos) | Cap at 2-3 per project, matching PROJECT.md's stated target |
+| Syntax-highlighting library/dependency (Prism.js, highlight.js, etc.) for a handful of static snippets | "Real code should have real highlighting" | New dependency + bundle weight + build-step complexity for content that's static and small; conflicts with "content/design polish pass, not a re-platform" constraint | Plain `<pre><code>` styled with a monospace font and a couple of manual `<span>` color classes in `projects.less` if any emphasis is truly needed — or none at all |
+| JS-driven accordion component (new Vue sub-component, `data()` state, click handlers) for the expand/collapse itself | Feels like "the proper way" to build an accordion | Adds a new component + prop wiring for behavior the browser already provides for free; the existing overlay content is already raw HTML via `v-html`, so JS state can't easily reach into it anyway | Native HTML `<details>`/`<summary>` embedded directly in the `htmlDescription` string — zero JS, keyboard-accessible, and works inside the existing `v-html` pipeline unmodified |
+| Auto-expanding the Technical Overview on overlay open, or expanding all projects' sections by default | "Make sure technical reviewers see it" | Directly violates the core value (10-second scan); accordion/disclosure best practice is explicit: don't force-open unless it's the single most critical content, and this isn't — it's supplementary depth | Always collapsed by default; a short static label like "Technical Overview" is enough to signal it exists |
+| Live embedded code sandboxes / interactive Blueprint graph viewers | "Let recruiters actually explore the code" | Massive scope/complexity jump for a static portfolio with no backend; nobody asked for interactivity, only credibility | Static curated screenshots/snippets; if more depth is ever wanted, link out to the GitHub repo instead (already a deferred idea for SwingSpace) |
 
 ## Feature Dependencies
 
 ```
-"About this game" blurb (engine/timeframe/challenge)
-    └──requires──> Project already has enough real technical substance to name a specific system
-                       (all 4 projects qualify: Beat Conductor, hex-grid movement, behaviour-tree AI, Firebase highscores)
+Technical Overview fold-out (per project)
+    └──requires──> ProjectData.htmlDescription content addition (new HTML block per project)
+                       └──requires──> curated snippet/screenshot selection from each game's source repo (already added as working dirs)
+                       └──requires──> new asset files (Blueprint screenshots) placed in public/img/projects/<project>/ for Dispater + Floor 0
+                       └──requires──> projects.less styling for new classes (code block, caption, details/summary marker)
 
-Explicit "my role" line on team projects
-    └──enhances──> "About this game" blurb credibility
-                       (turns a feature list into a credible individual-contribution claim)
+Technical Overview fold-out ──enhances──> existing "About this game" blurb (extends the same technical-credibility thread, doesn't replace it)
 
-Optional repo/build link
-    └──requires──> A real public build or repo existing for that project
-                       (do not add a link with nothing behind it — an empty/dead link is worse than no link)
-
-Hero copy rewrite ("Hello there!" warmer tone)
-    └──conflicts (mildly) with──> Keeping copy scannable/short
-                       (warmth must be achieved in fewer, better words — not more words)
-
-Resume-as-image
-    └──conflicts with──> ATS/accessibility scannability
-                       (mitigate with a parallel text/PDF version, not by reverting the decision)
+Native <details>/<summary> disclosure ──conflicts-with──> any plan to build a custom Vue accordion component (redundant; pick one)
 ```
 
 ### Dependency Notes
 
-- **"My role" line enhances the "About this game" blurb:** Without it, Drag Rush/Dispater blurbs read as a feature list ("Custom made Beat Conductor") that could be read as either a personal achievement or a team achievement — recruiters default to skepticism when it's ambiguous. Adding one line naming team size and the applicant's specific contribution removes that ambiguity for near-zero added length.
-- **Optional link requires a real target:** This project's Key Decision already scopes the link as optional per project — research confirms this is the right call; only Drag Rush and Dispater currently have itch.io links, so don't force one onto Floor 0/SwingSpace unless a genuine playable build exists.
-- **Hero copy warmth conflicts with scannability if not disciplined:** The redesign's "warmer, more personal" hero goal is validated as a genuine differentiator, but the same research that supports personality also warns against walls of text — the rewrite should aim for fewer, better-chosen words, not more copy.
-- **Resume-as-image conflicts with ATS/accessibility scannability:** This is a real tradeoff the project has already decided to accept (Key Decision: "Resume page shows a single resume image... Simpler, matches short and to the point"). Research doesn't argue against the decision, but flags it as an anti-feature-adjacent risk worth a cheap mitigation (parallel text or a PDF with a real text layer) rather than pure raster image, if that's low-cost within the current scope.
+- **Technical Overview requires htmlDescription content addition:** No `ProjectDetailsOverlay.vue` prop/logic changes are needed — the fold-out is just more raw HTML appended to each project's existing `htmlDescription` string in `GameProjectsData.ts`, rendered by the same `v-html` that already handles screenshots/video/"About this game." This is the single most important dependency finding: the feature is a **content + CSS** change, not a component change.
+- **Technical Overview requires new asset files for Blueprint screenshots:** Dispater ("C9") and Floor 0 are Unreal/Blueprints — their "snippets" are screenshots, not text, so this feature has an asset-production dependency (capturing/exporting Blueprint graph screenshots from the Unreal source projects) that Drag Rush/SwingSpace (Unity/C#, pasted as text) don't have. Sequence accordingly: Blueprint screenshot capture is extra lead time versus copy-pasting C# text.
+- **Technical Overview enhances "About this game":** the existing blurb already establishes engine/timeframe/one challenge — the fold-out is the natural "click for more" extension of that same paragraph, not a new unrelated section. Keep tone/voice consistent with that existing copy.
+- **Native disclosure conflicts with a custom accordion component:** don't build both. The native `<details>`/`<summary>` element gets collapse/expand, keyboard support, and default-closed state for free and fits the `v-html` pipeline; a Vue-component accordion would require restructuring how project content is authored (moving from raw-HTML-string data to structured props) — out of scope for a "content/design polish pass."
 
 ## MVP Definition
 
-Framed against this project's *redesign* scope (not a from-scratch build) — these map to what's already in `.planning/PROJECT.md` Active requirements, prioritized by what research says matters most.
+### Launch With (v1 of this feature)
 
-### Launch With (v1 — this redesign pass)
+- [ ] Per-project "Technical Overview" heading using native `<details>`/`<summary>`, collapsed by default — essential to the core value (scan stays fast, depth is opt-in)
+- [ ] 2-3 curated snippets/screenshots per project (C# text for Drag Rush/SwingSpace, Blueprint screenshots for Dispater/Floor 0) — essential; this is the feature's entire content
+- [ ] 1-3 sentence rationale caption per snippet — essential; without it, snippets are just decoration with no proof of judgement
+- [ ] `projects.less` styling for the new markup (monospace code block, caption text, styled disclosure marker consistent with the dark-theme redesign) — essential for it not to look broken/unstyled
 
-- [ ] Explicit "my role"/team-attribution line added to Drag Rush and Dispater blurbs (team projects) — closes the #1 most-cited recruiter complaint; cheap, high-value, currently missing
-- [ ] "About this game" blurb kept on all 4 projects with engine/timeframe/one technical challenge (already in progress) — directly matches what technical leads look for beyond footage
-- [ ] Hero copy rewrite, kept short and scannable even while warmer — already active, just hold the line on length
-- [ ] Visual polish pass on timeline (spacing/sizing/typography) — already active, and research confirms restraint (not added decoration) is the right target
-- [ ] Verify no autoplay-with-sound anywhere in existing media embeds (YouTube iframe, `<video>` tags) — nearly free to check, protects against the single most damaging anti-pattern found
+### Add After Validation (v1.x)
 
-### Add After Validation (v1.x — reasonable near-term follow-ups, not blocking this pass)
+- [ ] Minor syntax emphasis (a couple of manual `<span>` classes for keywords) if plain monospace reads too flat — only if the shipped version actually looks under-designed after a real look
+- [ ] Link-out to source repo (e.g., SwingSpace GitHub) if repo cleanup happens later — deferred per PROJECT.md's existing Out of Scope note
 
-- [ ] Add a play/build link for Floor 0 and SwingSpace if/when a public build exists (currently only Drag Rush/Dispater have itch.io links)
-- [ ] Add a lightweight text or real-text-layer PDF companion to the new resume image, to offset the ATS/accessibility tradeoff being accepted now
+### Future Consideration (v2+, likely never for this project)
 
-### Future Consideration (v2+ — explicitly out of scope per PROJECT.md)
-
-- [ ] Additional shipped projects beyond the current 4 — deferred by explicit decision, not a gap in this research
-- [ ] Deeper case-study format (diagrams, before/after design iteration, playtesting notes) — valuable per research but a meaningfully bigger content-production effort than "one blurb per project," reasonable to defer past this polish pass
+- [ ] Syntax-highlighting library — defer indefinitely; only reconsider if snippet volume grows far beyond the 2-3/project cap (it won't, per the anti-feature above)
+- [ ] Interactive/expandable code (e.g., "show full function") — defer indefinitely; conflicts with core value
 
 ## Feature Prioritization Matrix
 
 | Feature | User Value | Implementation Cost | Priority |
 |---------|------------|---------------------|----------|
-| "My role"/team attribution line (Drag Rush, Dispater) | HIGH | LOW | P1 |
-| "About this game" blurb (engine/time/challenge) — all projects | HIGH | LOW | P1 |
-| Hero copy rewrite, short + warm | MEDIUM | LOW | P1 |
-| Timeline visual polish (spacing/sizing/typography restraint) | MEDIUM | MEDIUM | P1 |
-| Verify no autoplay audio/video | HIGH (risk avoidance) | LOW | P1 |
-| Resume as image + accessibility/ATS mitigation | MEDIUM | LOW | P2 |
-| Play/build links for Floor 0 + SwingSpace | MEDIUM | MEDIUM (depends on builds existing) | P2 |
-| Optional repo link per project (where applicable) | LOW–MEDIUM | LOW | P2 |
-| Deeper case-study content (diagrams, iteration notes) | MEDIUM | HIGH | P3 |
+| Collapsed-by-default disclosure via native `<details>` | HIGH | LOW | P1 |
+| 2-3 curated code/Blueprint snippets per project | HIGH | MEDIUM (asset/content curation, not code) | P1 |
+| Rationale captions per snippet | HIGH | LOW (writing effort) | P1 |
+| Dark-theme-consistent styling for the new block | MEDIUM | LOW | P1 |
+| Syntax-highlighting library | LOW | MEDIUM (new dependency) | P3 (skip) |
+| Custom Vue accordion component | LOW (native element already covers it) | MEDIUM | P3 (skip) |
+| Link-out to source repos | LOW-MEDIUM | LOW | P2 (deferred, blocked on repo cleanup per PROJECT.md) |
 
 **Priority key:**
-- P1: Must have for this redesign pass to land its stated goal
-- P2: Should have, reasonable near-term follow-up
-- P3: Nice to have, defer past this milestone
+- P1: Must have for this milestone's Technical Overview requirement
+- P2: Should have, add when the blocking dependency (repo cleanup) clears
+- P3: Skip — anti-feature/over-engineering for this project's scope
 
 ## Competitor Feature Analysis
 
-Direct competitor products don't exist in the traditional sense (this is a personal job-search site, not a market product), so this compares against the *documented conventions* of the game-dev-portfolio genre as surfaced in research, rather than named competitor sites.
-
-| Feature | Common convention (student/solo-dev portfolios) | Common convention (programmer-heavy portfolios) | This project's approach |
-|---------|--------------------------------------------------|--------------------------------------------------|--------------------------|
-| Technical proof | Screenshots/video + short blurb | Often a linked GitHub repo, sometimes inline code walkthroughs | Blurb only, optional link — deliberately splits the difference for a mixed recruiter/technical-lead audience |
-| Role attribution on team work | Frequently omitted or vague ("we made...") — cited as the most common flaw | Usually explicit, since programmer portfolios are evaluated more on individual system ownership | Currently inconsistent (present for solo projects, missing for team projects) — closing this gap is the single highest-value change this research surfaced |
-| Personality/tone | Usually generic/corporate-safe, rarely distinctive | Usually minimal, technical, terse | Deliberately distinctive (mascot, warm hero copy) — matches this project's stated differentiation strategy |
-| Media weight | Often heavy/unoptimized (large gifs, uncompressed video) | N/A (less media-heavy) | Out of scope for this file, but interacts with scan-speed table stakes — flagged for awareness |
+| Feature | Typical UX/design-portfolio case study | Typical game-dev / engineering portfolio | Our Approach |
+|---------|------------------------------------------------|-------------------------------------------|--------------|
+| Depth layering | Skim summary up top, detail sections below (sometimes via in-page anchors, not always collapsible) | Screenshots/video primary, code usually a secondary "more info" link or none at all | Collapsed-by-default fold-out per project card, keeping the primary scan visual-only |
+| Annotation style | Callouts/pointers directly on screenshots with brief captions | Comments/READMEs explaining implementation decisions, when shown at all | Short captions per snippet framed as a decision/tradeoff, matching existing "About this game" tone |
+| Engine-specific handling | N/A | Unity → C# snippets; Unreal/AAA → Blueprint screenshots + C++ where relevant | Same split: Drag Rush/SwingSpace get real C# text, Dispater/Floor 0 get Blueprint graph screenshots |
+| Volume | Varies widely; better examples are curated, not exhaustive | Best portfolios show 1-3 highlights per project, not full repos | Cap at 2-3 snippets per project across all 4 games |
 
 ## Sources
 
-- [How to Make a Game Design Portfolio That Gets You Hired?](https://gamedesignskills.com/game-design/portfolio/) — web, MEDIUM confidence
-- [Build a Game Developer Portfolio That Stands Out (Algoryte)](https://www.algoryte.com/news/build-a-game-developer-portfolio-that-stands-out/) — web, MEDIUM confidence
-- [Game Developer Portfolios: Showcasing Your Skills (MoldStud)](https://moldstud.com/articles/p-game-developer-portfolios-showcasing-your-skills) — web, MEDIUM confidence
-- [How to Build a Game Developer Portfolio That Gets You Hired (2026) — GeneralistProgrammer](https://generalistprogrammer.com/tutorials/game-developer-portfolio-and-resume-guide) — web, MEDIUM confidence
-- [Game Development Portfolio: Complete Professional Guide 2025 — GeneralistProgrammer](https://generalistprogrammer.com/tutorials/game-development-portfolio-complete-professional-guide-2025) — web, MEDIUM confidence
-- [What should I put into my video game programming portfolio? (Game Industry Career Guide)](https://www.gameindustrycareerguide.com/what-should-i-put-into-my-video-game-programming-portfolio/) — web, MEDIUM confidence
-- [Top 10 Most Common Game Art Portfolio Mistakes (ArtStation)](https://www.artstation.com/blogs/nvalchev/9AMA0/top-7-most-common-game-art-portfolio-mistakes-and-how-to-avoid-them) — web, MEDIUM confidence
-- [5 Portfolio Mistakes You Must Avoid (Students/Artists in Games) — Medium](https://medium.com/@etiennebadia/5-portfolio-mistakes-you-must-avoid-students-artists-in-games-47f133138a96) — web, MEDIUM confidence
-- [6 Job-killing Mistakes You Are Making in your Game UI UX Design Portfolio](https://thewingless.com/index.php/2022/05/08/6-job-killing-mistakes-you-are-making-in-your-game-ui-ux-design-portfolio/) — web, MEDIUM confidence
-- [Documenting Group Projects for Your Portfolio (Cirkled In)](https://www.cirkledin.com/library/resume-and-portfolio-building/group-project-resume-portfolio-contribution/) — web, MEDIUM confidence
-- [What are the best game portfolio examples that impressed hiring managers? (LinkedIn Advice)](https://www.linkedin.com/advice/0/what-best-game-portfolio-examples-impressed-hiring-hxpuf) — web, MEDIUM confidence
-- Cross-project source: `D:\Kodning\Portfolio\gamedev-portfolio\src\data\GameProjectsData.ts` (current site content, read directly) — HIGH confidence (primary source, own codebase)
-- Cross-project source: `D:\Kodning\Portfolio\gamedev-portfolio\.planning\PROJECT.md` (project scope/decisions, read directly) — HIGH confidence (primary source, own project doc)
+- [25 UX case study examples to inspire your next design project — LogRocket Blog](https://blog.logrocket.com/ux-design/ux-design-case-study-examples/)
+- [UX Case Study Deep Dive: Analyzing 5 Award-Winning Design Solutions — Medium/Bootcamp](https://medium.com/design-bootcamp/ux-case-study-deep-dive-analyzing-5-award-winning-design-solutions-67c8af689a66)
+- [UX Portfolio Case Study template (plus examples from successful hires) — UX Planet](https://uxplanet.org/ux-portfolio-case-study-template-plus-examples-from-successful-hires-86d5b0faa2d6)
+- [Tips on Building a Portfolio for Game Developers — Springboard](https://www.springboard.com/blog/career-advice/game-developer-portfolios/)
+- [Building a Game Dev Portfolio That Gets You Hired — Wayline](https://www.wayline.io/blog/building-a-game-dev-portfolio)
+- [How to Build a Game Developer Portfolio That Gets You Hired (2026) — Generalist Programmer](https://generalistprogrammer.com/tutorials/game-developer-portfolio-and-resume-guide)
+- [How to build a game programming portfolio that impresses employers — Vancouver Film School](https://vfs.edu/news/2025/06/20/game-programming-portfolio-tips)
+- [Accessible Accordion vs Disclosure: Dev Best Practices — 216digital](https://216digital.com/accessible-accordion-vs-disclosure-dev-best-practices/)
+- [Accessible Accordion — examples and best practices — Aditus](https://www.aditus.io/patterns/accordion/)
+- [Designing Perfect Accordion — 10 Best practices for UI designers — UX Planet](https://uxplanet.org/designing-perfect-accordion-0a0d1f49c585)
+- [Accordion Pattern — UX Patterns for Developers](https://uxpatterns.dev/patterns/content-management/accordion)
+- Existing codebase review: `src/components/ProjectDetailsOverlay.vue` and `src/data/GameProjectsData.ts` (confirmed `v-html`-based rendering path, no component change needed for a native disclosure element) — HIGH confidence (primary source, own codebase)
+- Prior milestone research (2026-07-21, this project) covering table-stakes/anti-patterns for the base portfolio (role attribution, no-autoplay, scan speed) — superseded by this file for the v1.2 milestone's Technical Overview question specifically; those findings remain valid and shipped in v1.0/v1.1
 
-**Confidence note:** All web-sourced claims are MEDIUM confidence (cross-checked across 3+ independent articles per topic per the `classify-confidence --verified` seam) rather than HIGH, because this domain has no single authoritative/official spec — "game portfolio best practices" is aggregated community consensus from career-advice blogs and forums, not a standards body. Recurring, independently-repeated claims (10-second scan, explicit "my role" line, no autoplay audio, avoid walls of text) are the most reliable; single-source claims (e.g. specific "60–90 second showreel" number) are noted as directional rather than precise.
+**Confidence note:** All web-sourced claims are MEDIUM confidence (cross-checked across independent articles per the `classify-confidence --verified` seam) rather than HIGH, because this domain has no single authoritative/official spec — "technical fold-out" and "accordion/disclosure" best practices are aggregated community/accessibility consensus, not a standards body ruling. The one HIGH-confidence claim in this file (native `<details>`/`<summary>` requires no `ProjectDetailsOverlay.vue` changes) comes directly from reading the actual component/data source, not from web search.
 
 ---
-*Feature research for: Game developer portfolio website (job-search, recruiter + technical-lead audience)*
-*Researched: 2026-07-21*
+*Feature research for: developer/game-dev portfolio Technical Overview fold-out (v1.2 milestone)*
+*Researched: 2026-07-23*
