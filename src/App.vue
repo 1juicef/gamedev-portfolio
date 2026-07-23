@@ -17,6 +17,14 @@
 import Vue from 'vue';
 import Header from './components/Header.vue';
 import Footer from './components/Footer.vue';
+import Helpers from './helpers';
+
+Helpers.preloadImages([
+  "img/projects/drag-rush/DragRushGif-poster.webp",
+  "img/projects/dispater/DispaterGif-poster.webp",
+  "img/projects/floor-0/Floor0gif1-poster.webp",
+  "img/projects/swing-space/SwingSpaceGIF3-poster.webp",
+]);
 
 export default Vue.extend({
   name: 'App',
