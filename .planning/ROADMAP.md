@@ -33,7 +33,10 @@ Full phase details archived in [milestones/v1.0-ROADMAP.md](./milestones/v1.0-RO
   2. Two text hyperlinks reading exactly "The Eldritch Keeper" and "Mas-Q" appear under that subheading
   3. Clicking "The Eldritch Keeper" opens `https://juice-f.itch.io/the-eldritch-keeper` in a new browser tab
   4. Clicking "Mas-Q" opens `https://superguardian.itch.io/mas-q` in a new browser tab
-**Plans**: TBD
+**Plans**: 1 plan
+
+Plans:
+- [ ] 04-01-PLAN.md — Add "Game Jams" subheading + two itch.io text links (The Eldritch Keeper, Mas-Q) at the bottom of the /game-projects timeline
 
 ## Progress
 
@@ -42,4 +45,4 @@ Full phase details archived in [milestones/v1.0-ROADMAP.md](./milestones/v1.0-RO
 | 1. Media & Performance Optimization | v1.0 | 4/4 | Complete | 2026-07-22 |
 | 2. Project Content & Personality | v1.0 | 3/3 | Complete | 2026-07-23 |
 | 3. Visual Polish, Resume & Site Metadata | v1.0 | 4/4 | Complete | 2026-07-23 |
-| 4. Game Jams Section | v1.1 | 0/0 | Not started | - |
+| 4. Game Jams Section | v1.1 | 0/1 | Not started | - |
