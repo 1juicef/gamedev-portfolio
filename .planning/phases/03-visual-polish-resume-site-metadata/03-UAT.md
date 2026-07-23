@@ -1,25 +1,14 @@
 ---
-status: testing
+status: partial
 phase: 03-visual-polish-resume-site-metadata
 source: [03-VERIFICATION.md]
 started: 2026-07-22T22:10:00.000Z
-updated: 2026-07-23T01:00:00.000Z
+updated: 2026-07-23T10:20:00.000Z
 ---
 
 ## Current Test
 
-number: 10
-name: Overlay gradient re-check after G-03-8 fix
-expected: |
-  Run `npm run serve`, open /game-projects, click any project card, scroll to the bottom of the overlay.
-  The gradient transitions smoothly into purple (#2b123f) at the very bottom edge with no black strip below it.
-
-  NOTE: this currently depends on your own separate, still-uncommitted edits to
-  src/components/ProjectDetailsOverlay.vue (the gradient declaration itself has never
-  been committed to this repo — verifier confirmed via git history). The committed 03-04
-  fix only removed the stray padding-bottom that was cutting it short. If you reset/stash
-  your uncommitted work before committing it, this will silently regress.
-awaiting: user response
+[testing complete]
 
 ## Tests
 
@@ -74,18 +63,18 @@ severity: cosmetic
 
 ### 10. Overlay gradient re-check after G-03-8 fix
 expected: Run `npm run serve`, open /game-projects, click any project card, scroll to the bottom of the overlay. The gradient transitions smoothly into purple (#2b123f) at the very bottom edge with no black strip below it. NOTE: depends on your own uncommitted ProjectDetailsOverlay.vue edits — see Current Test note.
-result: [pending]
+result: pass
 
 ### 11. Dispater overlay video-block removal re-check
 expected: Run `npm run serve`, open the Dispater overlay. The standalone gameplay video block that used to sit between the screenshots and "About this game" is gone. Screenshots, YouTube trailer, About section, and itch.io link are all still present and in order.
-result: [pending]
+result: pass
 
 ## Summary
 
 total: 11
-passed: 4
+passed: 6
 issues: 4
-pending: 2
+pending: 0
 skipped: 0
 blocked: 1
 
@@ -123,7 +112,9 @@ blocked: 1
   debug_session: .planning/debug/g-03-5-sitewide-horizontal-spacing.md
 - gap_id: G-03-8
   truth: "The project details overlay's background gradient (black to purple) runs smoothly through to the bottom edge, ending in purple."
-  status: failed
+  status: resolved
+  resolved_by: 03-04-PLAN.md
+  resolved_at: 2026-07-23
   reason: "User reported: the overlay popup for a project has a gradient color, from black to purple, but at the bottom of the overlay there is a tiny black bar. The gradient should follow all the way through and be purple at the very bottom."
   severity: cosmetic
   test: 8
@@ -136,7 +127,9 @@ blocked: 1
   debug_session: .planning/debug/g-03-8-overlay-gradient-black-bar.md
 - gap_id: G-03-9
   truth: "N/A — change request: remove the DispaterGif2.mp4 video block from the Dispater overlay (added by 03-01), since the YouTube trailer already covers that content."
-  status: failed
+  status: resolved
+  resolved_by: 03-04-PLAN.md
+  resolved_at: 2026-07-23
   reason: "User reported: you can skip the video at the bottom on Dispater overlay, the YouTube trailer is enough."
   severity: cosmetic
   test: 9
