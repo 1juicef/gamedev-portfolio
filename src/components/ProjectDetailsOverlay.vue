@@ -97,6 +97,7 @@ a.dialog-close-button {
   font-size: 1.4em;
   display: inline-block;
   margin: 0 auto;
+  color: #ffffff;
 }
 
 @media only screen and (min-width: 620px){
