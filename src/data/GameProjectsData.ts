@@ -71,6 +71,12 @@ export default [
         <strong>Floor Zero</strong> is an atmospheric exploration game set in a derelict underground facility. Navigate through abandoned corridors and discover the mysteries of what happened here.
     </div>
     <div class="paragraph center">
+        <video class="pc-video" controls preload="metadata">
+            <source src="img/projects/floor-0/Floor0vid2-web.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <div class="paragraph center">
         <img class="pc-screenshot" loading="lazy" src="img/projects/floor-0/Floor0SC1.webp" alt="Floor Zero Screenshot" />
         <img class="pc-screenshot" loading="lazy" src="img/projects/floor-0/Floor0SC2.webp" alt="Floor Zero Screenshot" />
         <img class="pc-screenshot" loading="lazy" src="img/projects/floor-0/Floor0SC3.webp" alt="Floor Zero Screenshot" />
