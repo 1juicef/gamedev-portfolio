@@ -32,6 +32,7 @@
           <button
             class="project-image-button"
             :class="{ 'project-image--swing-space': project.id === 'swing-space' }"
+            :aria-label="project.name + ' details'"
             @click="showDetails(project)"
           >
             <LazyVideoThumbnail :src="thumbVideos[project.id]" :poster="thumbPosters[project.id]" />
