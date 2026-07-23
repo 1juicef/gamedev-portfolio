@@ -54,7 +54,6 @@ export default Vue.extend({
   right: 0px;
   z-index: 11;
   margin: 20px;
-  padding-bottom: 10px;
   color:white;
 }
 
