@@ -16,6 +16,15 @@ The portfolio must read as aesthetically polished and professional within a 10-s
 - **Revenue model**: N/A — personal job-search tool, not monetized
 - **Success metric**: A recruiter or technical lead comes away with a clear, credible, memorable impression of shipped work in well under a minute
 
+## Current Milestone: v1.2 Redesign, Technical Deep-Dive & Launch
+
+**Goal:** Ship the pending dark-theme reskin, give recruiters/technical leads a deeper "Technical Overview" fold-out per project with real code/blueprint snippets, and put the portfolio live on its own domain.
+
+**Target features:**
+- Commit and polish the uncommitted dark-gradient + Lekton/Russo One redesign (`App.vue`, `ProjectDetailsOverlay.vue`) that's been sitting in the working tree since v1.0
+- Add a "Technical Overview" collapsible section to each project's overlay: click a heading, 2-3 code/blueprint snippets fold out with complementary decision-rationale text — sourced from each game's real project source (Drag Rush + SwingSpace are Unity/C#; Dispater ("C9") + Floor Zero are Unreal/Blueprints, shown as graph screenshots rather than pasted text)
+- Deploy to the purchased custom domain `www.josefubaka.com` — currently nothing is configured on either the Namecheap DNS side or GitHub Pages side; update `og:url`/`og:image` once live and re-verify the social-preview card (this closes the long-deferred Phase 3 UAT gap)
+
 ## Requirements
 
 ### Validated
@@ -39,13 +48,11 @@ The portfolio must read as aesthetically polished and professional within a 10-s
 
 ### Active
 
-- [ ] Deploy the portfolio to the custom domain `www.josefubaka.com` (already purchased) — update `public/index.html` `og:url`/`og:image` off the current GitHub Pages URL once live, and re-verify the social-preview card render (Phase 3 UAT Test 3, currently blocked on having a live URL) — out of scope for v1.1, deferred again
-- [ ] Decide the fate of the in-progress visual redesign sitting uncommitted in the working tree (`App.vue`/`ProjectDetailsOverlay.vue`: dark gradient background, Lekton/Russo One custom fonts, reworked overlay styling) — deliberately excluded from v1.0 and v1.1 at Josef's request; needs a real decision (adopt, rework, or discard) rather than sitting uncommitted indefinitely
 - [ ] Add an accessible "(opens in a new tab)" cue to the two new Game Jams links (WCAG 3.2.5 gap found by Phase 4 code review, WR-01) — fix attempted via `/gsd-code-review 4 --fix` but the fixer agent hit the session usage limit before making changes; re-run once the session limit resets
 
 ### Out of Scope
 
-- Code snippets or embedded code samples on the page — replaced by short tech blurbs (and optionally a repo link) since the site stays visual-first — why: recruiters don't read code, and technical reviewers want stack + challenge, not raw snippets
+- ~~Code snippets or embedded code samples on the page~~ — **reversed in v1.2**: real code/blueprint snippets are being added behind a click-to-expand "Technical Overview" fold-out per project, so they don't compromise the default 10-second scan
 - New/additional game projects beyond the current 4 (Drag Rush, Dispater, Floor 0, SwingSpace) — why: deferred; the only near-term addition planned is the separate "Game Jams" section above, not a 5th full project entry
 - `SwingSpaceVid2.mp4` — why: leftover/unused source file; superseded by the v1.0 SwingSpace media refresh (new video/screenshots sourced from `NEWSwingSpaceVid.mp4` etc., since deleted after conversion)
 - SwingSpace play/build link (itch.io or otherwise) — why: game is mobile-only with no web/PC-playable build; itch.io isn't a good fit without one
@@ -63,6 +70,8 @@ The portfolio must read as aesthetically polished and professional within a 10-s
 - **v1.1 shipped 2026-07-23** (same day as v1.0, single-phase milestone): "Game Jams" section added to `/game-projects` — one additive template change to `GameProjects.vue` (56 lines), no new files/components/data. Security review (ASVS L1) closed clean; code review flagged one non-blocking WCAG accessibility gap (see Active).
 - Audience is mixed: non-technical recruiters doing a fast scan, and technical leads/devs who want a bit more substance (stack + one technical highlight) without reading code.
 - Personality is expressed visually (running character mascot, tone of copy) with a deliberately held line toward still reading as professional — not casual/quirky at the expense of credibility.
+- **v1.2 started 2026-07-23.** Josef decided to adopt the dark-theme redesign rather than rework or discard it. Source directories for all 4 games were added as working directories to mine for the new Technical Overview feature: SwingSpace (`D:\Kodning\Unity\Egna Spel\Ubaka_Josef_SwingSpace`), Drag Rush (`D:\Kodning\GitHub\DragRush`), Floor Zero (`C:\Users\josef\Documents\Unreal Projects\Floor0`), Dispater/"C9" (`C:\Users\josef\Documents\Unreal Projects\C9`, paired with Diversion version control).
+- This reverses part of the v1.0 Out of Scope call ("no code snippets on the page") — Josef explicitly wants real code/blueprint snippets now, behind a click-to-expand "Technical Overview" fold-out rather than shown by default, which keeps the 10-second-scan core value intact while giving technical reviewers somewhere deeper to go.
 
 ## Constraints
 
@@ -110,4 +119,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-07-23 — v1.1 Game Jams Section milestone shipped and archived*
+*Last updated: 2026-07-23 — v1.2 Redesign, Technical Deep-Dive & Launch milestone started*
