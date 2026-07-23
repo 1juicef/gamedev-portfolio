@@ -1,5 +1,5 @@
 ---
-status: diagnosed
+status: resolved
 trigger: "G-03-4-resume-image-position: Resume page image (actualResume.png) sits too far up on the page — user wants it to move down a bit."
 created: 2026-07-22T00:00:00.000Z
 updated: 2026-07-22T00:00:00.000Z
@@ -48,6 +48,6 @@ root_cause: >
   `.resume-page` container nor `.resume-image` has any top margin/padding. Combined with
   `.main`'s zero top padding on desktop (App.vue, min-width:620px media query), the resume
   image renders flush against the top of the content column with no vertical breathing room.
-fix: (not applied — goal is find_root_cause_only)
-verification: (not applicable — diagnose-only mode)
-files_changed: []
+fix: src/views/Resume.vue .resume-page already carries padding-top: 48px (scoped to /resume only, no change to global .main padding) — applied by gap-closure plan 03-03, committed in HEAD
+verification: grep -c 'padding-top: 48px' src/views/Resume.vue == 1; Phase 03 UAT Test 6 (resume top-spacing re-check) = pass
+files_changed: [src/views/Resume.vue]

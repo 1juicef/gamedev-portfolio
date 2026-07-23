@@ -1,5 +1,5 @@
 ---
-status: diagnosed
+status: resolved
 trigger: "G-03-5-sitewide-horizontal-spacing: Too much dead space on the left and right sides across all pages of the site."
 created: 2026-07-22T00:00:00.000Z
 updated: 2026-07-22T00:00:00.000Z
@@ -52,6 +52,6 @@ started: Discovered during Phase 3 UAT (2026-07-22)
 ## Resolution
 
 root_cause: "src/App.vue's desktop (>=620px) media query caps `.main`, `.header`, and `.footer` at `max-width: 1280px; margin: 0 auto;` — the single sitewide layout-width rule. On common desktop viewports (1440px, 1920px, ultrawide), this leaves large symmetric empty columns on both sides of the centered content (e.g. ~320px per side at 1920px width, before the 48px inner .main padding is even counted), which reads as excessive dead space. This is a single global rule affecting every route since all views render inside `.main` and Header/Footer share the same selector."
-fix: ""
-verification: ""
-files_changed: []
+fix: "src/App.vue desktop (min-width:620px) media query already caps .main/.header/.footer at max-width: 1600px (raised from the diagnosed 1280px by gap-closure plan 03-03) — committed in HEAD and preserved on disk under the uncommitted redesign"
+verification: "grep -c 'max-width: 1600px' src/App.vue == 1; Phase 03 UAT Test 7 (column-width re-check) = pass"
+files_changed: [src/App.vue]
