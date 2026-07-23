@@ -29,7 +29,6 @@ export default [
         A team of 6 — 3 programmers, 3 artists.<br/>
         I mainly built the vehicle animation trees and helped finalize the Beat Conductor.<br/>
         Unique twist between a racing- and rhythm game.<br/>
-        Custom made "Beat Conductor".<br/>
         Fast-paced, satisfying and a "ok, one more try!" hook.
     </div>
     <div class="paragraph center">
@@ -82,7 +81,7 @@ export default [
         First solo project in Unreal Engine (5 weeks).<br/>
         Multi-state AI built with behaviour tree.<br/>
         Custom built Key/Lock and item system.<br/>
-        Guaranteed no sleep for a week minimum
+        Guaranteed no sleep for a week minimum.
     </div>
     <div class="paragraph center">
         <a href="https://juice-f.itch.io/floorzero" target="_blank"><img class="itch-badge" src="img/projects/itchBadge.png" alt="Play on itch.io" loading="lazy" /></a>
