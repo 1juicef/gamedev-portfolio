@@ -8,7 +8,7 @@ status: executing
 stopped_at: Completed 03-04-PLAN.md
 last_updated: "2026-07-23T08:35:12.286Z"
 last_activity: 2026-07-23
-last_activity_desc: Phase 03 execution started
+last_activity_desc: Completed quick task 260723-glj: Replace the itch.io badge (image) with a simple clickable itch.io hyperlink text
 progress:
   total_phases: 3
   completed_phases: 3
@@ -109,6 +109,7 @@ Recent decisions affecting current work:
 
 | # | Description | Date | Commit | Directory |
 |---|-------------|------|--------|-----------|
+| 260723-glj | Replace itch.io text links with clickable itch.io badge image (Drag Rush, Dispater, Floor Zero; SwingSpace untouched) | 2026-07-23 | 23bbd16 | [260723-glj-replace-the-itch-io-badge-image-with-a-s](./quick/260723-glj-replace-the-itch-io-badge-image-with-a-s/) |
 | 260722-ot7 | Floor Zero blurb swap, Footer.vue spacing rollback + mascot reposition, route-based mascot swap (Header/Footer) | 2026-07-22 | 8a53b4d | [260722-ot7-floor-zero-blurb-swap-footer-vue-spacing](./quick/260722-ot7-floor-zero-blurb-swap-footer-vue-spacing/) |
 | 260722-q9k | Rewrite Drag Rush/Dispater/Floor Zero intro hook+description text | 2026-07-22 | 992bb6e | [260722-q9k-rewrite-drag-rush-dispater-floor-zero-in](./quick/260722-q9k-rewrite-drag-rush-dispater-floor-zero-in/) |
 
