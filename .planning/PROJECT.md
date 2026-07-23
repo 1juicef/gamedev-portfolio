@@ -2,7 +2,7 @@
 
 ## What This Is
 
-A static Vue 2 + TypeScript portfolio site showcasing Josef's shipped game projects (Drag Rush, Dispater, Floor 0, SwingSpace) for game-industry job applications. Visitors scroll a timeline of project cards, click through to media-rich overlays, and can view a resume — no code is shown anywhere on the site. As of v1.0, project media loads fast and lean (compressed video thumbnails + WebP screenshots, all lazy-loaded), copy carries a warm-but-professional personality within a validated boundary, the timeline/resume/overlay layouts are visually polished, and shared links render correct social-preview metadata.
+A static Vue 2 + TypeScript portfolio site showcasing Josef's shipped game projects (Drag Rush, Dispater, Floor 0, SwingSpace) for game-industry job applications. Visitors scroll a timeline of project cards, click through to media-rich overlays, and can view a resume — no code is shown anywhere on the site. As of v1.0, project media loads fast and lean (compressed video thumbnails + WebP screenshots, all lazy-loaded), copy carries a warm-but-professional personality within a validated boundary, the timeline/resume/overlay layouts are visually polished, and shared links render correct social-preview metadata. As of v1.1, a lightweight "Game Jams" section at the bottom of the timeline gives two additional jam games (The Eldritch Keeper, Mas-Q) plain-text itch.io links without the full project-card treatment.
 
 ## Core Value
 
@@ -45,11 +45,13 @@ The portfolio must read as aesthetically polished and professional within a 10-s
 - ✓ Personality boundary (mascot confined to header/footer, warm-but-short copy) validated via full read-through — v1.0 (POLISH-02)
 - ✓ Resume page shows single `actualResume.png` image, no extra chrome — v1.0 (RESUME-01, explicit accessibility/PDF tradeoff accepted)
 - ✓ Real OG/social-preview metadata replacing placeholder `mywebsite.com` values — v1.0 (META-01)
+- ✓ "Game Jams" subheading + two plain-text itch.io hyperlinks (The Eldritch Keeper, Mas-Q) at the bottom of the `/game-projects` timeline, each opening in a new tab with `rel="noopener noreferrer"` — v1.1 (GAMEJAMS-01/02/03)
 
 ### Active
 
 - [ ] Deploy the portfolio to the custom domain `www.josefubaka.com` (already purchased) — update `public/index.html` `og:url`/`og:image` off the current GitHub Pages URL once live, and re-verify the social-preview card render (Phase 3 UAT Test 3, currently blocked on having a live URL) — out of scope for v1.1, deferred again
 - [ ] Decide the fate of the in-progress visual redesign sitting uncommitted in the working tree (`App.vue`/`ProjectDetailsOverlay.vue`: dark gradient background, Lekton/Russo One custom fonts, reworked overlay styling) — deliberately excluded from v1.0 and v1.1 at Josef's request; needs a real decision (adopt, rework, or discard) rather than sitting uncommitted indefinitely
+- [ ] Add an accessible "(opens in a new tab)" cue to the two new Game Jams links (WCAG 3.2.5 gap found by Phase 4 code review, WR-01) — fix attempted via `/gsd-code-review 4 --fix` but the fixer agent hit the session usage limit before making changes; re-run once the session limit resets
 
 ### Out of Scope
 
@@ -96,6 +98,8 @@ The portfolio must read as aesthetically polished and professional within a 10-s
 | Missing `.pc-video`/`.swing-space-*` CSS (referenced by `GameProjectsData.ts` since Phase 1's `78090d8` but never styled) committed as a standalone fix | Genuine completeness bug independent of Josef's unrelated uncommitted redesign — needed regardless of that redesign's fate | ✓ Shipped — post-close quick task |
 | Josef's dark-gradient/custom-font redesign of `App.vue`/`ProjectDetailsOverlay.vue` deliberately left uncommitted and out of v1.0 scope | Not tied to any phase plan or requirement; user's explicit call to decide its fate separately | — Pending v1.1 decision |
 | Game Jams section and custom-domain deploy acknowledged as open at v1.0 close rather than blocking ship | Both are blocked on external inputs (assets from Josef, domain going live) unrelated to code quality | — Deferred to v1.1 |
+| Game Jams links carry `rel="noopener noreferrer"` even though the four existing itch.io badge links elsewhere don't | New surface gets the tabnabbing mitigation (T-04-01) regardless of what older links do; not a retrofit of old links | ✓ Shipped — Phase 4 |
+| Game Jams security review (ASVS L1) closed both threats without spawning the auditor agent — mitigation grep-verified present, arbitrary-href risk accepted (hardcoded literals, no dynamic input) | `threats_open: 0` + plan-time threat register + ASVS L1 short-circuit rule applied per `/gsd-secure-phase` protocol | ✓ Shipped — Phase 4 |
 
 ## Evolution
 
@@ -115,4 +119,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-07-23 — v1.1 Game Jams Section milestone started*
+*Last updated: 2026-07-23 — Phase 4 (Game Jams Section) complete, v1.1 requirements validated*
