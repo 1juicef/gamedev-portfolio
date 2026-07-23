@@ -73,6 +73,10 @@ Plans:
 
 - [x] 02-02-PLAN.md — Personality boundary: full top-to-bottom read-through checkpoint with Josef (POLISH-02)
 
+**Gap Closure** *(from 02-UAT.md G-02-1 through G-02-5)*
+
+- [ ] 02-03-PLAN.md — 3 copy one-liners (hero Arkham Horror swap, remove redundant Drag Rush Beat Conductor bullet, Floor 0 trailing period) + 2 scoped overlay-CSS fixes (center "About this game" h3, white Close link)
+
 ### Phase 3: Visual Polish, Resume & Site Metadata
 
 **Goal**: The timeline layout reads restrained and premium, the resume page shows a single polished image, and shared links render accurate site metadata.
