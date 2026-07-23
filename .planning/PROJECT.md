@@ -8,17 +8,7 @@ A static Vue 2 + TypeScript portfolio site showcasing Josef's shipped game proje
 
 The portfolio must read as aesthetically polished and professional within a 10-second scan, while still carrying a distinct sense of personality — without ever needing to show a line of code to prove the work is real.
 
-*(Confirmed still the right priority after shipping v1.0 — no change.)*
-
-## Current Milestone: v1.1 Game Jams Section
-
-**Goal:** Add a lightweight "Game Jams" subsection to the bottom of `/game-projects`, giving two additional jam games a presence without the full project-card treatment.
-
-**Target features:**
-- New "Game Jams" subheading at the bottom of the `/game-projects` timeline
-- Two plain text hyperlinks, one per game, linking directly out to itch.io (no screenshots, no click-through overlay):
-  - "The Eldritch Keeper" → https://juice-f.itch.io/the-eldritch-keeper
-  - "Mas-Q" → https://superguardian.itch.io/mas-q
+*(Confirmed still the right priority after shipping v1.0 and v1.1 — no change. The Game Jams addition was small enough that it didn't pressure-test this value; it simply extended the existing timeline pattern.)*
 
 ## Business Context
 
@@ -69,7 +59,8 @@ The portfolio must read as aesthetically polished and professional within a 10-s
 - **v1.0 shipped 2026-07-23** (3-day pass, 121 commits, 13/13 requirements complete): media pipeline (ffmpeg + sharp) built and live, all project content/personality finalized and UAT-validated, timeline/resume/overlay visual polish complete, real social-preview metadata in place.
 - Post-requirements polish landed via quick tasks after Phase 3 closed: itch.io badge images (replacing text links), a Phase-1 CSS completeness gap fixed (`.pc-video`/`.swing-space-*` classes were referenced but never styled since `78090d8`), SwingSpace's video/screenshots refreshed from newer source media, and a new gameplay video added to Floor Zero's overlay.
 - Two items were deliberately deferred at v1.0 close rather than blocking ship (see STATE.md Deferred Items): the Game Jams timeline section (needs assets from Josef) and the custom-domain deploy (needs the domain live).
-- Josef has a separate, unrelated visual redesign (dark gradient theme + custom fonts) sitting uncommitted in the working tree throughout v1.0 — intentionally excluded from this milestone at his request; still needs a decision for v1.1.
+- Josef has a separate, unrelated visual redesign (dark gradient theme + custom fonts) sitting uncommitted in the working tree throughout v1.0 and v1.1 — intentionally excluded from both milestones at his request; still needs a decision.
+- **v1.1 shipped 2026-07-23** (same day as v1.0, single-phase milestone): "Game Jams" section added to `/game-projects` — one additive template change to `GameProjects.vue` (56 lines), no new files/components/data. Security review (ASVS L1) closed clean; code review flagged one non-blocking WCAG accessibility gap (see Active).
 - Audience is mixed: non-technical recruiters doing a fast scan, and technical leads/devs who want a bit more substance (stack + one technical highlight) without reading code.
 - Personality is expressed visually (running character mascot, tone of copy) with a deliberately held line toward still reading as professional — not casual/quirky at the expense of credibility.
 
@@ -119,4 +110,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-07-23 — Phase 4 (Game Jams Section) complete, v1.1 requirements validated*
+*Last updated: 2026-07-23 — v1.1 Game Jams Section milestone shipped and archived*

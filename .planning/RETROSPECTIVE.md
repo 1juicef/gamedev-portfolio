@@ -40,6 +40,37 @@
 
 ---
 
+## Milestone: v1.1 — Game Jams Section
+
+**Shipped:** 2026-07-23
+**Phases:** 1 | **Plans:** 1 | **Sessions:** 1 (same day as v1.0 close)
+
+### What Was Built
+- A "Game Jams" subheading + two plain-text itch.io hyperlinks (The Eldritch Keeper, Mas-Q) appended below the existing project timeline in `GameProjects.vue` — one additive template block + scoped styles, no new files/components/data
+
+### What Worked
+- Skipping discuss-phase and research entirely for this phase (trivial, exact-string/exact-URL requirements already fully specified in REQUIREMENTS.md) produced zero rework — the plan, execution, and verification all matched on the first pass
+- The spec-less edge-probe fallback (no SPEC.md existed) correctly surfaced all 5 generic probe items as explicit flagged assumptions rather than forcing artificial edge-case coverage onto a phase with no real data-structure edges
+- Security review short-circuited cleanly at ASVS L1 (plan-time threat register + `threats_open: 0`) without needing to spawn the security-auditor agent — a plain grep confirmed the one real mitigation (`rel="noopener noreferrer"`) was present
+
+### What Was Inefficient
+- The `resolves_phase`-tagged pending todo for this feature was NOT auto-closed by execute-phase's `close_phase_todos` step, because verification returned `human_needed` and the phase completed via the UAT → `/gsd-verify-work` → transition path instead of execute-phase's own direct-completion path (which is the only path that runs that step). It was only caught by the milestone-close `audit-open` scan and had to be closed manually.
+- The `/gsd-code-review --fix` agent hit the session's usage limit mid-run (right after creating its worktree, before any edits), leaving one non-blocking WCAG 3.2.5 finding (missing "opens in new tab" cue) unfixed. No harm done — the worktree was empty and cleanly removed — but the fix is now carried forward as a PROJECT.md Active item instead of landing same-session.
+
+### Patterns Established
+- For a phase whose requirements are already locked to exact strings/URLs (no design ambiguity), autonomous (`yolo` mode) skipping of discuss-phase and research is a safe default — reserve research for phases with real architectural or domain uncertainty
+
+### Key Lessons
+1. A `resolves_phase`-tagged todo is only auto-closed on execute-phase's direct-completion path — any phase that goes through human-verification/UAT instead needs its pending todos checked manually at milestone close (or via `audit-open`) rather than assumed closed
+2. Subagent fixer/executor runs can be terminated mid-task by the session's own usage limit — check for partial worktrees/commits before retrying, and don't treat a failed fix as a code problem
+
+### Cost Observations
+- Model mix: opus (planner, security-auditor when spawned), sonnet (executor, code-reviewer, verifier), haiku (plan-checker) — standard GSD profile
+- Sessions: 1 (phase planned, executed, reviewed, verified, security-checked, UAT'd, and milestone-closed in a single continuous session)
+- Notable: the code-review `--fix` pass failed on a session usage-limit hit, not a logic error — first occurrence of this failure mode recorded in this project's history
+
+---
+
 ## Cross-Milestone Trends
 
 ### Process Evolution
@@ -47,13 +78,16 @@
 | Milestone | Sessions | Phases | Key Change |
 |-----------|----------|--------|------------|
 | v1.0 | ~3 | 3 | Established the media pipeline + quick-task-driven post-close polish pattern |
+| v1.1 | 1 | 1 | First milestone to fully exercise the security-review (ASVS L1) and spec-less probe fallback gates end-to-end |
 
 ### Cumulative Quality
 
 | Milestone | Tests | Coverage | Zero-Dep Additions |
 |-----------|-------|----------|-------------------|
 | v1.0 | 11 UAT scenarios (Phase 3) | N/A (no automated test suite) | ffmpeg, sharp (both dev-only, not shipped to browser) |
+| v1.1 | 2 UAT scenarios (Phase 4) | N/A (no automated test suite) | None |
 
 ### Top Lessons (Verified Across Milestones)
 
 1. Close diagnosed debug sessions immediately — don't defer status updates to milestone-close audits
+2. `resolves_phase`-tagged todos aren't guaranteed auto-closed on every completion path — verify at milestone close, don't assume

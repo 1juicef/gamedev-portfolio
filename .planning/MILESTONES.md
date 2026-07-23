@@ -1,5 +1,15 @@
 # Milestones
 
+## v1.1 Game Jams Section (Shipped: 2026-07-23)
+
+**Phases completed:** 1 phases, 1 plans, 1 tasks
+
+**Key accomplishments:**
+
+- Added a "Game Jams" subheading with two plain-text itch.io hyperlinks (The Eldritch Keeper, Mas-Q) below the project timeline on /game-projects, each opening in a new tab with noopener/noreferrer.
+
+---
+
 ## v1.0 v1.0 MVP (Shipped: 2026-07-23)
 
 **Phases completed:** 3 phases, 11 plans, 24 tasks
