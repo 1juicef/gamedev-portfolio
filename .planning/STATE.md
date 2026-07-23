@@ -1,19 +1,16 @@
 ---
 gsd_state_version: 1.0
-milestone: v1.0
-milestone_name: milestone
-status: Awaiting next milestone
-stopped_at: Completed 02-03-PLAN.md
-last_updated: "2026-07-23T14:47:19.812Z"
+milestone: v1.1
+milestone_name: Game Jams Section
+status: planning
+last_updated: "2026-07-23T15:09:51.304Z"
 last_activity: 2026-07-23
-last_activity_desc: Milestone v1.0 completed and archived
 progress:
-  total_phases: 3
-  completed_phases: 3
-  total_plans: 11
-  completed_plans: 11
-current_phase: 03
-current_phase_name: Visual Polish, Resume & Site Metadata
+  total_phases: 0
+  completed_phases: 0
+  total_plans: 0
+  completed_plans: 0
+  percent: 0
 ---
 
 # Project State
@@ -27,10 +24,10 @@ See: .planning/PROJECT.md (updated 2026-07-23)
 
 ## Current Position
 
-Phase: Milestone v1.0 complete
+Phase: Not started (defining requirements)
 Plan: —
-Status: Awaiting next milestone
-Last activity: 2026-07-23 — Milestone v1.0 completed and archived
+Status: Defining requirements
+Last activity: 2026-07-23 — Milestone v1.1 started
 
 ## Performance Metrics
 
@@ -77,10 +74,11 @@ v1.0 is shipped — the full decision log now lives in PROJECT.md's Key Decision
 
 ### Pending Todos
 
-2 pending, carried into v1.1 planning (see PROJECT.md Active requirements and Deferred Items below):
+1 pending, deferred again (see PROJECT.md Active requirements):
 
-- Add two Game Jam games as a separate "Game Jams" section (single clickable screenshot per game, links to itch.io) — needs game titles/itch.io URLs/screenshots from Josef
 - Deploy portfolio to custom domain www.josefubaka.com (purchased); update public/index.html og:url/og:image once live, and re-verify Phase 3 UAT test 3 (social-preview card rendering, blocked — no live URL yet)
+
+(Game Jams section is no longer pending — it's this milestone's scope, unblocked: titles/URLs confirmed, format simplified to plain hyperlinks under a subheading, no screenshots needed.)
 
 ### Blockers/Concerns
 
@@ -102,7 +100,7 @@ Items acknowledged and deferred at milestone close on 2026-07-23:
 
 | Category | Item | Status | Deferred At |
 |----------|------|--------|-------------|
-| todo | add-two-game-jam-games-to-timeline | blocked — needs game titles/itch.io URLs/screenshots from Josef | 2026-07-23 |
+| todo | add-two-game-jam-games-to-timeline | unblocked — now in scope for v1.1 (see Current Milestone in PROJECT.md) | 2026-07-23 |
 | todo | deploy-portfolio-to-custom-domain-www-josefubaka-com | blocked — needs domain live before og:url/og:image update and Phase 3 UAT Test 3 re-verification | 2026-07-23 |
 
 ## Session Continuity

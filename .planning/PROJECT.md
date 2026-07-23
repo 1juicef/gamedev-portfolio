@@ -10,6 +10,16 @@ The portfolio must read as aesthetically polished and professional within a 10-s
 
 *(Confirmed still the right priority after shipping v1.0 — no change.)*
 
+## Current Milestone: v1.1 Game Jams Section
+
+**Goal:** Add a lightweight "Game Jams" subsection to the bottom of `/game-projects`, giving two additional jam games a presence without the full project-card treatment.
+
+**Target features:**
+- New "Game Jams" subheading at the bottom of the `/game-projects` timeline
+- Two plain text hyperlinks, one per game, linking directly out to itch.io (no screenshots, no click-through overlay):
+  - "The Eldritch Keeper" → https://juice-f.itch.io/the-eldritch-keeper
+  - "Mas-Q" → https://superguardian.itch.io/mas-q
+
 ## Business Context
 
 - **Customer**: Game studio recruiters/HR (fast scan) and technical leads/devs (closer look) — roughly equal priority
@@ -38,9 +48,8 @@ The portfolio must read as aesthetically polished and professional within a 10-s
 
 ### Active
 
-- [ ] Add a "Game Jams" section to the timeline — two additional games, one clickable screenshot each, linking to itch.io — blocked on Josef supplying game titles/itch.io URLs/screenshots (deferred from v1.0 close, see STATE.md Deferred Items)
-- [ ] Deploy the portfolio to the custom domain `www.josefubaka.com` (already purchased) — update `public/index.html` `og:url`/`og:image` off the current GitHub Pages URL once live, and re-verify the social-preview card render (Phase 3 UAT Test 3, currently blocked on having a live URL)
-- [ ] Decide the fate of the in-progress visual redesign sitting uncommitted in the working tree (`App.vue`/`ProjectDetailsOverlay.vue`: dark gradient background, Lekton/Russo One custom fonts, reworked overlay styling) — deliberately excluded from v1.0 at Josef's request; needs a real decision (adopt as v1.1, rework, or discard) rather than sitting uncommitted indefinitely
+- [ ] Deploy the portfolio to the custom domain `www.josefubaka.com` (already purchased) — update `public/index.html` `og:url`/`og:image` off the current GitHub Pages URL once live, and re-verify the social-preview card render (Phase 3 UAT Test 3, currently blocked on having a live URL) — out of scope for v1.1, deferred again
+- [ ] Decide the fate of the in-progress visual redesign sitting uncommitted in the working tree (`App.vue`/`ProjectDetailsOverlay.vue`: dark gradient background, Lekton/Russo One custom fonts, reworked overlay styling) — deliberately excluded from v1.0 and v1.1 at Josef's request; needs a real decision (adopt, rework, or discard) rather than sitting uncommitted indefinitely
 
 ### Out of Scope
 
@@ -106,4 +115,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-07-23 after v1.0 milestone*
+*Last updated: 2026-07-23 — v1.1 Game Jams Section milestone started*
