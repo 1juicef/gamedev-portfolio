@@ -9,9 +9,9 @@ Small additive milestone: give two Game Jam games a lightweight presence on the 
 
 ### Game Jams Section
 
-- [ ] **GAMEJAMS-01**: A "Game Jams" subheading appears at the bottom of the `/game-projects` timeline, below the existing 4 project rows
-- [ ] **GAMEJAMS-02**: Two hyperlinks appear under the subheading, reading exactly "The Eldritch Keeper" and "Mas-Q"
-- [ ] **GAMEJAMS-03**: Each hyperlink opens its game's itch.io page in a new tab (The Eldritch Keeper → `https://juice-f.itch.io/the-eldritch-keeper`, Mas-Q → `https://superguardian.itch.io/mas-q`)
+- [x] **GAMEJAMS-01**: A "Game Jams" subheading appears at the bottom of the `/game-projects` timeline, below the existing 4 project rows
+- [x] **GAMEJAMS-02**: Two hyperlinks appear under the subheading, reading exactly "The Eldritch Keeper" and "Mas-Q"
+- [x] **GAMEJAMS-03**: Each hyperlink opens its game's itch.io page in a new tab (The Eldritch Keeper → `https://juice-f.itch.io/the-eldritch-keeper`, Mas-Q → `https://superguardian.itch.io/mas-q`)
 
 ## Future Requirements
 
@@ -35,9 +35,9 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| GAMEJAMS-01 | Phase 4 | Pending |
-| GAMEJAMS-02 | Phase 4 | Pending |
-| GAMEJAMS-03 | Phase 4 | Pending |
+| GAMEJAMS-01 | Phase 4 | Complete |
+| GAMEJAMS-02 | Phase 4 | Complete |
+| GAMEJAMS-03 | Phase 4 | Complete |
 
 **Coverage:**
 

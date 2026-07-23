@@ -25,18 +25,22 @@ Full phase details archived in [milestones/v1.0-ROADMAP.md](./milestones/v1.0-RO
 ## Phase Details
 
 ### Phase 4: Game Jams Section
+
 **Goal**: Two game-jam games (The Eldritch Keeper, Mas-Q) gain a lightweight presence at the bottom of the `/game-projects` timeline via a "Game Jams" subheading and plain-text hyperlinks out to itch.io — no project cards, screenshots, or overlays.
 **Depends on**: Phase 3 (existing `/game-projects` timeline)
 **Requirements**: GAMEJAMS-01, GAMEJAMS-02, GAMEJAMS-03
 **Success Criteria** (what must be TRUE):
+
   1. A "Game Jams" subheading is visible at the bottom of the `/game-projects` timeline, below the four existing project rows
   2. Two text hyperlinks reading exactly "The Eldritch Keeper" and "Mas-Q" appear under that subheading
   3. Clicking "The Eldritch Keeper" opens `https://juice-f.itch.io/the-eldritch-keeper` in a new browser tab
   4. Clicking "Mas-Q" opens `https://superguardian.itch.io/mas-q` in a new browser tab
-**Plans**: 1 plan
+
+**Plans**: 1/1 plans executed
 
 Plans:
-- [ ] 04-01-PLAN.md — Add "Game Jams" subheading + two itch.io text links (The Eldritch Keeper, Mas-Q) at the bottom of the /game-projects timeline
+
+- [x] 04-01-PLAN.md — Add "Game Jams" subheading + two itch.io text links (The Eldritch Keeper, Mas-Q) at the bottom of the /game-projects timeline
 
 ## Progress
 
@@ -45,4 +49,4 @@ Plans:
 | 1. Media & Performance Optimization | v1.0 | 4/4 | Complete | 2026-07-22 |
 | 2. Project Content & Personality | v1.0 | 3/3 | Complete | 2026-07-23 |
 | 3. Visual Polish, Resume & Site Metadata | v1.0 | 4/4 | Complete | 2026-07-23 |
-| 4. Game Jams Section | v1.1 | 0/1 | Not started | - |
+| 4. Game Jams Section | v1.1 | 1/1 | In Progress|  |
