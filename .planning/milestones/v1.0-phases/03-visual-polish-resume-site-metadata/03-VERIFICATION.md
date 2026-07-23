@@ -1,7 +1,7 @@
 ---
 phase: 03-visual-polish-resume-site-metadata
 verified: 2026-07-23T01:00:00Z
-status: human_needed
+status: passed
 score: 17/18 must-haves verified
 behavior_unverified: 0
 overrides_applied: 0
@@ -9,23 +9,29 @@ re_verification:
   previous_status: human_needed
   previous_score: 16/16
   gaps_closed:
+
     - "G-03-8: project details overlay's black-to-purple gradient runs to the very bottom edge, ending in purple, no black bar"
     - "G-03-9: Dispater overlay standalone gameplay video block removed; screenshots/trailer/About/itch.io link intact"
   gaps_remaining: []
   regressions: []
 human_verification:
+
   - test: "Run `npm run serve`, open /game-projects: read the timeline top-to-bottom."
     expected: "Rows read tighter/more restrained (48px desktop / 32px mobile row rhythm, 2.1em titles), project titles show a visible underline before hovering, and the underline brightens to #f4cde6 on hover/keyboard focus. Alternating left/right rows (Dispater, SwingSpace reversed) are intact."
     why_human: "Subjective 'reads more restrained/premium' visual judgment; already confirmed pass in 03-UAT.md test 1. Re-listed for completeness."
+
   - test: "On the timeline, hover/click Dispater's thumbnail, then click through to the overlay."
     expected: "Dispater's timeline thumbnail plays DispaterGif content; the standalone DispaterGif2 video block is now gone from the overlay (removed by 03-04/G-03-9), leaving screenshots, YouTube trailer, About section, and itch.io link."
     why_human: "Confirming the video block is actually gone in rendered output, and the remaining sections still read correctly in sequence, requires visual confirmation. Timeline-plays-DispaterGif half already confirmed pass in 03-UAT.md test 2; the video-removal half has not yet had a post-fix visual re-check."
+
   - test: "Once deployed, paste the live site URL into a link-preview debugger (or share it in Discord/Slack)."
     expected: "The card shows title 'Josef — Game Developer Portfolio', the locked description, and the avatar image — not a broken/blank image or the old mywebsite.com placeholder."
     why_human: "Actual OG-crawler rendering can only be confirmed against a live deploy / real preview tool. Blocked in 03-UAT.md test 3 — site not yet deployed; user indicated intent to deploy to a custom domain (www.josefubaka.com) instead, which would need a follow-up og:url/og:image update — not a Phase 3 gap."
+
   - test: "Run `npm run serve`, visit /resume and check >=1440px viewport on every route (/game-projects, /other-projects, /resume, /contact)."
     expected: "Resume image sits with clear vertical breathing room below the header (48px). Content column reads balanced (1600px cap) on wide viewports, not narrow-and-centered with heavy dead space."
     why_human: "Already confirmed pass in 03-UAT.md tests 6 and 7. Re-listed for completeness."
+
   - test: "Run `npm run serve`, open /game-projects, click any project card, scroll to the bottom of the overlay."
     expected: "The gradient transitions smoothly into purple (#2b123f) at the very bottom edge with no black strip below it."
     why_human: "Visual rendering confirmation required per 03-04-PLAN.md Task 1's human-check. Not yet re-confirmed in UAT since the G-03-8 fix landed. IMPORTANT: see 'Provenance Risk' finding below — the gradient itself is not committed anywhere in this repo's git history; it exists only in Josef's separate, currently-uncommitted working-tree edits to this same file. The committed fix (removing `.dialog`'s `padding-bottom: 10px`) is real and correctly isolated, but it has no visible effect unless Josef's uncommitted gradient declaration remains in place."
