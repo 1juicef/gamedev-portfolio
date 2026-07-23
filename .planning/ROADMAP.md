@@ -85,7 +85,7 @@ Plans:
   2. The resume page displays actualResume.png as the resume
   3. Sharing the site link shows the correct site title, description, and a real preview image instead of placeholder mywebsite.com/avatar-og.png values
 
-**Plans**: 3/3 plans executed
+**Plans**: 4/4 plans executed
 **UI hint**: yes
 
 Plans:
@@ -99,7 +99,7 @@ Plans:
 
 **Gap Closure** *(from 03-UAT.md G-03-8, G-03-9)*
 
-- [ ] 03-04-PLAN.md — Overlay gradient reaches bottom edge (G-03-8) + remove Dispater standalone gameplay video block (G-03-9), two single-file deletions
+- [x] 03-04-PLAN.md — Overlay gradient reaches bottom edge (G-03-8) + remove Dispater standalone gameplay video block (G-03-9), two single-file deletions
 
 ## Progress
 
@@ -110,4 +110,4 @@ Phases execute in numeric order: 1 → 2 → 3
 |-------|----------------|--------|-----------|
 | 1. Media & Performance Optimization | 4/4 | Complete | 2026-07-22 |
 | 2. Project Content & Personality | 2/2 | In Progress|  |
-| 3. Visual Polish, Resume & Site Metadata | 3/3 | In Progress|  |
+| 3. Visual Polish, Resume & Site Metadata | 4/4 | In Progress|  |
