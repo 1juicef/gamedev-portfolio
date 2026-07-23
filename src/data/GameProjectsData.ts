@@ -33,7 +33,7 @@ export default [
         Fast-paced, satisfying and a "ok, one more try!" hook.
     </div>
     <div class="paragraph center">
-        <a href="https://yrgo.itch.io/drag-rush" target="_blank">Play on itch.io</a>
+        <a href="https://yrgo.itch.io/drag-rush" target="_blank"><img class="itch-badge" src="img/projects/itchBadge.png" alt="Play on itch.io" loading="lazy" /></a>
     </div>
     `, "#6C3BAA", false, false),
     new ProjectData("dispater", "Dispater", "img/projects/dispater/DispaterSC4.png", `
@@ -64,7 +64,7 @@ export default [
         Ending will leave you in SHOCK.
     </div>
     <div class="paragraph center">
-        <a href="https://yrgo.itch.io/dispater" target="_blank">Play on itch.io</a>
+        <a href="https://yrgo.itch.io/dispater" target="_blank"><img class="itch-badge" src="img/projects/itchBadge.png" alt="Play on itch.io" loading="lazy" /></a>
     </div>
     `, "#6C3BAA", false, false),
     new ProjectData("floor-0", "Floor Zero", "img/projects/project-7-icon.png", `
@@ -85,7 +85,7 @@ export default [
         Guaranteed no sleep for a week minimum
     </div>
     <div class="paragraph center">
-        <a href="https://juice-f.itch.io/floorzero" target="_blank">Play on itch.io</a>
+        <a href="https://juice-f.itch.io/floorzero" target="_blank"><img class="itch-badge" src="img/projects/itchBadge.png" alt="Play on itch.io" loading="lazy" /></a>
     </div>
     `, "#6C3BAA", false, false),
     new ProjectData("swing-space", "SwingSpace", "img/projects/swing-space/SwingSpaceGIF.gif", `
