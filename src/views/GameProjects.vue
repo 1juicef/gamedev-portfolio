@@ -50,6 +50,24 @@
       </section>
     </div>
 
+    <section class="game-jams">
+      <h2 class="game-jams-title">Game Jams</h2>
+      <div class="game-jam-links">
+        <a
+          class="game-jam-link"
+          href="https://juice-f.itch.io/the-eldritch-keeper"
+          target="_blank"
+          rel="noopener noreferrer"
+        >The Eldritch Keeper</a>
+        <a
+          class="game-jam-link"
+          href="https://superguardian.itch.io/mas-q"
+          target="_blank"
+          rel="noopener noreferrer"
+        >Mas-Q</a>
+      </div>
+    </section>
+
     <ProjectDetailsOverlay
       v-on:close="showPopup = false"
       :visible="showPopup"
@@ -225,7 +243,45 @@ export default Vue.extend({
   line-height: 1.7;
 }
 
+.game-jams {
+  margin-top: 8px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.game-jams-title {
+  margin: 0 0 16px;
+  font-size: 1.4em;
+  font-weight: 100;
+}
+
+.game-jam-links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.game-jam-link {
+  color: inherit;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+  padding-bottom: 2px;
+  text-decoration: none;
+  width: fit-content;
+  transition: color 0.18s ease, border-bottom-color 0.18s ease;
+}
+
+.game-jam-link:hover,
+.game-jam-link:focus-visible {
+  color: #f4cde6;
+  border-bottom-color: #f4cde6;
+}
+
 @media only screen and (min-width: 620px) {
+  .game-jam-links {
+    flex-direction: row;
+    gap: 32px;
+  }
+
   .hero {
     flex-direction: row;
     align-items: center;
