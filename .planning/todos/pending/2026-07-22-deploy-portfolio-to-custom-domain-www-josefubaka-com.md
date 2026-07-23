@@ -2,6 +2,7 @@
 created: 2026-07-22T20:32:32.313Z
 title: Deploy portfolio to custom domain www.josefubaka.com
 area: deployment
+resolves_phase: 7
 files:
   - public/index.html
 ---
