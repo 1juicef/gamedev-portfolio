@@ -14,7 +14,7 @@ This redesign pass takes the existing 4-project Vue 2 portfolio from "already wo
 Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Media & Performance Optimization** - Convert oversized GIF thumbnails to video and compress/lazy-load all project images so the site loads fast and lean
-- [ ] **Phase 2: Project Content & Personality** - Land team attribution, finalized tech blurbs, warm hero copy, and a checked personality boundary
+- [x] **Phase 2: Project Content & Personality** - Land team attribution, finalized tech blurbs, warm hero copy, and a checked personality boundary (completed 2026-07-23)
 - [x] **Phase 3: Visual Polish, Resume & Site Metadata** - Polish the timeline layout, ship the resume as an image, and fix shared-link metadata (completed 2026-07-23)
 
 ## Phase Details
@@ -61,7 +61,7 @@ Plans:
   4. Each of the 4 projects shows a finalized "About this game" blurb naming the engine, dev timeframe, and one technical challenge
   5. A full top-to-bottom read-through confirms personality (mascot, tone) stays within its intended boundary without tipping into a "quirky hobby project" impression
 
-**Plans:** 3/3 plans executed
+**Plans:** 3/3 plans complete
 
 Plans:
 
@@ -113,5 +113,5 @@ Phases execute in numeric order: 1 → 2 → 3
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Media & Performance Optimization | 4/4 | Complete | 2026-07-22 |
-| 2. Project Content & Personality | 3/3 | In Progress|  |
+| 2. Project Content & Personality | 3/3 | Complete    | 2026-07-23 |
 | 3. Visual Polish, Resume & Site Metadata | 4/4 | Complete    | 2026-07-23 |

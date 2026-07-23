@@ -1,5 +1,5 @@
 ---
-status: diagnosed
+status: resolved
 phase: 02-project-content-personality
 source: [02-01-SUMMARY.md, 02-02-SUMMARY.md]
 started: 2026-07-23T11:35:00.000Z
@@ -68,7 +68,9 @@ skipped: 0
 
 - gap_id: G-02-1
   truth: "Hero section reads warm and personal while staying short and professional; no code shown anywhere."
-  status: failed
+  status: resolved
+  resolved_by: 02-03-PLAN.md
+  resolved_at: 2026-07-23
   reason: "User reported: if you could swap out Resident Evil to Arkham Horror, would be great. Besides that, pass."
   severity: minor
   test: 1
@@ -79,7 +81,9 @@ skipped: 0
     - "Replace 'Resident Evil' with 'Arkham Horror' in the hero bio sentence in src/views/GameProjects.vue, no other wording changes"
 - gap_id: G-02-2
   truth: "Drag Rush About block states team of 6 and names Josef's vehicle animation trees + Beat Conductor contribution, reading natural for a recruiter."
-  status: failed
+  status: resolved
+  resolved_by: 02-03-PLAN.md
+  resolved_at: 2026-07-23
   reason: "User reported: Remove the line \"Custom made beat conductor\" since it already states above that we made one."
   severity: minor
   test: 2
@@ -90,7 +94,9 @@ skipped: 0
     - "Delete the redundant 'Custom made \"Beat Conductor\".<br/>' bullet line from Drag Rush's About block; leave the attribution line and all other bullets untouched"
 - gap_id: G-02-3
   truth: "N/A — visual polish request: 'About this game' heading should be centered above its text, in every project overlay (not Dispater-specific)."
-  status: failed
+  status: resolved
+  resolved_by: 02-03-PLAN.md
+  resolved_at: 2026-07-23
   reason: "User reported: \"About this game\" title should be centered above the text, goes for all overlays not only dispater."
   severity: cosmetic
   test: 3
@@ -102,7 +108,9 @@ skipped: 0
     - "Add a scoped override in src/css/projects.less (e.g. '.dialog-content h3 { text-align: center; }') rather than touching the global App.vue rule, which affects headings sitewide (project titles, nav, etc.) — must stay scoped to the overlay only"
 - gap_id: G-02-4
   truth: "N/A — visual polish request: overlay's 'Close' button/link should be white, not gray, in every project overlay."
-  status: failed
+  status: resolved
+  resolved_by: 02-03-PLAN.md
+  resolved_at: 2026-07-23
   reason: "User reported: change the color of Close text to white instead of gray, all overlays."
   severity: cosmetic
   test: 3
@@ -114,7 +122,9 @@ skipped: 0
     - "Add 'color: #ffffff;' to the 'a.dialog-close-button' rule in ProjectDetailsOverlay.vue's scoped style block (overrides the inherited gray without touching the shared '.dialog-content a' rule used by other in-content links)"
 - gap_id: G-02-5
   truth: "Floor 0's About block text is free of typos/grammar issues."
-  status: failed
+  status: resolved
+  resolved_by: 02-03-PLAN.md
+  resolved_at: 2026-07-23
   reason: "User reported: FloorZero is missing a dot on the sentence Guaranteed no sleeo for a week minimum"
   severity: minor
   test: 5
