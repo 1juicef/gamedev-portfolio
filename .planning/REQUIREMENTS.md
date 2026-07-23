@@ -41,25 +41,23 @@ None deferred from this milestone's scoping conversation.
 
 ## Traceability
 
-Filled in during roadmap creation.
-
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| REDESIGN-01 | — | Pending |
-| TECH-01 | — | Pending |
-| TECH-02 | — | Pending |
-| TECH-03 | — | Pending |
-| TECH-04 | — | Pending |
-| TECH-05 | — | Pending |
-| DOMAIN-01 | — | Pending |
-| DOMAIN-02 | — | Pending |
-| DOMAIN-03 | — | Pending |
+| REDESIGN-01 | Phase 5 | Pending |
+| TECH-01 | Phase 6 | Pending |
+| TECH-02 | Phase 6 | Pending |
+| TECH-03 | Phase 6 | Pending |
+| TECH-04 | Phase 6 | Pending |
+| TECH-05 | Phase 6 | Pending |
+| DOMAIN-01 | Phase 7 | Pending |
+| DOMAIN-02 | Phase 7 | Pending |
+| DOMAIN-03 | Phase 7 | Pending |
 
 **Coverage:**
 - v1 requirements: 9 total
-- Mapped to phases: 0
-- Unmapped: 9 ⚠️ (roadmap creation pending)
+- Mapped to phases: 9 ✓
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-07-23*
-*Last updated: 2026-07-23 after initial definition*
+*Last updated: 2026-07-23 — roadmap created, all 9 requirements mapped to Phases 5-7*
