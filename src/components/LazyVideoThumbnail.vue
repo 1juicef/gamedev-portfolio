@@ -1,7 +1,7 @@
 <template>
   <div ref="wrap" class="lazy-video-thumb">
     <video
-      v-if="hasIntersected"
+      v-if="hasIntersected && !loadFailed"
       ref="video"
       :poster="poster"
       preload="none"
@@ -9,6 +9,7 @@
       loop
       playsinline
       @loadeddata="onLoaded"
+      @error="onError"
     >
       <source :src="src" type="video/mp4" />
     </video>
@@ -33,6 +34,8 @@ export default Vue.extend({
   data: function () {
     return {
       hasIntersected: false,
+      loadFailed: false,
+      retried: false,
       observer: null as IntersectionObserver | null,
     };
   },
@@ -90,6 +93,20 @@ export default Vue.extend({
     },
     onLoaded: function () {
       // hook available if a loading-spinner state is added later; no-op for now
+    },
+    onError: function () {
+      // A transient CDN/network hiccup shouldn't leave a permanently blank
+      // thumbnail. Retry once after a short delay; if it fails again, fall
+      // back to the (already-cached) poster image for good.
+      if (this.retried) {
+        this.loadFailed = true;
+        return;
+      }
+      this.retried = true;
+      setTimeout(() => {
+        this.hasIntersected = false;
+        this.$nextTick(() => this.activate());
+      }, 1500);
     },
   },
 });
