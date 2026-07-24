@@ -40,22 +40,61 @@ export default Vue.extend({
 @import './css/projects.less';
 @import './css/variables.less';
 
+@font-face {
+  font-family: 'Lekton';
+  src: url('/fonts/Lekton,Russo_One/Lekton/Lekton-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Lekton';
+  src: url('/fonts/Lekton,Russo_One/Lekton/Lekton-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Lekton';
+  src: url('/fonts/Lekton,Russo_One/Lekton/Lekton-Italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Russo One';
+  src: url('/fonts/Lekton,Russo_One/Russo_One/RussoOne-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
 html, body {
   margin: 0px;
-  background-color: @bodyBgColor;
+  min-height: 100%;
+  background: linear-gradient(180deg, #2b123f 0%, #120818 45%, #000000 100%);
+  background-attachment: fixed;
 }
 
 #app {
-  background-color: @contentBgColor;
+  min-height: 100vh;
+  background: transparent;
   color: @textColor;
 
-  font-family: 'M PLUS 1', 'Karla', Helvetica, Arial, sans-serif;
+  font-family: 'Lekton', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
   font-size: 1.1em;
   line-height: 1.6em;
   text-align: justify;
+}
+
+h1, h2, h3, h4, h5,
+.header,
+.footer,
+.project-title-link,
+.nav-bar a {
+  font-family: 'Russo One', 'Lekton', Helvetica, Arial, sans-serif;
 }
 
 h1, h2, h3, h4, h5 {
@@ -81,8 +120,8 @@ h1 {
 }
 
 .main {
-    padding: 12px;
-  }
+  padding: 16px 20px 40px;
+}
 
 @media only screen and (min-width: 620px){
 
@@ -98,7 +137,7 @@ h1 {
   }
 
   .main {
-    padding: 0px 40px 40px 180px;
+    padding: 0 48px 40px;
   }
 
   .main, .header, .footer {

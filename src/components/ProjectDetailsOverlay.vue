@@ -3,7 +3,7 @@
     <div v-if="visible">
       <div class="overlay">
       </div>
-      <div class="dialog" :style="{ 'background-color': color }">
+      <div class="dialog">
         <h1 class="dialog-title">{{ title }}</h1>
         <div @click="$emit('close')" class="dialog-close"><i class="fa fa-times fa-lg fa-fw"></i></div>
         <div class="dialog-content">
@@ -28,11 +28,6 @@ export default Vue.extend({
     title: String,
     htmlContent: String,
   },
-  methods: {
-    getImage: function(url: string) {
-      console.log("fetching image " + url);
-    }
-  }
 });
 </script>
 
@@ -55,6 +50,7 @@ export default Vue.extend({
   z-index: 11;
   margin: 20px;
   color:white;
+  background-color: #000000;
 }
 
 iframe {
@@ -66,6 +62,8 @@ h1.dialog-title {
     font-size: 1.3em;
     margin: 0px;
     padding: 22px;
+    color: #ffffff;
+    background-color: #000000;
 }
 
 .dialog-content {
@@ -73,8 +71,8 @@ h1.dialog-title {
 }
 
 .dialog-content {
-  background-color: #fcfcfc;
-  color: #696969;
+  background: linear-gradient(180deg, #000000 0%, #120818 45%, #2b123f 100%);
+  color: #ffffff;
 }
 .dialog-close {
   position: absolute;
