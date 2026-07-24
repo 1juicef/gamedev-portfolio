@@ -60,7 +60,7 @@ public void StartMetronome(double bpm)
     _nextBeatDspTime = AudioSettings.dspTime + _beatInterval;
     _running = true;
 }</code></pre>
-                <p class="tech-caption">Scheduled beats against Unity's AudioSettings.dspTime instead of Time.deltaTime, so the beat clock stays locked to the audio hardware and can't drift out of sync with the music over a long play session.</p>
+                <p class="tech-caption">Scheduled beats against Unity's AudioSettings.dspTime instead of Time.deltaTime, so the beat clock stays locked to the audio hardware and can't drift out of sync with the music over time.</p>
             </div>
             <div class="tech-snippet">
                 <pre><code>IEnumerator DoLaneChange(int newLane, int dir)
@@ -79,7 +79,7 @@ public void StartMetronome(double bpm)
         ChangeLane(dirBuf);
     }
 }</code></pre>
-                <p class="tech-caption">A lane-change input received mid-animation is buffered and replayed once the current turn settles, instead of being dropped or queued in a list — keeps input feel responsive without letting animation state fall out of sync with the logical lane.</p>
+                <p class="tech-caption">A lane-change input received mid-animation is buffered and replayed once the current turn animation finishes. This keeps input feel responsive without letting animation state fall out of sync.</p>
             </div>
             <div class="tech-snippet">
                 <pre><code>public Tween OvershootTransform(Transform t, float laneX, int dir)
@@ -99,7 +99,7 @@ public void StartMetronome(double bpm)
     _activeTween = seq;
     return _activeTween;
 }</code></pre>
-                <p class="tech-caption">A two-stage tween (fast out past the lane center, slower ease back in) gives the car a sense of momentum on transform position alone — no rigidbody needed for the turn feel.</p>
+                <p class="tech-caption">A two-stage tween (fast out, past the lane center and slower ease back in) gives the car a sense of momentum on transform position alone.</p>
             </div>
         </div>
     </details>
@@ -209,7 +209,7 @@ void Attach(Rigidbody2D anchor)
     _rb.linearDamping = 0f;
     _rb.angularDamping = 0f;
 }</code></pre>
-                <p class="tech-caption">Let Unity's DistanceJoint2D handle the swing arc naturally, but renormalized velocity to a constant magnitude every FixedUpdate so gravity and tension can't speed up or slow the swing — keeps the feel consistent regardless of anchor distance.</p>
+                <p class="tech-caption">Let Unity's DistanceJoint2D handle the swing arc naturally, but renormalized velocity to a constant magnitude every FixedUpdate so gravity and tension can't speed up or slow the swing. Keeps the feel consistent regardless of distance.</p>
             </div>
             <div class="tech-snippet">
                 <pre><code>void TryAttachNearest()
@@ -235,7 +235,7 @@ void Attach(Rigidbody2D anchor)
         AudioSource.PlayClipAtPoint(_grappleSound, transform.position);
     }
 }</code></pre>
-                <p class="tech-caption">A layer-filtered overlap query plus squared-distance comparison (no sqrt) keeps grapple targeting cheap and forgiving — the player only has to be roughly aimed at an anchor, not pixel-perfect.</p>
+                <p class="tech-caption">A layer-filtered overlap query plus squared-distance comparison, keeps grapple targeting forgiving and balanced. The player only has to be roughly aimed at an anchor, not pixel-perfect.</p>
             </div>
             <div class="tech-snippet">
                 <pre><code>public event Action&lt;float&gt; OnHeightChanged;
@@ -262,7 +262,7 @@ public bool PlayerDeath()
     }
     return false;
 }</code></pre>
-                <p class="tech-caption">Player broadcasts height/death via C# events instead of being polled — ScoreManager and the Firebase leaderboard subscribe independently, so scoring stays decoupled from player logic.</p>
+                <p class="tech-caption">Player broadcasts height/death via C# events. ScoreManager and the Firebase leaderboard subscribe independently, so scoring stays decoupled from player logic.</p>
             </div>
         </div>
     </details>
