@@ -34,6 +34,75 @@ export default [
     <div class="paragraph center">
         <a href="https://yrgo.itch.io/drag-rush" target="_blank"><img class="itch-badge" src="img/projects/itchBadge.png" alt="Play on itch.io" loading="lazy" /></a>
     </div>
+    <details class="tech-overview">
+        <summary>Technical Overview</summary>
+        <div class="tech-overview-content">
+            <div class="tech-snippet">
+                <pre><code>void Update()
+{
+    if (!_running) return;
+
+    double dspTime = AudioSettings.dspTime;
+
+    if (dspTime &gt;= _nextBeatDspTime)
+    {
+        FireBeat(_nextBeatDspTime);
+        _nextBeatDspTime += _beatInterval;
+    }
+}
+
+public void StartMetronome(double bpm)
+{
+    _bpm = bpm;
+    CalculateInterval();
+
+    _currentBeatInBar = -1;
+    _nextBeatDspTime = AudioSettings.dspTime + _beatInterval;
+    _running = true;
+}</code></pre>
+                <p class="tech-caption">Scheduled beats against Unity's AudioSettings.dspTime instead of Time.deltaTime, so the beat clock stays locked to the audio hardware and can't drift out of sync with the music over a long play session.</p>
+            </div>
+            <div class="tech-snippet">
+                <pre><code>IEnumerator DoLaneChange(int newLane, int dir)
+{
+    _isChangingLane = true;
+    _bufferedDir = 0;
+
+    // ...snap to lane, play turn animation, overshoot tween...
+
+    _isChangingLane = false;
+
+    if (_bufferedDir != 0)
+    {
+        int dirBuf = _bufferedDir;
+        _bufferedDir = 0;
+        ChangeLane(dirBuf);
+    }
+}</code></pre>
+                <p class="tech-caption">A lane-change input received mid-animation is buffered and replayed once the current turn settles, instead of being dropped or queued in a list — keeps input feel responsive without letting animation state fall out of sync with the logical lane.</p>
+            </div>
+            <div class="tech-snippet">
+                <pre><code>public Tween OvershootTransform(Transform t, float laneX, int dir)
+{
+    KillActiveTween();
+
+    Vector3 center = new Vector3(laneX, t.position.y, t.position.z);
+    t.position = center;
+
+    float goTime = _overshootDuration * 0.45f;
+    float backTime = _overshootDuration - goTime;
+    float overshootX = laneX + (_overshoot * Mathf.Sign(dir));
+
+    Sequence seq = DOTween.Sequence().SetRecyclable(true);
+    seq.Append(t.DOMoveX(overshootX, goTime).SetEase(Ease.OutQuad));
+    seq.Append(t.DOMoveX(center.x, backTime).SetEase(Ease.InQuad));
+    _activeTween = seq;
+    return _activeTween;
+}</code></pre>
+                <p class="tech-caption">A two-stage tween (fast out past the lane center, slower ease back in) gives the car a sense of momentum on transform position alone — no rigidbody needed for the turn feel.</p>
+            </div>
+        </div>
+    </details>
     `, "#6C3BAA", false, false),
     new ProjectData("dispater", "Dispater", "img/projects/dispater/DispaterSC4.png", `
     <div class="paragraph">
@@ -115,5 +184,87 @@ export default [
         Ported for mobile.<br/>
         Awesome, but also extremely fun.
     </div>
+    <details class="tech-overview">
+        <summary>Technical Overview</summary>
+        <div class="tech-overview-content">
+            <div class="tech-snippet">
+                <pre><code>void FixedUpdate()
+{
+    Vector2 currentVelocity = _rb.linearVelocity;
+    _rb.linearVelocity = currentVelocity.normalized * _constantSpeed;
+    _rb.transform.up = _rb.linearVelocity;
+}
+
+void Attach(Rigidbody2D anchor)
+{
+    _isAttached = true;
+    _currentAnchor = anchor;
+
+    _joint = gameObject.AddComponent&lt;DistanceJoint2D&gt;();
+    _joint.connectedBody = anchor;
+    _joint.enableCollision = false;
+    _joint.autoConfigureDistance = false;
+    _joint.distance = (_rb.position - anchor.position).magnitude;
+
+    _rb.linearDamping = 0f;
+    _rb.angularDamping = 0f;
+}</code></pre>
+                <p class="tech-caption">Let Unity's DistanceJoint2D handle the swing arc naturally, but renormalized velocity to a constant magnitude every FixedUpdate so gravity and tension can't speed up or slow the swing — keeps the feel consistent regardless of anchor distance.</p>
+            </div>
+            <div class="tech-snippet">
+                <pre><code>void TryAttachNearest()
+{
+    Collider2D[] hits = Physics2D.OverlapCircleAll(_rb.position, _searchRadius, _anchorLayer);
+
+    Rigidbody2D closestAnchor = null;
+    float closestSquaredDistance = float.PositiveInfinity;
+
+    foreach (Collider2D hit in hits)
+    {
+        float squaredDistance = (hit.attachedRigidbody.position - _rb.position).sqrMagnitude;
+        if (squaredDistance &lt; closestSquaredDistance)
+        {
+            closestSquaredDistance = squaredDistance;
+            closestAnchor = hit.attachedRigidbody;
+        }
+    }
+
+    if (closestAnchor != null)
+    {
+        Attach(closestAnchor);
+        AudioSource.PlayClipAtPoint(_grappleSound, transform.position);
+    }
+}</code></pre>
+                <p class="tech-caption">A layer-filtered overlap query plus squared-distance comparison (no sqrt) keeps grapple targeting cheap and forgiving — the player only has to be roughly aimed at an anchor, not pixel-perfect.</p>
+            </div>
+            <div class="tech-snippet">
+                <pre><code>public event Action&lt;float&gt; OnHeightChanged;
+public event Action OnPlayerDeath;
+
+void Start()
+{
+    // Register this Player with observers
+    if (ScoreManager.Instance != null)
+        ScoreManager.Instance.SubscribeToPlayerEvents();
+    if (FirebaseTest.Instance != null)
+        FirebaseTest.Instance.SubscribeToPlayerEvents();
+}
+
+public bool PlayerDeath()
+{
+    if (isKillable == true)
+    {
+        OnPlayerDeath?.Invoke();
+        Destroy(gameObject);
+        GameManager.Instance.IsPlayerDead(true);
+        AudioSource.PlayClipAtPoint(_deathSFX, transform.position);
+        return true;
+    }
+    return false;
+}</code></pre>
+                <p class="tech-caption">Player broadcasts height/death via C# events instead of being polled — ScoreManager and the Firebase leaderboard subscribe independently, so scoring stays decoupled from player logic.</p>
+            </div>
+        </div>
+    </details>
     `, "#6C3BAA", false, false)
 ];

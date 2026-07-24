@@ -60,6 +60,64 @@
         padding: 10px;
     }
 
+    .tech-overview {
+        margin: 24px 0 0;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 6px;
+        text-align: left;
+    }
+
+    .tech-overview summary {
+        cursor: pointer;
+        padding: 14px 18px;
+        font-weight: bold;
+        list-style: none;
+    }
+
+    .tech-overview summary::-webkit-details-marker {
+        display: none;
+    }
+
+    .tech-overview summary::before {
+        content: '▶';
+        display: inline-block;
+        margin-right: 8px;
+        transition: transform 0.15s ease;
+    }
+
+    .tech-overview[open] summary::before {
+        transform: rotate(90deg);
+    }
+
+    .tech-overview-content {
+        padding: 0 18px 18px;
+    }
+
+    .tech-snippet {
+        margin: 18px 0;
+    }
+
+    .tech-snippet pre {
+        background: rgba(0, 0, 0, 0.5);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 4px;
+        padding: 14px;
+        overflow-x: auto;
+        font-size: 0.8em;
+        line-height: 1.4;
+    }
+
+    .tech-snippet code {
+        font-family: 'Courier New', monospace;
+    }
+
+    .tech-caption {
+        font-size: 0.85em;
+        opacity: 0.8;
+        font-style: italic;
+        margin: 8px 4px 0;
+    }
+
     a {
         color:#dddddd;
         opacity: 1;
