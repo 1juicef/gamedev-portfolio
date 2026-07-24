@@ -2,7 +2,7 @@
   <div class="footer">
     
     <div class="left"><a href="https://github.com/schouffy/gamedev-portfolio" target="blank">Portfolio</a> by Juicef <img class="footer-guy" :src="mascotSrc" alt="Running character" /></div>
-    <div class="right">Reach me at <a href="mailto:my@email.com">my@email.com</a> or <router-link to="/contact">through here</router-link></div>
+    <div class="right">Reach me at <a href="mailto:josefubaka@gmail.com">josefubaka@gmail.com</a> or <router-link to="/contact">through here</router-link></div>
   </div>
 </template>
 

@@ -88,6 +88,7 @@ h1.dialog-title {
 
 .dialog-bottom {
   text-align: center;
+  margin-top: 24px;
 }
 
 a.dialog-close-button {
