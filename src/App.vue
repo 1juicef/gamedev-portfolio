@@ -23,7 +23,7 @@ Helpers.preloadImages([
   "img/projects/drag-rush/DragRushGif-poster.webp",
   "img/projects/dispater/DispaterGif-poster.webp",
   "img/projects/floor-0/Floor0gif1-poster.webp",
-  "img/projects/swing-space/SwingSpaceGIF3-poster.webp",
+  "img/projects/swing-space/SwingSpaceVid-thumb-poster.webp",
 ]);
 
 export default Vue.extend({
