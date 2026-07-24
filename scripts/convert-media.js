@@ -87,14 +87,14 @@ async function toWebp(inputPath, outputPath) {
 
 // Video thumbnail manifest: [projectFolder, gifBasename, options?]
 // Source GIF per D-10 (drag-rush/dispater), D-11 (floor-0), D-15 (swing-space).
-// The optional 3rd element is Floor-0-specific (G-01-5 trim) — not a general
-// pattern; the other 3 entries intentionally stay plain 2-element arrays.
+// The optional 3rd element trims long/looped source GIFs down to a short
+// preview loop (Floor Zero: G-01-5; SwingSpace: mobile load-time fix).
 const videoAssets = [
     ["drag-rush", "DragRushGif"],
     ["dispater", "DispaterGif2"],
     ["dispater", "DispaterGif"],
     ["floor-0", "Floor0gif1", { durationSeconds: 12.5 }],
-    ["swing-space", "SwingSpaceGIF3"],
+    ["swing-space", "SwingSpaceGIF3", { durationSeconds: 10 }],
 ];
 
 async function convertVideos() {
