@@ -42,31 +42,52 @@ export default Vue.extend({
       this.hasIntersected = true;
       return;
     }
+
+    const wrap = this.$refs.wrap as HTMLElement;
+
+    // Some mobile Chromium builds never fire an IntersectionObserver's first
+    // callback for elements already inside the watch zone at observe()-time
+    // (reported: thumbnails near the top of the page stay blank indefinitely
+    // until an unrelated scroll event forces the browser to catch up). Do a
+    // synchronous check up front so already-visible thumbnails don't depend
+    // on that first callback at all.
+    const rect = wrap.getBoundingClientRect();
+    const margin = 600;
+    if (rect.bottom >= -margin && rect.top <= window.innerHeight + margin) {
+      this.activate();
+    }
+
     this.observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            this.hasIntersected = true;
-            this.$nextTick(() => {
-              const video = this.$refs.video as HTMLVideoElement | undefined;
-              // play() returns a Promise that can reject (autoplay policy); ignore rejection.
-              video?.play().catch(() => {
-                // Autoplay was blocked by the browser; the poster remains visible via CSS fallback.
-              });
-            });
+            this.activate();
           } else if (this.$refs.video) {
             (this.$refs.video as HTMLVideoElement).pause();
           }
         });
       },
-      { rootMargin: "200px 0px" }
+      // Wide margin so a fast fling-scroll can't skip a card before the
+      // browser gets a chance to compute an intermediate intersecting state.
+      { rootMargin: "600px 0px" }
     );
-    this.observer.observe(this.$refs.wrap as Element);
+    this.observer.observe(wrap);
   },
   beforeDestroy: function () {
     this.observer?.disconnect();
   },
   methods: {
+    activate: function () {
+      if (this.hasIntersected) return;
+      this.hasIntersected = true;
+      this.$nextTick(() => {
+        const video = this.$refs.video as HTMLVideoElement | undefined;
+        // play() returns a Promise that can reject (autoplay policy); ignore rejection.
+        video?.play().catch(() => {
+          // Autoplay was blocked by the browser; the poster remains visible via CSS fallback.
+        });
+      });
+    },
     onLoaded: function () {
       // hook available if a loading-spinner state is added later; no-op for now
     },
