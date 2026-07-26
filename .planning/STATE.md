@@ -30,7 +30,7 @@ See: .planning/PROJECT.md (updated 2026-07-23)
 Phase: 5 of 7 (Dark Theme Redesign)
 Plan: — (not yet planned)
 Status: Ready to plan
-Last activity: 2026-07-26 - Completed quick task 260726-ugm: Mount GameProjects at root path instead of redirecting, fixing the #/game-projects hash on the bare domain
+Last activity: 2026-07-26 - Completed quick task 260726-vfp: Applied 13 grammar/typo fixes across the four Postmortem sections in GameProjectsData.ts
 
 Progress: [░░░░░░░░░░] 0%
 
@@ -79,6 +79,7 @@ None open. Watch during execution: keep default router (hash) mode and default `
 | 260726-nkb | Convert Postmortem section to a collapsible dropdown like Technical Overview, and replace the unicode triangle arrow with a CSS-drawn triangle to fix mobile emoji rendering | 2026-07-26 | 6b774dd | [260726-nkb-convert-postmortem-section-to-a-collapsi](./quick/260726-nkb-convert-postmortem-section-to-a-collapsi/) |
 | 260726-ny2 | Add Postmortem collapsible dropdowns to SwingSpace, Dispater, and Floor Zero entries in GameProjectsData.ts | 2026-07-26 | 6685cc8 | [260726-ny2-add-postmortem-collapsible-dropdowns-to-](./quick/260726-ny2-add-postmortem-collapsible-dropdowns-to-/) |
 | 260726-ugm | Fix root path redirect so visiting the bare domain doesn't show a #/game-projects hash | 2026-07-26 | cc45e4d | [260726-ugm-fix-root-path-redirect-so-visiting-the-b](./quick/260726-ugm-fix-root-path-redirect-so-visiting-the-b/) |
+| 260726-vfp | Apply 12 grammar/typo fixes (13 corrections) across the four Postmortem sections in GameProjectsData.ts | 2026-07-26 | 84c01e2 | [260726-vfp-apply-12-grammar-typo-fixes-across-the-f](./quick/260726-vfp-apply-12-grammar-typo-fixes-across-the-f/) |
 
 ## Deferred Items
 
