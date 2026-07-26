@@ -34,6 +34,25 @@ export default [
     <div class="paragraph center">
         <a href="https://yrgo.itch.io/drag-rush" target="_blank"><img class="itch-badge" src="img/projects/itchBadge.png" alt="Play on itch.io" loading="lazy" /></a>
     </div>
+    <div class="paragraph center">
+        <h3>Postmortem</h3>
+    </div>
+    <div class="paragraph">
+        <strong>Scope &amp; goals</strong><br/>
+        The original pitch of Drag Rush was a rhythm / racing game where the player gets further up the leaderboard by defeating opponents. The original idea was that enemies would have different types of weapons the player would be able to pick up and switch between. This was cut due to scope, we felt somewhere along the line that it's more important to have one very satisfying weapon, rather than multiple weapons feeling "meh" and unbalanced.
+    </div>
+    <div class="paragraph">
+        <strong>What went well?</strong><br/>
+        The global beat conductor and a beat object were implemented from the very start and made a great foundation of the game. From that point, all objects that we wanted to follow the beat could easily inherit from the beat object interface and start to bounce on the beats we choose. 1/8, 1/4, 1/2 beats did not matter, the object would dance!
+    </div>
+    <div class="paragraph">
+        <strong>What went wrong?</strong><br/>
+        On week 6 we started to notice that the longer the game went on, the more the game went in and out of sync with the beat. Unity does not have any default BPM converter, so we had to build our own. It was difficult to decipher where the issue originated because of this. Finally we figured it out. After building a metronome helper function, and doing some more research, it basically came down to that we had to switch all our floats to doubles and start using dsp.Time to get a more precise count on the beats.
+    </div>
+    <div class="paragraph">
+        <strong>Takeaways</strong><br/>
+        This was my first ever real game project, not only in group, but overall as well. Previous to this, I had made a simple Snake Game in raylib, but that was it. We had learnt some basics in C# and Unity in previous lectures, but I was still really nervous that I was not going to be able to perform to the degree I wanted to. We were three programmers during this project, Billy and Elmer and me. Both of them had previous experience in programming, which was very comforting. This group project went as smooth as it could have for a group of programmer and artist newbies. We were very coordinated and everyone put their best foot forward and tried their absolute best to get this game to where we wanted. This project made my confidence in my programming and logical thinking skills grow a lot.
+    </div>
     <details class="tech-overview">
         <summary>Technical Overview</summary>
         <div class="tech-overview-content">
