@@ -6,7 +6,8 @@ Vue.use(VueRouter)
 const routes: Array<RouteConfig> = [
   {
     path: '/',
-    redirect: '/game-projects'
+    name: 'Game Projects',
+    component: () => import(/* webpackChunkName: "about" */ '../views/GameProjects.vue')
   },
   {
     path: '/resume',
