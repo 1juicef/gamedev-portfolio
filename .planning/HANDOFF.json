@@ -1,0 +1,40 @@
+{
+  "version": "1.0",
+  "timestamp": "2026-07-26T22:24:06.827Z",
+  "phase": null,
+  "phase_name": null,
+  "phase_dir": null,
+  "plan": null,
+  "task": null,
+  "total_tasks": null,
+  "status": "paused",
+  "completed_tasks": [
+    { "id": "260726-jpl", "name": "Add postmortem section to Drag Rush entry (user's own text)", "status": "done", "commit": "28d5531" },
+    { "id": "260726-nkb", "name": "Convert Postmortem to collapsible dropdown + fix mobile-emoji arrow", "status": "done", "commit": "6b354f3" },
+    { "id": "260726-ny2", "name": "Add Postmortem dropdowns to SwingSpace, Dispater, Floor Zero", "status": "done", "commit": "09be9da" },
+    { "id": "260726-ugm", "name": "Fix root path redirect (drop #/game-projects hash on bare domain)", "status": "done", "commit": "3c7552c" },
+    { "id": "260726-vfp", "name": "Apply 13 grammar/typo fixes across the four Postmortem sections", "status": "done", "commit": "70e8ec8" },
+    { "id": "260727-0cv", "name": "Add Technical Overview blueprint screenshots section to Floor Zero", "status": "not_started", "progress": "init.quick ran (quick_id=260727-0cv, slug=add-technical-overview-blueprint-screens); task_dir was never created, no PLAN.md exists — nothing on disk to resume, clean stopping point before spawning the planner" }
+  ],
+  "remaining_tasks": [
+    { "id": "260727-0cv", "name": "Add Technical Overview blueprint screenshots section to Floor Zero", "status": "not_started" }
+  ],
+  "blockers": [],
+  "async_jobs": [],
+  "human_actions_pending": [
+    { "action": "Locate the real Dispater project's task/dialogue/interaction blueprints and decide if a Technical Overview section should be added there too (parallel to Floor Zero's)", "context": "Dispater's real UE project is confirmed at C:\\Users\\josef\\Documents\\Unreal Projects\\C9 with strong candidate blueprints already found (BP_BaseTaskable, BPI_Interactable, InteractionComponent, DoorKeySystem, etc.) but no screenshots taken yet — this was deferred while Floor Zero was tackled first", "blocking": false }
+  ],
+  "decisions": [
+    { "decision": "Floor Zero's real Unreal project is C:\\Users\\josef\\Documents\\Unreal Projects\\FloorZero, not the previously-checked Floor0 folder (which only has Epic's default template, no custom work)", "rationale": "Confirmed via file search — Floor0 has zero matches for the AI/interaction/key-door systems described in the postmortem; FloorZero has all of them under Content/Blueprints/", "phase": null },
+    { "decision": "Blueprint screenshots use plain <a target=\"_blank\"> wrapping, not a custom lightbox/JS component", "rationale": "User agreed this is the simplest correct fix for 'zoomable and scrollable' — the browser's native image viewer already zooms/scrolls a full-res image opened in a new tab, no code needed beyond a link", "phase": null },
+    { "decision": "3 screenshots is enough for Floor Zero's Technical Overview (user said '3/4 should do')", "rationale": "User picked BT_Ghost.png (AI behavior tree), BP_BaseInteractable.png (object-side interaction), BP_BaseDropable.png (player-side look/target detection) — covers AI + interaction system without needing the key/door or breakable-geometry screenshots too", "phase": null }
+  ],
+  "uncommitted_files": [
+    "public/img/projects/floor-0/BT_Ghost.png",
+    "public/img/projects/floor-0/BP_BaseInteractable.png",
+    "public/img/projects/floor-0/BP_BaseDropable.png",
+    "public/Postmortum descriptions.txt"
+  ],
+  "next_action": "Run /gsd-quick resume add-technical-overview-blueprint-screens (or just re-run /gsd-quick with the same description) to create the task_dir and spawn the gsd-planner for quick task 260727-0cv. The full spec (exact markup, captions, CSS approach) is already written out in this session's conversation and should be re-supplied verbatim to the planner if resuming via a fresh /gsd-quick invocation rather than the resume subcommand.",
+  "context_notes": "This was a long single-session run (~6 quick tasks) adding Postmortem + grammar fixes across all four game projects, fixing the site's root URL hash, and starting a Technical Overview section for Floor Zero using real Unreal Blueprint screenshots the user captured. User wants to start fresh tomorrow due to context budget (session was at 67% usage). Nothing is broken or half-edited on disk for 260727-0cv — it's a clean not-yet-started task, just queued up with a fully-specified plan in conversation. Floor Zero's blueprint screenshots are already saved to public/img/projects/floor-0/ and ready to use. Dispater's equivalent Technical Overview (using the C9 project's blueprints found earlier) is a natural next step after Floor Zero, but was not requested yet — don't start it unprompted."
+}
