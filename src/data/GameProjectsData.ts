@@ -206,6 +206,27 @@ public void StartMetronome(double bpm)
         Awesome, but also extremely fun.
     </div>
     <details class="tech-overview">
+        <summary>Postmortem</summary>
+        <div class="tech-overview-content">
+            <div class="paragraph">
+                <strong>Scope &amp; goals</strong><br/>
+                The goal of this project was to be able to create and build a smaller game for mobile. First game that came to mind was OneMoreLine, which is basically what I based SwingSpace on.
+            </div>
+            <div class="paragraph">
+                <strong>What went well?</strong><br/>
+                Using Unity's built in DistanceJoint2D to grapple the planets with the calculated distance was something I implemented early on and stuck with the project all the way.
+            </div>
+            <div class="paragraph">
+                <strong>What went wrong?</strong><br/>
+                The base game was completed quite early on, which led me to think of what I could implement to make it more engaging. The answer: a leaderboard though Firebase. Firebase in itself was not that difficult to setup with all guides available on the official site by Google. However, to make the connection to Unity was very tedious and difficult to debug. In hindsight, I might have checked for other alternatives for a game this size.
+            </div>
+            <div class="paragraph">
+                <strong>Takeaways</strong><br/>
+                Relying on no one but oneself has its ups and downs. In my case, it became very apparent on what I prefer coding and what i procrastinate on doing. UI is not my favorite, and especially when not working with any artists. I felt that it became solely functionality based, rather than a mixture of function and art, which I much rather prefer working with.
+            </div>
+        </div>
+    </details>
+    <details class="tech-overview">
         <summary>Technical Overview</summary>
         <div class="tech-overview-content">
             <div class="tech-snippet">
