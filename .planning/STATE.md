@@ -30,7 +30,7 @@ See: .planning/PROJECT.md (updated 2026-07-23)
 Phase: 5 of 7 (Dark Theme Redesign)
 Plan: — (not yet planned)
 Status: Ready to plan
-Last activity: 2026-07-23 — ROADMAP.md created, all 9 v1.2 requirements mapped to Phases 5-7
+Last activity: 2026-07-26 - Completed quick task 260726-jpl: Add postmortem section to Drag Rush entry in GameProjectsData.ts using user's own written text
 
 Progress: [░░░░░░░░░░] 0%
 
@@ -70,6 +70,12 @@ The custom-domain deploy todo is now **in scope** as Phase 7 (unblocked — doma
 ### Blockers/Concerns
 
 None open. Watch during execution: keep default router (hash) mode and default `publicPath: '/'` untouched while doing redesign work (research pitfalls — silently break deep links / live URL).
+
+### Quick Tasks Completed
+
+| # | Description | Date | Commit | Directory |
+|---|-------------|------|--------|-----------|
+| 260726-jpl | Add postmortem section to Drag Rush entry in GameProjectsData.ts using user's own written text | 2026-07-26 | dbafc96 | [260726-jpl-add-postmortem-section-to-drag-rush-entr](./quick/260726-jpl-add-postmortem-section-to-drag-rush-entr/) |
 
 ## Deferred Items
 
