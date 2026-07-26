@@ -30,7 +30,7 @@ See: .planning/PROJECT.md (updated 2026-07-23)
 Phase: 5 of 7 (Dark Theme Redesign)
 Plan: — (not yet planned)
 Status: Ready to plan
-Last activity: 2026-07-26 - Completed quick task 260726-jpl: Add postmortem section to Drag Rush entry in GameProjectsData.ts using user's own written text
+Last activity: 2026-07-26 - Completed quick task 260726-nkb: Convert Postmortem section to a collapsible dropdown and fix the disclosure arrow's mobile emoji rendering
 
 Progress: [░░░░░░░░░░] 0%
 
@@ -76,6 +76,7 @@ None open. Watch during execution: keep default router (hash) mode and default `
 | # | Description | Date | Commit | Directory |
 |---|-------------|------|--------|-----------|
 | 260726-jpl | Add postmortem section to Drag Rush entry in GameProjectsData.ts using user's own written text | 2026-07-26 | dbafc96 | [260726-jpl-add-postmortem-section-to-drag-rush-entr](./quick/260726-jpl-add-postmortem-section-to-drag-rush-entr/) |
+| 260726-nkb | Convert Postmortem section to a collapsible dropdown like Technical Overview, and replace the unicode triangle arrow with a CSS-drawn triangle to fix mobile emoji rendering | 2026-07-26 | 6b774dd | [260726-nkb-convert-postmortem-section-to-a-collapsi](./quick/260726-nkb-convert-postmortem-section-to-a-collapsi/) |
 
 ## Deferred Items
 
