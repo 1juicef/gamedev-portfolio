@@ -155,6 +155,27 @@ public void StartMetronome(double bpm)
     <div class="paragraph center">
         <a href="https://yrgo.itch.io/dispater" target="_blank"><img class="itch-badge" src="img/projects/itchBadge.png" alt="Play on itch.io" loading="lazy" /></a>
     </div>
+    <details class="tech-overview">
+        <summary>Postmortem</summary>
+        <div class="tech-overview-content">
+            <div class="paragraph">
+                <strong>Scope &amp; goals</strong><br/>
+                The upmost goal of this project was to make a 3D game Unreal Engine. We wanted to make a short, highly immersive and intense experience, which was more driven by narrative and story, rather than actual gameplay. Unfortunately, we had to chop a lot of story down, due to inexperience in scoping.
+            </div>
+            <div class="paragraph">
+                <strong>What went well?</strong><br/>
+                The atmosphere we were able to capture in Dispater, is in my opinion, amazing. We struggled with the lighting for sometime, but once we dove deeper and did the proper research on how to work with lighting in UE, it all came around massively. I built the task manager for this game, the engine driving the game forward, which became quite modular. Other objects could inherit the interface and become a taskable object, and be able to listen to previous task to know when to activate itself.
+            </div>
+            <div class="paragraph">
+                <strong>What went wrong?</strong><br/>
+                Even though the goal of the game was to make a short and impactful story, it was very difficult to produce just that. As I wrote earlier, a lot of story elements had to be tweaked or cut off from the final build, since we did not have enough time. One big takeaway from me, is that if you are going to build a system that pretty much is carrying the game's core functions, build a debug system at the same time. If I had built a debug tool which had let me jump in and out of the story, where ever I pleased, it would have saved me A LOT of time. Iteration ate up a lot of days, and if I had figured this out earlier, the game could have become even better than it turned out.
+            </div>
+            <div class="paragraph">
+                <strong>Takeaways</strong><br/>
+                Audio and sound is a big passion of mine. I downloaded and used Reaper paired with UE's Metasounds. We knew that the audio would play a huge role in this game, but since none of us had made any music or audio for a game previously, we did not grasp how much time it would actually take. I wished that I could have at least one whole week only creating, tweaking, and mixing audio. But unfortunately, the inexperience in scoping properly struck again.
+            </div>
+        </div>
+    </details>
     `, "#6C3BAA", false, false),
     new ProjectData("floor-0", "Floor Zero", "img/projects/project-7-icon.png", `
     <div class="paragraph">
