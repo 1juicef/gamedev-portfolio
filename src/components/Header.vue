@@ -2,7 +2,7 @@
   <div class="header">
     <div class="nav-bar">
       <img class="header-guy" :src="mascotSrc" alt="Running character" />
-      <router-link to="/game-projects">Projects</router-link>
+      <router-link to="/">Projects</router-link>
       <router-link to="/resume">Resume</router-link>
       <router-link to="/contact">Contact</router-link>
     </div>
