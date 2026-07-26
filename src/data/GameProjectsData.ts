@@ -155,6 +155,27 @@ public void StartMetronome(double bpm)
     <div class="paragraph center">
         <a href="https://yrgo.itch.io/dispater" target="_blank"><img class="itch-badge" src="img/projects/itchBadge.png" alt="Play on itch.io" loading="lazy" /></a>
     </div>
+    <details class="tech-overview">
+        <summary>Postmortem</summary>
+        <div class="tech-overview-content">
+            <div class="paragraph">
+                <strong>Scope &amp; goals</strong><br/>
+                The upmost goal of this project was to make a 3D game Unreal Engine. We wanted to make a short, highly immersive and intense experience, which was more driven by narrative and story, rather than actual gameplay. Unfortunately, we had to chop a lot of story down, due to inexperience in scoping.
+            </div>
+            <div class="paragraph">
+                <strong>What went well?</strong><br/>
+                The atmosphere we were able to capture in Dispater, is in my opinion, amazing. We struggled with the lighting for sometime, but once we dove deeper and did the proper research on how to work with lighting in UE, it all came around massively. I built the task manager for this game, the engine driving the game forward, which became quite modular. Other objects could inherit the interface and become a taskable object, and be able to listen to previous task to know when to activate itself.
+            </div>
+            <div class="paragraph">
+                <strong>What went wrong?</strong><br/>
+                Even though the goal of the game was to make a short and impactful story, it was very difficult to produce just that. As I wrote earlier, a lot of story elements had to be tweaked or cut off from the final build, since we did not have enough time. One big takeaway from me, is that if you are going to build a system that pretty much is carrying the game's core functions, build a debug system at the same time. If I had built a debug tool which had let me jump in and out of the story, where ever I pleased, it would have saved me A LOT of time. Iteration ate up a lot of days, and if I had figured this out earlier, the game could have become even better than it turned out.
+            </div>
+            <div class="paragraph">
+                <strong>Takeaways</strong><br/>
+                Audio and sound is a big passion of mine. I downloaded and used Reaper paired with UE's Metasounds. We knew that the audio would play a huge role in this game, but since none of us had made any music or audio for a game previously, we did not grasp how much time it would actually take. I wished that I could have at least one whole week only creating, tweaking, and mixing audio. But unfortunately, the inexperience in scoping properly struck again.
+            </div>
+        </div>
+    </details>
     `, "#6C3BAA", false, false),
     new ProjectData("floor-0", "Floor Zero", "img/projects/project-7-icon.png", `
     <div class="paragraph">
@@ -182,6 +203,27 @@ public void StartMetronome(double bpm)
     <div class="paragraph center">
         <a href="https://juice-f.itch.io/floorzero" target="_blank"><img class="itch-badge" src="img/projects/itchBadge.png" alt="Play on itch.io" loading="lazy" /></a>
     </div>
+    <details class="tech-overview">
+        <summary>Postmortem</summary>
+        <div class="tech-overview-content">
+            <div class="paragraph">
+                <strong>Scope &amp; goals</strong><br/>
+                Prior to this I had no experience on building a somewhat competent AI. I had just finished playing Resident Evil 9, and got inspired to making my own horror/action/survival-esque game. The one thing I really wanted to accomplish and deliver was a game where you are scared and chased by an entity, which you'd later get your revenge on for putting you through all that misery.
+            </div>
+            <div class="paragraph">
+                <strong>What went well?</strong><br/>
+                I built a modular interaction system which was extremely handy. After laying the ground work of the system, anything could basically be turned into an item to pick up. The keys, crowbar, hammer and of course, the AK-47.
+            </div>
+            <div class="paragraph">
+                <strong>What went wrong?</strong><br/>
+                The enemy AI can hear the player walking, but can also hear when the player either thuds a painting or vase in the level. Instead of just falling, I wanted to make this objects actual get destroyed. To get this done, I had to make a copy of the mesh (geometry collection) that which would swap itself out with the original mesh in runtime. This was quite tricky and broke plenty of times. Either the object did not want to break or broke too early. After plenty of research, I finally made it work.
+            </div>
+            <div class="paragraph">
+                <strong>Takeaways</strong><br/>
+                During this project I really got to understand how blueprints work, and that they are not that far from your standard programming practise. I got to learn how interfaces work and the power they wield and the hierarchical structure of actors and components work.
+            </div>
+        </div>
+    </details>
     `, "#6C3BAA", false, false),
     new ProjectData("swing-space", "SwingSpace", "img/projects/swing-space/SwingSpaceGIF.gif", `
     <div class="paragraph">
@@ -205,6 +247,27 @@ public void StartMetronome(double bpm)
         Ported for mobile.<br/>
         Awesome, but also extremely fun.
     </div>
+    <details class="tech-overview">
+        <summary>Postmortem</summary>
+        <div class="tech-overview-content">
+            <div class="paragraph">
+                <strong>Scope &amp; goals</strong><br/>
+                The goal of this project was to be able to create and build a smaller game for mobile. First game that came to mind was OneMoreLine, which is basically what I based SwingSpace on.
+            </div>
+            <div class="paragraph">
+                <strong>What went well?</strong><br/>
+                Using Unity's built in DistanceJoint2D to grapple the planets with the calculated distance was something I implemented early on and stuck with the project all the way.
+            </div>
+            <div class="paragraph">
+                <strong>What went wrong?</strong><br/>
+                The base game was completed quite early on, which led me to think of what I could implement to make it more engaging. The answer: a leaderboard though Firebase. Firebase in itself was not that difficult to setup with all guides available on the official site by Google. However, to make the connection to Unity was very tedious and difficult to debug. In hindsight, I might have checked for other alternatives for a game this size.
+            </div>
+            <div class="paragraph">
+                <strong>Takeaways</strong><br/>
+                Relying on no one but oneself has its ups and downs. In my case, it became very apparent on what I prefer coding and what i procrastinate on doing. UI is not my favorite, and especially when not working with any artists. I felt that it became solely functionality based, rather than a mixture of function and art, which I much rather prefer working with.
+            </div>
+        </div>
+    </details>
     <details class="tech-overview">
         <summary>Technical Overview</summary>
         <div class="tech-overview-content">
