@@ -30,8 +30,8 @@ Full phase details archived in [milestones/v1.1-ROADMAP.md](./milestones/v1.1-RO
 
 **v1.2 Redesign, Technical Deep-Dive & Launch**
 
-- [ ] **Phase 5: Dark Theme Redesign** - Commit and QA the uncommitted dark-gradient + Lekton/Russo One reskin as the final palette baseline
-- [ ] **Phase 6: Technical Overview Fold-Out** - Collapsed-by-default per-project section revealing real curated code/Blueprint evidence with decision rationale
+- [x] **Phase 5: Dark Theme Redesign** - Commit and QA the uncommitted dark-gradient + Lekton/Russo One reskin as the final palette baseline — completed 2026-07-28
+- [x] **Phase 6: Technical Overview Fold-Out** - Collapsed-by-default per-project section revealing real curated code/Blueprint evidence with decision rationale — completed 2026-07-28
 - [ ] **Phase 7: Custom Domain Deploy** - Portfolio live at `www.josefubaka.com` over HTTPS with re-verified social-preview metadata
 
 ## Phase Details
@@ -48,8 +48,10 @@ Full phase details archived in [milestones/v1.1-ROADMAP.md](./milestones/v1.1-RO
   3. Resume, Contact, and 404 pages remain legible and correctly laid out under the new theme
   4. Deep-linking directly to a route (e.g. loading `/game-projects` fresh) still resolves — router mode untouched — and a production build (`npm run build`) reflects the dark theme, i.e. the redesign is committed rather than a local-only working-tree change
 
+**Status**: Complete as of 2026-07-28. Delivered directly rather than by executing the drafted phase plan — `src/css/variables.less` carries the committed dark palette (`@bodyBgColor: #000000`, `@textColor: #ffffff`, `@accentColor: #6C3BAA`), which satisfies the success criteria above.
+
 **Plans**: 1 plan
-- [ ] 05-01-PLAN.md — Commit the dark-theme redesign as baseline: formalize palette as Less variables (D-02), fix overlay link color (D-01), verify production build
+- [ ] 05-01-PLAN.md — Drafted but never executed (no SUMMARY); the palette landed directly in `src/css/variables.less` instead of through this plan
 **UI hint**: yes
 
 ### Phase 6: Technical Overview Fold-Out
@@ -64,7 +66,9 @@ Full phase details archived in [milestones/v1.1-ROADMAP.md](./milestones/v1.1-RO
   3. When expanded, Drag Rush and SwingSpace each reveal 2-3 legible Unity/C# code snippets, while Dispater and Floor Zero each reveal 2-3 Unreal Blueprint graph screenshots
   4. Every snippet and screenshot carries a short rationale caption framed as an engineering decision, and code/screenshots read clearly against the dark background on both desktop and mobile
 
-**Plans**: TBD
+**Status**: Complete as of 2026-07-28. No phase plans were written; delivered through the quick-task stream (`260726-nkb`, `260726-ny2`, `260728-hop`, `260728-jt1`, recorded in STATE.md) — `src/data/GameProjectsData.ts` carries four per-project `<details class="tech-overview">` fold-outs with the correct content type per project (code snippets for Drag Rush and SwingSpace, Blueprint screenshots for Dispater and Floor Zero).
+
+**Plans**: No phase plans were written for this phase; delivered via quick tasks (see Status above)
 **UI hint**: yes
 
 ### Phase 7: Custom Domain Deploy
@@ -82,7 +86,7 @@ Full phase details archived in [milestones/v1.1-ROADMAP.md](./milestones/v1.1-RO
 
 ## Progress
 
-**Execution Order:** Phases 5 → 6 in sequence (6 depends on 5's palette); Phase 7 is independent and should start early / run in parallel.
+**Execution Order:** Phases 5 and 6 have landed — both delivered via the quick-task stream rather than executed phase plans. Phase 7 (Custom Domain Deploy) is the only remaining v1.2 work.
 
 | Phase | Milestone | Plans Complete | Status | Completed |
 |-------|-----------|-----------------|--------|-----------|
@@ -90,6 +94,6 @@ Full phase details archived in [milestones/v1.1-ROADMAP.md](./milestones/v1.1-RO
 | 2. Project Content & Personality | v1.0 | 3/3 | Complete | 2026-07-23 |
 | 3. Visual Polish, Resume & Site Metadata | v1.0 | 4/4 | Complete | 2026-07-23 |
 | 4. Game Jams Section | v1.1 | 1/1 | Complete | 2026-07-23 |
-| 5. Dark Theme Redesign | v1.2 | 0/TBD | Not started | - |
-| 6. Technical Overview Fold-Out | v1.2 | 0/TBD | Not started | - |
+| 5. Dark Theme Redesign | v1.2 | - | Complete | 2026-07-28 |
+| 6. Technical Overview Fold-Out | v1.2 | - | Complete | 2026-07-28 |
 | 7. Custom Domain Deploy | v1.2 | 0/TBD | Not started | - |
