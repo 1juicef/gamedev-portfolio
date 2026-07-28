@@ -91,8 +91,6 @@ export default Vue.extend({
   transition: all 0.2s;
 }
 .project-item-image:hover {
-  -webkit-transform: scale(1.1);
-  -ms-transform: scale(1.1);
   transform: scale(1.1);
 }
 

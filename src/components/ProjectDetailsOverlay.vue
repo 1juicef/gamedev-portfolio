@@ -54,7 +54,7 @@ export default Vue.extend({
 .overlay {
   background-color: rgba(0,0,0,0.5);
   z-index: 10;
-  position:fixed;
+  position: fixed;
   top:0px;
   left:0px;
   right:0px;
@@ -62,7 +62,7 @@ export default Vue.extend({
 }
 
 .dialog {
-  position:absolute;
+  position: fixed;
   top: 0px;
   left: 0px;
   right: 0px;
@@ -70,6 +70,8 @@ export default Vue.extend({
   margin: 20px;
   color:white;
   background-color: #000000;
+  max-height: calc(100vh - 40px);
+  overflow-y: auto;
 }
 
 iframe {
@@ -140,6 +142,7 @@ h2.dialog-title {
     margin-top: 80px;
     margin-bottom: 40px;
     max-width: 1000px;
+    max-height: calc(100vh - 120px);
   }
 
   h2.dialog-title {
