@@ -233,6 +233,18 @@ public void StartMetronome(double bpm)
                 </a>
                 <p class="tech-caption">One Selector at the root branches on a single Blackboard state value, so the Ghost&#39;s Roam, Chase, Follow, Attack, Lost and Death behaviours are all just states to switch between rather than conditions tangled across the tree.</p>
             </div>
+            <div class="tech-snippet">
+                <a href="img/projects/floor-0/BP_BaseInteractable.png" target="_blank" rel="noopener noreferrer">
+                    <img class="tech-bp-screenshot" loading="lazy" src="img/projects/floor-0/BP_BaseInteractable.png" alt="Base interactable object blueprint" />
+                </a>
+                <p class="tech-caption">A shared base actor owns the hover outline and the Interact-on-E path, both gated behind a valid-player-component check, so any actor inheriting from it becomes interactable without writing new logic.</p>
+            </div>
+            <div class="tech-snippet">
+                <a href="img/projects/floor-0/BP_BaseDropable.png" target="_blank" rel="noopener noreferrer">
+                    <img class="tech-bp-screenshot" loading="lazy" src="img/projects/floor-0/BP_BaseDropable.png" alt="Interactable target detection blueprint" />
+                </a>
+                <p class="tech-caption">A sphere trace gathers candidates first, then a line trace resolves which one the player actually means. Every hit is validated through the shared interactable interface, so aiming stays forgiving without ever grabbing something that was never interactable.</p>
+            </div>
         </div>
     </details>
     `, "#6C3BAA", false, false),
