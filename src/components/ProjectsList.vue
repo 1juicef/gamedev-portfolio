@@ -2,7 +2,8 @@
     <div>
       <div class="projects-list">
         <template v-for="project in projects">
-          <div
+          <button
+            type="button"
             :key="project.id"
               @click="showDetails(project)"
               class="project-item"
@@ -14,7 +15,7 @@
                   {{ project.name }}
                 </div>
               </div>
-          </div>
+          </button>
         </template>
       </div>
 
@@ -73,6 +74,13 @@ export default Vue.extend({
   cursor: pointer;
   position: relative;
   overflow: hidden;
+  border: none;
+  background: none;
+  padding: 0;
+  display: block;
+  color: inherit;
+  text-align: left;
+  font: inherit;
 }
 
 .project-item-image {
