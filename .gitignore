@@ -2,6 +2,19 @@
 node_modules
 /dist
 
+# Unconverted raw source media — not referenced anywhere in src/, kept out
+# of git history and the build; convert-and-track individually if a future
+# phase actually uses one of these.
+/public/img/projects/drag-rush/DragRushGif.gif
+/public/img/projects/drag-rush/DragRushGif2.gif
+/public/img/projects/drag-rush/image35.gif
+/public/img/projects/drag-rush/image66.gif
+/public/img/projects/drag-rush/image70.jpg
+/public/img/projects/drag-rush/image85.gif
+/public/img/projects/swing-space/SwingSpaceGIF2.gif
+/public/img/projects/swing-space/SwingSpaceGIF3.gif
+/public/img/projects/swing-space/SwingSpaceVid2.mp4
+
 
 # local env files
 .env.local
