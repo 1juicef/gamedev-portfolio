@@ -55,7 +55,7 @@ export default Vue.extend({
 @import '../css/variables.less';
 
 .other-stuff-grid {
-  column-count: 3;
+  columns: 320px 3;
   column-gap: 16px;
   margin-top: 20px;
 }
@@ -78,7 +78,7 @@ export default Vue.extend({
 
 @media only screen and (max-width: 620px) {
   .other-stuff-grid {
-    grid-template-columns: 1fr;
+    columns: 1;
   }
 }
 </style>
