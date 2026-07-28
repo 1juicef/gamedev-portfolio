@@ -7,7 +7,7 @@
     </div>
 
     <div class="other-stuff-grid">
-      <div class="other-stuff-cell" v-for="item in media" :key="item.src">
+      <div class="other-stuff-cell" v-for="item in media" :key="item.src" :style="{ aspectRatio: item.width + ' / ' + item.height }">
         <img
           v-if="item.type === 'image'"
           class="other-stuff-media"
@@ -38,13 +38,13 @@ export default Vue.extend({
   data: function () {
     return {
       media: [
-        { type: "video", src: "img/other-stuff/110001-0265.mp4", alt: "Animation render clip" },
-        { type: "video", src: "img/other-stuff/Crouch%20walking1.mp4", alt: "Crouch walking animation" },
-        { type: "image", src: "img/other-stuff/Dog%20jacket%20w%20buckle.png", alt: "Dog jacket with buckle" },
-        { type: "image", src: "img/other-stuff/WDLog.jpg", alt: "WD logo" },
-        { type: "image", src: "img/other-stuff/jeans%20boot%20cut%204.png", alt: "Jeans boot cut design" },
-        { type: "video", src: "img/other-stuff/natiDraken.mp4", alt: "Nati Draken render clip" },
-        { type: "image", src: "img/other-stuff/pattern%2008%20render.png", alt: "Pattern 08 render" },
+        { type: "video", src: "img/other-stuff/110001-0265.mp4", alt: "Animation render clip", width: 1080, height: 1920 },
+        { type: "video", src: "img/other-stuff/Crouch%20walking1.mp4", alt: "Crouch walking animation", width: 720, height: 1280 },
+        { type: "image", src: "img/other-stuff/Dog%20jacket%20w%20buckle.png", alt: "Dog jacket with buckle", width: 900, height: 900 },
+        { type: "image", src: "img/other-stuff/WDLog.jpg", alt: "WD logo", width: 2048, height: 1152 },
+        { type: "image", src: "img/other-stuff/jeans%20boot%20cut%204.png", alt: "Jeans boot cut design", width: 900, height: 900 },
+        { type: "video", src: "img/other-stuff/natiDraken.mp4", alt: "Nati Draken render clip", width: 606, height: 1050 },
+        { type: "image", src: "img/other-stuff/pattern%2008%20render.png", alt: "Pattern 08 render", width: 2048, height: 2897 },
       ],
     };
   },
@@ -55,18 +55,18 @@ export default Vue.extend({
 @import '../css/variables.less';
 
 .other-stuff-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 16px;
+  column-count: 3;
+  column-gap: 16px;
   margin-top: 20px;
 }
 
 .other-stuff-cell {
-  aspect-ratio: 4 / 3;
   background-color: @contentBgColor;
   border-radius: 6px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   overflow: hidden;
+  break-inside: avoid;
+  margin-bottom: 16px;
 }
 
 .other-stuff-media {
