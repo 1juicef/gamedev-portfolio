@@ -176,6 +176,29 @@ public void StartMetronome(double bpm)
             </div>
         </div>
     </details>
+    <details class="tech-overview">
+        <summary>Technical Overview</summary>
+        <div class="tech-overview-content">
+            <div class="tech-snippet">
+                <a href="img/projects/dispater/EnumForTasksSC.png" target="_blank" rel="noopener noreferrer">
+                    <img class="tech-bp-screenshot" loading="lazy" src="img/projects/dispater/EnumForTasksSC.png" alt="Task definition struct" />
+                </a>
+                <p class="tech-caption">Every task is assembled from this one definition — prerequisite, target, ordered sub-steps and required components are all declared as data, so a new task is a new entry rather than another bespoke branch of logic.</p>
+            </div>
+            <div class="tech-snippet">
+                <a href="img/projects/dispater/SnippetFromElevevatorTerminalSC_1.png" target="_blank" rel="noopener noreferrer">
+                    <img class="tech-bp-screenshot" loading="lazy" src="img/projects/dispater/SnippetFromElevevatorTerminalSC_1.png" alt="Elevator terminal action executor" />
+                </a>
+                <p class="tech-caption">The terminal walks the queued task one step at a time, translating each action value into the in-world effect it maps to. New kinds of step slot into the same switch instead of rewiring the flow that drives them.</p>
+            </div>
+            <div class="tech-snippet">
+                <a href="img/projects/dispater/SnippetFromElevevatorTerminalSC.png" target="_blank" rel="noopener noreferrer">
+                    <img class="tech-bp-screenshot" loading="lazy" src="img/projects/dispater/SnippetFromElevevatorTerminalSC.png" alt="Prerequisite-gated interaction logic" />
+                </a>
+                <p class="tech-caption">A lever or button only responds if the task it belongs to is actually sitting in the current queue. That check is what keeps the sequence in order, so the station never has to physically lock anything away to stop a player skipping ahead.</p>
+            </div>
+        </div>
+    </details>
     `, "#6C3BAA", false, false),
     new ProjectData("floor-0", "Floor Zero", "img/projects/project-7-icon.png", `
     <div class="paragraph">
