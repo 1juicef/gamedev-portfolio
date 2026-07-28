@@ -30,7 +30,7 @@ See: .planning/PROJECT.md (updated 2026-07-23)
 Phase: 5 of 7 (Dark Theme Redesign)
 Plan: — (not yet planned)
 Status: Ready to plan
-Last activity: 2026-07-28 - Completed quick task 260728-r72: autoplay/muted/loop Other Stuff gallery videos, reordered header nav (Other Stuff after Projects)
+Last activity: 2026-07-28 - Completed quick task 260728-rrq: re-encoded Crouch walking1.mp4 from unsupported MPEG-4 Part 2 to H.264, fixing stuck gray-box gallery video (root cause of a bug 260728-rml's autoplay hardening couldn't fix)
 
 Progress: [░░░░░░░░░░] 0%
 
@@ -88,6 +88,8 @@ None open. Watch during execution: keep default router (hash) mode and default `
 | 260728-ql5 | Add Other Stuff media gallery page (/other-stuff route + nav link), track seven previously-untracked media files in git | 2026-07-28 | 257c8f2 | [260728-ql5-add-other-stuff-gallery-page-for-images-](./quick/260728-ql5-add-other-stuff-gallery-page-for-images-/) |
 | 260728-qyc | Convert Other Stuff gallery from uniform grid to asymmetric CSS masonry using each item's real aspect ratio | 2026-07-28 | 58ea8fe | [260728-qyc-make-otherstuff-vue-gallery-layout-asymm](./quick/260728-qyc-make-otherstuff-vue-gallery-layout-asymm/) |
 | 260728-r72 | Autoplay/mute/loop Other Stuff gallery videos to match project-page pattern, reorder header nav so Other Stuff follows Projects | 2026-07-28 | 18e47d3 | [260728-r72-autoplay-loop-mute-videos-in-otherstuff-](./quick/260728-r72-autoplay-loop-mute-videos-in-otherstuff-/) |
+| 260728-rml | Harden Other Stuff gallery video autoplay path (preload=auto, load()+retry-on-loadedmetadata) — defensive fix, did not resolve the gray-box bug | 2026-07-28 | eabf583 | [260728-rml-harden-video-autoplay-reliability-in-oth](./quick/260728-rml-harden-video-autoplay-reliability-in-oth/) |
+| 260728-rrq | Re-encode Crouch walking1.mp4 from unsupported MPEG-4 Part 2 to H.264 — actual root-cause fix for the gray-box gallery video bug | 2026-07-28 | (pending) | [260728-rrq-re-encode-crouch-walking1-mp4-from-unsup](./quick/260728-rrq-re-encode-crouch-walking1-mp4-from-unsup/) |
 
 ## Deferred Items
 
