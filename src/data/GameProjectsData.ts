@@ -224,6 +224,17 @@ public void StartMetronome(double bpm)
             </div>
         </div>
     </details>
+    <details class="tech-overview">
+        <summary>Technical Overview</summary>
+        <div class="tech-overview-content">
+            <div class="tech-snippet">
+                <a href="img/projects/floor-0/BT_Ghost.png" target="_blank" rel="noopener noreferrer">
+                    <img class="tech-bp-screenshot" loading="lazy" src="img/projects/floor-0/BT_Ghost.png" alt="Ghost AI behavior tree" />
+                </a>
+                <p class="tech-caption">One Selector at the root branches on a single Blackboard state value, so the Ghost&#39;s Roam, Chase, Follow, Attack, Lost and Death behaviours are all just states to switch between rather than conditions tangled across the tree.</p>
+            </div>
+        </div>
+    </details>
     `, "#6C3BAA", false, false),
     new ProjectData("swing-space", "SwingSpace", "img/projects/swing-space/SwingSpaceGIF.gif", `
     <div class="paragraph">
