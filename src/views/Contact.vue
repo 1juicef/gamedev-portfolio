@@ -8,19 +8,19 @@
     <ul>
       <li>
         <i class="fa fa-linkedin fa-lg fa-fw" style="vertical-align: -5%;"></i>
-        <a href="https://www.linkedin.com/in/josef-ubaka/" target="_blank">linkedin.com/in/josef-ubaka</a>
+        <a href="https://www.linkedin.com/in/josef-ubaka/" target="_blank" rel="noopener noreferrer">linkedin.com/in/josef-ubaka</a>
       </li>
       <li>
         <i class="fa fa-envelope-o fa-lg fa-fw"></i>
-        <a href="mailto:josefubaka@gmail.com" target="_blank">josefubaka@gmail.com</a>
+        <a href="mailto:josefubaka@gmail.com" target="_blank" rel="noopener noreferrer">josefubaka@gmail.com</a>
       </li>
       <li>
         <i class="fa fa-github fa-lg fa-fw"></i>
-        <a href="https://github.com/1juicef" target="_blank">github.com/1juicef</a>
+        <a href="https://github.com/1juicef" target="_blank" rel="noopener noreferrer">github.com/1juicef</a>
       </li>
       <li>
         <i class="fa fa-gamepad fa-lg fa-fw"></i>
-        <a href="https://juice-f.itch.io/" target="_blank">juice-f.itch.io</a>
+        <a href="https://juice-f.itch.io/" target="_blank" rel="noopener noreferrer">juice-f.itch.io</a>
       </li>
     </ul>
 

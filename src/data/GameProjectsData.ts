@@ -32,7 +32,7 @@ export default [
         Fast-paced, satisfying and a "ok, one more try!" hook.
     </div>
     <div class="paragraph center">
-        <a href="https://yrgo.itch.io/drag-rush" target="_blank"><img class="itch-badge" src="img/projects/itchBadge.png" alt="Play on itch.io" loading="lazy" /></a>
+        <a href="https://yrgo.itch.io/drag-rush" target="_blank" rel="noopener noreferrer"><img class="itch-badge" src="img/projects/itchBadge.png" alt="Play on itch.io" loading="lazy" /></a>
     </div>
     <details class="tech-overview">
         <summary>Postmortem</summary>
@@ -153,7 +153,7 @@ public void StartMetronome(double bpm)
         Ending will leave you in SHOCK.
     </div>
     <div class="paragraph center">
-        <a href="https://yrgo.itch.io/dispater" target="_blank"><img class="itch-badge" src="img/projects/itchBadge.png" alt="Play on itch.io" loading="lazy" /></a>
+        <a href="https://yrgo.itch.io/dispater" target="_blank" rel="noopener noreferrer"><img class="itch-badge" src="img/projects/itchBadge.png" alt="Play on itch.io" loading="lazy" /></a>
     </div>
     <details class="tech-overview">
         <summary>Postmortem</summary>
@@ -224,7 +224,7 @@ public void StartMetronome(double bpm)
         Guaranteed no sleep for a week minimum.
     </div>
     <div class="paragraph center">
-        <a href="https://juice-f.itch.io/floorzero" target="_blank"><img class="itch-badge" src="img/projects/itchBadge.png" alt="Play on itch.io" loading="lazy" /></a>
+        <a href="https://juice-f.itch.io/floorzero" target="_blank" rel="noopener noreferrer"><img class="itch-badge" src="img/projects/itchBadge.png" alt="Play on itch.io" loading="lazy" /></a>
     </div>
     <details class="tech-overview">
         <summary>Postmortem</summary>

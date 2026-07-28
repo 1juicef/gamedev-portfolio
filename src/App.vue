@@ -107,6 +107,12 @@ a:hover, .router-link-exact-active {
   opacity: 1;
 }
 
+a:focus-visible, button:focus-visible {
+  opacity: 1;
+  outline: 2px solid lighten(@accentColor, 25%);
+  outline-offset: 3px;
+}
+
 h1 {
   font-size: 2.5em;
   font-weight: 100;
