@@ -24,7 +24,7 @@ export default [
         <img class="pc-screenshot" loading="lazy" src="img/projects/drag-rush/DragrushSC5.webp" alt="Drag Rush Screenshot" />
     </div>
     <div class="paragraph center">
-        <h3>About this game</h3>
+        <h2>About this game</h2>
         Built in Unity (8 weeks).<br/>
         A team of 6 — 3 programmers, 3 artists.<br/>
         I mainly built the vehicle animation trees and helped finalize the Beat Conductor.<br/>
@@ -143,7 +143,7 @@ public void StartMetronome(double bpm)
         <img class="pc-screenshot" loading="lazy" src="img/projects/dispater/DispaterSC5.webp" alt="Dispater Screenshot" />
     </div>
     <div class="paragraph center">
-        <h3>About this game</h3>
+        <h2>About this game</h2>
         Made in Unreal Engine (8 weeks).<br/>
         A team of 7 — 3 programmers, 4 artists.<br/>
         I built the dialogue, task and interaction systems, and did the audio engineering.<br/>
@@ -217,7 +217,7 @@ public void StartMetronome(double bpm)
         <img class="pc-screenshot" loading="lazy" src="img/projects/floor-0/Floor0SC4.webp" alt="Floor Zero Screenshot" />
     </div>
     <div class="paragraph center">
-        <h3>About this game</h3>
+        <h2>About this game</h2>
         First solo project in Unreal Engine (5 weeks).<br/>
         Multi-state AI built with behaviour tree.<br/>
         Custom built Key/Lock and item system.<br/>
@@ -286,7 +286,7 @@ public void StartMetronome(double bpm)
         <img class="pc-screenshot swing-space-shot" loading="lazy" src="img/projects/swing-space/SwingSpaceSC2.webp" alt="SwingSpace Screenshot" />
     </div>
     <div class="paragraph center">
-        <h3>About this game</h3>
+        <h2>About this game</h2>
         Built in Unity (5 weeks).<br/>
         My first solo project.<br/>
         Firebase integration for global highscore chart.<br/>
