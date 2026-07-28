@@ -3,9 +3,9 @@
     <div class="nav-bar">
       <img class="header-guy" :src="mascotSrc" alt="Running character" />
       <router-link to="/">Projects</router-link>
+      <router-link to="/other-stuff">Other Stuff</router-link>
       <router-link to="/resume">Resume</router-link>
       <router-link to="/contact">Contact</router-link>
-      <router-link to="/other-stuff">Other Stuff</router-link>
     </div>
   </div>
 </template>
