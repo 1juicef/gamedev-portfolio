@@ -3,13 +3,13 @@
     <div v-if="visible">
       <div class="overlay">
       </div>
-      <div class="dialog">
-        <h1 class="dialog-title">{{ title }}</h1>
-        <div @click="$emit('close')" class="dialog-close"><i class="fa fa-times fa-lg fa-fw"></i></div>
+      <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="dialog-title">
+        <h2 id="dialog-title" class="dialog-title">{{ title }}</h2>
+        <button type="button" class="dialog-close" aria-label="Close" @click="$emit('close')"><i class="fa fa-times fa-lg fa-fw"></i></button>
         <div class="dialog-content">
           <div v-html="htmlContent"></div>
           <div class="dialog-bottom">
-          <a @click="$emit('close')" class="dialog-close-button">Close</a>
+          <button type="button" class="dialog-close-button" @click="$emit('close')">Close</button>
         </div>
         </div>
       </div>
@@ -27,6 +27,25 @@ export default Vue.extend({
     color: String,
     title: String,
     htmlContent: String,
+  },
+  watch: {
+    visible: function (isVisible: boolean) {
+      if (isVisible) {
+        document.addEventListener("keydown", this.onKeydown);
+      } else {
+        document.removeEventListener("keydown", this.onKeydown);
+      }
+    },
+  },
+  beforeDestroy: function () {
+    document.removeEventListener("keydown", this.onKeydown);
+  },
+  methods: {
+    onKeydown: function (event: KeyboardEvent) {
+      if (event.key === "Escape") {
+        this.$emit("close");
+      }
+    },
   },
 });
 </script>
@@ -57,13 +76,14 @@ iframe {
   width: 100%;
 }
 
-h1.dialog-title {
+h2.dialog-title {
     text-align: center;
     font-size: 1.3em;
     margin: 0px;
     padding: 22px;
     color: #ffffff;
     background-color: #000000;
+    line-height: 1.1em;
 }
 
 .dialog-content {
@@ -81,6 +101,12 @@ h1.dialog-title {
   cursor:pointer;
   font-size: 1.2em;
   font-weight: 100;
+  background: none;
+  border: none;
+  padding: 0;
+  color: inherit;
+  font-family: inherit;
+  line-height: inherit;
 }
 .dialog-close:hover {
   opacity: 0.6;
@@ -91,12 +117,21 @@ h1.dialog-title {
   margin-top: 24px;
 }
 
-a.dialog-close-button {
+.dialog-close-button {
   cursor:pointer;
   font-size: 1.4em;
   display: inline-block;
   margin: 0 auto;
   color: #ffffff;
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: inherit;
+  line-height: inherit;
+  opacity: 0.5;
+}
+.dialog-close-button:hover {
+  opacity: 1;
 }
 
 @media only screen and (min-width: 620px){
@@ -107,7 +142,7 @@ a.dialog-close-button {
     max-width: 1000px;
   }
 
-  h1.dialog-title {
+  h2.dialog-title {
     font-size: 1.6em;
   }
 
