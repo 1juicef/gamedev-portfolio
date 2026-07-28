@@ -17,7 +17,7 @@
       </div>
 
       <div class="hero-photo">
-        <img src="img/avatar.png" alt="Avatar of Josef" />
+        <img src="img/avatar.png" alt="Avatar of Josef" width="512" height="512" />
       </div>
     </div>
 

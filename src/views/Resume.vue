@@ -1,6 +1,6 @@
 <template>
   <div class="resume-page">
-    <img class="resume-image" src="img/actualResume.png" alt="Josef Ubaka resume" />
+    <img class="resume-image" src="img/actualResume.png" alt="Josef Ubaka resume" width="2478" height="3522" />
   </div>
 </template>
 

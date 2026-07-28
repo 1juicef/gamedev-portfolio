@@ -42,6 +42,7 @@ export default Vue.extend({
   src: url('/fonts/Lekton,Russo_One/Lekton/Lekton-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -49,6 +50,7 @@ export default Vue.extend({
   src: url('/fonts/Lekton,Russo_One/Lekton/Lekton-Bold.ttf') format('truetype');
   font-weight: 700;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -56,6 +58,7 @@ export default Vue.extend({
   src: url('/fonts/Lekton,Russo_One/Lekton/Lekton-Italic.ttf') format('truetype');
   font-weight: 400;
   font-style: italic;
+  font-display: swap;
 }
 
 @font-face {
@@ -63,6 +66,7 @@ export default Vue.extend({
   src: url('/fonts/Lekton,Russo_One/Russo_One/RussoOne-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
+  font-display: swap;
 }
 
 html, body {
