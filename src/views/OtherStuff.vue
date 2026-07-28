@@ -3,7 +3,7 @@
     <h1>Other Stuff</h1>
 
     <div style="margin-bottom: 30px;">
-      Some things I made with CLO 3D and Blender during my days with WET DOG
+      Some things I made with CLO 3D and Blender during my days with WET DOG.
     </div>
 
     <div class="other-stuff-grid">
