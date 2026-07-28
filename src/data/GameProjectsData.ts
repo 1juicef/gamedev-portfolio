@@ -181,7 +181,7 @@ public void StartMetronome(double bpm)
         <div class="tech-overview-content">
             <div class="tech-snippet">
                 <a href="img/projects/dispater/EnumForTasksSC.png" target="_blank" rel="noopener noreferrer">
-                    <img class="tech-bp-screenshot" loading="lazy" src="img/projects/dispater/EnumForTasksSC.png" alt="Task definition struct" />
+                    <img class="tech-bp-screenshot tech-bp-screenshot--compact" loading="lazy" src="img/projects/dispater/EnumForTasksSC.png" alt="Task definition struct" />
                 </a>
                 <p class="tech-caption">Every task is assembled from this one definition — prerequisite, target, ordered sub-steps and required components are all declared as data, so a new task is a new entry rather than another bespoke branch of logic.</p>
             </div>
