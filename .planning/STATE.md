@@ -5,10 +5,10 @@ milestone_name: Redesign, Technical Deep-Dive & Launch
 current_phase: 5
 current_phase_name: Dark Theme Redesign
 status: planning
-stopped_at: Phase 5 context gathered
-last_updated: "2026-07-28T12:22:02.281Z"
+stopped_at: "Completed quick task 260728-l57: cleaned up working tree before v1.2 finale (.env/CLAUDE.md hygiene, ROADMAP.md Phase 5/6 completion, stale handoff cleanup, media ignore)"
+last_updated: "2026-07-28T13:35:49.029Z"
 last_activity: 2026-07-28
-last_activity_desc: "Completed quick task 260728-jt1: Add Technical Overview blueprint screenshots section to Dispater"
+last_activity_desc: "Completed quick task 260728-l57: cleaned up working tree before v1.2 finale"
 progress:
   total_phases: 1
   completed_phases: 0
@@ -30,7 +30,7 @@ See: .planning/PROJECT.md (updated 2026-07-23)
 Phase: 5 of 7 (Dark Theme Redesign)
 Plan: — (not yet planned)
 Status: Ready to plan
-Last activity: 2026-07-28 - Completed quick task 260728-jt1: Add Technical Overview blueprint screenshots section to Dispater
+Last activity: 2026-07-28 - Completed quick task 260728-l57: cleaned up working tree before v1.2 finale
 
 Progress: [░░░░░░░░░░] 0%
 
@@ -62,6 +62,7 @@ Full decision log lives in PROJECT.md Key Decisions table. Recent, affecting cur
 - [Roadmap v1.2]: 3 phases derived from the 9 requirements, matching the research's build-order (Redesign → Technical Overview → Domain Deploy). Redesign kept as its own phase (not folded into Technical Overview) because it must land first as a clean dark-palette baseline — Phase 6's CSS is styled against it to avoid restyling twice.
 - [Roadmap v1.2]: Phase 7 (domain deploy) marked independent of Phases 5-6 (touches zero `src/` files); flagged to start early since DNS propagation can take 24-48h, with only the final `og:` metadata step depending on DNS being live.
 - [Phase 4]: Game Jam links kept as plain hardcoded anchors with `rel=noopener noreferrer`; ASVS L1 security review closed clean; one non-blocking WCAG 3.2.5 gap (WR-01) carried to PROJECT.md Active.
+- [Quick 260728-l57]: v1.2 bookkeeping: Phases 5 and 6 marked complete in ROADMAP.md after confirming their outcomes shipped via quick tasks rather than executed plans; .env fork-template placeholders replaced with real branding; stale session-handoff artifacts removed after reconciling their one open item against completed quick tasks; nine untracked ~105 MB source-media files ignored rather than committed.
 
 ### Pending Todos
 
@@ -82,6 +83,7 @@ None open. Watch during execution: keep default router (hash) mode and default `
 | 260726-vfp | Apply 12 grammar/typo fixes (13 corrections) across the four Postmortem sections in GameProjectsData.ts | 2026-07-26 | 84c01e2 | [260726-vfp-apply-12-grammar-typo-fixes-across-the-f](./quick/260726-vfp-apply-12-grammar-typo-fixes-across-the-f/) |
 | 260728-hop | Add Technical Overview blueprint screenshots section to Floor Zero (BT_Ghost, BP_BaseInteractable, BP_BaseDropable) | 2026-07-28 | cb852be | [260728-hop-add-technical-overview-blueprint-screens](./quick/260728-hop-add-technical-overview-blueprint-screens/) |
 | 260728-jt1 | Add Technical Overview blueprint screenshots section to Dispater (EnumForTasksSC, SnippetFromElevevatorTerminalSC_1, SnippetFromElevevatorTerminalSC) | 2026-07-28 | 8e95a70 | [260728-jt1-add-technical-overview-blueprint-screens](./quick/260728-jt1-add-technical-overview-blueprint-screens/) |
+| 260728-l57 | Clean up working tree before v1.2 finale: fixed .env/CLAUDE.md fork-template cruft, marked Phases 5-6 complete in ROADMAP.md, removed stale session-handoff artifacts, ignored unconverted source media | 2026-07-28 | 45cc73f..7e56b90 | [260728-l57-clean-up-working-tree-before-v1-2-finale](./quick/260728-l57-clean-up-working-tree-before-v1-2-finale/) |
 
 ## Deferred Items
 
@@ -91,9 +93,9 @@ None open. Watch during execution: keep default router (hash) mode and default `
 
 ## Session Continuity
 
-Last session: 2026-07-23T20:52:09.826Z
-Stopped at: Phase 5 context gathered
-Resume file: .planning/phases/05-dark-theme-redesign/05-CONTEXT.md
+Last session: 2026-07-28T13:35:49.020Z
+Stopped at: Completed quick task 260728-l57: cleaned up working tree before v1.2 finale (.env/CLAUDE.md hygiene, ROADMAP.md Phase 5/6 completion, stale handoff cleanup, media ignore)
+Resume file: None
 
 ## Operator Next Steps
 
