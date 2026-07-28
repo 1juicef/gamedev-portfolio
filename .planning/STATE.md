@@ -30,7 +30,7 @@ See: .planning/PROJECT.md (updated 2026-07-23)
 Phase: 5 of 7 (Dark Theme Redesign)
 Plan: — (not yet planned)
 Status: Ready to plan
-Last activity: 2026-07-28 - Completed quick task 260728-ql5: added Other Stuff media gallery page (/other-stuff route, nav link, 7 media files tracked)
+Last activity: 2026-07-28 - Completed quick task 260728-qyc: converted Other Stuff gallery to asymmetric masonry layout with per-item real aspect ratios
 
 Progress: [░░░░░░░░░░] 0%
 
@@ -86,6 +86,7 @@ None open. Watch during execution: keep default router (hash) mode and default `
 | 260728-jt1 | Add Technical Overview blueprint screenshots section to Dispater (EnumForTasksSC, SnippetFromElevevatorTerminalSC_1, SnippetFromElevevatorTerminalSC) | 2026-07-28 | 8e95a70 | [260728-jt1-add-technical-overview-blueprint-screens](./quick/260728-jt1-add-technical-overview-blueprint-screens/) |
 | 260728-l57 | Clean up working tree before v1.2 finale: fixed .env/CLAUDE.md fork-template cruft, marked Phases 5-6 complete in ROADMAP.md, removed stale session-handoff artifacts, ignored unconverted source media | 2026-07-28 | 45cc73f..7e56b90 | [260728-l57-clean-up-working-tree-before-v1-2-finale](./quick/260728-l57-clean-up-working-tree-before-v1-2-finale/) |
 | 260728-ql5 | Add Other Stuff media gallery page (/other-stuff route + nav link), track seven previously-untracked media files in git | 2026-07-28 | 257c8f2 | [260728-ql5-add-other-stuff-gallery-page-for-images-](./quick/260728-ql5-add-other-stuff-gallery-page-for-images-/) |
+| 260728-qyc | Convert Other Stuff gallery from uniform grid to asymmetric CSS masonry using each item's real aspect ratio | 2026-07-28 | 58ea8fe | [260728-qyc-make-otherstuff-vue-gallery-layout-asymm](./quick/260728-qyc-make-otherstuff-vue-gallery-layout-asymm/) |
 
 ## Deferred Items
 
