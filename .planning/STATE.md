@@ -5,10 +5,10 @@ milestone_name: Redesign, Technical Deep-Dive & Launch
 current_phase: 5
 current_phase_name: Dark Theme Redesign
 status: planning
-stopped_at: "Completed quick task 260728-l57: cleaned up working tree before v1.2 finale (.env/CLAUDE.md hygiene, ROADMAP.md Phase 5/6 completion, stale handoff cleanup, media ignore)"
-last_updated: "2026-07-28T13:35:49.029Z"
+stopped_at: "Completed quick task 260728-ql5: Other Stuff media gallery page (/other-stuff route, nav link, 7 media files tracked in git)"
+last_updated: "2026-07-28T17:18:04.466Z"
 last_activity: 2026-07-28
-last_activity_desc: "Completed quick task 260728-l57: cleaned up working tree before v1.2 finale"
+last_activity_desc: "Completed quick task 260728-ql5: added Other Stuff media gallery page (/other-stuff route, nav link, 7 media files tracked)"
 progress:
   total_phases: 1
   completed_phases: 0
@@ -30,7 +30,7 @@ See: .planning/PROJECT.md (updated 2026-07-23)
 Phase: 5 of 7 (Dark Theme Redesign)
 Plan: — (not yet planned)
 Status: Ready to plan
-Last activity: 2026-07-28 - Completed quick task 260728-l57: cleaned up working tree before v1.2 finale
+Last activity: 2026-07-28 - Completed quick task 260728-ql5: added Other Stuff media gallery page (/other-stuff route, nav link, 7 media files tracked)
 
 Progress: [░░░░░░░░░░] 0%
 
@@ -63,6 +63,7 @@ Full decision log lives in PROJECT.md Key Decisions table. Recent, affecting cur
 - [Roadmap v1.2]: Phase 7 (domain deploy) marked independent of Phases 5-6 (touches zero `src/` files); flagged to start early since DNS propagation can take 24-48h, with only the final `og:` metadata step depending on DNS being live.
 - [Phase 4]: Game Jam links kept as plain hardcoded anchors with `rel=noopener noreferrer`; ASVS L1 security review closed clean; one non-blocking WCAG 3.2.5 gap (WR-01) carried to PROJECT.md Active.
 - [Quick 260728-l57]: v1.2 bookkeeping: Phases 5 and 6 marked complete in ROADMAP.md after confirming their outcomes shipped via quick tasks rather than executed plans; .env fork-template placeholders replaced with real branding; stale session-handoff artifacts removed after reconciling their one open item against completed quick tasks; nine untracked ~105 MB source-media files ignored rather than committed.
+- [Quick 260728-ql5]: Added /other-stuff media gallery page, wired nav link, and tracked the seven previously-untracked media files (~16.8 MB) in git. git-for-windows 2.51.0 check-ignore quirk noted: trailing-slash directory paths falsely report as ignored for untracked dirs; verified via git add --dry-run instead.
 
 ### Pending Todos
 
@@ -84,6 +85,7 @@ None open. Watch during execution: keep default router (hash) mode and default `
 | 260728-hop | Add Technical Overview blueprint screenshots section to Floor Zero (BT_Ghost, BP_BaseInteractable, BP_BaseDropable) | 2026-07-28 | cb852be | [260728-hop-add-technical-overview-blueprint-screens](./quick/260728-hop-add-technical-overview-blueprint-screens/) |
 | 260728-jt1 | Add Technical Overview blueprint screenshots section to Dispater (EnumForTasksSC, SnippetFromElevevatorTerminalSC_1, SnippetFromElevevatorTerminalSC) | 2026-07-28 | 8e95a70 | [260728-jt1-add-technical-overview-blueprint-screens](./quick/260728-jt1-add-technical-overview-blueprint-screens/) |
 | 260728-l57 | Clean up working tree before v1.2 finale: fixed .env/CLAUDE.md fork-template cruft, marked Phases 5-6 complete in ROADMAP.md, removed stale session-handoff artifacts, ignored unconverted source media | 2026-07-28 | 45cc73f..7e56b90 | [260728-l57-clean-up-working-tree-before-v1-2-finale](./quick/260728-l57-clean-up-working-tree-before-v1-2-finale/) |
+| 260728-ql5 | Add Other Stuff media gallery page (/other-stuff route + nav link), track seven previously-untracked media files in git | 2026-07-28 | 257c8f2 | [260728-ql5-add-other-stuff-gallery-page-for-images-](./quick/260728-ql5-add-other-stuff-gallery-page-for-images-/) |
 
 ## Deferred Items
 
@@ -93,8 +95,8 @@ None open. Watch during execution: keep default router (hash) mode and default `
 
 ## Session Continuity
 
-Last session: 2026-07-28T13:35:49.020Z
-Stopped at: Completed quick task 260728-l57: cleaned up working tree before v1.2 finale (.env/CLAUDE.md hygiene, ROADMAP.md Phase 5/6 completion, stale handoff cleanup, media ignore)
+Last session: 2026-07-28T17:18:04.457Z
+Stopped at: Completed quick task 260728-ql5: Other Stuff media gallery page (/other-stuff route, nav link, 7 media files tracked in git)
 Resume file: None
 
 ## Operator Next Steps
