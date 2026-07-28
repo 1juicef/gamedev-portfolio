@@ -23,7 +23,7 @@
           muted
           loop
           playsinline
-          preload="metadata"
+          preload="auto"
           :aria-label="item.alt"
         >
           <source :src="item.src" type="video/mp4" />
@@ -57,14 +57,37 @@ export default Vue.extend({
     // attribute isn't reliably honored on every browser; explicitly calling
     // play() covers those cases. Because ref is used inside a v-for, Vue
     // populates $refs.video as an array of elements rather than a single one.
+    //
+    // The block below is defensive/best-effort hardening around that known
+    // unreliability, not a confirmed fix for a specific reproduced bug: a
+    // reported intermittent gray-box failure could not be reproduced with the
+    // tooling available while writing this, so load()/play() ordering and the
+    // one-shot retry are reasoned from the existing pattern rather than a
+    // captured root cause.
     const videos = this.$refs.video as HTMLVideoElement[] | undefined;
     if (!videos || videos.length === 0) {
       return;
     }
     videos.forEach((video) => {
+      // Force a re-scan of the <source> child before the first play attempt,
+      // guarding against the ref being populated before the source URL was
+      // picked up.
+      video.load();
       video.play().catch(() => {
         // Autoplay blocked; the first decoded frame remains visible instead.
       });
+      // One-shot safety net: if the first play() was rejected because not
+      // enough data had been buffered yet, retry once metadata is available.
+      // { once: true } guarantees this never re-fires on loop or seek.
+      video.addEventListener(
+        "loadedmetadata",
+        () => {
+          video.play().catch(() => {
+            // Autoplay blocked; the first decoded frame remains visible instead.
+          });
+        },
+        { once: true }
+      );
     });
   },
 });
