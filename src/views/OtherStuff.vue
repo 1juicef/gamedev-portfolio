@@ -17,8 +17,12 @@
         />
         <video
           v-else
+          ref="video"
           class="other-stuff-media"
-          controls
+          autoplay
+          muted
+          loop
+          playsinline
           preload="metadata"
           :aria-label="item.alt"
         >
@@ -47,6 +51,21 @@ export default Vue.extend({
         { type: "image", src: "img/other-stuff/pattern%2008%20render.png", alt: "Pattern 08 render", width: 2048, height: 2897 },
       ],
     };
+  },
+  mounted: function () {
+    // These clips have no poster fallback frame, but the declarative autoplay
+    // attribute isn't reliably honored on every browser; explicitly calling
+    // play() covers those cases. Because ref is used inside a v-for, Vue
+    // populates $refs.video as an array of elements rather than a single one.
+    const videos = this.$refs.video as HTMLVideoElement[] | undefined;
+    if (!videos || videos.length === 0) {
+      return;
+    }
+    videos.forEach((video) => {
+      video.play().catch(() => {
+        // Autoplay blocked; the first decoded frame remains visible instead.
+      });
+    });
   },
 });
 </script>
