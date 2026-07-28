@@ -3,7 +3,7 @@
     <h1>Other Stuff</h1>
 
     <div style="margin-bottom: 30px;">
-      A grab bag of other things I've made outside of games — renders, patterns, and other bits.
+      Some things I made with CLO 3D and Blender during my days with WET DOG
     </div>
 
     <div class="other-stuff-grid">
