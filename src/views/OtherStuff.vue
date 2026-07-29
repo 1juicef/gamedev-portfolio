@@ -3,7 +3,9 @@
     <h1>Other Stuff</h1>
 
     <div style="margin-bottom: 30px;">
-      Some things I made with CLO 3D and Blender during my days with WET DOG.
+      A selection of ad campaigns, production sheets and other media that I have made using CLO 3D and Blender
+      for the company I ran. This was actually what sparked my interest in creating digital stuff overall, and
+      led me to start my programming journey.
     </div>
 
     <div class="other-stuff-grid">

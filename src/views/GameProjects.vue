@@ -21,9 +21,34 @@
       </div>
     </div>
 
+    <section class="wip-section" v-if="wipProject">
+      <h2 class="wip-section-title">Work In Progress</h2>
+      <div class="project-row wip-row project-row--reverse">
+        <div class="project-image-wrap">
+          <button
+            class="project-image-button"
+            :aria-label="wipProject.name + ' details'"
+            @click="showDetails(wipProject)"
+          >
+            <LazyVideoThumbnail :src="thumbVideos[wipProject.id]" :poster="thumbPosters[wipProject.id]" />
+          </button>
+        </div>
+
+        <div class="project-copy">
+          <div class="project-entry-header">
+            <button class="project-title-link" @click="showDetails(wipProject)">
+              {{ wipProject.name }}
+            </button>
+          </div>
+          <p class="project-summary">{{ summaries[wipProject.id] }}</p>
+        </div>
+      </div>
+    </section>
+
+    <h2 class="previous-projects-title">Previous Projects</h2>
     <div class="project-timeline">
       <section
-        v-for="project in projects"
+        v-for="project in timelineProjects"
         :key="project.id"
         class="project-row"
         :class="{ 'project-row--reverse': projectRows[project.id] === 'reverse' }"
@@ -124,6 +149,24 @@ export default Vue.extend({
       },
     };
   },
+  computed: {
+    wipProject: function (): ProjectData | undefined {
+      // Held back from the live page until the write-up is ready to publish.
+      return undefined;
+    },
+    timelineProjects: function (): ProjectData[] {
+      return this.projects.filter((p: ProjectData) => p.id !== "cpp-sokoban");
+    },
+  },
+  mounted: function () {
+    const projectId = this.$route.query.project;
+    if (typeof projectId === "string") {
+      const project = this.projects.find((p: ProjectData) => p.id === projectId);
+      if (project) {
+        this.showDetails(project);
+      }
+    }
+  },
   methods: {
     showDetails: function (item: ProjectData) {
       this.popupTitle = item.name;
@@ -169,6 +212,35 @@ export default Vue.extend({
   width: 100%;
   height: auto;
   display: block;
+}
+
+.wip-section {
+  margin-bottom: 56px;
+  padding-bottom: 32px;
+  border-bottom: 2px solid rgba(224, 142, 50, 0.4);
+}
+
+.wip-section-title {
+  margin: 0 0 24px;
+  font-size: 1.3em;
+  font-weight: 100;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #e08e32;
+}
+
+.wip-row {
+  padding: 0;
+  border-top: none;
+}
+
+.previous-projects-title {
+  margin: 0 0 24px;
+  font-size: 1.3em;
+  font-weight: 100;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  opacity: 0.85;
 }
 
 .project-timeline {

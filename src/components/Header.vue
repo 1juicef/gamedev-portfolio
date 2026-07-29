@@ -27,6 +27,10 @@ export default Vue.extend({
           return "img/projects/Guy1.gif";
         case "/contact":
           return "img/projects/Guy4.gif";
+        case "/other-projects":
+          return "img/projects/Guy6.gif";
+        case "/other-stuff":
+          return "img/projects/Guy7.gif";
         default:
           return "img/projects/Guy.gif";
       }
