@@ -31,10 +31,6 @@
             @click="showDetails(wipProject)"
           >
             <LazyVideoThumbnail :src="thumbVideos[wipProject.id]" :poster="thumbPosters[wipProject.id]" />
-            <span class="project-cue" aria-hidden="true">
-              <span class="project-cue-label">View Details</span>
-              <span class="project-cue-arrow"></span>
-            </span>
           </button>
         </div>
 
@@ -45,6 +41,14 @@
             </button>
           </div>
           <p class="project-summary">{{ summaries[wipProject.id] }}</p>
+          <button
+            class="project-cue"
+            :aria-label="'View details for ' + wipProject.name"
+            @click="showDetails(wipProject)"
+          >
+            <span class="project-cue-label">View Details</span>
+            <span class="project-cue-arrow"></span>
+          </button>
         </div>
       </div>
     </section>
@@ -66,10 +70,6 @@
             @click="showDetails(project)"
           >
             <LazyVideoThumbnail :src="thumbVideos[project.id]" :poster="thumbPosters[project.id]" />
-            <span class="project-cue" aria-hidden="true">
-              <span class="project-cue-label">View Details</span>
-              <span class="project-cue-arrow"></span>
-            </span>
           </button>
         </div>
 
@@ -80,6 +80,14 @@
             </button>
           </div>
           <p class="project-summary">{{ summaries[project.id] }}</p>
+          <button
+            class="project-cue"
+            :aria-label="'View details for ' + project.name"
+            @click="showDetails(project)"
+          >
+            <span class="project-cue-label">View Details</span>
+            <span class="project-cue-arrow"></span>
+          </button>
         </div>
       </section>
     </div>
@@ -271,7 +279,6 @@ export default Vue.extend({
 }
 
 .project-image-button {
-  position: relative;
   display: block;
   width: 100%;
   padding: 0;
@@ -301,20 +308,18 @@ export default Vue.extend({
 }
 
 .project-cue {
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  pointer-events: none;
-  max-width: calc(100% - 20px);
+  margin: 20px 0 0;
+  padding: 10px 16px;
+  min-height: 44px;
+  box-sizing: border-box;
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
   border-radius: 999px;
-  padding: 5px 10px;
-  font-size: 0.72em;
+  font-family: inherit;
+  font-size: 0.78em;
+  line-height: 1;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: #ffffff;
@@ -323,16 +328,14 @@ export default Vue.extend({
   border: 2px solid var(--project-accent, #6c3baa);
   box-shadow: 0 0 12px -2px #6c3baa;
   box-shadow: 0 0 12px -2px var(--project-accent, #6c3baa);
-  transition: filter 0.14s ease;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition: filter 0.14s ease, box-shadow 0.14s ease;
 }
 
-.project-image-button:active .project-cue {
+.project-cue:active {
   filter: brightness(1.4);
-}
-
-.project-cue-label {
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .project-cue-arrow {
@@ -476,7 +479,8 @@ export default Vue.extend({
     transform: scale(1.015);
   }
 
-  .project-image-button:hover .project-cue {
+  .project-cue:hover {
+    filter: brightness(1.15);
     box-shadow: 0 0 20px -2px #6c3baa;
     box-shadow: 0 0 20px -2px var(--project-accent, #6c3baa);
   }
