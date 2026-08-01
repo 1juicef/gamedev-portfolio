@@ -23,7 +23,7 @@
 
     <section class="wip-section" v-if="wipProject">
       <h2 class="wip-section-title">Work In Progress</h2>
-      <div class="project-row wip-row project-row--reverse">
+      <div class="project-row wip-row project-row--reverse" :style="{ '--project-accent': wipProject.accentColor }">
         <div class="project-image-wrap">
           <button
             class="project-image-button"
@@ -31,6 +31,10 @@
             @click="showDetails(wipProject)"
           >
             <LazyVideoThumbnail :src="thumbVideos[wipProject.id]" :poster="thumbPosters[wipProject.id]" />
+            <span class="project-cue" aria-hidden="true">
+              <span class="project-cue-label">View Details</span>
+              <span class="project-cue-arrow"></span>
+            </span>
           </button>
         </div>
 
@@ -52,6 +56,7 @@
         :key="project.id"
         class="project-row"
         :class="{ 'project-row--reverse': projectRows[project.id] === 'reverse' }"
+        :style="{ '--project-accent': project.accentColor }"
       >
         <div class="project-image-wrap">
           <button
@@ -61,6 +66,10 @@
             @click="showDetails(project)"
           >
             <LazyVideoThumbnail :src="thumbVideos[project.id]" :poster="thumbPosters[project.id]" />
+            <span class="project-cue" aria-hidden="true">
+              <span class="project-cue-label">View Details</span>
+              <span class="project-cue-arrow"></span>
+            </span>
           </button>
         </div>
 
@@ -262,17 +271,60 @@ export default Vue.extend({
 }
 
 .project-image-button {
+  position: relative;
   display: block;
   width: 100%;
   padding: 0;
   border: 0;
   background: transparent;
   cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .project-image--swing-space {
   max-width: 46%;
   margin: 0 auto;
+}
+
+.project-cue {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  pointer-events: none;
+  max-width: calc(100% - 20px);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border-radius: 999px;
+  padding: 5px 10px;
+  font-size: 0.72em;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #ffffff;
+  background: rgba(0, 0, 0, 0.75);
+  border: 2px solid #6c3baa;
+  border: 2px solid var(--project-accent, #6c3baa);
+  box-shadow: 0 0 12px -2px #6c3baa;
+  box-shadow: 0 0 12px -2px var(--project-accent, #6c3baa);
+}
+
+.project-cue-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.project-cue-arrow {
+  flex: 0 0 auto;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 4px 0 4px 6px;
+  border-color: transparent transparent transparent #6c3baa;
+  border-color: transparent transparent transparent var(--project-accent, #6c3baa);
 }
 
 .project-copy {
@@ -298,6 +350,8 @@ export default Vue.extend({
   cursor: pointer;
   text-align: left;
   line-height: 1.1;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
   transition: color 0.18s ease, opacity 0.18s ease, border-bottom-color 0.18s ease;
 }
 
