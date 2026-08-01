@@ -30,7 +30,7 @@ See: .planning/PROJECT.md (updated 2026-07-23)
 Phase: 5 of 7 (Dark Theme Redesign)
 Plan: — (not yet planned)
 Status: Ready to plan
-Last activity: 2026-08-01 - Completed quick task 260801-exk: moved View Details cue off the video thumbnail to under the summary text (human-verify checkpoint outstanding)
+Last activity: 2026-08-01 - Completed quick task 260801-ffe: added experimental /one-page route stacking the four existing views with a scroll-driven Header nav (human-verify checkpoint outstanding)
 
 Progress: [░░░░░░░░░░] 0%
 
@@ -93,6 +93,7 @@ None open. Watch during execution: keep default router (hash) mode and default `
 | 260728-rxd | Update Other Stuff gallery intro text to mention CLO 3D, Blender, and WET DOG | 2026-07-28 | (pending) | [260728-rxd-update-other-stuff-gallery-intro-text-to](./quick/260728-rxd-update-other-stuff-gallery-intro-text-to/) |
 | 260801-cp6 | Add always-visible accent-tied "View Details" cue and tap/focus/hover response states to game project timeline cards (mobile-safe, no hover-only cues) — human-verify checkpoint outstanding | 2026-08-01 | e089843 | [260801-cp6-add-always-visible-click-affordance-to-g](./quick/260801-cp6-add-always-visible-click-affordance-to-g/) |
 | 260801-exk | Relocate "View Details" cue from video-thumbnail overlay to a standalone button under the summary text (follow-up to 260801-cp6 per user feedback) — human-verify checkpoint outstanding | 2026-08-01 | e1409fd | [260801-exk-move-the-view-details-click-affordance-c](./quick/260801-exk-move-the-view-details-click-affordance-c/) |
+| 260801-ffe | Add experimental /one-page route stacking GameProjects, OtherStuff, Resume, Contact into one scroll, with a route-conditional Header scroll-nav (buttons, sticky bar, IntersectionObserver-driven active state and mascot) — human-verify checkpoint outstanding | 2026-08-01 | d03df57..fbfaf07 | [260801-ffe-build-an-experimental-one-page-portfolio](./quick/260801-ffe-build-an-experimental-one-page-portfolio/) |
 
 ## Deferred Items
 
@@ -102,8 +103,8 @@ None open. Watch during execution: keep default router (hash) mode and default `
 
 ## Session Continuity
 
-Last session: 2026-07-28T17:18:04.457Z
-Stopped at: Completed quick task 260728-ql5: Other Stuff media gallery page (/other-stuff route, nav link, 7 media files tracked in git)
+Last session: 2026-08-01T09:22:22.000Z
+Stopped at: Completed quick task 260801-ffe Tasks 1-4 (route, OnePage view, Header scroll-nav, IntersectionObserver, regression proof); Task 5 human-verify checkpoint outstanding at #/one-page
 Resume file: None
 
 ## Operator Next Steps
