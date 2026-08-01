@@ -280,6 +280,19 @@ export default Vue.extend({
   cursor: pointer;
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
+  transition: transform 0.14s ease, box-shadow 0.14s ease;
+}
+
+.project-image-button:active {
+  transform: scale(0.985);
+  box-shadow: 0 0 0 2px #6c3baa;
+  box-shadow: 0 0 0 2px var(--project-accent, #6c3baa);
+}
+
+.project-image-button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px #6c3baa;
+  box-shadow: 0 0 0 2px var(--project-accent, #6c3baa);
 }
 
 .project-image--swing-space {
@@ -310,6 +323,11 @@ export default Vue.extend({
   border: 2px solid var(--project-accent, #6c3baa);
   box-shadow: 0 0 12px -2px #6c3baa;
   box-shadow: 0 0 12px -2px var(--project-accent, #6c3baa);
+  transition: filter 0.14s ease;
+}
+
+.project-image-button:active .project-cue {
+  filter: brightness(1.4);
 }
 
 .project-cue-label {
@@ -360,6 +378,11 @@ export default Vue.extend({
   color: #f4cde6;
   opacity: 1;
   border-bottom-color: #f4cde6;
+}
+
+.project-title-link:active {
+  border-bottom-color: #6c3baa;
+  border-bottom-color: var(--project-accent, #6c3baa);
 }
 
 .project-summary {
@@ -445,6 +468,28 @@ export default Vue.extend({
 
   .project-image--swing-space {
     max-width: 40%;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .project-image-button:hover {
+    transform: scale(1.015);
+  }
+
+  .project-image-button:hover .project-cue {
+    box-shadow: 0 0 20px -2px #6c3baa;
+    box-shadow: 0 0 20px -2px var(--project-accent, #6c3baa);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-image-button {
+    transition: box-shadow 0.14s ease;
+  }
+
+  .project-image-button:active,
+  .project-image-button:hover {
+    transform: none;
   }
 }
 </style>
