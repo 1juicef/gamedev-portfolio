@@ -1,11 +1,22 @@
 <template>
-  <div class="header">
+  <div class="header" :class="{ 'header--one-page': isOnePage }">
     <div class="nav-bar">
       <img class="header-guy" :src="mascotSrc" alt="Running character" />
-      <router-link to="/">Projects</router-link>
-      <router-link to="/other-stuff">Other Stuff</router-link>
-      <router-link to="/resume">Resume</router-link>
-      <router-link to="/contact">Contact</router-link>
+      <template v-if="isOnePage">
+        <button
+          v-for="link in sectionLinks"
+          :key="link.id"
+          type="button"
+          class="nav-link"
+          @click="scrollToSection(link.id)"
+        >{{ link.label }}</button>
+      </template>
+      <template v-else>
+        <router-link to="/">Projects</router-link>
+        <router-link to="/other-stuff">Other Stuff</router-link>
+        <router-link to="/resume">Resume</router-link>
+        <router-link to="/contact">Contact</router-link>
+      </template>
     </div>
   </div>
 </template>
@@ -18,7 +29,21 @@ export default Vue.extend({
   //   props: {
   //     msg: String,
   //   },
+  data: function () {
+    return {
+      activeSection: 'projects',
+      sectionLinks: [
+        { id: 'projects', label: 'Projects' },
+        { id: 'other-stuff', label: 'Other Stuff' },
+        { id: 'resume', label: 'Resume' },
+        { id: 'contact', label: 'Contact' },
+      ],
+    };
+  },
   computed: {
+    isOnePage(): boolean {
+      return this.$route.path === '/one-page';
+    },
     mascotSrc(): string {
       switch (this.$route.path) {
         case "/game-projects":
@@ -35,7 +60,23 @@ export default Vue.extend({
           return "img/projects/Guy.gif";
       }
     }
-  }
+  },
+  methods: {
+    scrollToSection: function (id: string) {
+      const el = document.getElementById(id);
+      if (!el) {
+        return;
+      }
+      let reducedMotion = false;
+      try {
+        reducedMotion = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+      } catch (e) {
+        reducedMotion = false;
+      }
+      el.scrollIntoView({ block: 'start', behavior: reducedMotion ? 'auto' : 'smooth' });
+      this.activeSection = id;
+    },
+  },
 });
 </script>
 
@@ -45,6 +86,15 @@ export default Vue.extend({
 
 .header {
   width: 100%;
+}
+
+.header--one-page {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: rgba(18, 8, 24, 0.92);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
 }
 
 .nav-bar {
@@ -62,7 +112,7 @@ export default Vue.extend({
   transform: translateY(-5px);
 }
 
-a {
+a, .nav-link {
   text-transform: uppercase;
   margin-left: 15px;
   margin-right: 15px;
@@ -71,9 +121,34 @@ a {
   display: inline-block;
 }
 
-.router-link-exact-active {
+.nav-link {
+  font-family: 'Russo One', 'Lekton', Helvetica, Arial, sans-serif;
+  font-size: inherit;
+  line-height: inherit;
+  vertical-align: baseline;
+  color: @textColor;
+  opacity: 0.5;
+  background: none;
+  border: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.nav-link:hover {
+  opacity: 1;
+}
+
+.router-link-exact-active,
+.nav-link--active {
   border: 0px solid @textColor;
   border-bottom-width: 2px;
+}
+
+.nav-link--active {
+  opacity: 1;
 }
 
 @media only screen and (max-width: 620px){
@@ -81,7 +156,7 @@ a {
     line-height: 2em;
   }
 
-  a {
+  a, .nav-link {
     margin-left: 9px;
     margin-right: 9px;
     padding-bottom: 0px;
