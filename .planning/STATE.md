@@ -30,7 +30,7 @@ See: .planning/PROJECT.md (updated 2026-07-23)
 Phase: 5 of 7 (Dark Theme Redesign)
 Plan: — (not yet planned)
 Status: Ready to plan
-Last activity: 2026-07-28 - Completed quick task 260728-rxd: updated Other Stuff gallery intro text (CLO 3D, Blender, WET DOG)
+Last activity: 2026-08-01 - Completed quick task 260801-cp6: mobile-safe always-visible click affordance on game project timeline cards (human-verify checkpoint outstanding)
 
 Progress: [░░░░░░░░░░] 0%
 
@@ -91,6 +91,7 @@ None open. Watch during execution: keep default router (hash) mode and default `
 | 260728-rml | Harden Other Stuff gallery video autoplay path (preload=auto, load()+retry-on-loadedmetadata) — defensive fix, did not resolve the gray-box bug | 2026-07-28 | eabf583 | [260728-rml-harden-video-autoplay-reliability-in-oth](./quick/260728-rml-harden-video-autoplay-reliability-in-oth/) |
 | 260728-rrq | Re-encode Crouch walking1.mp4 from unsupported MPEG-4 Part 2 to H.264 — actual root-cause fix for the gray-box gallery video bug | 2026-07-28 | d4afdaf | [260728-rrq-re-encode-crouch-walking1-mp4-from-unsup](./quick/260728-rrq-re-encode-crouch-walking1-mp4-from-unsup/) |
 | 260728-rxd | Update Other Stuff gallery intro text to mention CLO 3D, Blender, and WET DOG | 2026-07-28 | (pending) | [260728-rxd-update-other-stuff-gallery-intro-text-to](./quick/260728-rxd-update-other-stuff-gallery-intro-text-to/) |
+| 260801-cp6 | Add always-visible accent-tied "View Details" cue and tap/focus/hover response states to game project timeline cards (mobile-safe, no hover-only cues) — human-verify checkpoint outstanding | 2026-08-01 | e089843 | [260801-cp6-add-always-visible-click-affordance-to-g](./quick/260801-cp6-add-always-visible-click-affordance-to-g/) |
 
 ## Deferred Items
 
