@@ -1,8 +1,9 @@
 <template>
   <div class="resume-page">
+    <h1>Resume</h1>
     <header class="resume-header">
       <div class="resume-heading">
-        <h1>Josef Ubaka</h1>
+        <h2 class="resume-name">Josef Ubaka</h2>
         <div class="resume-title">Game Programmer</div>
       </div>
 
@@ -203,8 +204,11 @@ export default Vue.extend({
   gap: 16px;
 }
 
-.resume-heading h1 {
+.resume-name {
   margin: 0 0 4px;
+  font-size: 1.9em;
+  font-weight: 100;
+  line-height: 1.15;
 }
 
 .resume-title {
