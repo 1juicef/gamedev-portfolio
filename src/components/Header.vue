@@ -1,5 +1,5 @@
 <template>
-  <div class="header" :class="{ 'header--one-page': isOnePage }">
+  <div class="header">
     <div class="nav-bar">
       <img class="header-guy" :src="mascotSrc" alt="Running character" />
       <template v-if="isOnePage">
@@ -147,15 +147,10 @@ export default Vue.extend({
 
 .header {
   width: 100%;
-}
-
-.header--one-page {
   position: sticky;
   top: 0;
-  z-index: 5;
-  background: rgba(18, 8, 24, 0.92);
-  -webkit-backdrop-filter: blur(6px);
-  backdrop-filter: blur(6px);
+  z-index: 10;
+  background: @headerBgColor;
 }
 
 .nav-bar {
@@ -210,6 +205,13 @@ a, .nav-link {
 
 .nav-link--active {
   opacity: 1;
+}
+
+@media only screen and (min-width: 620px){
+  .nav-bar {
+    max-width: 1600px;
+    margin: 0 auto;
+  }
 }
 
 @media only screen and (max-width: 620px){

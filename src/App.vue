@@ -147,7 +147,7 @@ h1 {
     padding: 0 48px 40px;
   }
 
-  .main, .header, .footer {
+  .main, .footer {
     max-width: 1600px;
     margin: 0 auto;
   }
