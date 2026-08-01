@@ -40,6 +40,11 @@ const routes: Array<RouteConfig> = [
     component: () => import(/* webpackChunkName: "about" */ '../views/OnePage.vue')
   },
   {
+    path: '/project/:id',
+    name: 'Project Details',
+    component: () => import(/* webpackChunkName: "about" */ '../views/ProjectDetails.vue')
+  },
+  {
     path: '/404',
     name: 'NotFound',
     component: () => import(/* webpackChunkName: "about" */ '../views/404.vue')
@@ -51,7 +56,17 @@ const routes: Array<RouteConfig> = [
 ]
 
 const router = new VueRouter({
-  routes
+  routes,
+  scrollBehavior (to, from, savedPosition) {
+    if (savedPosition) {
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          resolve(savedPosition)
+        }, 250)
+      })
+    }
+    return { x: 0, y: 0 }
+  }
 })
 
 export default router
