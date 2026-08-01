@@ -5,10 +5,10 @@ milestone_name: Redesign, Technical Deep-Dive & Launch
 current_phase: 5
 current_phase_name: Dark Theme Redesign
 status: planning
-stopped_at: "Completed quick task 260801-pnq Tasks 1-3 (routed project page, entry-point rewiring, sticky opaque header); Task 4 human-verify checkpoint outstanding"
-last_updated: "2026-08-01T18:45:00.000Z"
+stopped_at: "Completed quick task 260801-qi1 Tasks 1-4 (overlay restored, routed page retired, Resume heading, Other Projects heading); Task 5 human-verify checkpoint outstanding"
+last_updated: "2026-08-01T19:15:00.000Z"
 last_activity: 2026-08-01
-last_activity_desc: "Completed quick task 260801-pnq: project details moved to routed /project/:id page, sticky opaque header sitewide (human-verify checkpoint outstanding)"
+last_activity_desc: "Completed quick task 260801-qi1: reverted project details to an in-place modal overlay (dropped window.scrollTo root cause), kept sticky opaque header, added Resume/Other Projects headings (human-verify checkpoint outstanding)"
 progress:
   total_phases: 1
   completed_phases: 0
@@ -30,7 +30,7 @@ See: .planning/PROJECT.md (updated 2026-07-23)
 Phase: 5 of 7 (Dark Theme Redesign)
 Plan: — (not yet planned)
 Status: Ready to plan
-Last activity: 2026-08-01 - Completed quick task 260801-pnq: routed project details page at /project/:id replacing the scroll-locked modal, wired all entry points (timeline, ProjectsList, Resume, /one-page), sticky opaque header sitewide (human-verify checkpoint outstanding)
+Last activity: 2026-08-01 - Completed quick task 260801-qi1: reverted project details back to an in-place modal overlay (root-cause fix — dropped window.scrollTo(0,0), not routing), kept the sticky opaque header, added Resume heading and renamed Other Stuff heading to "Other Projects" (human-verify checkpoint outstanding)
 
 Progress: [░░░░░░░░░░] 0%
 
@@ -94,7 +94,8 @@ None open. Watch during execution: keep default router (hash) mode and default `
 | 260801-cp6 | Add always-visible accent-tied "View Details" cue and tap/focus/hover response states to game project timeline cards (mobile-safe, no hover-only cues) — human-verify checkpoint outstanding | 2026-08-01 | e089843 | [260801-cp6-add-always-visible-click-affordance-to-g](./quick/260801-cp6-add-always-visible-click-affordance-to-g/) |
 | 260801-exk | Relocate "View Details" cue from video-thumbnail overlay to a standalone button under the summary text (follow-up to 260801-cp6 per user feedback) — human-verify checkpoint outstanding | 2026-08-01 | e1409fd | [260801-exk-move-the-view-details-click-affordance-c](./quick/260801-exk-move-the-view-details-click-affordance-c/) |
 | 260801-ffe | Add experimental /one-page route stacking GameProjects, OtherStuff, Resume, Contact into one scroll, with a route-conditional Header scroll-nav (buttons, sticky bar, IntersectionObserver-driven active state and mascot) — human-verify checkpoint outstanding | 2026-08-01 | d03df57..fbfaf07 | [260801-ffe-build-an-experimental-one-page-portfolio](./quick/260801-ffe-build-an-experimental-one-page-portfolio/) |
-| 260801-pnq | Move project details out of the stacked modal into a routed page at /project/:id (timeline, ProjectsList, Resume, and /one-page all navigate there; legacy ?project= link redirects), and make the site header sticky + opaque on every route — human-verify checkpoint outstanding | 2026-08-01 | f8be049..15f8ff9 | [260801-pnq-split-projectdetailsoverlay-into-separat](./quick/260801-pnq-split-projectdetailsoverlay-into-separat/) |
+| 260801-pnq | Move project details out of the stacked modal into a routed page at /project/:id (timeline, ProjectsList, Resume, and /one-page all navigate there; legacy ?project= link redirects), and make the site header sticky + opaque on every route — superseded by 260801-qi1 (routing reverted; header kept) | 2026-08-01 | f8be049..15f8ff9 | [260801-pnq-split-projectdetailsoverlay-into-separat](./quick/260801-pnq-split-projectdetailsoverlay-into-separat/) |
+| 260801-qi1 | Revert project details back to an in-place modal overlay (root-cause fix: drop the window.scrollTo(0,0) that caused the original scroll-jump complaint, not routing); keep the sticky opaque header; add left-aligned "Resume" heading; rename Other Stuff page heading to "Other Projects" — human-verify checkpoint outstanding | 2026-08-01 | 6985ec6..2696f08 | [260801-qi1-revert-project-details-route-back-to-ove](./quick/260801-qi1-revert-project-details-route-back-to-ove/) |
 
 ## Deferred Items
 
@@ -104,8 +105,8 @@ None open. Watch during execution: keep default router (hash) mode and default `
 
 ## Session Continuity
 
-Last session: 2026-08-01T18:45:00.000Z
-Stopped at: Completed quick task 260801-pnq Tasks 1-3 (routed project page at /project/:id, entry-point rewiring across GameProjects/ProjectsList/Resume/one-page, sticky opaque header); Task 4 human-verify checkpoint outstanding
+Last session: 2026-08-01T19:15:00.000Z
+Stopped at: Completed quick task 260801-qi1 Tasks 1-4 (ProjectDetailsOverlay restored from git history and rewired across GameProjects/ProjectsList/Resume, routed page + scrollBehavior retired, Resume heading, Other Projects heading); Task 5 human-verify checkpoint outstanding
 Resume file: None
 
 ## Operator Next Steps
