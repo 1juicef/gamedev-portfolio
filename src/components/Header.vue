@@ -8,6 +8,7 @@
           :key="link.id"
           type="button"
           class="nav-link"
+          :class="{ 'nav-link--active': activeSection === link.id }"
           @click="scrollToSection(link.id)"
         >{{ link.label }}</button>
       </template>
@@ -24,6 +25,15 @@
 <script lang="ts">
 import Vue from "vue";
 
+// Section id -> mascot gif, on /one-page only. Reuses the exact images the
+// route-based switch below already serves for each page.
+const SECTION_MASCOTS: Record<string, string> = {
+  projects: 'img/projects/Guy.gif',
+  'other-stuff': 'img/projects/Guy7.gif',
+  resume: 'img/projects/Guy1.gif',
+  contact: 'img/projects/Guy4.gif',
+};
+
 export default Vue.extend({
   name: "Header",
   //   props: {
@@ -38,6 +48,7 @@ export default Vue.extend({
         { id: 'resume', label: 'Resume' },
         { id: 'contact', label: 'Contact' },
       ],
+      observer: null as IntersectionObserver | null,
     };
   },
   computed: {
@@ -45,6 +56,9 @@ export default Vue.extend({
       return this.$route.path === '/one-page';
     },
     mascotSrc(): string {
+      if (this.isOnePage) {
+        return SECTION_MASCOTS[this.activeSection] || 'img/projects/Guy.gif';
+      }
       switch (this.$route.path) {
         case "/game-projects":
           return "img/projects/Guy.gif";
@@ -61,6 +75,25 @@ export default Vue.extend({
       }
     }
   },
+  created: function () {
+    this.$root.$on('one-page-sections-ready', this.setupSectionObserver);
+  },
+  beforeDestroy: function () {
+    this.$root.$off('one-page-sections-ready', this.setupSectionObserver);
+    this.teardownSectionObserver();
+  },
+  watch: {
+    '$route.path': function (newPath: string) {
+      if (newPath === '/one-page') {
+        this.activeSection = 'projects';
+        this.$nextTick(() => {
+          this.setupSectionObserver();
+        });
+      } else {
+        this.teardownSectionObserver();
+      }
+    },
+  },
   methods: {
     scrollToSection: function (id: string) {
       const el = document.getElementById(id);
@@ -75,6 +108,34 @@ export default Vue.extend({
       }
       el.scrollIntoView({ block: 'start', behavior: reducedMotion ? 'auto' : 'smooth' });
       this.activeSection = id;
+    },
+    setupSectionObserver: function () {
+      this.teardownSectionObserver();
+      if (!this.isOnePage || typeof IntersectionObserver === 'undefined') {
+        return;
+      }
+      this.observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            this.activeSection = entry.target.id;
+          }
+        });
+      }, {
+        threshold: 0,
+        rootMargin: '-45% 0px -45% 0px',
+      });
+      this.sectionLinks.forEach((link) => {
+        const el = document.getElementById(link.id);
+        if (el && this.observer) {
+          this.observer.observe(el);
+        }
+      });
+    },
+    teardownSectionObserver: function () {
+      if (this.observer) {
+        this.observer.disconnect();
+        this.observer = null;
+      }
     },
   },
 });
