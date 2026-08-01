@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Other Stuff</h1>
+    <h1>Other Projects</h1>
 
     <div style="margin-bottom: 30px;">
       A selection of ad campaigns, production sheets and other media that I have made using CLO 3D and Blender
