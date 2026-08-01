@@ -35,6 +35,11 @@ const routes: Array<RouteConfig> = [
     component: () => import(/* webpackChunkName: "about" */ '../views/Contact.vue')
   },
   {
+    path: '/one-page',
+    name: 'One Page',
+    component: () => import(/* webpackChunkName: "about" */ '../views/OnePage.vue')
+  },
+  {
     path: '/404',
     name: 'NotFound',
     component: () => import(/* webpackChunkName: "about" */ '../views/404.vue')
