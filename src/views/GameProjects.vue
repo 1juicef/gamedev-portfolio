@@ -110,12 +110,21 @@
       </div>
     </section>
 
+    <ProjectDetailsOverlay
+      :visible="showPopup"
+      :title="popupTitle"
+      :color="popupColor"
+      :html-content="popupContent"
+      @close="showPopup = false"
+    />
+
   </div>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
 import LazyVideoThumbnail from "@/components/LazyVideoThumbnail.vue";
+import ProjectDetailsOverlay from "@/components/ProjectDetailsOverlay.vue";
 import gameProjectsData from "@/data/GameProjectsData.ts";
 import ProjectData from "@/data/ProjectData.ts";
 
@@ -123,6 +132,7 @@ export default Vue.extend({
   name: "GameProjects",
   components: {
     LazyVideoThumbnail,
+    ProjectDetailsOverlay,
   },
   data: function () {
     return {
@@ -154,6 +164,10 @@ export default Vue.extend({
         "floor-0": "You wake up in a house you don't remember setting your foot in. Can you find a way out before the horrors haunting this place find you?",
         "swing-space": "Swing yourself up through space by grappling planets, push your run farther, and chase the highscore.",
       },
+      showPopup: false,
+      popupTitle: "",
+      popupColor: "#000000",
+      popupContent: "",
     };
   },
   computed: {
@@ -170,13 +184,17 @@ export default Vue.extend({
     if (typeof projectId === "string") {
       const project = this.projects.find((p: ProjectData) => p.id === projectId);
       if (project) {
-        this.$router.replace("/project/" + project.id);
+        window.scrollTo(0, 0);
+        this.showDetails(project);
       }
     }
   },
   methods: {
     showDetails: function (item: ProjectData) {
-      this.$router.push("/project/" + item.id);
+      this.popupTitle = item.name;
+      this.popupColor = item.accentColor;
+      this.popupContent = item.htmlDescription;
+      this.showPopup = true;
     },
   },
 });

@@ -38,7 +38,7 @@
       <div class="project-entries">
         <article class="project-entry" v-for="project in projects" :key="project.id">
           <div class="project-entry-header">
-            <router-link class="project-entry-link" :to="`/project/${project.id}`">
+            <router-link class="project-entry-link" :to="`/game-projects?project=${project.id}`">
               {{ project.name }}
             </router-link>
             <span class="project-meta">{{ project.meta }}</span>

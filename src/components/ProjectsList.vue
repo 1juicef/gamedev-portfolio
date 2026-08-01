@@ -18,21 +18,44 @@
           </button>
         </template>
       </div>
+
+      <ProjectDetailsOverlay
+        :visible="showPopup"
+        :title="popupTitle"
+        :color="popupColor"
+        :html-content="popupContent"
+        @close="showPopup = false"
+      />
     </div>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
+import ProjectDetailsOverlay from "@/components/ProjectDetailsOverlay.vue";
 import ProjectData from "@/data/ProjectData.ts";
 
 export default Vue.extend({
   name: "ProjectsList",
+  components: {
+    ProjectDetailsOverlay,
+  },
   props: {
     projects: Array
   },
+  data: function () {
+    return {
+      showPopup: false,
+      popupTitle: "",
+      popupColor: "#000000",
+      popupContent: "",
+    };
+  },
   methods: {
     showDetails: function (item: ProjectData) {
-      this.$router.push("/project/" + item.id);
+      this.popupTitle = item.name;
+      this.popupColor = item.accentColor;
+      this.popupContent = item.htmlDescription;
+      this.showPopup = true;
     },
   },
 });
