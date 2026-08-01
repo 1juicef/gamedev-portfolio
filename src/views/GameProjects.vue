@@ -110,19 +110,11 @@
       </div>
     </section>
 
-    <ProjectDetailsOverlay
-      v-on:close="showPopup = false"
-      :visible="showPopup"
-      :title="popupTitle"
-      :htmlContent="popupContent"
-      :color="popupColor"
-    />
   </div>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
-import ProjectDetailsOverlay from "@/components/ProjectDetailsOverlay.vue";
 import LazyVideoThumbnail from "@/components/LazyVideoThumbnail.vue";
 import gameProjectsData from "@/data/GameProjectsData.ts";
 import ProjectData from "@/data/ProjectData.ts";
@@ -130,7 +122,6 @@ import ProjectData from "@/data/ProjectData.ts";
 export default Vue.extend({
   name: "GameProjects",
   components: {
-    ProjectDetailsOverlay,
     LazyVideoThumbnail,
   },
   data: function () {
@@ -143,22 +134,21 @@ export default Vue.extend({
         "swing-space": "reverse",
       },
       thumbVideos: {
+        "cpp-sokoban": "img/projects/cpp-sokoban/currentprogress.mp4",
         "drag-rush": "img/projects/drag-rush/DragRushGif.mp4",
         dispater: "img/projects/dispater/DispaterGif.mp4",
         "floor-0": "img/projects/floor-0/Floor0gif1.mp4",
         "swing-space": "img/projects/swing-space/SwingSpaceVid-thumb.mp4",
       },
       thumbPosters: {
+        "cpp-sokoban": "img/projects/cpp-sokoban/super-mario-icons-square-yellow-box-with-question-mark-illustration-thumbnail.jpg",
         "drag-rush": "img/projects/drag-rush/DragRushGif-poster.webp",
         dispater: "img/projects/dispater/DispaterGif-poster.webp",
         "floor-0": "img/projects/floor-0/Floor0gif1-poster.webp",
         "swing-space": "img/projects/swing-space/SwingSpaceVid-thumb-poster.webp",
       },
-      showPopup: false,
-      popupTitle: "",
-      popupColor: "#000000",
-      popupContent: "",
       summaries: {
+        "cpp-sokoban": "A Sokoban puzzle game built from scratch in SDL3 + C++. Unfinished, but the most technically hands-on project here: a custom memory arena, data-oriented design, and a hot-reloadable game-logic DLL.",
         "drag-rush": "\"Are you dragging or are you rushing!?\" Drag Rush is a racing game where you need to stick to the beat. Swerve and shoot your way through the race-track and beat the first-place holder.",
         dispater: "Dig for your salvation in this narrative heavy experience. Lead the crew down an unexplored path and discover the truth behind its walls.",
         "floor-0": "You wake up in a house you don't remember setting your foot in. Can you find a way out before the horrors haunting this place find you?",
@@ -180,17 +170,13 @@ export default Vue.extend({
     if (typeof projectId === "string") {
       const project = this.projects.find((p: ProjectData) => p.id === projectId);
       if (project) {
-        this.showDetails(project);
+        this.$router.replace("/project/" + project.id);
       }
     }
   },
   methods: {
     showDetails: function (item: ProjectData) {
-      this.popupTitle = item.name;
-      this.popupColor = item.accentColor;
-      this.popupContent = item.htmlDescription;
-      this.showPopup = true;
-      window.scrollTo(0, 0);
+      this.$router.push("/project/" + item.id);
     },
   },
 });
