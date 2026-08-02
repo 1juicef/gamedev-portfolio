@@ -1,6 +1,171 @@
 import ProjectData from '@/data/ProjectData.ts'
 
 export default [
+    new ProjectData("cpp-sokoban", "Sokoban", "img/projects/cpp-sokoban/super-mario-icons-square-yellow-box-with-question-mark-illustration-thumbnail.jpg", `
+    <div class="paragraph">
+        A <strong>Sokoban</strong> puzzle game I'm building solo in C++ with SDL3. Still unfinished, but the most technical project in this portfolio.
+    </div>
+    <div class="paragraph center">
+        <video class="pc-video" controls preload="metadata">
+            <source src="img/projects/cpp-sokoban/currentprogress.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <div class="paragraph center">
+        <h2>About this project</h2>
+        Built solo, from scratch, in C++ with SDL3 — no engine underneath, so every system is one I wrote and can point to.<br/>
+        Data-oriented instead of object-oriented: entities are flat structs in contiguous arrays, and what an entity can do is a bitmask instead of a class hierarchy.<br/>
+        A custom memory arena backs every system, so nothing touches malloc or new once gameplay is actually running.<br/>
+        Game logic lives in a hot-reloadable DLL, so most code changes apply while the game keeps running, no restart, no losing the level you were testing in.<br/>
+        Started this to actually learn how computers and games work with memory, not just how to call new and hope the allocator sorts it out.<br/>
+        Still unfinished: no win-state or level select yet, just the core push-box loop with undo/redo.
+    </div>
+    <details class="tech-overview">
+        <summary>Technical Overview</summary>
+        <div class="tech-overview-content">
+            <div class="tech-snippet">
+                <pre><code>struct Arena
+{
+    unsigned char* base;
+    size_t size;
+    size_t used;
+};
+
+void* Allocate(Arena* arena, size_t size)
+{
+    void* front = arena-&gt;base + arena-&gt;used;
+    arena-&gt;used += size;
+    memset(front, 0, size);
+    return front;
+}
+
+Arena* CreateSubArena(Arena* parent_arena, size_t size)
+{
+    Arena* sub_arena = (Arena*)Allocate(parent_arena, sizeof(Arena));
+    void* memory_start = Allocate(parent_arena, size);
+    Initialize(sub_arena, memory_start, size);
+    return sub_arena;
+}</code></pre>
+                <p class="tech-caption">One block is malloc'd once at startup, and every system (images, levels, entities, commands) gets its own sub-arena bump-allocated out of it. Allocating is just moving a pointer forward, no malloc/new during gameplay, and freeing a whole subsystem's memory is a single Reset() instead of tracking individual object lifetimes.</p>
+            </div>
+            <div class="tech-snippet">
+                <pre><code>enum Behaviour : uint32_t
+{
+    NONE = 0,
+    CAN_MOVE = 1 &lt;&lt; 0,
+    IS_PLAYER = 1 &lt;&lt; 1,
+    RESPOND_TO_INPUT = 1 &lt;&lt; 2
+};
+
+enum class ID : uint8_t
+{
+    NONE = 0,
+    GROUND = 1,
+    WALL = 2,
+    PLAYER = 3,
+    BOX = 4
+};
+
+struct Entity
+{
+    ID id;
+    int x;
+    int y;
+    Behaviour behaviour;
+
+    bool HasBehaviour(Behaviour flags)
+    {
+        return (behaviour &amp; flags) == flags;
+    }
+
+    void InitializeBaseBehaviour()
+    {
+        assert(id != ID::NONE);
+        switch (id)
+        {
+            default:
+                SetBehaviour(NONE);
+                break;
+            case ID::PLAYER:
+                SetBehaviour((Behaviour)(CAN_MOVE | IS_PLAYER | RESPOND_TO_INPUT));
+                break;
+            case ID::BOX:
+                SetBehaviour((Behaviour)CAN_MOVE);
+                break;
+        }
+    }
+};</code></pre>
+                <p class="tech-caption">No Player class, no Box class, no base GameObject to inherit from. One Entity struct for everything, and what it's allowed to do is a bitmask assigned off its ID. Asking "can this thing move?" is a single AND against the flags, not a walk up a class hierarchy.</p>
+            </div>
+            <div class="tech-snippet">
+                <pre><code>bool LoadDLL(DLL_INFO* info, int depth = 0)
+{
+    if (depth &gt; 20)
+    {
+        printf("failed to write temp DLL");
+        return false;
+    }
+
+    bool success = CopyFile(NAME_OF_DLL, NAME_OF_TEMP_DLL, false);
+    if (!success)
+    {
+        Sleep(50);
+        return LoadDLL(info, depth + 1);
+    }
+
+    info-&gt;dll = LoadLibrary(NAME_OF_TEMP_DLL);
+    if (info-&gt;dll == nullptr)
+    {
+        printf("could not load DLL");
+        return false;
+    }
+
+    info-&gt;initialize = (Function_Initialize)GetProcAddress(info-&gt;dll, NAME_OF_FUNC_INIT);
+    info-&gt;update = (Function_Update)GetProcAddress(info-&gt;dll, NAME_OF_FUNC_UPDATE);
+    info-&gt;draw = (Function_Draw)GetProcAddress(info-&gt;dll, NAME_OF_FUNC_DRAW);
+    info-&gt;timestamp = GetTimestamp();
+    return true;
+}
+
+void DLL_CheckStatus(DLL_INFO* dll)
+{
+    FILETIME timestamp = GetTimestamp();
+    if (CompareFileTime(&amp;dll-&gt;timestamp, &amp;timestamp) != 0)
+    {
+        UnloadDLL(dll);
+        LoadDLL(dll);
+    }
+}</code></pre>
+                <p class="tech-caption">The executable is a thin shell that polls the game DLL's last-write time every frame. The instant it changes, the old library is unloaded and the freshly built one is copied in and loaded back, function pointers and all, so saving a code change is enough. The running game picks it up mid-level, no restart, no losing your place.</p>
+            </div>
+            <div class="tech-snippet">
+                <pre><code>void Push(CommandBuffer* buffer, AnyCommand cmd)
+{
+    buffer->allCommands[buffer->index] = cmd;
+    buffer->index++;
+    Execute(cmd);
+}
+
+void Undo(CommandBuffer* buffer)
+{
+    if (buffer->index == 0) return;
+    buffer->index--;
+
+    AnyCommand cmd = buffer->allCommands[buffer->index];
+    switch (cmd.command.type)
+    {
+        case CMD_TYPE::MOVE:
+            MoveCommand mv = cmd.move;
+            mv.entity->x -= mv.xDir;
+            mv.entity->y -= mv.yDir;
+            break;
+    }
+}</code></pre>
+                <p class="tech-caption">Every push is stored as data in a flat command buffer, not as a snapshot of the world. Undo doesn't restore a previous state, it just reverses the same delta it applied going forward, so the whole undo/redo stack is a handful of structs and an index instead of a growing pile of saved game states.</p>
+            </div>
+        </div>
+    </details>
+    `, "#E08E32", false, false),
     new ProjectData("drag-rush", "Drag Rush", "img/projects/project-8-icon.png", `
     <div class="paragraph">
         <strong>Drag Rush</strong> is a rhythm-action racing game set in a sci-fi universe of cosmic bloodsports.
@@ -34,8 +199,8 @@ export default [
     <div class="paragraph center">
         <a href="https://yrgo.itch.io/drag-rush" target="_blank" rel="noopener noreferrer"><img class="itch-badge" src="img/projects/itchBadge.png" alt="Play on itch.io" loading="lazy" /></a>
     </div>
-    <details class="tech-overview">
-        <summary>Postmortem</summary>
+    <div class="tech-overview tech-overview--static">
+        <h2 class="tech-overview-heading">Postmortem</h2>
         <div class="tech-overview-content">
             <div class="paragraph">
                 <strong>Scope &amp; goals</strong><br/>
@@ -54,9 +219,9 @@ export default [
                 This was my first ever real game project, not only in group, but overall as well. Previous to this, I had made a simple Snake Game in raylib, but that was it. We had learnt some basics in C# and Unity in previous lectures, but I was still really nervous that I was not going to be able to perform to the degree I wanted to. We were three programmers during this project, Billy and Elmer and me. Both of them had previous experience in programming, which was very comforting. This group project went as smooth as it could have for a group of programmer and artist newbies. We were very coordinated and everyone put their best foot forward and tried their absolute best to get this game to where we wanted. This project made my confidence in my programming and logical thinking skills grow a lot.
             </div>
         </div>
-    </details>
-    <details class="tech-overview">
-        <summary>Technical Overview</summary>
+    </div>
+    <div class="tech-overview tech-overview--static">
+        <h2 class="tech-overview-heading">Technical Overview</h2>
         <div class="tech-overview-content">
             <div class="tech-snippet">
                 <pre><code>void Update()
@@ -123,7 +288,7 @@ public void StartMetronome(double bpm)
                 <p class="tech-caption">A two-stage tween (fast out, past the lane center and slower ease back in) gives the car a sense of momentum on transform position alone.</p>
             </div>
         </div>
-    </details>
+    </div>
     `, "#6C3BAA", false, false),
     new ProjectData("dispater", "Dispater", "img/projects/dispater/DispaterSC4.png", `
     <div class="paragraph">
@@ -226,8 +391,8 @@ public void StartMetronome(double bpm)
     <div class="paragraph center">
         <a href="https://juice-f.itch.io/floorzero" target="_blank" rel="noopener noreferrer"><img class="itch-badge" src="img/projects/itchBadge.png" alt="Play on itch.io" loading="lazy" /></a>
     </div>
-    <details class="tech-overview">
-        <summary>Postmortem</summary>
+    <div class="tech-overview tech-overview--static">
+        <h2 class="tech-overview-heading">Postmortem</h2>
         <div class="tech-overview-content">
             <div class="paragraph">
                 <strong>Scope &amp; goals</strong><br/>
@@ -246,9 +411,9 @@ public void StartMetronome(double bpm)
                 During this project I really got to understand how blueprints work, and that they are not that far from your standard programming practice. I got to learn how interfaces work and the power they wield and the hierarchical structure of actors and components work.
             </div>
         </div>
-    </details>
-    <details class="tech-overview">
-        <summary>Technical Overview</summary>
+    </div>
+    <div class="tech-overview tech-overview--static">
+        <h2 class="tech-overview-heading">Technical Overview</h2>
         <div class="tech-overview-content">
             <div class="tech-snippet">
                 <a href="img/projects/floor-0/BT_Ghost.png" target="_blank" rel="noopener noreferrer">
@@ -269,7 +434,7 @@ public void StartMetronome(double bpm)
                 <p class="tech-caption">A sphere trace gathers candidates first, then a line trace resolves which one the player actually means. Every hit is validated through the shared interactable interface, so aiming stays forgiving without ever grabbing something that was never interactable.</p>
             </div>
         </div>
-    </details>
+    </div>
     `, "#6C3BAA", false, false),
     new ProjectData("swing-space", "SwingSpace", "img/projects/swing-space/SwingSpaceGIF.gif", `
     <div class="paragraph">
@@ -293,8 +458,8 @@ public void StartMetronome(double bpm)
         Ported for mobile.<br/>
         Awesome, but also extremely fun.
     </div>
-    <details class="tech-overview">
-        <summary>Postmortem</summary>
+    <div class="tech-overview tech-overview--static">
+        <h2 class="tech-overview-heading">Postmortem</h2>
         <div class="tech-overview-content">
             <div class="paragraph">
                 <strong>Scope &amp; goals</strong><br/>
@@ -313,9 +478,9 @@ public void StartMetronome(double bpm)
                 Relying on no one but oneself has its ups and downs. In my case, it became very apparent on what I prefer coding and what I procrastinate on doing. UI is not my favorite, and especially when not working with any artists. I felt that it became solely functionality based, rather than a mixture of function and art, which I much prefer working with.
             </div>
         </div>
-    </details>
-    <details class="tech-overview">
-        <summary>Technical Overview</summary>
+    </div>
+    <div class="tech-overview tech-overview--static">
+        <h2 class="tech-overview-heading">Technical Overview</h2>
         <div class="tech-overview-content">
             <div class="tech-snippet">
                 <pre><code>void FixedUpdate()
@@ -395,6 +560,6 @@ public bool PlayerDeath()
                 <p class="tech-caption">Player broadcasts height/death via C# events. ScoreManager and the Firebase leaderboard subscribe independently, so scoring stays decoupled from player logic.</p>
             </div>
         </div>
-    </details>
+    </div>
     `, "#6C3BAA", false, false)
 ];
