@@ -14,7 +14,7 @@
       </template>
       <template v-else>
         <router-link to="/">Projects</router-link>
-        <router-link to="/other-stuff">Other Stuff</router-link>
+        <router-link to="/other-stuff">Other Projects</router-link>
         <router-link to="/resume">Resume</router-link>
         <router-link to="/contact">Contact</router-link>
       </template>
@@ -44,7 +44,7 @@ export default Vue.extend({
       activeSection: 'projects',
       sectionLinks: [
         { id: 'projects', label: 'Projects' },
-        { id: 'other-stuff', label: 'Other Stuff' },
+        { id: 'other-stuff', label: 'Other Projects' },
         { id: 'resume', label: 'Resume' },
         { id: 'contact', label: 'Contact' },
       ],
