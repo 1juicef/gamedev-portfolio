@@ -39,9 +39,7 @@
       <div class="project-entries">
         <article class="project-entry" v-for="project in projects" :key="project.id">
           <div class="project-entry-header">
-            <router-link class="project-entry-link" :to="`/game-projects?project=${project.id}`">
-              {{ project.name }}
-            </router-link>
+            <button type="button" class="project-entry-link" @click="showDetails(project.id)">{{ project.name }}</button>
             <span class="project-meta">{{ project.meta }}</span>
           </div>
           <p class="project-entry-summary">{{ project.summary }}</p>
@@ -98,16 +96,34 @@
       <span>References available on request</span>
       <a href="https://www.josefubaka.com" target="_blank" rel="noopener noreferrer">www.josefubaka.com</a>
     </footer>
+
+    <ProjectDetailsOverlay
+      :visible="showPopup"
+      :title="popupTitle"
+      :color="popupColor"
+      :html-content="popupContent"
+      @close="showPopup = false"
+    />
   </div>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
+import ProjectDetailsOverlay from "@/components/ProjectDetailsOverlay.vue";
+import gameProjectsData from "@/data/GameProjectsData.ts";
+import ProjectData from "@/data/ProjectData.ts";
 
 export default Vue.extend({
   name: "Resume",
+  components: {
+    ProjectDetailsOverlay,
+  },
   data: function () {
     return {
+      showPopup: false,
+      popupTitle: "",
+      popupColor: "#000000",
+      popupContent: "",
       projects: [
         {
           id: "drag-rush",
@@ -184,6 +200,18 @@ export default Vue.extend({
         },
       ],
     };
+  },
+  methods: {
+    showDetails: function (id: string) {
+      const item = gameProjectsData.find((p: ProjectData) => p.id === id);
+      if (!item) {
+        return;
+      }
+      this.popupTitle = item.name;
+      this.popupColor = item.accentColor;
+      this.popupContent = item.htmlDescription;
+      this.showPopup = true;
+    },
   },
 });
 </script>
@@ -290,9 +318,20 @@ export default Vue.extend({
 }
 
 .project-entry-link {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+  background: transparent;
+  color: inherit;
+  opacity: 0.5;
+  cursor: pointer;
+  text-align: left;
+  line-height: 1.2;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
   font-family: "Russo One", "Lekton", Helvetica, Arial, sans-serif;
   font-size: 1.3em;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.35);
   transition: color 0.18s ease, opacity 0.18s ease, border-bottom-color 0.18s ease;
 }
 
