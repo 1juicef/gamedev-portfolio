@@ -6,7 +6,7 @@ current_phase: 5
 current_phase_name: Dark Theme Redesign
 status: planning
 stopped_at: Completed quick task 260801-qi1 Tasks 1-4 (overlay restored, routed page retired, Resume heading, Other Projects heading); Task 5 human-verify checkpoint outstanding
-last_updated: "2026-08-02T15:08:20.883Z"
+last_updated: "2026-08-02T15:09:32.283Z"
 last_activity: 2026-08-01
 last_activity_desc: "Completed quick task 260801-qi1: reverted project details back to an in-place modal overlay (root-cause fix — dropped window.scrollTo(0,0), not routing), kept the sticky opaque header, added Resume heading and renamed Other Stuff heading to \\\"Other Projects\\\" (human-verify checkpoint outstanding)"
 progress:
@@ -97,6 +97,7 @@ None open. Watch during execution: keep default router (hash) mode and default `
 | 260801-pnq | Move project details out of the stacked modal into a routed page at /project/:id (timeline, ProjectsList, Resume, and /one-page all navigate there; legacy ?project= link redirects), and make the site header sticky + opaque on every route — superseded by 260801-qi1 (routing reverted; header kept) | 2026-08-01 | f8be049..15f8ff9 | [260801-pnq-split-projectdetailsoverlay-into-separat](./quick/260801-pnq-split-projectdetailsoverlay-into-separat/) |
 | 260801-qi1 | Revert project details back to an in-place modal overlay (root-cause fix: drop the window.scrollTo(0,0) that caused the original scroll-jump complaint, not routing); keep the sticky opaque header; add left-aligned "Resume" heading; rename Other Stuff page heading to "Other Projects" — human-verify checkpoint outstanding | 2026-08-01 | 6985ec6..2696f08 | [260801-qi1-revert-project-details-route-back-to-ove](./quick/260801-qi1-revert-project-details-route-back-to-ove/) |
 | 20 | Fix Resume summary wording to say Game Programmer instead of Game Developer | 2026-08-02 | 343962c | — |
+| 21 | Left-align Resume page (remove auto-centering) to match other pages | 2026-08-02 | 47a25c4 | — |
 
 ## Deferred Items
 
