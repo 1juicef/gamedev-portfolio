@@ -6,7 +6,7 @@ current_phase: 5
 current_phase_name: Dark Theme Redesign
 status: planning
 stopped_at: Completed quick task 260801-qi1 Tasks 1-4 (overlay restored, routed page retired, Resume heading, Other Projects heading); Task 5 human-verify checkpoint outstanding
-last_updated: "2026-08-02T15:47:30.209Z"
+last_updated: "2026-08-02T17:22:25.459Z"
 last_activity: 2026-08-01
 last_activity_desc: "Completed quick task 260801-qi1: reverted project details back to an in-place modal overlay (root-cause fix — dropped window.scrollTo(0,0), not routing), kept the sticky opaque header, added Resume heading and renamed Other Stuff heading to \\\"Other Projects\\\" (human-verify checkpoint outstanding)"
 progress:
@@ -105,6 +105,7 @@ None open. Watch during execution: keep default router (hash) mode and default `
 | 26 | Fix Contact h1 not centering (global App.vue text-align:left override) | 2026-08-02 | 4115b89 | — |
 | 27 | Add Previously to the Top 500 Overwatch resume detail | 2026-08-02 | 1284a38 | — |
 | 28 | Try Dispater postmortem/technical-overview as static sections instead of dropdowns | 2026-08-02 | 6e94ff7 | — |
+| 29 | Convert all remaining Postmortem/Technical Overview dropdowns (Drag Rush, Floor Zero, SwingSpace) to static sections | 2026-08-02 | 0844f45 | — |
 
 ## Deferred Items
 
