@@ -6,7 +6,7 @@ current_phase: 5
 current_phase_name: Dark Theme Redesign
 status: planning
 stopped_at: Completed quick task 260801-qi1 Tasks 1-4 (overlay restored, routed page retired, Resume heading, Other Projects heading); Task 5 human-verify checkpoint outstanding
-last_updated: "2026-08-02T15:31:30.017Z"
+last_updated: "2026-08-02T15:33:50.567Z"
 last_activity: 2026-08-01
 last_activity_desc: "Completed quick task 260801-qi1: reverted project details back to an in-place modal overlay (root-cause fix — dropped window.scrollTo(0,0), not routing), kept the sticky opaque header, added Resume heading and renamed Other Stuff heading to \\\"Other Projects\\\" (human-verify checkpoint outstanding)"
 progress:
@@ -101,6 +101,7 @@ None open. Watch during execution: keep default router (hash) mode and default `
 | 22 | Fix Resume project links to work correctly both standalone at /resume and embedded inside /one-page | 2026-08-02 | 097ecb3 | — |
 | 23 | Make sticky header background transparent instead of static purple | 2026-08-02 | 5bec945 | — |
 | 24 | Replace pill/glow View Details cue with bold text-link style, matching site font | 2026-08-02 | d8503ff | — |
+| 25 | Re-center Resume page and center Contact heading/text | 2026-08-02 | 7a58560 | — |
 
 ## Deferred Items
 
