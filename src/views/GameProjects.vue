@@ -45,10 +45,7 @@
             class="project-cue"
             :aria-label="'View details for ' + wipProject.name"
             @click="showDetails(wipProject)"
-          >
-            <span class="project-cue-label">View Details</span>
-            <span class="project-cue-arrow"></span>
-          </button>
+          >View Details</button>
         </div>
       </div>
     </section>
@@ -84,10 +81,7 @@
             class="project-cue"
             :aria-label="'View details for ' + project.name"
             @click="showDetails(project)"
-          >
-            <span class="project-cue-label">View Details</span>
-            <span class="project-cue-arrow"></span>
-          </button>
+          >View Details</button>
         </div>
       </section>
     </div>
@@ -312,44 +306,32 @@ export default Vue.extend({
 }
 
 .project-cue {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
+  display: inline-block;
   margin: 20px 0 0;
-  padding: 10px 16px;
+  padding: 0;
   min-height: 44px;
   box-sizing: border-box;
   white-space: nowrap;
-  border-radius: 999px;
-  font-family: inherit;
-  font-size: 0.78em;
-  line-height: 1;
+  background: none;
+  border: 0;
+  font-family: 'Lekton', Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  font-size: 0.95em;
+  line-height: 44px;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.1em;
   color: #ffffff;
-  background: rgba(0, 0, 0, 0.75);
-  border: 2px solid #6c3baa;
-  border: 2px solid var(--project-accent, #6c3baa);
-  box-shadow: 0 0 12px -2px #6c3baa;
-  box-shadow: 0 0 12px -2px var(--project-accent, #6c3baa);
+  border-bottom: 2px solid #6c3baa;
+  border-bottom-color: var(--project-accent, #6c3baa);
   cursor: pointer;
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
-  transition: filter 0.14s ease, box-shadow 0.14s ease;
+  transition: color 0.14s ease, border-bottom-color 0.14s ease;
 }
 
 .project-cue:active {
-  filter: brightness(1.4);
-}
-
-.project-cue-arrow {
-  flex: 0 0 auto;
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-width: 4px 0 4px 6px;
-  border-color: transparent transparent transparent #6c3baa;
-  border-color: transparent transparent transparent var(--project-accent, #6c3baa);
+  color: #6c3baa;
+  color: var(--project-accent, #6c3baa);
 }
 
 .project-copy {
@@ -484,9 +466,8 @@ export default Vue.extend({
   }
 
   .project-cue:hover {
-    filter: brightness(1.15);
-    box-shadow: 0 0 20px -2px #6c3baa;
-    box-shadow: 0 0 20px -2px var(--project-accent, #6c3baa);
+    color: #6c3baa;
+    color: var(--project-accent, #6c3baa);
   }
 }
 
