@@ -150,7 +150,7 @@ export default Vue.extend({
   position: sticky;
   top: 0;
   z-index: 10;
-  background: transparent;
+  background: rgba(0, 0, 0, 0.15);
 }
 
 .nav-bar {
