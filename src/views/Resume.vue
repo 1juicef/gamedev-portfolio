@@ -28,7 +28,7 @@
     </ul>
 
     <blockquote class="summary">
-      Creative and driven programming student doing the last term before I graduate as a Game Developer.
+      Creative and driven programming student doing the last term before I graduate as a Game Programmer.
       I have a background in the fashion industry, having worked in retail stores and co-founded a brand.
       I enjoy working both independently and in teams, and thrive in both. I contribute to my work
       environment by being positive, calm, and having a clear approach.
