@@ -180,7 +180,7 @@ export default Vue.extend({
       personal: [
         {
           label: "Esports",
-          detail: "Top 500 in Overwatch, mainly playing Ana support.",
+          detail: "Previously Top 500 in Overwatch, mainly playing Ana support.",
         },
         {
           label: "Current favorites",
