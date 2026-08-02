@@ -34,6 +34,10 @@
   text-align: center;
 }
 
+.contact-page h1 {
+  text-align: center;
+}
+
 ul {
   list-style: none;
   padding-inline-start: 0px;
