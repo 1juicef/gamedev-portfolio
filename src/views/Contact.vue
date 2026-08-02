@@ -1,6 +1,6 @@
 <template>
-  <div>
-    
+  <div class="contact-page">
+
     <h1>Contact</h1>
 
     <div style="margin-bottom:40px;">Feel free to reach out here:</div>
@@ -28,9 +28,17 @@
 </template>
 
 <style scoped>
+.contact-page {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
 ul {
   list-style: none;
   padding-inline-start: 0px;
+  display: inline-block;
+  text-align: left;
 }
 
 li {
