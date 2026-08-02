@@ -193,7 +193,6 @@ export default Vue.extend({
 
 .resume-page {
   max-width: 900px;
-  margin: 0 auto;
 }
 
 .resume-header {
