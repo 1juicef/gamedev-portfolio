@@ -6,7 +6,7 @@ current_phase: 5
 current_phase_name: Dark Theme Redesign
 status: planning
 stopped_at: Completed quick task 260801-qi1 Tasks 1-4 (overlay restored, routed page retired, Resume heading, Other Projects heading); Task 5 human-verify checkpoint outstanding
-last_updated: "2026-08-02T15:12:48.269Z"
+last_updated: "2026-08-02T15:17:08.422Z"
 last_activity: 2026-08-01
 last_activity_desc: "Completed quick task 260801-qi1: reverted project details back to an in-place modal overlay (root-cause fix — dropped window.scrollTo(0,0), not routing), kept the sticky opaque header, added Resume heading and renamed Other Stuff heading to \\\"Other Projects\\\" (human-verify checkpoint outstanding)"
 progress:
@@ -99,6 +99,7 @@ None open. Watch during execution: keep default router (hash) mode and default `
 | 20 | Fix Resume summary wording to say Game Programmer instead of Game Developer | 2026-08-02 | 343962c | — |
 | 21 | Left-align Resume page (remove auto-centering) to match other pages | 2026-08-02 | 47a25c4 | — |
 | 22 | Fix Resume project links to work correctly both standalone at /resume and embedded inside /one-page | 2026-08-02 | 097ecb3 | — |
+| 23 | Make sticky header background transparent instead of static purple | 2026-08-02 | 5bec945 | — |
 
 ## Deferred Items
 
