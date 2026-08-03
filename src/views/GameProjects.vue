@@ -166,8 +166,7 @@ export default Vue.extend({
   },
   computed: {
     wipProject: function (): ProjectData | undefined {
-      // Held back from the live page until the write-up is ready to publish.
-      return undefined;
+      return this.projects.find((p: ProjectData) => p.id === "cpp-sokoban");
     },
     timelineProjects: function (): ProjectData[] {
       return this.projects.filter((p: ProjectData) => p.id !== "cpp-sokoban");
