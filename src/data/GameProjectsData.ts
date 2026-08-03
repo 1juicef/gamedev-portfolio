@@ -20,8 +20,8 @@ export default [
         Started this to actually learn how computers and games work with memory, not just how to call new and hope the allocator sorts it out.<br/>
         Still unfinished: no win-state or level select yet, just the core push-box loop with undo/redo.
     </div>
-    <details class="tech-overview">
-        <summary>Technical Overview</summary>
+    <div class="tech-overview tech-overview--static">
+        <h2 class="tech-overview-heading">Technical Overview</h2>
         <div class="tech-overview-content">
             <div class="tech-snippet">
                 <pre><code>struct Arena
@@ -164,7 +164,7 @@ void Undo(CommandBuffer* buffer)
                 <p class="tech-caption">Every push is stored as data in a flat command buffer, not as a snapshot of the world. Undo doesn't restore a previous state, it just reverses the same delta it applied going forward, so the whole undo/redo stack is a handful of structs and an index instead of a growing pile of saved game states.</p>
             </div>
         </div>
-    </details>
+    </div>
     `, "#E08E32", false, false),
     new ProjectData("drag-rush", "Drag Rush", "img/projects/project-8-icon.png", `
     <div class="paragraph">
