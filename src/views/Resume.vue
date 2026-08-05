@@ -259,8 +259,8 @@ export default Vue.extend({
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 15%;
-  transform: scale(1.6);
+  object-position: 60% 15%;
+  transform: scale(1.45);
   transform-origin: 50% 15%;
 }
 
