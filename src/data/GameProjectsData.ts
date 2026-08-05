@@ -13,12 +13,10 @@ export default [
     </div>
     <div class="paragraph center">
         <h2>About this project</h2>
-        Built solo, from scratch, in C++ with SDL3 — no engine underneath, so every system is one I wrote and can point to.<br/>
-        Data-oriented instead of object-oriented: entities are flat structs in contiguous arrays, and what an entity can do is a bitmask instead of a class hierarchy.<br/>
-        A custom memory arena backs every system, so nothing touches malloc or new once gameplay is actually running.<br/>
-        Game logic lives in a hot-reloadable DLL, so most code changes apply while the game keeps running, no restart, no losing the level you were testing in.<br/>
-        Started this to actually learn how computers and games work with memory, not just how to call new and hope the allocator sorts it out.<br/>
-        Still unfinished: no win-state or level select yet, just the core push-box loop with undo/redo.
+        Project I started working on between my school semesters.<br/>
+        Started it because I wanted to dwell deeper into programming and how computers work with memory.<br/>
+        The most technical project I've done this far. Made with SDL and C++ - zero engines touched.<br/>
+        Data-oriented approach, instead of Object-oriented.
     </div>
     <div class="tech-overview tech-overview--static">
         <h2 class="tech-overview-heading">Technical Overview</h2>
@@ -46,7 +44,7 @@ Arena* CreateSubArena(Arena* parent_arena, size_t size)
     Initialize(sub_arena, memory_start, size);
     return sub_arena;
 }</code></pre>
-                <p class="tech-caption">One block is malloc'd once at startup, and every system (images, levels, entities, commands) gets its own sub-arena bump-allocated out of it. Allocating is just moving a pointer forward, no malloc/new during gameplay, and freeing a whole subsystem's memory is a single Reset() instead of tracking individual object lifetimes.</p>
+                <p class="tech-caption">Using malloc to portion out a memory arena, which is then sliced into subarenas for all systems. Allocating by moving a pointer forward.</p>
             </div>
             <div class="tech-snippet">
                 <pre><code>enum Behaviour : uint32_t
@@ -95,48 +93,7 @@ struct Entity
         }
     }
 };</code></pre>
-                <p class="tech-caption">No Player class, no Box class, no base GameObject to inherit from. One Entity struct for everything, and what it's allowed to do is a bitmask assigned off its ID. Asking "can this thing move?" is a single AND against the flags, not a walk up a class hierarchy.</p>
-            </div>
-            <div class="tech-snippet">
-                <pre><code>bool LoadDLL(DLL_INFO* info, int depth = 0)
-{
-    if (depth &gt; 20)
-    {
-        printf("failed to write temp DLL");
-        return false;
-    }
-
-    bool success = CopyFile(NAME_OF_DLL, NAME_OF_TEMP_DLL, false);
-    if (!success)
-    {
-        Sleep(50);
-        return LoadDLL(info, depth + 1);
-    }
-
-    info-&gt;dll = LoadLibrary(NAME_OF_TEMP_DLL);
-    if (info-&gt;dll == nullptr)
-    {
-        printf("could not load DLL");
-        return false;
-    }
-
-    info-&gt;initialize = (Function_Initialize)GetProcAddress(info-&gt;dll, NAME_OF_FUNC_INIT);
-    info-&gt;update = (Function_Update)GetProcAddress(info-&gt;dll, NAME_OF_FUNC_UPDATE);
-    info-&gt;draw = (Function_Draw)GetProcAddress(info-&gt;dll, NAME_OF_FUNC_DRAW);
-    info-&gt;timestamp = GetTimestamp();
-    return true;
-}
-
-void DLL_CheckStatus(DLL_INFO* dll)
-{
-    FILETIME timestamp = GetTimestamp();
-    if (CompareFileTime(&amp;dll-&gt;timestamp, &amp;timestamp) != 0)
-    {
-        UnloadDLL(dll);
-        LoadDLL(dll);
-    }
-}</code></pre>
-                <p class="tech-caption">The executable is a thin shell that polls the game DLL's last-write time every frame. The instant it changes, the old library is unloaded and the freshly built one is copied in and loaded back, function pointers and all, so saving a code change is enough. The running game picks it up mid-level, no restart, no losing your place.</p>
+                <p class="tech-caption">No Player class, no Box class, no base GameObject to inherit from. One Entity struct for everything.</p>
             </div>
             <div class="tech-snippet">
                 <pre><code>void Push(CommandBuffer* buffer, AnyCommand cmd)
