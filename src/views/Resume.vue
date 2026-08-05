@@ -2,9 +2,18 @@
   <div class="resume-page">
     <h1>Resume</h1>
     <header class="resume-header">
-      <div class="resume-heading">
-        <h2 class="resume-name">Josef Ubaka</h2>
-        <div class="resume-title">Game Programmer</div>
+      <div class="resume-identity">
+        <img
+          class="resume-photo"
+          src="img/resume-photo.jpg"
+          alt="Portrait photo of Josef Ubaka"
+          width="467"
+          height="700"
+        />
+        <div class="resume-heading">
+          <h2 class="resume-name">Josef Ubaka</h2>
+          <div class="resume-title">Game Programmer</div>
+        </div>
       </div>
 
       <a class="download-button" href="img/actualResume.png" download="Josef-Ubaka-Resume.png">
@@ -232,6 +241,24 @@ export default Vue.extend({
   gap: 16px;
 }
 
+.resume-identity {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-width: 0;
+}
+
+.resume-photo {
+  flex: 0 0 auto;
+  display: block;
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 20%;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
 .resume-name {
   margin: 0 0 4px;
   font-size: 1.9em;
@@ -455,6 +482,11 @@ export default Vue.extend({
 @media only screen and (min-width: 620px) {
   .resume-columns {
     grid-template-columns: 1.3fr 1fr;
+  }
+
+  .resume-photo {
+    width: 116px;
+    height: 116px;
   }
 }
 </style>
