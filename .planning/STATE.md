@@ -106,6 +106,7 @@ None open. Watch during execution: keep default router (hash) mode and default `
 | 27 | Add Previously to the Top 500 Overwatch resume detail | 2026-08-02 | 1284a38 | — |
 | 28 | Try Dispater postmortem/technical-overview as static sections instead of dropdowns | 2026-08-02 | 6e94ff7 | — |
 | 29 | Convert all remaining Postmortem/Technical Overview dropdowns (Drag Rush, Floor Zero, SwingSpace) to static sections | 2026-08-02 | 0844f45 | — |
+| 260805-pzm | Add resume-pic.jpg as profile photo on Resume page (optimized derivative + full-height rectangular header photo, resolved via user feedback) | 2026-08-05 | 6e53247 | [260805-pzm-add-resume-pic-jpg-as-profile-photo-on-r](./quick/260805-pzm-add-resume-pic-jpg-as-profile-photo-on-r/) |
 
 ## Deferred Items
 
@@ -115,8 +116,8 @@ None open. Watch during execution: keep default router (hash) mode and default `
 
 ## Session Continuity
 
-Last session: 2026-08-01T19:15:00.000Z
-Stopped at: Completed quick task 260801-qi1 Tasks 1-4 (ProjectDetailsOverlay restored from git history and rewired across GameProjects/ProjectsList/Resume, routed page + scrollBehavior retired, Resume heading, Other Projects heading); Task 5 human-verify checkpoint outstanding
+Last session: 2026-08-05T18:52:00.000Z
+Stopped at: Completed quick task 260805-pzm (resume profile photo — optimized derivative, full-height rectangular header layout, confirmed by user in live browser)
 Resume file: None
 
 ## Operator Next Steps
