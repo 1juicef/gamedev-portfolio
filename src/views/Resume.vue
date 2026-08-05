@@ -2,51 +2,37 @@
   <div class="resume-page">
     <h1>Resume</h1>
     <header class="resume-header">
-      <div class="resume-photo-frame">
-        <img
-          class="resume-photo"
-          src="img/resume-photo.jpg"
-          alt="Portrait photo of Josef Ubaka"
-          width="571"
-          height="800"
-        />
+      <div class="resume-heading">
+        <h2 class="resume-name">Josef Ubaka</h2>
+        <div class="resume-title">Game Programmer</div>
       </div>
 
-      <div class="resume-top-content">
-        <div class="resume-heading-row">
-          <div class="resume-heading">
-            <h2 class="resume-name">Josef Ubaka</h2>
-            <div class="resume-title">Game Programmer</div>
-          </div>
-
-          <a class="download-button" href="img/actualResume.png" download="Josef-Ubaka-Resume.png">
-            <i class="fa fa-download fa-fw"></i> Download
-          </a>
-        </div>
-
-        <ul class="contact-row">
-          <li>
-            <i class="fa fa-envelope-o fa-fw"></i>
-            <a href="mailto:josefubaka@gmail.com">josefubaka@gmail.com</a>
-          </li>
-          <li>
-            <i class="fa fa-phone fa-fw"></i>
-            <a href="tel:+46792030382">+46 79-203 03 82</a>
-          </li>
-          <li>
-            <i class="fa fa-map-marker fa-fw"></i>
-            Gothenburg, Sweden
-          </li>
-        </ul>
-
-        <blockquote class="summary">
-          Creative and driven programming student doing the last term before I graduate as a Game Programmer.
-          I have a background in the fashion industry, having worked in retail stores and co-founded a brand.
-          I enjoy working both independently and in teams, and thrive in both. I contribute to my work
-          environment by being positive, calm, and having a clear approach.
-        </blockquote>
-      </div>
+      <a class="download-button" href="img/actualResume.png" download="Josef-Ubaka-Resume.png">
+        <i class="fa fa-download fa-fw"></i> Download
+      </a>
     </header>
+
+    <ul class="contact-row">
+      <li>
+        <i class="fa fa-envelope-o fa-fw"></i>
+        <a href="mailto:josefubaka@gmail.com">josefubaka@gmail.com</a>
+      </li>
+      <li>
+        <i class="fa fa-phone fa-fw"></i>
+        <a href="tel:+46792030382">+46 79-203 03 82</a>
+      </li>
+      <li>
+        <i class="fa fa-map-marker fa-fw"></i>
+        Gothenburg, Sweden
+      </li>
+    </ul>
+
+    <blockquote class="summary">
+      Creative and driven programming student doing the last term before I graduate as a Game Programmer.
+      I have a background in the fashion industry, having worked in retail stores and co-founded a brand.
+      I enjoy working both independently and in teams, and thrive in both. I contribute to my work
+      environment by being positive, calm, and having a clear approach.
+    </blockquote>
 
     <section class="resume-section">
       <h2>Selected Projects</h2>
@@ -239,38 +225,6 @@ export default Vue.extend({
 }
 
 .resume-header {
-  position: relative;
-  padding-left: 190px;
-}
-
-.resume-photo-frame {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 170px;
-  height: 100%;
-  overflow: hidden;
-  border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-}
-
-.resume-photo {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 10%;
-  transform: scale(1);
-  transform-origin: 50% 10%;
-}
-
-.resume-top-content {
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-}
-
-.resume-heading-row {
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
@@ -503,12 +457,5 @@ export default Vue.extend({
     grid-template-columns: 1.3fr 1fr;
   }
 
-  .resume-header {
-    padding-left: 280px;
-  }
-
-  .resume-photo-frame {
-    width: 260px;
-  }
 }
 </style>

@@ -17,7 +17,7 @@
       </div>
 
       <div class="hero-photo">
-        <img src="img/avatar.png" alt="Avatar of Josef" width="512" height="512" />
+        <img src="img/resume-photo.jpg" alt="Photo of Josef" width="571" height="800" />
       </div>
     </div>
 
@@ -222,10 +222,12 @@ export default Vue.extend({
 }
 
 .hero-photo img {
-  max-width: 220px;
+  max-width: 320px;
   width: 100%;
   height: auto;
   display: block;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
 .wip-section {
@@ -426,7 +428,7 @@ export default Vue.extend({
   }
 
   .hero-photo {
-    flex: 0 0 240px;
+    flex: 0 0 320px;
     margin-top: 48px;
   }
 
