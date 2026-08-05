@@ -259,7 +259,7 @@ export default Vue.extend({
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 40% 15%;
+  object-position: 65% 15%;
   transform: scale(1.45);
   transform-origin: 50% 15%;
 }
