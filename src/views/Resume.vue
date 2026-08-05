@@ -7,8 +7,8 @@
           class="resume-photo"
           src="img/resume-photo.jpg"
           alt="Portrait photo of Josef Ubaka"
-          width="933"
-          height="1400"
+          width="1067"
+          height="1600"
         />
       </div>
 
@@ -260,7 +260,7 @@ export default Vue.extend({
   height: 100%;
   object-fit: cover;
   object-position: 100% 8%;
-  transform: scale(2);
+  transform: scale(1.7);
   transform-origin: 50% 8%;
 }
 
