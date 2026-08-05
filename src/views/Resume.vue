@@ -2,13 +2,15 @@
   <div class="resume-page">
     <h1>Resume</h1>
     <header class="resume-header">
-      <img
-        class="resume-photo"
-        src="img/resume-photo.jpg"
-        alt="Portrait photo of Josef Ubaka"
-        width="467"
-        height="700"
-      />
+      <div class="resume-photo-frame">
+        <img
+          class="resume-photo"
+          src="img/resume-photo.jpg"
+          alt="Portrait photo of Josef Ubaka"
+          width="467"
+          height="700"
+        />
+      </div>
 
       <div class="resume-top-content">
         <div class="resume-heading-row">
@@ -241,16 +243,25 @@ export default Vue.extend({
   padding-left: 150px;
 }
 
-.resume-photo {
+.resume-photo-frame {
   position: absolute;
   top: 0;
   left: 0;
   width: 130px;
   height: 100%;
+  overflow: hidden;
   border-radius: 8px;
-  object-fit: cover;
-  object-position: center 20%;
   border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.resume-photo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 15%;
+  transform: scale(1.6);
+  transform-origin: 50% 15%;
 }
 
 .resume-top-content {
@@ -496,7 +507,7 @@ export default Vue.extend({
     padding-left: 200px;
   }
 
-  .resume-photo {
+  .resume-photo-frame {
     width: 180px;
   }
 }
