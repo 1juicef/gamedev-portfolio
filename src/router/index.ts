@@ -6,7 +6,8 @@ Vue.use(VueRouter)
 const routes: Array<RouteConfig> = [
   {
     path: '/',
-    redirect: '/one-page'
+    name: 'One Page',
+    component: () => import(/* webpackChunkName: "about" */ '../views/OnePage.vue')
   },
   {
     path: '/resume',
@@ -35,8 +36,7 @@ const routes: Array<RouteConfig> = [
   },
   {
     path: '/one-page',
-    name: 'One Page',
-    component: () => import(/* webpackChunkName: "about" */ '../views/OnePage.vue')
+    redirect: '/'
   },
   {
     path: '/404',

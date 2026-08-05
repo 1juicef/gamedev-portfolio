@@ -255,7 +255,7 @@ export default Vue.extend({
   padding: 10px 18px;
   border: 1px solid @accentColor;
   border-radius: 4px;
-  background: rgba(108, 59, 170, 0.18);
+  background: rgba(44, 61, 122, 0.4);
   color: @textColor;
   opacity: 1;
   white-space: nowrap;

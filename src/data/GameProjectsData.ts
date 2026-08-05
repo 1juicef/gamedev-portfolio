@@ -246,7 +246,7 @@ public void StartMetronome(double bpm)
             </div>
         </div>
     </div>
-    `, "#4FC3F7", false, false),
+    `, "#2C3D7A", false, false),
     new ProjectData("dispater", "Dispater", "img/projects/dispater/DispaterSC4.png", `
     <div class="paragraph">
         <strong>"Good morning rookie!"</strong>
@@ -321,7 +321,7 @@ public void StartMetronome(double bpm)
             </div>
         </div>
     </div>
-    `, "#4FC3F7", false, false),
+    `, "#2C3D7A", false, false),
     new ProjectData("floor-0", "Floor Zero", "img/projects/project-7-icon.png", `
     <div class="paragraph">
         <strong>Floor Zero</strong> is an atmospheric exploration game set in a derelict underground facility. Navigate through abandoned corridors and discover the mysteries of what happened here.
@@ -392,7 +392,7 @@ public void StartMetronome(double bpm)
             </div>
         </div>
     </div>
-    `, "#4FC3F7", false, false),
+    `, "#2C3D7A", false, false),
     new ProjectData("swing-space", "SwingSpace", "img/projects/swing-space/SwingSpaceGIF.gif", `
     <div class="paragraph">
         Swing yourself up through space by grappling the planets. Get as far as you possible can and beat the highscore!
@@ -518,5 +518,5 @@ public bool PlayerDeath()
             </div>
         </div>
     </div>
-    `, "#4FC3F7", false, false)
+    `, "#2C3D7A", false, false)
 ];

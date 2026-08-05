@@ -53,7 +53,7 @@ export default Vue.extend({
   },
   computed: {
     isOnePage(): boolean {
-      return this.$route.path === '/one-page';
+      return this.$route.path === '/' || this.$route.path === '/one-page';
     },
     mascotSrc(): string {
       if (this.isOnePage) {
@@ -84,7 +84,7 @@ export default Vue.extend({
   },
   watch: {
     '$route.path': function (newPath: string) {
-      if (newPath === '/one-page') {
+      if (newPath === '/' || newPath === '/one-page') {
         this.activeSection = 'projects';
         this.$nextTick(() => {
           this.setupSectionObserver();
