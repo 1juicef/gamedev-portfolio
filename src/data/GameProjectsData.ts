@@ -118,7 +118,7 @@ void Undo(CommandBuffer* buffer)
             break;
     }
 }</code></pre>
-                <p class="tech-caption">Every push is stored as data in a flat command buffer, not as a snapshot of the world. Undo doesn't restore a previous state, it just reverses the same delta it applied going forward, so the whole undo/redo stack is a handful of structs and an index instead of a growing pile of saved game states.</p>
+                <p class="tech-caption">Every push is stored as data in a flat command buffer. Undo doesn't restore a previous state, it reverses the same delta that was applied going forward, so the undo/redo stack is a handful of structs and an index.</p>
             </div>
         </div>
     </div>
