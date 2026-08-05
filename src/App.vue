@@ -72,7 +72,7 @@ export default Vue.extend({
 html, body {
   margin: 0px;
   min-height: 100%;
-  background: linear-gradient(180deg, #2b123f 0%, #120818 45%, #000000 100%);
+  background: linear-gradient(to bottom left, #180a33 0%, #2c3d7a 40%, #2680a8 70%, #2fd9c4 100%);
   background-attachment: fixed;
 }
 
