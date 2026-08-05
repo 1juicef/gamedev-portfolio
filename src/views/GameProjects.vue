@@ -291,14 +291,14 @@ export default Vue.extend({
 
 .project-image-button:active {
   transform: scale(0.985);
-  box-shadow: 0 0 0 2px #6c3baa;
-  box-shadow: 0 0 0 2px var(--project-accent, #6c3baa);
+  box-shadow: 0 0 0 2px #4fc3f7;
+  box-shadow: 0 0 0 2px var(--project-accent, #4fc3f7);
 }
 
 .project-image-button:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 2px #6c3baa;
-  box-shadow: 0 0 0 2px var(--project-accent, #6c3baa);
+  box-shadow: 0 0 0 2px #4fc3f7;
+  box-shadow: 0 0 0 2px var(--project-accent, #4fc3f7);
 }
 
 .project-image--swing-space {
@@ -322,8 +322,8 @@ export default Vue.extend({
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: #ffffff;
-  border-bottom: 2px solid #6c3baa;
-  border-bottom-color: var(--project-accent, #6c3baa);
+  border-bottom: 2px solid #4fc3f7;
+  border-bottom-color: var(--project-accent, #4fc3f7);
   cursor: pointer;
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
@@ -331,8 +331,8 @@ export default Vue.extend({
 }
 
 .project-cue:active {
-  color: #6c3baa;
-  color: var(--project-accent, #6c3baa);
+  color: #4fc3f7;
+  color: var(--project-accent, #4fc3f7);
 }
 
 .project-copy {
@@ -371,8 +371,8 @@ export default Vue.extend({
 }
 
 .project-title-link:active {
-  border-bottom-color: #6c3baa;
-  border-bottom-color: var(--project-accent, #6c3baa);
+  border-bottom-color: #4fc3f7;
+  border-bottom-color: var(--project-accent, #4fc3f7);
 }
 
 .project-summary {
@@ -467,8 +467,8 @@ export default Vue.extend({
   }
 
   .project-cue:hover {
-    color: #6c3baa;
-    color: var(--project-accent, #6c3baa);
+    color: #4fc3f7;
+    color: var(--project-accent, #4fc3f7);
   }
 }
 
