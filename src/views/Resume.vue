@@ -7,8 +7,8 @@
           class="resume-photo"
           src="img/resume-photo.jpg"
           alt="Portrait photo of Josef Ubaka"
-          width="1067"
-          height="1600"
+          width="571"
+          height="800"
         />
       </div>
 
@@ -240,14 +240,14 @@ export default Vue.extend({
 
 .resume-header {
   position: relative;
-  padding-left: 150px;
+  padding-left: 190px;
 }
 
 .resume-photo-frame {
   position: absolute;
   top: 0;
   left: 0;
-  width: 130px;
+  width: 170px;
   height: 100%;
   overflow: hidden;
   border-radius: 8px;
@@ -259,9 +259,9 @@ export default Vue.extend({
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 100% 8%;
-  transform: scale(1.7);
-  transform-origin: 50% 8%;
+  object-position: center 10%;
+  transform: scale(1);
+  transform-origin: 50% 10%;
 }
 
 .resume-top-content {
@@ -504,11 +504,11 @@ export default Vue.extend({
   }
 
   .resume-header {
-    padding-left: 200px;
+    padding-left: 280px;
   }
 
   .resume-photo-frame {
-    width: 180px;
+    width: 260px;
   }
 }
 </style>
