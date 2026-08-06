@@ -6,7 +6,7 @@ current_phase: 5
 current_phase_name: Dark Theme Redesign
 status: planning
 stopped_at: Completed quick task 260801-qi1 Tasks 1-4 (overlay restored, routed page retired, Resume heading, Other Projects heading); Task 5 human-verify checkpoint outstanding
-last_updated: "2026-08-06T08:49:49.880Z"
+last_updated: "2026-08-06T11:05:38.211Z"
 last_activity: 2026-08-06
 last_activity_desc: "Completed quick task 260806-e9x: shrunk and left-shifted mobile header nav labels, replaced footer's redundant email line with a thank-you message"
 progress:
@@ -110,6 +110,7 @@ None open. Watch during execution: keep default router (hash) mode and default `
 | 260806-e9x | Shrink and left-shift header nav labels on phone widths (mobile-only, font-size + asymmetric padding); replace footer's redundant email line with "Thanks for stopping by!" — footer visually confirmed live, header mobile check limited by browser-automation viewport-resize not working in this session | 2026-08-06 | f2b98ca | [260806-e9x-shrink-and-shift-header-titles-on-phone-](./quick/260806-e9x-shrink-and-shift-header-titles-on-phone-/) |
 | 32 | Shrink header nav text further on phone (0.8em to 0.6em, margins 7px to 5px) | 2026-08-06 | ed400f1 | — |
 | 33 | Shift footer credit and thank-you lines right on phone (asymmetric footer padding, max-width:619px) | 2026-08-06 | 6ab296b | — |
+| 34 | Swap Floor Zero timeline thumbnail video and overlay video (Floor0gif1.mp4 <-> Floor0vid2-web.mp4) | 2026-08-06 | 4c4fffc | — |
 
 ## Deferred Items
 
