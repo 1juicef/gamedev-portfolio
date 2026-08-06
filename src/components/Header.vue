@@ -217,13 +217,13 @@ a, .nav-link {
 @media only screen and (max-width: 620px){
   .nav-bar {
     line-height: 2em;
-    font-size: 0.8em;
+    font-size: 0.6em;
     padding: 20px 28px 20px 12px;
   }
 
   a, .nav-link {
-    margin-left: 7px;
-    margin-right: 7px;
+    margin-left: 5px;
+    margin-right: 5px;
     padding-bottom: 0px;
   }
 
