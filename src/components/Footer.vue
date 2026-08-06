@@ -63,6 +63,14 @@ export default Vue.extend({
   transform: translateY(-3px);
 }
 
+@media only screen and (max-width: 619px){
+
+  .footer {
+    padding-left: 40px;
+    padding-right: 16px;
+  }
+}
+
 @media only screen and (min-width: 620px){
 
   .footer {
