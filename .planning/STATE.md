@@ -6,9 +6,9 @@ current_phase: 5
 current_phase_name: Dark Theme Redesign
 status: planning
 stopped_at: Completed quick task 260801-qi1 Tasks 1-4 (overlay restored, routed page retired, Resume heading, Other Projects heading); Task 5 human-verify checkpoint outstanding
-last_updated: "2026-08-02T17:22:25.459Z"
-last_activity: 2026-08-01
-last_activity_desc: "Completed quick task 260801-qi1: reverted project details back to an in-place modal overlay (root-cause fix — dropped window.scrollTo(0,0), not routing), kept the sticky opaque header, added Resume heading and renamed Other Stuff heading to \\\"Other Projects\\\" (human-verify checkpoint outstanding)"
+last_updated: "2026-08-06T08:43:37.640Z"
+last_activity: 2026-08-06
+last_activity_desc: "Completed quick task 260806-e9x: shrunk and left-shifted mobile header nav labels, replaced footer's redundant email line with a thank-you message"
 progress:
   total_phases: 1
   completed_phases: 0
@@ -108,6 +108,7 @@ None open. Watch during execution: keep default router (hash) mode and default `
 | 29 | Convert all remaining Postmortem/Technical Overview dropdowns (Drag Rush, Floor Zero, SwingSpace) to static sections | 2026-08-02 | 0844f45 | — |
 | 260805-pzm | Add resume-pic.jpg as profile photo on Resume page (optimized derivative + full-height rectangular header photo, resolved via user feedback) | 2026-08-05 | 6e53247 | [260805-pzm-add-resume-pic-jpg-as-profile-photo-on-r](./quick/260805-pzm-add-resume-pic-jpg-as-profile-photo-on-r/) |
 | 260806-e9x | Shrink and left-shift header nav labels on phone widths (mobile-only, font-size + asymmetric padding); replace footer's redundant email line with "Thanks for stopping by!" — footer visually confirmed live, header mobile check limited by browser-automation viewport-resize not working in this session | 2026-08-06 | f2b98ca | [260806-e9x-shrink-and-shift-header-titles-on-phone-](./quick/260806-e9x-shrink-and-shift-header-titles-on-phone-/) |
+| 32 | Shrink header nav text further on phone (0.8em to 0.6em, margins 7px to 5px) | 2026-08-06 | ed400f1 | — |
 
 ## Deferred Items
 
