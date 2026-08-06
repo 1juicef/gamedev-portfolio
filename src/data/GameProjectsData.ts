@@ -328,7 +328,7 @@ public void StartMetronome(double bpm)
     </div>
     <div class="paragraph center">
         <video class="pc-video" controls preload="metadata">
-            <source src="img/projects/floor-0/Floor0vid2-web.mp4" type="video/mp4" />
+            <source src="img/projects/floor-0/Floor0gif1.mp4" type="video/mp4" />
             Your browser does not support the video tag.
         </video>
     </div>

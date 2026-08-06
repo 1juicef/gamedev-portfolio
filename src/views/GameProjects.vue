@@ -141,7 +141,7 @@ export default Vue.extend({
         "cpp-sokoban": "img/projects/cpp-sokoban/currentprogress.mp4",
         "drag-rush": "img/projects/drag-rush/DragRushGif.mp4",
         dispater: "img/projects/dispater/DispaterGif.mp4",
-        "floor-0": "img/projects/floor-0/Floor0gif1.mp4",
+        "floor-0": "img/projects/floor-0/Floor0vid2-web.mp4",
         "swing-space": "img/projects/swing-space/SwingSpaceVid-thumb.mp4",
       },
       thumbPosters: {
