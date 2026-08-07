@@ -36,6 +36,7 @@ export default Vue.extend({
 
 @import './css/projects.less';
 @import './css/variables.less';
+@import './css/print.less';
 
 @font-face {
   font-family: 'Lekton';

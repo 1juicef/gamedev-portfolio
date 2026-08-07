@@ -5,7 +5,8 @@
   "scripts": {
     "serve": "cross-env NODE_OPTIONS=--openssl-legacy-provider vue-cli-service serve",
     "build": "cross-env NODE_OPTIONS=--openssl-legacy-provider vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "export:resume-pdf": "npm run build && node scripts/export-resume-pdf.js"
   },
   "dependencies": {
     "vue": "^2.6.11",

@@ -1,0 +1,151 @@
+// Print stylesheet — resume-to-PDF export only.
+// Everything here lives inside @media print so on-screen appearance of
+// every route is completely unaffected. Uses literal hex values (not
+// variables.less imports) so this file is self-contained wherever it's
+// pulled in.
+
+@media print {
+    @page {
+        margin: 14mm 15mm;
+    }
+
+    html, body {
+        background: #fff !important;
+        background-image: none !important;
+        margin: 0;
+    }
+
+    #app {
+        background: transparent !important;
+        color: #111 !important;
+        font-size: 10.5pt;
+        line-height: 1.45;
+        text-align: left !important;
+    }
+
+    * {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .header,
+    .footer,
+    .download-button,
+    .overlay,
+    .dialog,
+    i.fa,
+    .resume-page > h1 {
+        display: none !important;
+    }
+
+    .main {
+        padding: 0 !important;
+        max-width: none !important;
+        margin: 0 !important;
+    }
+
+    .resume-page {
+        max-width: none !important;
+        margin: 0 !important;
+    }
+
+    a,
+    .resume-title,
+    .summary,
+    .project-meta,
+    .project-entry-link,
+    .project-entry-summary,
+    .entry-period,
+    .entry-role,
+    .entry-detail,
+    .personal-label,
+    .personal-detail,
+    .languages,
+    .resume-footer,
+    .contact-row i {
+        opacity: 1 !important;
+    }
+
+    .resume-title,
+    .project-meta,
+    .entry-period,
+    .entry-role,
+    .languages,
+    .resume-footer {
+        color: #4a4a4a !important;
+    }
+
+    a {
+        color: #111 !important;
+        text-decoration: none;
+    }
+
+    .project-entry-link {
+        color: #111 !important;
+        border-bottom: 0 !important;
+        background: transparent;
+        font-size: 1.15em;
+    }
+
+    .resume-section h2 {
+        border-bottom-color: rgba(0, 0, 0, 0.25) !important;
+    }
+
+    .resume-footer {
+        border-top-color: rgba(0, 0, 0, 0.25) !important;
+    }
+
+    .summary {
+        border-left-color: #555 !important;
+        font-style: italic;
+    }
+
+    .tech-chip {
+        background: rgba(0, 0, 0, 0.06) !important;
+        border: 1px solid rgba(0, 0, 0, 0.18);
+    }
+
+    .resume-section {
+        margin-top: 22px;
+    }
+
+    .project-entries {
+        gap: 14px;
+    }
+
+    .entry {
+        margin-bottom: 14px;
+    }
+
+    .resume-footer {
+        margin-top: 28px;
+        padding-top: 14px;
+    }
+
+    .contact-row {
+        margin-top: 14px;
+    }
+
+    .summary {
+        margin-top: 18px;
+    }
+
+    .resume-columns {
+        display: grid;
+        grid-template-columns: 1.3fr 1fr;
+        gap: 0 40px;
+    }
+
+    .resume-section,
+    .entry,
+    .project-entry,
+    .personal-entry {
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
+
+    // Documented fallback: if the human check finds the two-column block
+    // splitting badly across a page boundary, collapse it to a single
+    // column here: .resume-columns { grid-template-columns: 1fr; }
+    // Do NOT apply pre-emptively.
+}
