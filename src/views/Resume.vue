@@ -7,7 +7,7 @@
         <div class="resume-title">Game Programmer</div>
       </div>
 
-      <a class="download-button" href="img/actualResume.png" download="Josef-Ubaka-Resume.png">
+      <a class="download-button" href="downloads/Josef-Ubaka-Resume.pdf" download="Josef-Ubaka-Resume.pdf">
         <i class="fa fa-download fa-fw"></i> Download
       </a>
     </header>
