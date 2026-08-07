@@ -6,9 +6,9 @@ current_phase: 5
 current_phase_name: Dark Theme Redesign
 status: planning
 stopped_at: Completed quick task 260801-qi1 Tasks 1-4 (overlay restored, routed page retired, Resume heading, Other Projects heading); Task 5 human-verify checkpoint outstanding
-last_updated: "2026-08-06T11:05:38.211Z"
-last_activity: 2026-08-06
-last_activity_desc: "Completed quick task 260806-e9x: shrunk and left-shifted mobile header nav labels, replaced footer's redundant email line with a thank-you message"
+last_updated: "2026-08-07T09:20:00.000Z"
+last_activity: 2026-08-07
+last_activity_desc: "Completed quick task 260807-fe8: replaced Resume PNG download with a real scripted PDF export (print.less + headless-Chrome export script)"
 progress:
   total_phases: 1
   completed_phases: 0
@@ -30,7 +30,7 @@ See: .planning/PROJECT.md (updated 2026-07-23)
 Phase: 5 of 7 (Dark Theme Redesign)
 Plan: — (not yet planned)
 Status: Ready to plan
-Last activity: 2026-08-06 - Completed quick task 260806-e9x: shrunk and left-shifted mobile header nav labels, replaced footer's redundant email line with a thank-you message
+Last activity: 2026-08-07 - Completed quick task 260807-fe8: replaced Resume PNG download with a real scripted PDF export (print.less + headless-Chrome export script)
 
 Progress: [░░░░░░░░░░] 0%
 
@@ -111,6 +111,7 @@ None open. Watch during execution: keep default router (hash) mode and default `
 | 32 | Shrink header nav text further on phone (0.8em to 0.6em, margins 7px to 5px) | 2026-08-06 | ed400f1 | — |
 | 33 | Shift footer credit and thank-you lines right on phone (asymmetric footer padding, max-width:619px) | 2026-08-06 | 6ab296b | — |
 | 34 | Swap Floor Zero timeline thumbnail video and overlay video (Floor0gif1.mp4 <-> Floor0vid2-web.mp4) | 2026-08-06 | 4c4fffc | — |
+| 260807-fe8 | Replace Resume page's PNG download with a real PDF: added print.less (App.vue global, hides nav/header/footer, undoes dark-gradient/justify/opacity for print), scripted headless-Chrome export (scripts/export-resume-pdf.js -> public/downloads/Josef-Ubaka-Resume.pdf), repointed Resume.vue download link and filename | 2026-08-07 | 252f67a..8d23d87 | [260807-fe8-make-resume-download-a-pdf-instead-of-pn](./quick/260807-fe8-make-resume-download-a-pdf-instead-of-pn/) |
 
 ## Deferred Items
 
