@@ -84,11 +84,17 @@
         color: #111 !important;
         border-bottom: 0 !important;
         background: transparent;
-        font-size: 1.15em;
+        // !important required: Vue's scoped-style attribute selector
+        // (.project-entry-link[data-v-xxxx]) is more specific than this
+        // plain global class selector, so without !important the on-screen
+        // 1.3em value silently wins even inside @media print.
+        font-size: 1.15em !important;
     }
 
     .resume-section h2 {
         border-bottom-color: rgba(0, 0, 0, 0.25) !important;
+        margin: 0 0 5px !important;
+        padding-bottom: 3px !important;
     }
 
     .resume-footer {
@@ -105,29 +111,47 @@
         border: 1px solid rgba(0, 0, 0, 0.18);
     }
 
+    // All spacing overrides below carry !important for the same reason as
+    // .project-entry-link above: every one of these selectors also matches
+    // a higher-specificity scoped rule in Resume.vue's <style scoped>
+    // block, which otherwise silently wins the cascade even inside
+    // @media print (confirmed by measuring: the un-!important version of
+    // this pass produced zero change in rendered page count).
     .resume-section {
-        margin-top: 22px;
+        margin-top: 10px !important;
     }
 
     .project-entries {
-        gap: 14px;
+        gap: 8px !important;
     }
 
     .entry {
-        margin-bottom: 14px;
+        margin-bottom: 8px !important;
     }
 
     .resume-footer {
-        margin-top: 28px;
-        padding-top: 14px;
+        margin-top: 10px !important;
+        padding-top: 6px !important;
     }
 
     .contact-row {
-        margin-top: 14px;
+        margin-top: 6px !important;
     }
 
     .summary {
-        margin-top: 18px;
+        margin-top: 8px !important;
+    }
+
+    .project-entry-summary {
+        margin-top: 4px !important;
+    }
+
+    .entry-detail {
+        margin-top: 3px !important;
+    }
+
+    .personal-entries {
+        gap: 6px !important;
     }
 
     .resume-columns {
