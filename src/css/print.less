@@ -6,7 +6,7 @@
 
 @media print {
     @page {
-        margin: 14mm 15mm;
+        margin: 10mm 10mm;
     }
 
     html, body {
@@ -18,8 +18,8 @@
     #app {
         background: transparent !important;
         color: #111 !important;
-        font-size: 10.5pt;
-        line-height: 1.45;
+        font-size: 9pt;
+        line-height: 1.2;
         text-align: left !important;
     }
 
@@ -88,13 +88,27 @@
         // (.project-entry-link[data-v-xxxx]) is more specific than this
         // plain global class selector, so without !important the on-screen
         // 1.3em value silently wins even inside @media print.
-        font-size: 1.15em !important;
+        font-size: 1em !important;
+    }
+
+    // Lever 2 (heading scale): screen sizing (2.9em name, 1.2em section
+    // headings) is oversized for paper. Same !important requirement as
+    // above — these compete with Resume.vue's scoped font-size rules.
+    .resume-name {
+        font-size: 1.3em !important;
     }
 
     .resume-section h2 {
         border-bottom-color: rgba(0, 0, 0, 0.25) !important;
-        margin: 0 0 5px !important;
-        padding-bottom: 3px !important;
+        margin: 0 0 1px !important;
+        padding-bottom: 0 !important;
+        font-size: 1em !important;
+    }
+
+    // .languages carries a 16px scoped top margin that print never
+    // touched — same specificity trap as the other overrides above.
+    .languages {
+        margin-top: 4px !important;
     }
 
     .resume-footer {
@@ -109,6 +123,11 @@
     .tech-chip {
         background: rgba(0, 0, 0, 0.06) !important;
         border: 1px solid rgba(0, 0, 0, 0.18);
+        padding: 1px 6px !important;
+    }
+
+    .tech-chips {
+        gap: 3px !important;
     }
 
     // All spacing overrides below carry !important for the same reason as
@@ -118,46 +137,89 @@
     // @media print (confirmed by measuring: the un-!important version of
     // this pass produced zero change in rendered page count).
     .resume-section {
-        margin-top: 10px !important;
-    }
-
-    .project-entries {
-        gap: 8px !important;
-    }
-
-    .entry {
-        margin-bottom: 8px !important;
-    }
-
-    .resume-footer {
-        margin-top: 10px !important;
-        padding-top: 6px !important;
-    }
-
-    .contact-row {
-        margin-top: 6px !important;
-    }
-
-    .summary {
-        margin-top: 8px !important;
-    }
-
-    .project-entry-summary {
-        margin-top: 4px !important;
-    }
-
-    .entry-detail {
         margin-top: 3px !important;
     }
 
+    .project-entries {
+        gap: 2px !important;
+    }
+
+    .entry {
+        margin-bottom: 2px !important;
+    }
+
+    .resume-footer {
+        margin-top: 3px !important;
+        padding-top: 2px !important;
+    }
+
+    .contact-row {
+        margin-top: 2px !important;
+    }
+
+    .summary {
+        margin-top: 2px !important;
+    }
+
+    .project-entry-summary {
+        margin-top: 1px !important;
+    }
+
+    .entry-detail {
+        margin-top: 1px !important;
+    }
+
+    // Lever 6 (optional accelerator, applied because levers 1-5 were
+    // exhausted at their readability floors and the page count was still
+    // 2): put the five "Beyond the Code" rows into a 2-column print grid.
+    // Resume.vue's row layout for .personal-entry (label left, detail
+    // right) is scoped inside "@media only screen and (min-width: 620px)",
+    // which does not match the "print" media type at all, so it never
+    // applies here regardless. Deliberately NOT forcing that row layout in
+    // print either: measured that label+narrow-detail-column wraps the two
+    // long entries (Anime, Music) to far more lines than keeping each
+    // entry's natural stacked (label-above-detail) layout, which gives the
+    // detail paragraph the full ~340px grid-column width instead of a
+    // ~230px sliver next to a fixed label column.
     .personal-entries {
-        gap: 6px !important;
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 1px 14px !important;
+    }
+
+    // CSS Grid auto-placement fills row-major in source order, which
+    // pairs the two long entries (Anime, Music - source positions 3 and
+    // 5) with a short entry each rather than with each other, wasting a
+    // row's worth of height twice. `order` (valid for grid auto-placement
+    // per spec) reflows visual position only — Resume.vue's DOM/content
+    // order is untouched — to pair the two long entries together and the
+    // two short entries together, leaving only the shortest ("Off the
+    // PC") unpaired. This is a presentation-only reorder of five known,
+    // fixed rows, not a general-purpose sort.
+    .personal-entry:nth-child(1) { // Esports
+        order: 3;
+    }
+
+    .personal-entry:nth-child(2) { // Current favorites
+        order: 4;
+    }
+
+    .personal-entry:nth-child(3) { // Anime
+        order: 1;
+    }
+
+    .personal-entry:nth-child(4) { // Off the PC
+        order: 5;
+    }
+
+    .personal-entry:nth-child(5) { // Music
+        order: 2;
     }
 
     .resume-columns {
         display: grid;
-        grid-template-columns: 1.3fr 1fr;
-        gap: 0 40px;
+        grid-template-columns: 1fr 1fr;
+        gap: 0 24px;
     }
 
     .resume-section,
