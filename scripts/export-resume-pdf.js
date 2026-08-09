@@ -27,7 +27,10 @@ const ROOT = path.join(__dirname, "..");
 const DIST = path.join(ROOT, "dist");
 const OUT_DIR = path.join(ROOT, "public", "downloads");
 const OUT_PDF = path.join(OUT_DIR, "Josef-Ubaka-Resume.pdf");
-const ROUTE = "/#/resume";
+// ?pdf=1 tells Resume.vue to render the condensed one-page dataset
+// (no project-meta lines, no Beyond the Code section) instead of the
+// full content shown to normal visitors on the live /resume route.
+const ROUTE = "/#/resume?pdf=1";
 
 const CONTENT_TYPES = {
     ".html": "text/html",

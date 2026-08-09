@@ -27,7 +27,13 @@
       </li>
     </ul>
 
-    <blockquote class="summary">
+    <blockquote class="summary" v-if="!isPdf">
+      Creative and driven programming student doing the last term before I graduate as a Game Programmer.
+      I have a background in the fashion industry, having worked in retail stores and co-founded a brand.
+      I enjoy working both independently and in teams, and thrive in both. I contribute to my work
+      environment by being positive, calm, and having a clear approach.
+    </blockquote>
+    <blockquote class="summary" v-else>
       Creative and driven programming student doing the last term before I graduate as a Game Programmer.
       I have a background in the fashion industry, having worked in retail stores and co-founded a brand.
       I enjoy working both independently and in teams, and thrive in both.
@@ -36,9 +42,10 @@
     <section class="resume-section">
       <h2>Selected Projects</h2>
       <div class="project-entries">
-        <article class="project-entry" v-for="project in projects" :key="project.id">
+        <article class="project-entry" v-for="project in activeProjects" :key="project.id">
           <div class="project-entry-header">
             <button type="button" class="project-entry-link" @click="showDetails(project.id)">{{ project.name }}</button>
+            <span class="project-meta" v-if="project.meta">{{ project.meta }}</span>
           </div>
           <p class="project-entry-summary">{{ project.summary }}</p>
         </article>
@@ -80,6 +87,16 @@
       </div>
     </div>
 
+    <section class="resume-section" v-if="!isPdf">
+      <h2>Beyond the Code</h2>
+      <div class="personal-entries">
+        <article class="personal-entry" v-for="item in personal" :key="item.label">
+          <span class="personal-label">{{ item.label }}</span>
+          <span class="personal-detail">{{ item.detail }}</span>
+        </article>
+      </div>
+    </section>
+
     <footer class="resume-footer">
       <span>References available on request</span>
       <a href="https://www.josefubaka.com" target="_blank" rel="noopener noreferrer">www.josefubaka.com</a>
@@ -113,6 +130,37 @@ export default Vue.extend({
       popupColor: "#000000",
       popupContent: "",
       projects: [
+        {
+          id: "drag-rush",
+          name: "Drag Rush",
+          meta: "Unity · C# · 8wk · team of 6",
+          summary: "Built animation trees for the vehicles. Helped with overhauling our beat conductor for better BPM precision. Also did level design.",
+        },
+        {
+          id: "dispater",
+          name: "Dispater",
+          meta: "Unreal · C++ · 8wk · team of 7",
+          summary: "Built the systems that drive the story forward, including dialogue, voice lines, tasks, interactions.",
+        },
+        {
+          id: "floor-0",
+          name: "Floor Zero",
+          meta: "Unreal · UE Blueprint · 5wk · solo",
+          summary: "Made a modular interaction interface, together with a key/door system. Built a competent AI using UE's NavMesh.",
+        },
+        {
+          id: "swing-space",
+          name: "SwingSpace",
+          meta: "Unity · C# · 5wk · solo",
+          summary: "First solo project. Built a swing mechanic and hooked up a live global leaderboard with Firebase.",
+        },
+      ],
+      // Condensed variants, rendered only when the ?pdf=1 flag is present
+      // (scripts/export-resume-pdf.js navigates with that flag). These keep
+      // the exported PDF at one page while the live /resume route shows the
+      // full content above. See Beyond the Code below for the other half
+      // of this split — that section is skipped entirely in PDF mode.
+      projectsPdf: [
         {
           id: "drag-rush",
           name: "Drag Rush",
@@ -161,7 +209,37 @@ export default Vue.extend({
         },
       ],
       techStack: ["Unity", "C#", "Unreal", "C++", "UE Blueprint", "Git"],
+      personal: [
+        {
+          label: "Esports",
+          detail: "Previously Top 500 in Overwatch, mainly playing Ana support.",
+        },
+        {
+          label: "Current favorites",
+          detail: "Zelda: A Link to the Past, RE9, TLOS 2, and Dead Cells.",
+        },
+        {
+          label: "Anime",
+          detail: "Fan since I was 8, when I found a Dragon Ball at my local library. Some of my favs: Gachiakuta, Chainsaw Man, and JoJo's.",
+        },
+        {
+          label: "Off the PC",
+          detail: "Running, or taking walks in the woods.",
+        },
+        {
+          label: "Music",
+          detail: "Sang, rapped, and produced with a group of friends throughout my teenage years. A part of my life that's close to my heart.",
+        },
+      ],
     };
+  },
+  computed: {
+    isPdf: function (): boolean {
+      return this.$route.query.pdf === "1";
+    },
+    activeProjects: function (): { id: string; name: string; meta?: string; summary: string }[] {
+      return this.$route.query.pdf === "1" ? this.projectsPdf : this.projects;
+    },
   },
   methods: {
     showDetails: function (id: string) {
@@ -305,6 +383,12 @@ export default Vue.extend({
   border-bottom-color: #f4cde6;
 }
 
+.project-meta {
+  font-size: 0.85em;
+  opacity: 0.6;
+  white-space: nowrap;
+}
+
 .project-entry-summary {
   margin: 10px 0 0;
   opacity: 0.9;
@@ -359,6 +443,41 @@ export default Vue.extend({
 .languages {
   margin-top: 16px;
   opacity: 0.75;
+}
+
+.personal-entries {
+  display: grid;
+  gap: 16px;
+}
+
+.personal-entry {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.personal-label {
+  font-weight: 700;
+  opacity: 0.85;
+}
+
+.personal-detail {
+  opacity: 0.9;
+}
+
+@media only screen and (min-width: 620px) {
+  .personal-entry {
+    flex-direction: row;
+    gap: 16px;
+  }
+
+  .personal-label {
+    flex: 0 0 180px;
+  }
+
+  .personal-detail {
+    flex: 1;
+  }
 }
 
 .resume-footer {
