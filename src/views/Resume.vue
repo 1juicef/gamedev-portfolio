@@ -38,7 +38,6 @@
         <article class="project-entry" v-for="project in projects" :key="project.id">
           <div class="project-entry-header">
             <button type="button" class="project-entry-link" @click="showDetails(project.id)">{{ project.name }}</button>
-            <span class="project-meta">{{ project.meta }}</span>
           </div>
           <p class="project-entry-summary">{{ project.summary }}</p>
         </article>
@@ -126,25 +125,21 @@ export default Vue.extend({
         {
           id: "drag-rush",
           name: "Drag Rush",
-          meta: "Unity · C# · 8wk · team of 6",
           summary: "Built vehicle animation trees, overhauled beat conductor for BPM precision, did level design.",
         },
         {
           id: "dispater",
           name: "Dispater",
-          meta: "Unreal · C++ · 8wk · team of 7",
           summary: "Built the systems driving the story forward: dialogue, voice lines, tasks, interactions.",
         },
         {
           id: "floor-0",
           name: "Floor Zero",
-          meta: "Unreal · UE Blueprint · 5wk · solo",
           summary: "Built a modular interaction interface, key/door system, and AI using UE's NavMesh.",
         },
         {
           id: "swing-space",
           name: "SwingSpace",
-          meta: "Unity · C# · 5wk · solo",
           summary: "First solo project: swing mechanic plus a live global leaderboard with Firebase.",
         },
       ],
@@ -335,12 +330,6 @@ export default Vue.extend({
   color: #f4cde6;
   opacity: 1;
   border-bottom-color: #f4cde6;
-}
-
-.project-meta {
-  font-size: 0.85em;
-  opacity: 0.6;
-  white-space: nowrap;
 }
 
 .project-entry-summary {
