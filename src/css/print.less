@@ -52,14 +52,11 @@
     a,
     .resume-title,
     .summary,
-    .project-meta,
     .project-entry-link,
     .project-entry-summary,
     .entry-period,
     .entry-role,
     .entry-detail,
-    .personal-label,
-    .personal-detail,
     .languages,
     .resume-footer,
     .contact-row i {
@@ -67,7 +64,6 @@
     }
 
     .resume-title,
-    .project-meta,
     .entry-period,
     .entry-role,
     .languages,
@@ -169,53 +165,6 @@
         margin-top: 1px !important;
     }
 
-    // Lever 6 (optional accelerator, applied because levers 1-5 were
-    // exhausted at their readability floors and the page count was still
-    // 2): put the five "Beyond the Code" rows into a 2-column print grid.
-    // Resume.vue's row layout for .personal-entry (label left, detail
-    // right) is scoped inside "@media only screen and (min-width: 620px)",
-    // which does not match the "print" media type at all, so it never
-    // applies here regardless. Deliberately NOT forcing that row layout in
-    // print either: measured that label+narrow-detail-column wraps the two
-    // long entries (Anime, Music) to far more lines than keeping each
-    // entry's natural stacked (label-above-detail) layout, which gives the
-    // detail paragraph the full ~340px grid-column width instead of a
-    // ~230px sliver next to a fixed label column.
-    .personal-entries {
-        display: grid !important;
-        grid-template-columns: 1fr 1fr !important;
-        gap: 1px 14px !important;
-    }
-
-    // CSS Grid auto-placement fills row-major in source order, which
-    // pairs the two long entries (Anime, Music - source positions 3 and
-    // 5) with a short entry each rather than with each other, wasting a
-    // row's worth of height twice. `order` (valid for grid auto-placement
-    // per spec) reflows visual position only — Resume.vue's DOM/content
-    // order is untouched — to pair the two long entries together and the
-    // two short entries together, leaving only the shortest ("Off the
-    // PC") unpaired. This is a presentation-only reorder of five known,
-    // fixed rows, not a general-purpose sort.
-    .personal-entry:nth-child(1) { // Esports
-        order: 3;
-    }
-
-    .personal-entry:nth-child(2) { // Current favorites
-        order: 4;
-    }
-
-    .personal-entry:nth-child(3) { // Anime
-        order: 1;
-    }
-
-    .personal-entry:nth-child(4) { // Off the PC
-        order: 5;
-    }
-
-    .personal-entry:nth-child(5) { // Music
-        order: 2;
-    }
-
     .resume-columns {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -224,8 +173,7 @@
 
     .resume-section,
     .entry,
-    .project-entry,
-    .personal-entry {
+    .project-entry {
         page-break-inside: avoid;
         break-inside: avoid;
     }

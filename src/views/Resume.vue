@@ -28,8 +28,9 @@
     </ul>
 
     <blockquote class="summary">
-      Creative and driven programming student in my final term before graduating as a Game Programmer.
-      Background in the fashion industry, including co-founding a brand.
+      Creative and driven programming student doing the last term before I graduate as a Game Programmer.
+      I have a background in the fashion industry, having worked in retail stores and co-founded a brand.
+      I enjoy working both independently and in teams, and thrive in both.
     </blockquote>
 
     <section class="resume-section">
@@ -79,16 +80,6 @@
       </div>
     </div>
 
-    <section class="resume-section">
-      <h2>Beyond the Code</h2>
-      <div class="personal-entries">
-        <article class="personal-entry" v-for="item in personal" :key="item.label">
-          <span class="personal-label">{{ item.label }}</span>
-          <span class="personal-detail">{{ item.detail }}</span>
-        </article>
-      </div>
-    </section>
-
     <footer class="resume-footer">
       <span>References available on request</span>
       <a href="https://www.josefubaka.com" target="_blank" rel="noopener noreferrer">www.josefubaka.com</a>
@@ -125,22 +116,22 @@ export default Vue.extend({
         {
           id: "drag-rush",
           name: "Drag Rush",
-          summary: "Built vehicle animation trees, overhauled beat conductor for BPM precision, did level design.",
+          summary: "Built animation trees for the vehicles. Helped overhaul our beat conductor for better BPM precision. Also did level design.",
         },
         {
           id: "dispater",
           name: "Dispater",
-          summary: "Built the systems driving the story forward: dialogue, voice lines, tasks, interactions.",
+          summary: "Built the systems that drive the story forward, including dialogue, voice lines, tasks, and interactions.",
         },
         {
           id: "floor-0",
           name: "Floor Zero",
-          summary: "Built a modular interaction interface, key/door system, and AI using UE's NavMesh.",
+          summary: "Made a modular interaction interface, together with a key/door system. Built a competent AI using UE's NavMesh.",
         },
         {
           id: "swing-space",
           name: "SwingSpace",
-          summary: "First solo project: swing mechanic plus a live global leaderboard with Firebase.",
+          summary: "First solo project. Built a swing mechanic and hooked up a live global leaderboard with Firebase.",
         },
       ],
       experience: [
@@ -170,24 +161,6 @@ export default Vue.extend({
         },
       ],
       techStack: ["Unity", "C#", "Unreal", "C++", "UE Blueprint", "Git"],
-      personal: [
-        {
-          label: "Esports",
-          detail: "Top 500 Overwatch; played Ana support.",
-        },
-        {
-          label: "Current favorites",
-          detail: "Zelda: LttP, RE9, TLOS 2, Dead Cells.",
-        },
-        {
-          label: "Anime",
-          detail: "Anime fan since Dragon Ball at 8.",
-        },
-        {
-          label: "Music",
-          detail: "Sang, rapped, and produced with friends.",
-        },
-      ],
     };
   },
   methods: {
@@ -386,41 +359,6 @@ export default Vue.extend({
 .languages {
   margin-top: 16px;
   opacity: 0.75;
-}
-
-.personal-entries {
-  display: grid;
-  gap: 16px;
-}
-
-.personal-entry {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.personal-label {
-  font-weight: 700;
-  opacity: 0.85;
-}
-
-.personal-detail {
-  opacity: 0.9;
-}
-
-@media only screen and (min-width: 620px) {
-  .personal-entry {
-    flex-direction: row;
-    gap: 16px;
-  }
-
-  .personal-label {
-    flex: 0 0 180px;
-  }
-
-  .personal-detail {
-    flex: 1;
-  }
 }
 
 .resume-footer {
