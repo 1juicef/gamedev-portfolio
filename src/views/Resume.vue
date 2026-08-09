@@ -28,10 +28,8 @@
     </ul>
 
     <blockquote class="summary">
-      Creative and driven programming student doing the last term before I graduate as a Game Programmer.
-      I have a background in the fashion industry, having worked in retail stores and co-founded a brand.
-      I enjoy working both independently and in teams, and thrive in both. I contribute to my work
-      environment by being positive, calm, and having a clear approach.
+      Creative and driven programming student in my final term before graduating as a Game Programmer.
+      Background in the fashion industry, including co-founding a brand.
     </blockquote>
 
     <section class="resume-section">
@@ -129,25 +127,25 @@ export default Vue.extend({
           id: "drag-rush",
           name: "Drag Rush",
           meta: "Unity · C# · 8wk · team of 6",
-          summary: "Built animation trees for the vehicles. Helped with overhauling our beat conductor for better BPM precision. Also did level design.",
+          summary: "Built vehicle animation trees, overhauled beat conductor for BPM precision, did level design.",
         },
         {
           id: "dispater",
           name: "Dispater",
           meta: "Unreal · C++ · 8wk · team of 7",
-          summary: "Built the systems that drive the story forward, including dialogue, voice lines, tasks, interactions.",
+          summary: "Built the systems driving the story forward: dialogue, voice lines, tasks, interactions.",
         },
         {
           id: "floor-0",
           name: "Floor Zero",
           meta: "Unreal · UE Blueprint · 5wk · solo",
-          summary: "Made a modular interaction interface, together with a key/door system. Built a competent AI using UE's NavMesh.",
+          summary: "Built a modular interaction interface, key/door system, and AI using UE's NavMesh.",
         },
         {
           id: "swing-space",
           name: "SwingSpace",
           meta: "Unity · C# · 5wk · solo",
-          summary: "First solo project. Built a swing mechanic and hooked up a live global leaderboard with Firebase.",
+          summary: "First solo project: swing mechanic plus a live global leaderboard with Firebase.",
         },
       ],
       experience: [
@@ -180,15 +178,15 @@ export default Vue.extend({
       personal: [
         {
           label: "Esports",
-          detail: "Previously Top 500 in Overwatch, mainly playing Ana support.",
+          detail: "Previously Top 500 Overwatch, playing Ana support.",
         },
         {
           label: "Current favorites",
-          detail: "Zelda: A Link to the Past, RE9, TLOS 2, and Dead Cells.",
+          detail: "Zelda: Link to the Past, RE9, TLOS 2, Dead Cells.",
         },
         {
           label: "Anime",
-          detail: "Fan since I was 8, when I found a Dragon Ball at my local library. Some of my favs: Gachiakuta, Chainsaw Man, and JoJo's.",
+          detail: "Anime fan since finding Dragon Ball at age 8.",
         },
         {
           label: "Off the PC",
@@ -196,7 +194,7 @@ export default Vue.extend({
         },
         {
           label: "Music",
-          detail: "Sang, rapped, and produced with a group of friends throughout my teenage years. A part of my life that's close to my heart.",
+          detail: "Sang, rapped, and produced with friends as a teen.",
         },
       ],
     };
