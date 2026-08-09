@@ -178,23 +178,19 @@ export default Vue.extend({
       personal: [
         {
           label: "Esports",
-          detail: "Previously Top 500 Overwatch, playing Ana support.",
+          detail: "Top 500 Overwatch; played Ana support.",
         },
         {
           label: "Current favorites",
-          detail: "Zelda: Link to the Past, RE9, TLOS 2, Dead Cells.",
+          detail: "Zelda: LttP, RE9, TLOS 2, Dead Cells.",
         },
         {
           label: "Anime",
-          detail: "Anime fan since finding Dragon Ball at age 8.",
-        },
-        {
-          label: "Off the PC",
-          detail: "Running, or taking walks in the woods.",
+          detail: "Anime fan since Dragon Ball at 8.",
         },
         {
           label: "Music",
-          detail: "Sang, rapped, and produced with friends as a teen.",
+          detail: "Sang, rapped, and produced with friends.",
         },
       ],
     };
