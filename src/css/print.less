@@ -6,7 +6,7 @@
 
 @media print {
     @page {
-        margin: 10mm 10mm;
+        margin: 13mm 12mm;
     }
 
     html, body {
@@ -19,7 +19,7 @@
         background: transparent !important;
         color: #111 !important;
         font-size: 9pt;
-        line-height: 1.2;
+        line-height: 1.24;
         text-align: left !important;
     }
 
@@ -96,15 +96,15 @@
 
     .resume-section h2 {
         border-bottom-color: rgba(0, 0, 0, 0.25) !important;
-        margin: 0 0 1px !important;
-        padding-bottom: 0 !important;
+        margin: 0 0 4px !important;
+        padding-bottom: 2px !important;
         font-size: 1em !important;
     }
 
     // .languages carries a 16px scoped top margin that print never
     // touched — same specificity trap as the other overrides above.
     .languages {
-        margin-top: 4px !important;
+        margin-top: 8px !important;
     }
 
     .resume-footer {
@@ -119,11 +119,11 @@
     .tech-chip {
         background: rgba(0, 0, 0, 0.06) !important;
         border: 1px solid rgba(0, 0, 0, 0.18);
-        padding: 1px 6px !important;
+        padding: 2px 7px !important;
     }
 
     .tech-chips {
-        gap: 3px !important;
+        gap: 4px !important;
     }
 
     // All spacing overrides below carry !important for the same reason as
@@ -132,37 +132,43 @@
     // block, which otherwise silently wins the cascade even inside
     // @media print (confirmed by measuring: the un-!important version of
     // this pass produced zero change in rendered page count).
+    //
+    // These values are tuned against measured ink extents in the exported
+    // PDF, not guessed: the content fits one page with room to spare, so the
+    // rhythm is set to spend that slack evenly rather than let it pool at the
+    // bottom of the page. Shrink them again only if content grows enough to
+    // push the export onto a second page.
     .resume-section {
-        margin-top: 3px !important;
+        margin-top: 8px !important;
     }
 
     .project-entries {
-        gap: 2px !important;
+        gap: 5px !important;
     }
 
     .entry {
-        margin-bottom: 2px !important;
+        margin-bottom: 5px !important;
     }
 
     .resume-footer {
-        margin-top: 3px !important;
-        padding-top: 2px !important;
+        margin-top: 9px !important;
+        padding-top: 5px !important;
     }
 
     .contact-row {
-        margin-top: 2px !important;
+        margin-top: 6px !important;
     }
 
     .summary {
-        margin-top: 2px !important;
+        margin-top: 6px !important;
     }
 
     .project-entry-summary {
-        margin-top: 1px !important;
+        margin-top: 3px !important;
     }
 
     .entry-detail {
-        margin-top: 1px !important;
+        margin-top: 3px !important;
     }
 
     .resume-columns {
