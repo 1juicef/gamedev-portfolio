@@ -30,7 +30,7 @@ See: .planning/PROJECT.md (updated 2026-07-23)
 Phase: 5 of 7 (Dark Theme Redesign)
 Plan: — (not yet planned)
 Status: Ready to plan
-Last activity: 2026-08-09 - Completed quick task 260809-q7g: resume PDF now 1 page; live /resume and downloaded PDF content decoupled via ?pdf=1 flag
+Last activity: 2026-08-10 - Completed quick task 260810-huz: resume PDF whitespace rebalanced (98.4% vertical fill, still 1 page)
 
 Progress: [░░░░░░░░░░] 0%
 
@@ -114,6 +114,7 @@ None open. Watch during execution: keep default router (hash) mode and default `
 | 260807-fe8 | Replace Resume page's PNG download with a real PDF: added print.less (App.vue global, hides nav/header/footer, undoes dark-gradient/justify/opacity for print), scripted headless-Chrome export (scripts/export-resume-pdf.js -> public/downloads/Josef-Ubaka-Resume.pdf), repointed Resume.vue download link and filename | 2026-08-07 | 252f67a..8d23d87 | [260807-fe8-make-resume-download-a-pdf-instead-of-pn](./quick/260807-fe8-make-resume-download-a-pdf-instead-of-pn/) |
 | 260807-fvb | Compress print.less density to shrink resume PDF page count (fixed a Vue scoped-CSS specificity bug that was silently blocking print overrides; pushed font-size/line-height/margins/heading-scale to readability floors, reflowed Beyond-the-Code to 2 columns) — landed at 2 pages (down from 3), not the targeted 1; ~140px genuine content overflow remains after exhausting density levers, content-cut decision deferred to user | 2026-08-07 | 03a328e..fcbdbe4 | [260807-fvb-compress-print-stylesheet-so-resume-pdf-](./quick/260807-fvb-compress-print-stylesheet-so-resume-pdf-/) |
 | 260809-q7g | Shrink Resume.vue content so exported PDF fits 1 page (down from 2) without touching print.less's locked density floors; then, per user follow-up, dropped project-meta subheadings and the entire Beyond the Code section from the PDF and restored fuller wording elsewhere; final pivot split live-page content from PDF content entirely via a `?pdf=1` route flag — /resume now shows the true original (meta lines, full 5-entry Beyond the Code, full blockquote) while the downloaded PDF stays the condensed 1-pager | 2026-08-09 | b9990fe..bc40b68 | [260809-q7g-shrink-resume-vue-content-so-exported-pd](./quick/260809-q7g-shrink-resume-vue-content-so-exported-pd/) |
+| 260810-huz | Rebalance the exported resume PDF's vertical rhythm: the earlier one-page compression left ~30mm dead space at the bottom and ~5mm at the top, so print.less now runs 13mm/12mm page margins, line-height 1.24, and relaxed section/entry/footer/heading spacing — measured ink fill went 88.4% → 98.4% of the printable box (5.3mm above, 4.0mm below), still 1 page, screen styles untouched | 2026-08-10 | 2bbae75 | [260810-huz-rebalance-resume-pdf-vertical-spacing-so](./quick/260810-huz-rebalance-resume-pdf-vertical-spacing-so/) |
 
 ## Deferred Items
 
