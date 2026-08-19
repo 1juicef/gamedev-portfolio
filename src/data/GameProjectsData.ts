@@ -118,7 +118,7 @@ void Undo(CommandBuffer* buffer)
             break;
     }
 }</code></pre>
-                <p class="tech-caption">Every push I make gets stored in a flat command buffer. Undoing reverses the same delta I applied going forward, so the whole undo history ends up being a few structs and an index into them.</p>
+                <p class="tech-caption">Every push I make gets stored in a flat command buffer. Undoing reverses the same delta I applied going forward.</p>
             </div>
         </div>
     </div>
