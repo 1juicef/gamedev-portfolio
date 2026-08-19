@@ -44,7 +44,7 @@ Arena* CreateSubArena(Arena* parent_arena, size_t size)
     Initialize(sub_arena, memory_start, size);
     return sub_arena;
 }</code></pre>
-                <p class="tech-caption">Using malloc to portion out a memory arena, which is then sliced into subarenas for all systems. Allocating by moving a pointer forward.</p>
+                <p class="tech-caption">I grab one big block from malloc at startup and then hand out slices of it to every system as subarenas. Allocating is just moving a pointer forward, and nothing gets freed in the middle of a frame.</p>
             </div>
             <div class="tech-snippet">
                 <pre><code>enum Behaviour : uint32_t
@@ -93,7 +93,7 @@ struct Entity
         }
     }
 };</code></pre>
-                <p class="tech-caption">No Player class, no Box class, no base GameObject to inherit from. One Entity struct for everything.</p>
+                <p class="tech-caption">Everything in the game is the same Entity struct, with a behaviour bitmask on it. It felt very strange coming from engines at first, but it means I ask what a thing can do rather than what it is.</p>
             </div>
             <div class="tech-snippet">
                 <pre><code>void Push(CommandBuffer* buffer, AnyCommand cmd)
@@ -118,7 +118,7 @@ void Undo(CommandBuffer* buffer)
             break;
     }
 }</code></pre>
-                <p class="tech-caption">Every push is stored as data in a flat command buffer. Undo doesn't restore a previous state, it reverses the same delta that was applied going forward, so the undo/redo stack is a handful of structs and an index.</p>
+                <p class="tech-caption">Every push I make gets stored in a flat command buffer. Undoing reverses the same delta I applied going forward, so the whole undo history ends up being a few structs and an index into them.</p>
             </div>
         </div>
     </div>
@@ -203,7 +203,7 @@ public void StartMetronome(double bpm)
     _nextBeatDspTime = AudioSettings.dspTime + _beatInterval;
     _running = true;
 }</code></pre>
-                <p class="tech-caption">Scheduled beats against Unity's AudioSettings.dspTime instead of Time.deltaTime, so the beat clock stays locked to the audio hardware and can't drift out of sync with the music over time.</p>
+                <p class="tech-caption">I schedule the beats against Unity's AudioSettings.dspTime, which is the audio hardware clock. Frame time slowly drifts away from the music over a long track, and in a rhythm game that drift is the whole thing falling apart.</p>
             </div>
             <div class="tech-snippet">
                 <pre><code>IEnumerator DoLaneChange(int newLane, int dir)
@@ -222,7 +222,7 @@ public void StartMetronome(double bpm)
         ChangeLane(dirBuf);
     }
 }</code></pre>
-                <p class="tech-caption">A lane-change input received mid-animation is buffered and replayed once the current turn animation finishes. This keeps input feel responsive without letting animation state fall out of sync.</p>
+                <p class="tech-caption">If you hit a lane change while a turn animation is still playing, I buffer it and replay it the moment the animation lands. Dropping those inputs made the car feel unresponsive every time I played it.</p>
             </div>
             <div class="tech-snippet">
                 <pre><code>public Tween OvershootTransform(Transform t, float laneX, int dir)
@@ -242,7 +242,7 @@ public void StartMetronome(double bpm)
     _activeTween = seq;
     return _activeTween;
 }</code></pre>
-                <p class="tech-caption">A two-stage tween (fast out, past the lane center and slower ease back in) gives the car a sense of momentum on transform position alone.</p>
+                <p class="tech-caption">The lane change is a two-stage tween, fast out past the lane center and then a slower ease back into it. I wanted the car to feel like it carries weight, and this got me most of the way there on transform position alone.</p>
             </div>
         </div>
     </div>
@@ -305,19 +305,19 @@ public void StartMetronome(double bpm)
                 <a href="img/projects/dispater/EnumForTasksSC.png" target="_blank" rel="noopener noreferrer">
                     <img class="tech-bp-screenshot tech-bp-screenshot--compact" loading="lazy" src="img/projects/dispater/EnumForTasksSC.png" alt="Task definition struct" />
                 </a>
-                <p class="tech-caption">Every task is assembled from this one definition — prerequisite, target, ordered sub-steps and required components are all declared as data, so a new task is a new entry rather than another bespoke branch of logic.</p>
+                <p class="tech-caption">I put everything a task needs into one definition: prerequisite, target, ordered sub-steps and required components. Once it was all data, adding a task to the game meant writing a new entry instead of going back into the logic.</p>
             </div>
             <div class="tech-snippet">
                 <a href="img/projects/dispater/SnippetFromElevevatorTerminalSC_1.png" target="_blank" rel="noopener noreferrer">
                     <img class="tech-bp-screenshot" loading="lazy" src="img/projects/dispater/SnippetFromElevevatorTerminalSC_1.png" alt="Elevator terminal action executor" />
                 </a>
-                <p class="tech-caption">The terminal walks the queued task one step at a time, translating each action value into the in-world effect it maps to. New kinds of step slot into the same switch instead of rewiring the flow that drives them.</p>
+                <p class="tech-caption">The terminal walks the queued task one step at a time and translates each action value into what actually happens in the world. When we needed a new kind of step late in the project I could add a case without touching the flow around it.</p>
             </div>
             <div class="tech-snippet">
                 <a href="img/projects/dispater/SnippetFromElevevatorTerminalSC.png" target="_blank" rel="noopener noreferrer">
                     <img class="tech-bp-screenshot" loading="lazy" src="img/projects/dispater/SnippetFromElevevatorTerminalSC.png" alt="Prerequisite-gated interaction logic" />
                 </a>
-                <p class="tech-caption">A lever or button only responds if the task it belongs to is actually sitting in the current queue. That check is what keeps the sequence in order, so the station never has to physically lock anything away to stop a player skipping ahead.</p>
+                <p class="tech-caption">A lever or button only reacts if the task it belongs to is actually in the current queue. That one check is what holds the sequence together, so we never had to lock doors or block corridors to stop players running ahead of the story.</p>
             </div>
         </div>
     </div>
@@ -376,19 +376,19 @@ public void StartMetronome(double bpm)
                 <a href="img/projects/floor-0/BT_Ghost.png" target="_blank" rel="noopener noreferrer">
                     <img class="tech-bp-screenshot" loading="lazy" src="img/projects/floor-0/BT_Ghost.png" alt="Ghost AI behavior tree" />
                 </a>
-                <p class="tech-caption">One Selector at the root branches on a single Blackboard state value, so the Ghost&#39;s Roam, Chase, Follow, Attack, Lost and Death behaviours are all just states to switch between rather than conditions tangled across the tree.</p>
+                <p class="tech-caption">One Selector at the root branching on a single Blackboard value. That turned the Ghost's Roam, Chase, Follow, Attack, Lost and Death behaviours into states I switch between, which I could actually keep in my head while debugging it at 3am.</p>
             </div>
             <div class="tech-snippet">
                 <a href="img/projects/floor-0/BP_BaseInteractable.png" target="_blank" rel="noopener noreferrer">
                     <img class="tech-bp-screenshot" loading="lazy" src="img/projects/floor-0/BP_BaseInteractable.png" alt="Base interactable object blueprint" />
                 </a>
-                <p class="tech-caption">A shared base actor owns the hover outline and the Interact-on-E path, both gated behind a valid-player-component check, so any actor inheriting from it becomes interactable without writing new logic.</p>
+                <p class="tech-caption">A shared base actor owns the hover outline and the Interact-on-E path, both behind a valid-player check. After I had laid that groundwork I could turn almost anything in the level into a pickup by inheriting from it. The keys, the crowbar, the hammer and of course the AK-47.</p>
             </div>
             <div class="tech-snippet">
                 <a href="img/projects/floor-0/BP_BaseDropable.png" target="_blank" rel="noopener noreferrer">
                     <img class="tech-bp-screenshot" loading="lazy" src="img/projects/floor-0/BP_BaseDropable.png" alt="Interactable target detection blueprint" />
                 </a>
-                <p class="tech-caption">A sphere trace gathers candidates first, then a line trace resolves which one the player actually means. Every hit is validated through the shared interactable interface, so aiming stays forgiving without ever grabbing something that was never interactable.</p>
+                <p class="tech-caption">A sphere trace collects the candidates first, then a line trace decides which one you actually meant. Every hit still gets validated through the shared interactable interface, so aiming can stay forgiving without you grabbing things that were never meant to be picked up.</p>
             </div>
         </div>
     </div>
@@ -461,7 +461,7 @@ void Attach(Rigidbody2D anchor)
     _rb.linearDamping = 0f;
     _rb.angularDamping = 0f;
 }</code></pre>
-                <p class="tech-caption">Let Unity's DistanceJoint2D handle the swing arc naturally, but renormalized velocity to a constant magnitude every FixedUpdate so gravity and tension can't speed up or slow the swing. Keeps the feel consistent regardless of distance.</p>
+                <p class="tech-caption">I let Unity's DistanceJoint2D do the swing arc, then renormalize the velocity to a constant magnitude every FixedUpdate. Without that, gravity and rope tension kept either flinging you around or killing your speed depending on how long the rope happened to be.</p>
             </div>
             <div class="tech-snippet">
                 <pre><code>void TryAttachNearest()
@@ -487,7 +487,7 @@ void Attach(Rigidbody2D anchor)
         AudioSource.PlayClipAtPoint(_grappleSound, transform.position);
     }
 }</code></pre>
-                <p class="tech-caption">A layer-filtered overlap query plus squared-distance comparison, keeps grapple targeting forgiving and balanced. The player only has to be roughly aimed at an anchor, not pixel-perfect.</p>
+                <p class="tech-caption">A layer-filtered overlap query and a squared-distance comparison to pick the anchor. I wanted grappling to feel forgiving, so you only have to be roughly aimed at a planet rather than pixel-perfect on it.</p>
             </div>
             <div class="tech-snippet">
                 <pre><code>public event Action&lt;float&gt; OnHeightChanged;
@@ -514,7 +514,7 @@ public bool PlayerDeath()
     }
     return false;
 }</code></pre>
-                <p class="tech-caption">Player broadcasts height/death via C# events. ScoreManager and the Firebase leaderboard subscribe independently, so scoring stays decoupled from player logic.</p>
+                <p class="tech-caption">The player broadcasts height and death through C# events, and the ScoreManager and the Firebase leaderboard each subscribe on their own. That way the scoring never had to know anything about the player.</p>
             </div>
         </div>
     </div>
