@@ -44,7 +44,7 @@ Arena* CreateSubArena(Arena* parent_arena, size_t size)
     Initialize(sub_arena, memory_start, size);
     return sub_arena;
 }</code></pre>
-                <p class="tech-caption">I grab one big block from malloc at startup and then hand out slices of it to every system as subarenas. Allocating is just moving a pointer forward, and nothing gets freed in the middle of a frame.</p>
+                <p class="tech-caption">I grab one big block from malloc at startup and then hand out slices of it to every system as subarenas. Allocating is just moving a pointer forward.</p>
             </div>
             <div class="tech-snippet">
                 <pre><code>enum Behaviour : uint32_t
