@@ -1,7 +1,7 @@
 <template>
   <transition name="fade">
     <div v-if="visible">
-      <div class="overlay">
+      <div class="overlay" @click="$emit('close')">
       </div>
       <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="dialog-title">
         <h2 id="dialog-title" class="dialog-title">{{ title }}</h2>
