@@ -40,8 +40,10 @@
               {{ wipProject.name }}
             </button>
           </div>
-          <p class="project-role">{{ roles[wipProject.id] }}</p>
           <p class="project-summary">{{ summaries[wipProject.id] }}</p>
+          <ul class="project-role-list">
+            <li v-for="item in roles[wipProject.id]" :key="item">{{ item }}</li>
+          </ul>
           <button
             class="project-cue"
             :aria-label="'View details for ' + wipProject.name"
@@ -77,8 +79,10 @@
               {{ project.name }}
             </button>
           </div>
-          <p class="project-role">{{ roles[project.id] }}</p>
           <p class="project-summary">{{ summaries[project.id] }}</p>
+          <ul class="project-role-list">
+            <li v-for="item in roles[project.id]" :key="item">{{ item }}</li>
+          </ul>
           <button
             class="project-cue"
             :aria-label="'View details for ' + project.name"
@@ -154,11 +158,31 @@ export default Vue.extend({
         "swing-space": "img/projects/swing-space/SwingSpaceVid-thumb-poster.webp",
       },
       roles: {
-        "cpp-sokoban": "Solo · C++ & SDL3 · no engine · memory arena, data-oriented entities, hot-reloadable game logic",
-        "drag-rush": "Team of 6 · Unity · 8 weeks · vehicle animation trees, beat conductor",
-        dispater: "Team of 7 · Unreal Engine · 8 weeks · dialogue, task & interaction systems, audio engineering",
-        "floor-0": "Solo · Unreal Engine · 5 weeks · behaviour-tree AI, key/lock & interaction systems",
-        "swing-space": "Solo · Unity · 5 weeks · grapple movement, Firebase highscores, mobile port",
+        "cpp-sokoban": [
+          "Solo project, C++ and SDL3, no engine",
+          "Custom memory arena and data-oriented entities",
+          "Hot-reloadable game logic DLL",
+        ],
+        "drag-rush": [
+          "Team of 6 (3 programmers, 3 artists), Unity, 8 weeks",
+          "Built the vehicle animation trees",
+          "Helped finalize the Beat Conductor",
+        ],
+        dispater: [
+          "Team of 7 (3 programmers, 4 artists), Unreal Engine, 8 weeks",
+          "Built the dialogue, task and interaction systems",
+          "Audio engineering",
+        ],
+        "floor-0": [
+          "Solo project, Unreal Engine, 5 weeks",
+          "Multi-state ghost AI built with a behaviour tree",
+          "Custom key/lock and interaction systems",
+        ],
+        "swing-space": [
+          "Solo project, Unity, 5 weeks",
+          "Grapple swing movement and targeting",
+          "Firebase global highscores, ported to mobile",
+        ],
       },
       summaries: {
         "cpp-sokoban": "A Sokoban puzzle game built from scratch in SDL3 + C++. Unfinished, but the most technically hands-on project here: a custom memory arena, data-oriented design, and a hot-reloadable game-logic DLL.",
@@ -384,18 +408,40 @@ export default Vue.extend({
   border-bottom-color: var(--project-accent, #2c3d7a);
 }
 
-.project-role {
-  margin: 14px 0 0;
+.project-role-list {
+  margin: 26px 0 0;
+  padding: 0;
+  list-style: none;
   font-family: "Lekton", monospace;
   font-size: 0.92em;
   letter-spacing: 0.02em;
-  line-height: 1.5;
+  line-height: 1.6;
   color: #f4cde6;
   opacity: 0.85;
 }
 
+.project-role-list li {
+  position: relative;
+  padding-left: 18px;
+}
+
+.project-role-list li + li {
+  margin-top: 4px;
+}
+
+.project-role-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 5px;
+  height: 5px;
+  background-color: #f4cde6;
+  opacity: 0.7;
+}
+
 .project-summary {
-  margin: 10px 0 0;
+  margin: 16px 0 0;
   max-width: 760px;
   font-size: 1.08em;
   line-height: 1.7;
