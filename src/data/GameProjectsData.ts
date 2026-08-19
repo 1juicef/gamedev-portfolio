@@ -93,7 +93,7 @@ struct Entity
         }
     }
 };</code></pre>
-                <p class="tech-caption">Everything in the game is the same Entity struct, with a behaviour bitmask on it. It felt very strange coming from engines at first, but it means I ask what a thing can do rather than what it is.</p>
+                <p class="tech-caption">Player, box, wall and ground are all the same Entity struct. The behavioural bitmask is what makes them different.</p>
             </div>
             <div class="tech-snippet">
                 <pre><code>void Push(CommandBuffer* buffer, AnyCommand cmd)
