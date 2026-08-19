@@ -40,6 +40,7 @@
               {{ wipProject.name }}
             </button>
           </div>
+          <p class="project-role">{{ roles[wipProject.id] }}</p>
           <p class="project-summary">{{ summaries[wipProject.id] }}</p>
           <button
             class="project-cue"
@@ -76,6 +77,7 @@
               {{ project.name }}
             </button>
           </div>
+          <p class="project-role">{{ roles[project.id] }}</p>
           <p class="project-summary">{{ summaries[project.id] }}</p>
           <button
             class="project-cue"
@@ -150,6 +152,13 @@ export default Vue.extend({
         dispater: "img/projects/dispater/DispaterGif-poster.webp",
         "floor-0": "img/projects/floor-0/Floor0gif1-poster.webp",
         "swing-space": "img/projects/swing-space/SwingSpaceVid-thumb-poster.webp",
+      },
+      roles: {
+        "cpp-sokoban": "Solo · C++ & SDL3 · no engine · memory arena, data-oriented entities, hot-reloadable game logic",
+        "drag-rush": "Team of 6 · Unity · 8 weeks · vehicle animation trees, beat conductor",
+        dispater: "Team of 7 · Unreal Engine · 8 weeks · dialogue, task & interaction systems, audio engineering",
+        "floor-0": "Solo · Unreal Engine · 5 weeks · behaviour-tree AI, key/lock & interaction systems",
+        "swing-space": "Solo · Unity · 5 weeks · grapple movement, Firebase highscores, mobile port",
       },
       summaries: {
         "cpp-sokoban": "A Sokoban puzzle game built from scratch in SDL3 + C++. Unfinished, but the most technically hands-on project here: a custom memory arena, data-oriented design, and a hot-reloadable game-logic DLL.",
@@ -375,8 +384,18 @@ export default Vue.extend({
   border-bottom-color: var(--project-accent, #2c3d7a);
 }
 
+.project-role {
+  margin: 14px 0 0;
+  font-family: "Lekton", monospace;
+  font-size: 0.92em;
+  letter-spacing: 0.02em;
+  line-height: 1.5;
+  color: #f4cde6;
+  opacity: 0.85;
+}
+
 .project-summary {
-  margin: 16px 0 0;
+  margin: 10px 0 0;
   max-width: 760px;
   font-size: 1.08em;
   line-height: 1.7;
