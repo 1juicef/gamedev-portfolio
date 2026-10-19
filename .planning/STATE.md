@@ -117,6 +117,7 @@ None open. Watch during execution: keep default router (hash) mode and default `
 | 260810-huz | Rebalance the exported resume PDF's vertical rhythm: the earlier one-page compression left ~30mm dead space at the bottom and ~5mm at the top, so print.less now runs 13mm/12mm page margins, line-height 1.24, and relaxed section/entry/footer/heading spacing — measured ink fill went 88.4% → 98.4% of the printable box (5.3mm above, 4.0mm below), still 1 page, screen styles untouched | 2026-08-10 | 2bbae75 | [260810-huz-rebalance-resume-pdf-vertical-spacing-so](./quick/260810-huz-rebalance-resume-pdf-vertical-spacing-so/) |
 | 260819-k4d | Friend-feedback pass: role/stack line on timeline cards, tech captions rewritten in first person, overlay closes on backdrop click | 2026-08-19 | 9852878 | [260819-k4d-portfolio-friend-feedback-role-line-caption](./quick/260819-k4d-portfolio-friend-feedback-role-line-caption/) |
 | 261019-hb4 | Add SGA New Talent 2026 Best Audio nominee badge to Dispater (timeline card + overlay) | 2026-10-19 | c192afd | [261019-hb4-add-sga-new-talent-best-audio-nominee-ba](./quick/261019-hb4-add-sga-new-talent-best-audio-nominee-ba/) |
+| 261019-hjj | Reorder game projects page: Dispater first in timeline, Sokoban WIP moved to bottom | 2026-10-19 | ccc5764 | [261019-hjj-reorder-game-projects-dispater-first-sok](./quick/261019-hjj-reorder-game-projects-dispater-first-sok/) |
 
 ## Deferred Items
 
