@@ -275,6 +275,15 @@ public void StartMetronome(double bpm)
         Ending will leave you in SHOCK.
     </div>
     <div class="paragraph center">
+        <a class="award-badge" href="https://www.swedishgameawards.se/nominees-new-talent-2026" target="_blank" rel="noopener noreferrer">
+            <img class="award-badge-logo" src="img/projects/dispater/sga-new-talent-2026.png" alt="Swedish Game Awards New Talent 2026" width="480" height="202" />
+            <span class="award-badge-text">
+                <span class="award-badge-status">Nominee</span>
+                <span class="award-badge-category">Best Audio</span>
+            </span>
+        </a>
+    </div>
+    <div class="paragraph center">
         <a href="https://yrgo.itch.io/dispater" target="_blank" rel="noopener noreferrer"><img class="itch-badge" src="img/projects/itchBadge.png" alt="Play on itch.io" loading="lazy" /></a>
     </div>
     <div class="tech-overview tech-overview--static">

@@ -157,6 +157,15 @@
         opacity: 0.6;
     }
 
+    a.award-badge {
+        color: #ffffff;
+        text-decoration: none;
+    }
+
+    a.award-badge:hover {
+        opacity: 1;
+    }
+
     @media only screen and (min-width: 620px){
         iframe.youtube {
             max-width: 728px;
@@ -198,4 +207,54 @@
     text-align: center;
     font-size: 1.17em;
     margin: 1em 0;
+}
+
+// Award/nomination badge, shared by the project timeline cards and the overlay
+.award-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    margin-top: 14px;
+    padding: 8px 16px 8px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+    background-color: rgba(0, 0, 0, 0.25);
+    color: #ffffff;
+    text-decoration: none;
+    text-align: left;
+}
+
+a.award-badge {
+    transition: border-color 0.18s ease;
+}
+
+a.award-badge:hover,
+a.award-badge:focus-visible {
+    border-color: #f4cde6;
+}
+
+.award-badge-logo {
+    display: block;
+    width: auto;
+    height: 38px;
+}
+
+.award-badge-text {
+    display: flex;
+    flex-direction: column;
+    padding-left: 14px;
+    border-left: 1px solid rgba(255, 255, 255, 0.2);
+    line-height: 1.25;
+}
+
+.award-badge-status {
+    font-family: 'Lekton', monospace;
+    font-size: 0.78em;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #f4cde6;
+}
+
+.award-badge-category {
+    font-size: 1.05em;
 }

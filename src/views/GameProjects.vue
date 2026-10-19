@@ -79,6 +79,13 @@
               {{ project.name }}
             </button>
           </div>
+          <div class="award-badge" v-if="awards[project.id]">
+            <img class="award-badge-logo" :src="awards[project.id].logo" :alt="awards[project.id].event" width="480" height="202" />
+            <span class="award-badge-text">
+              <span class="award-badge-status">{{ awards[project.id].status }}</span>
+              <span class="award-badge-category">{{ awards[project.id].category }}</span>
+            </span>
+          </div>
           <p class="project-summary">{{ summaries[project.id] }}</p>
           <ul class="project-role-list">
             <li v-for="item in roles[project.id]" :key="item">{{ item }}</li>
@@ -184,6 +191,14 @@ export default Vue.extend({
           "Firebase global highscores, ported to mobile",
         ],
       },
+      awards: {
+        dispater: {
+          logo: "img/projects/dispater/sga-new-talent-2026.png",
+          event: "Swedish Game Awards New Talent 2026",
+          status: "Nominee",
+          category: "Best Audio",
+        },
+      } as Record<string, { logo: string; event: string; status: string; category: string }>,
       summaries: {
         "cpp-sokoban": "A Sokoban puzzle game built from scratch in SDL3 + C++. Unfinished, but the most technically hands-on project here: a custom memory arena, data-oriented design, and a hot-reloadable game-logic DLL.",
         "drag-rush": "\"Are you dragging or are you rushing!?\" Drag Rush is a racing game where you need to stick to the beat. Swerve and shoot your way through the race-track and beat the first-place holder.",
