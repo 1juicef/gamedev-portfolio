@@ -21,38 +21,6 @@
       </div>
     </div>
 
-    <section class="wip-section" v-if="wipProject">
-      <h2 class="wip-section-title">Work In Progress</h2>
-      <div class="project-row wip-row project-row--reverse" :style="{ '--project-accent': wipProject.accentColor }">
-        <div class="project-image-wrap">
-          <button
-            class="project-image-button"
-            :aria-label="wipProject.name + ' details'"
-            @click="showDetails(wipProject)"
-          >
-            <LazyVideoThumbnail :src="thumbVideos[wipProject.id]" :poster="thumbPosters[wipProject.id]" />
-          </button>
-        </div>
-
-        <div class="project-copy">
-          <div class="project-entry-header">
-            <button class="project-title-link" @click="showDetails(wipProject)">
-              {{ wipProject.name }}
-            </button>
-          </div>
-          <p class="project-summary">{{ summaries[wipProject.id] }}</p>
-          <ul class="project-role-list">
-            <li v-for="item in roles[wipProject.id]" :key="item">{{ item }}</li>
-          </ul>
-          <button
-            class="project-cue"
-            :aria-label="'View details for ' + wipProject.name"
-            @click="showDetails(wipProject)"
-          >View Details</button>
-        </div>
-      </div>
-    </section>
-
     <h2 class="previous-projects-title">Previous Projects</h2>
     <div class="project-timeline">
       <section
@@ -117,6 +85,38 @@
       </div>
     </section>
 
+    <section class="wip-section" v-if="wipProject">
+      <h2 class="wip-section-title">Work In Progress</h2>
+      <div class="project-row wip-row project-row--reverse" :style="{ '--project-accent': wipProject.accentColor }">
+        <div class="project-image-wrap">
+          <button
+            class="project-image-button"
+            :aria-label="wipProject.name + ' details'"
+            @click="showDetails(wipProject)"
+          >
+            <LazyVideoThumbnail :src="thumbVideos[wipProject.id]" :poster="thumbPosters[wipProject.id]" />
+          </button>
+        </div>
+
+        <div class="project-copy">
+          <div class="project-entry-header">
+            <button class="project-title-link" @click="showDetails(wipProject)">
+              {{ wipProject.name }}
+            </button>
+          </div>
+          <p class="project-summary">{{ summaries[wipProject.id] }}</p>
+          <ul class="project-role-list">
+            <li v-for="item in roles[wipProject.id]" :key="item">{{ item }}</li>
+          </ul>
+          <button
+            class="project-cue"
+            :aria-label="'View details for ' + wipProject.name"
+            @click="showDetails(wipProject)"
+          >View Details</button>
+        </div>
+      </div>
+    </section>
+
     <ProjectDetailsOverlay
       :visible="showPopup"
       :title="popupTitle"
@@ -145,8 +145,8 @@ export default Vue.extend({
     return {
       projects: gameProjectsData,
       projectRows: {
-        "drag-rush": "normal",
-        dispater: "reverse",
+        dispater: "normal",
+        "drag-rush": "reverse",
         "floor-0": "normal",
         "swing-space": "reverse",
       },
@@ -217,7 +217,10 @@ export default Vue.extend({
       return this.projects.find((p: ProjectData) => p.id === "cpp-sokoban");
     },
     timelineProjects: function (): ProjectData[] {
-      return this.projects.filter((p: ProjectData) => p.id !== "cpp-sokoban");
+      // Timeline order follows the projectRows keys, not the data file order
+      return Object.keys(this.projectRows)
+        .map((id: string) => this.projects.find((p: ProjectData) => p.id === id))
+        .filter((p: ProjectData | undefined): p is ProjectData => p !== undefined);
     },
   },
   mounted: function () {
@@ -279,9 +282,9 @@ export default Vue.extend({
 }
 
 .wip-section {
-  margin-bottom: 56px;
-  padding-bottom: 32px;
-  border-bottom: 2px solid rgba(224, 142, 50, 0.4);
+  margin-top: 56px;
+  padding-top: 32px;
+  border-top: 2px solid rgba(224, 142, 50, 0.4);
 }
 
 .wip-section-title {
